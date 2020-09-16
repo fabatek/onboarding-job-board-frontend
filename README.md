@@ -1,20 +1,20 @@
 Faba onboarding project - Job board
 
 ## Requirements
-*Note: before you start, please create a new branch as the pattern `<yourname>/job_board`. We'll use this branch as your default branch instead of `master`.*
+*Note: Before you start, please create a new branch as the pattern `<yourname>/job_board`. We'll use this branch as your default branch instead of `master`.*
 
-Create a job board which is similar to [ITviec](https://itviec.com/).
-- Able to show total number of jobs.
-- Able to show list of jobs with pagination. One job information should includes: title, salary, company name, description, publication date, tags.
-- Able to search jobs by title.
+Create a job board that is similar to [ITviec](https://itviec.com/).
+- Able to show the total number of jobs.
+- Able to display a list of jobs with pagination. One job information should include `title`, `salary`, `company name`, `description`, `publication date`, `tags`.
+- Able to search for jobs by title.
 - Writing unit tests is required.
 
 Recommended technologies:
 - React Hooks.
 - TypeScript.
-- Redux and Redux-thunk to manage state and async request.
+- Redux and Redux-thunk to manage state and async requests.
 - Bootstrap and SASS for styling.
-- Axios for sending request to API endpoint.
+- Axios for sending requests to API endpoints.
 
 Resource: [Remote job API endpoint](https://remotive.io/api/remote-jobs)
 
@@ -26,4 +26,4 @@ Run test `yarn test`
 
 ## Deployment
 
-Feel free to choose one service to support to deploy website. Otherwise, you can refer this document which uses Surge service for deployment https://create-react-app.dev/docs/deployment#surge
+Feel free to choose one service to support to deploy the website. Otherwise, you can refer to this document, which uses Surge service for deployment https://create-react-app.dev/docs/deployment#surge
