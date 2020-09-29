@@ -12,6 +12,14 @@ We want to create a job board that is similar to [ITviec](https://itviec.com/). 
 
 You can find all tickets on the [project board](https://github.com/leofaba/job_board/projects). We sorted all the tickets by order, so you need to complete all the tickets one by one. Please take a look at DoD above to see how we define a completed ticket.
 
+**Mockup for the home page**
+
+![Job overview](https://i.imgur.com/p0bgdoU.png)
+
+**Mockup for job details**
+
+![Job details](https://i.imgur.com/UWfSA7g.png)
+
 ### Recommended technologies:
 - React Hooks.
 - TypeScript.
@@ -19,7 +27,7 @@ You can find all tickets on the [project board](https://github.com/leofaba/job_b
 - Bootstrap and SASS for styling.
 - Axios for sending requests to API endpoints.
 
-## Available Scripts
+### Available Scripts
 - Start project `yarn start` at [http://localhost:3000](http://localhost:3000)
 - Run unit tests `yarn test`
 
