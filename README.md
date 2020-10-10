@@ -1,4 +1,4 @@
-# Faba onboarding project - Job board
+# Job board - Onboarding project
 
 ### Definition of Done (DoD)
 
@@ -10,7 +10,7 @@ One feature is done if it meets all these conditions:
 ### Requirements
 We want to create a job board that is similar to [ITviec](https://itviec.com/). We defined [the job API](https://remotive.io/api/remote-jobs) already.
 
-You can find all tickets on the [project board](https://github.com/leofaba/job_board/projects). We sorted all the tickets by order, so you need to complete all the tickets one by one. Please take a look at DoD above to see how we define a completed ticket.
+You can find all tickets on the [project board](https://github.com/fabatek/onboarding-job-board-frontend/projects). We sorted all the tickets by order, so you need to complete all the tickets one by one. Please take a look at DoD above to see how we define a completed ticket.
 
 **Mockup for the home page**
 
