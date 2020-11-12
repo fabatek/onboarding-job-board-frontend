@@ -1,9 +1,10 @@
 import axios from "axios";
 import React, {useState, useEffect} from "react";
-import {JobAPI} from '../../interface/index'
+import {JobAPI, Job} from '../../interface/index'
 import "./Home.scss";
 function Home() {
   const [jobcount, setJobcount] = useState<number>(0)
+  const [jobdata, setJobdata] = useState<Array<any>>([])
   useEffect(() => {
     axios.get<JobAPI>('https://remotive.io/api/remote-jobs')
     .then( (res) => {
