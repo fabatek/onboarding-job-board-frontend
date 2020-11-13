@@ -1,9 +1,11 @@
-import {render} from "@testing-library/react";
-import Home from "../Home/Home";
+import { render, waitFor } from "@testing-library/react";
+import App from "../App/App";
 import React from "react";
 
-test('renders learn react link', () => {
-  const { getByText } = render(<Home />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test("renders number of jobs", async () => {
+  const { getByTestId } = render(<App />);
+  const jobElement = getByTestId("job-number");
+  await waitFor(()=>
+    expect(Number(jobElement.textContent)).toBeGreaterThan(0),{timeout:10000})   
+
 });
