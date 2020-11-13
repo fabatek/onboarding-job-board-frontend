@@ -6,7 +6,6 @@ import {connect, RootStateOrAny} from 'react-redux'
 function Home ( props: RootStateOrAny) {
   useEffect(() => {
     props.fetchAllJobs()
-    console.log(props.jobs)
   })
   return (
     <div className="home">
