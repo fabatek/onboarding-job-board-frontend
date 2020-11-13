@@ -1,25 +1,30 @@
-import axios from "axios";
-import React, {useState, useEffect} from "react";
-import {JobAPI, Job} from '../../interface/index'
+import React, {useEffect} from "react";
+import { act } from "react-dom/test-utils";
 import "./Home.scss";
-function Home() {
-  const [jobcount, setJobcount] = useState<number>(0)
-  const [jobdata, setJobdata] = useState<Array<any>>([])
+import {fetchJobsRequest} from '../../actions'
+import {connect, RootStateOrAny} from 'react-redux'
+function Home ( props: RootStateOrAny) {
   useEffect(() => {
-    axios.get<JobAPI>('https://remotive.io/api/remote-jobs')
-    .then( (res) => {
-      setJobcount(res.data['job-count'])
-    })
-    .catch( (err) => {
-      console.log(err)
-    })
+    props.fetchAllJobs()
+    console.log(props.jobs)
   })
   return (
     <div className="home">
-      <img src={window.location.origin + '/faba.png'} />
-      <p>{jobcount} IT Jobs are available</p> 
+      <img alt="faba" src={window.location.origin + '/faba.png'} />
+      <p> {props.jobs['job-count']} IT Jobs are available</p>
     </div>
   );
 }
-
-export default Home;
+const mapStateToProps = (state: RootStateOrAny) => {
+  return {
+    jobs: state.getJob
+  }
+}
+const mapDispatchToProps = (dispatch: RootStateOrAny)=>{
+  return {
+    fetchAllJobs: ()=>{
+      dispatch( fetchJobsRequest() )
+    }
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
