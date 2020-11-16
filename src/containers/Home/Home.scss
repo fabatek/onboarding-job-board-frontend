@@ -1,12 +1,34 @@
 .App {
   text-align: center;
 }
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
+// Dev define CSS
+.title{
+  font-size: 150%;
+  font-weight: bold;
+  float:left
+}
+.time{
+  float:right
+}
+.job-card{
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+  background: white;
+}
+.job-card:hover{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.no-tag{
+  font-style: italic
+}
+body{
+  background:  #d53369 0%
+}
 
+div {border-width: thick;}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
