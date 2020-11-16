@@ -1,5 +1,5 @@
 import { render, waitFor } from "@testing-library/react";
-import App from "../App/App";
+import App from "../../containers/App/App";
 import React from "react";
 import { rest } from 'msw'
 import { setupServer } from 'msw/node'

@@ -1,7 +1,5 @@
 import { createSlice} from '@reduxjs/toolkit';
 import axios from 'axios'
-
-
 type Job = {
     id: number,
     url: string,
@@ -19,26 +17,28 @@ type JobList ={
     job: Job[]
 }
 const initialState : JobList = {job: []}
-  
 export const jobSlice = createSlice({
   name: 'job',
   initialState,
   reducers: {
-    // increment: state => {
-    //   state.value += 1;
-    // },
-    incrementByAmount: (state, action) => {
+    stateConcat: (state, action) => {
       state.job = [...state.job,...action.payload]
       
     },
   },
 });
 
-export const { incrementByAmount } = jobSlice.actions;
+export const { stateConcat } = jobSlice.actions;
 
 export const fetchJobs = () =>  async (dispatch:any) => {
-  const res = await axios.get('https://cors-anywhere.herokuapp.com/https://remotive.io/api/remote-jobs');
-  dispatch(incrementByAmount(res.data.jobs));
+  await axios.get('https://cors-anywhere.herokuapp.com/https://remotive.io/api/remote-jobs').then(
+    function (response) {
+    dispatch(stateConcat(response.data.jobs));;
+  })
+  .catch(function (error) {
+    console.log(error);
+  })
+                   
 };
 
 export const selectJob = (state:any) => state.job;

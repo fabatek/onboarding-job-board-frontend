@@ -1,14 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, {useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
-import axios from "axios";
 import "./Home.scss";
-import "./Search";
-import Search from "./Search";
-import Joblist from "./Joblist";
-
 import {
-  incrementByAmount,
   selectJob,
   fetchJobs,
 } from "../../features/job/jobSlice";
@@ -16,34 +9,15 @@ import {
 function Home() {
   const {job} = useSelector(selectJob);
   const dispatch = useDispatch();
-
-  // const [jobNumber, setJobNumber] = useState(0);
-
   useEffect(() => {
-    dispatch(fetchJobs());
-  }, []);
-  
-  
- 
-  //fullJobList = response.data.jobs
-  //const jobList100 = response.data.jobs.slice(0,100)
-
-
-  //Search
-  // const handleSearch = (searchString:string)=>{
-  //   let result = fullJobList.filter((job:any)=> job.title.includes(searchString));
-  //   setJoblist(result)
-  // }
+      dispatch(fetchJobs())
+  }, [dispatch]);
 
   return (
     <div className="App container">
       <div>
         <span data-testid="job-number">{job.length ? job.length:'loading...'} </span>jobs are available 
       </div>
-      {/* <div> <Search handleSearch={handleSearch}/></div>
-      <div>
-        <Joblist jobList={jobList}/>
-      </div> */}
     </div>
   );
 }
