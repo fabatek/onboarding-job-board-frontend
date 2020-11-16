@@ -37,7 +37,7 @@ export const jobSlice = createSlice({
 export const { incrementByAmount } = jobSlice.actions;
 
 export const fetchJobs = () =>  async (dispatch:any) => {
-  const res = await axios.get('api/remote-jobs');
+  const res = await axios.get('https://cors-anywhere.herokuapp.com/https://remotive.io/api/remote-jobs');
   dispatch(incrementByAmount(res.data.jobs));
 };
 
