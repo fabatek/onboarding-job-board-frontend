@@ -1,7 +1,6 @@
 import React from "react";
 import TagList from "./TagList";
 import moment from "moment";
-import logo from "../../logo.svg";
 
 export default function Job(props: any) {
   let {
@@ -14,9 +13,10 @@ export default function Job(props: any) {
     description,
     tags,
   } = props;
-  if (salary == "") salary="Negotiable"
+  if (salary === "") salary="Negotiable"
   const logoURL= 'https://remotive.io/job/' + id + '/logo'
-  //tách HTML
+
+  //extract HTML
   function extractContent(desc:string) {
     var span = document.createElement('span');
     span.innerHTML = desc;

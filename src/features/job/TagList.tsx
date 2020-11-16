@@ -13,9 +13,9 @@ export default function TagList({tagList}:any) {
     }
     return (
         <div>
-             {tagList.map((tag:any)=>{
+             {tagList.map((tag:any,i:number)=>{
                 return(
-                <Tag tag={tag}></Tag>
+                <Tag key={i} tag={tag}></Tag>
                 )
             })}
         </div>
