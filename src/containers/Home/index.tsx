@@ -9,11 +9,11 @@ import {
   fetchJobs,
 } from "../../features/job/jobSlice";
 
-function Home() {
+const Home: React.FC = () => {
   const {job} = useSelector(selectJob);
   const dispatch = useDispatch();
 
-  const [jobList, setJobList] = useState<JobList[]>([]);
+  const [jobList, setJobList] = useState<JobList>([]);
 
   useEffect(() => {
     dispatch(fetchJobs(setJobList));
@@ -25,7 +25,7 @@ function Home() {
         <h1 className="job-title" ><span data-testid="job-number">{job.length ? job.length:'loading...'} </span>jobs are available</h1>
       </div>
       <div>
-        <Joblist jobList={jobList}/>
+        <Joblist job={jobList}/>
       </div>
     </div>
   );

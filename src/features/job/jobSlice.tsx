@@ -1,8 +1,8 @@
 import { createSlice} from '@reduxjs/toolkit';
 import axios from 'axios'
-import {JobList} from '../typeDefinition'
+import {JobSliceValue} from '../typeDefinition'
 
-const initialState : JobList = {job: []}
+const initialState : JobSliceValue = {job: []}
   
 export const jobSlice = createSlice({
   name: 'job',

@@ -11,6 +11,11 @@ export type Job = {
     salary: string,
     description: string
 }
-export type JobList ={
+export type JobSliceValue={
     job: Job[]
+}
+export type JobList = Job[]
+
+export type TagList = {
+    tag: string[]
 }

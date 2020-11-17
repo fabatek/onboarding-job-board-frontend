@@ -1,8 +1,9 @@
 import React from "react";
 import TagList from "./TagList";
 import moment from "moment";
+import {Job as job} from '../../features/typeDefinition'
 
-export default function Job(props: any) {
+const Job: React.FC<job> = (props: job) => {
   let {
     id,
     url,
@@ -39,10 +40,11 @@ export default function Job(props: any) {
           <div className="pt-2">{extractContent(description).slice(0, 600)+'...'}</div>
           <div>
             {" "}
-            <TagList tagList={tags} />{" "}
+            <TagList tag={tags} />{" "}
           </div>
         </div>
       </div>
     </div>
   );
 }
+export default Job

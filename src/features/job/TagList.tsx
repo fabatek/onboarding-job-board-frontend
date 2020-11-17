@@ -1,19 +1,18 @@
 import React from 'react'
 import Tag from './Tag'
+import {TagList as taglist} from '../../features/typeDefinition'
 
-
-export default function TagList({tagList}:any) {
-    if (tagList.length===0){
+const TagList: React.FC<taglist> = (props: taglist) => {
+    if (props.tag.length===0){
         return (
             <div className="no-tag">
                 No tags availabe
             </div>
         )
-
     }
     return (
         <div>
-             {tagList.map((tag:any,i:number)=>{
+             {props.tag.map((tag:any,i:number)=>{
                 return(
                 <Tag key={i} tag={tag}></Tag>
                 )
@@ -21,3 +20,4 @@ export default function TagList({tagList}:any) {
         </div>
     )
 }
+export default TagList
