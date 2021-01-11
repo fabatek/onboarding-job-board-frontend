@@ -11,6 +11,7 @@ function Home() {
         <p>
           Welcome to Faba onboarding project - Job board
         </p>
+        <a href="/">Learn react</a>
       </header>
     </div>
   );
