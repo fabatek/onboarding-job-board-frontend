@@ -32,3 +32,24 @@
     transform: rotate(360deg);
   }
 }
+
+.job-item {
+  .job-content {
+    .job-description {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 16px !important; 
+
+      .h1 {
+        font-size: 16px;
+      }
+    }
+
+    .date-time {
+      font-size: 12px;
+    }
+  }
+}
