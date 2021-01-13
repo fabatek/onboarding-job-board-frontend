@@ -1,4 +1,4 @@
-import { render, wait } from "@testing-library/react";
+import { render, wait, fireEvent } from "@testing-library/react";
 import Home from "../Home";
 import JobList from '../../components/JobList';
 import JobItem from '../../components/JobItem';
@@ -7,6 +7,7 @@ import {Provider} from 'react-redux';
 import store from '../../store';
 import axios from 'axios';
 import { Job } from "../../types/Job";
+import Pagination from "../../components/Pagination";
 
 test('render Home Page', () => {
         const { getByText } = render(<Provider store={store}><Home /></Provider>);
@@ -36,8 +37,7 @@ test('fetch job count', async () => {
 });
 
 test('render JobList Component', async () => {
-
-    const { findByText } = render(<JobList />);
+    const { findByText } = render(<JobList jobs={[]} firstItem={0} lastItem={99} />);
     const element = await findByText(/Job list/i);
 
     await wait(() => {
@@ -61,5 +61,31 @@ test('render JobItem Component', async () => {
 
     await wait(() => {
         expect(element).toBeInTheDocument();
+    })
+});
+
+
+test('render Pagination Component', async () => {
+    const onClickPagination = (pageNumber: number) => {
+        return pageNumber
+    }
+    const { findByText } = render(<Pagination totalItem={20} currentPage={1} itemsPerPage={10} onClickPagination={() => onClickPagination(1)} />);
+    const element = await findByText('1');
+
+    await wait(() => {
+        expect(element).toBeInTheDocument();
+    })
+});
+
+test('click event Pagination', async () => {
+    const onClickPagination = (pageNumber: number) => {
+        return pageNumber
+    }
+    
+    const { findByText } = render(<Pagination totalItem={20} currentPage={1} itemsPerPage={10} onClickPagination={() => onClickPagination(1)} />);
+    const element = await findByText('1');
+
+    await wait(() => {
+        fireEvent.click(element);
     })
 });

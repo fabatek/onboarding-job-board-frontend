@@ -2,7 +2,9 @@ import React from "react";
 import JobItem from '../JobItem';
 
 interface JobProps {
-    jobs?: []
+    jobs: [],
+    firstItem: number,
+    lastItem: number
 }
 
 const JobList = (props: JobProps) => {
@@ -12,7 +14,7 @@ const JobList = (props: JobProps) => {
         <div className="job-list">
             <h4 className="mb-3">Job list</h4>
             {
-                jobs && jobs.slice(0, 99).map((item: any, index: number | undefined) => {
+                jobs && jobs.slice(props.firstItem, props.lastItem).map((item: any, index: number | undefined) => {
                     return (
                         <JobItem key={index} job={item}/>
                     )

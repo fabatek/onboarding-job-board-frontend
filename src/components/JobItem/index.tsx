@@ -30,7 +30,7 @@ const JobItem = (props: JobItemProps) => {
                 </h3> 
                 <span className="job-salary">Salary: <strong>{ job.salary ? `$${job.salary}` : null }</strong></span>
                 <p className="job-description" dangerouslySetInnerHTML={{ __html: job.description }}></p>
-                <div className="category">{ job.category }</div>
+                <div className="category"><strong>{ job.category }</strong></div>
             </div>
         </div>
     )
