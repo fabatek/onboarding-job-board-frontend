@@ -37,7 +37,7 @@ test('fetch job count', async () => {
 });
 
 test('render JobList Component', async () => {
-    const { findByText } = render(<JobList jobs={[]} firstItem={0} lastItem={99} />);
+    const { findByText } = render(<JobList jobs={[]} firstItem={0} lastItem={99} isFilter={false} filterJobCount={1} />);
     const element = await findByText(/Job list/i);
 
     await wait(() => {
@@ -87,5 +87,15 @@ test('click event Pagination', async () => {
 
     await wait(() => {
         fireEvent.click(element);
+    })
+});
+
+test('click event search job by title', async () => {
+    const { getByText } = render(<Provider store={store}><Home /></Provider>);
+    const element = await getByText('Search');
+
+    await wait(() => {
+        fireEvent.click(element);
+        expect(getByText(/jobs found/i)).toBeInTheDocument();
     })
 });

@@ -4,7 +4,9 @@ import JobItem from '../JobItem';
 interface JobProps {
     jobs: [],
     firstItem: number,
-    lastItem: number
+    lastItem: number,
+    filterJobCount: number | null,
+    isFilter: boolean
 }
 
 const JobList = (props: JobProps) => {
@@ -12,7 +14,7 @@ const JobList = (props: JobProps) => {
     
     return (
         <div className="job-list">
-            <h4 className="mb-3">Job list</h4>
+            <h4 className="mb-3">{props.isFilter === true ? `${props.filterJobCount} jobs found` : 'Job list'}</h4>
             {
                 jobs && jobs.slice(props.firstItem, props.lastItem).map((item: any, index: number | undefined) => {
                     return (

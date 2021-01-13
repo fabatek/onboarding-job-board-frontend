@@ -25,8 +25,8 @@ const JobItem = (props: JobItemProps) => {
             </div>
             <div className="job-content w-75">
                 <h3 className="job-title d-flex align-items-center justify-content-between">
-                   <a href={`/job/${ job.id }`} className="text-dark"><strong className="mr-4 w-75">{ job.title }</strong></a>
-                    <sub className="date-time w-25"><Moment calendar={calendarStrings}>{ job.publication_date }</Moment></sub>
+                    <a href={`/job/${ job.id }`} className="w-75 text-dark"><strong className="mr-4">{ job.title }</strong></a>
+                    <span className="date-time w-25 text-right"><Moment calendar={calendarStrings}>{ job.publication_date }</Moment></span>
                 </h3> 
                 <span className="job-salary">Salary: <strong>{ job.salary ? `$${job.salary}` : null }</strong></span>
                 <p className="job-description" dangerouslySetInnerHTML={{ __html: job.description }}></p>

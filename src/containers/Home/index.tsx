@@ -7,20 +7,35 @@ import Pagination from '../../components/Pagination';
 
 import "./Home.scss";
 
-function Home() {
+const Home = () => {
   const dispatch = useDispatch();
   const jobState = useSelector((state: RootStore) => state.jobs);
-  const totalItem = jobState.job_count;
+  const [filterJobList, setFilterJobList] = useState([]);
+  const [isFilter, setIsFilter] = useState(false);
+  const totalItem = isFilter === false ? jobState.job_count : filterJobList.length;
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
   const lastItem = currentPage * itemsPerPage;
   const firstItem = lastItem - itemsPerPage;
+  const [jobTitle, setJobTitle] = useState('');
 
   const onClickPagination = (currentPage: number) => {
       setCurrentPage(currentPage);
   };
 
-  useEffect(()=>{
+  const onChangeJobTitle = (e: any) => {
+    setJobTitle(e.target.value)
+  }
+
+  const handleSearchJobByTitle = (e: any) => {
+    e.preventDefault();
+    const searchResult = jobState.jobs.filter((job: any) => job && job.title.toLowerCase().startsWith(jobTitle.toLowerCase()));
+
+    setIsFilter(true);
+    setFilterJobList(searchResult);
+  }
+
+  useEffect(() => {
     dispatch(getJobs());
   },[dispatch]);
 
@@ -36,23 +51,35 @@ function Home() {
                     <h3 className="mb-3">{ jobState.job_count } IT jobs are available</h3>
                     <form className="mb-5">
                       <div className="form-group d-flex">
-                        <input type="email" className="form-control" placeholder="Enter job title..." />
-                        <button type="submit" className="btn btn-dark ml-2">Search</button>
+                        <input 
+                        type="text" 
+                        onChange={(e) => onChangeJobTitle(e)} 
+                        value={ jobTitle } 
+                        className="form-control" 
+                        placeholder="Enter job title..." />
+                        <button 
+                        className="btn btn-dark ml-2" 
+                        onClick={(e) => handleSearchJobByTitle(e)}
+                        >Search</button>
                        </div>
                     </form>
                     { jobState.loading === true 
                       ? "Loading..."
                       : <JobList 
-                      jobs={jobState.jobs}
-                      firstItem={firstItem}
-                      lastItem={lastItem} />
+                        jobs={isFilter === false ? jobState.jobs : filterJobList}
+                        firstItem={firstItem}
+                        lastItem={lastItem}
+                        isFilter={isFilter}
+                        filterJobCount={isFilter === true ? filterJobList.length : null} 
+                        />
                     }
                 </div>
                 <Pagination 
                 totalItem={totalItem} 
                 itemsPerPage={itemsPerPage} 
                 currentPage={currentPage}
-                onClickPagination={ onClickPagination } />
+                onClickPagination={ onClickPagination } 
+                />
             </div>
         </div>
     </div>
