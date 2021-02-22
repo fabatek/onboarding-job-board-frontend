@@ -20,6 +20,7 @@ function Home() {
           const data = res.data;
           const jobAmount = data["job-count"];
           const jobList = data["jobs"];
+          //console.log(jobList);
           setJobAmount(jobAmount);
           setJobs(jobList);
       })  

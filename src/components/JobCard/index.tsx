@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "react-bootstrap/Image"
-import moment from 'moment';
 import "./Style.scss";
 
 
@@ -18,12 +17,12 @@ function JobCard(prop: any) {
                         <h2>{prop.jobTitle}</h2>
                     </div>
                     <div className="col-2">
-                        <p>{moment(prop.jobPublishDate).fromNow()}</p>
+                        <p>3 day ago</p>
                     </div>
                 </div>
                 
                 <p className="job-salary">Salary: {prop.jobSalary} </p>
-                <p className="job-description">{prop.jobDescription.substr(0,500)}</p>
+                <p className="job-description">{prop.jobDescription}</p>
                 <p className="job-categories">{prop.jobCategories}</p>
             </div>
         </div>
