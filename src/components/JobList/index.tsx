@@ -17,7 +17,7 @@ function JobList(prop: any) {
                 jobSalary = {job.salary}
                 jobDescription = {job.description}
                 jobCategories = {job.category}
-                
+                jobPublishDate = {job.publication_date}
                 />;
             })
         }
