@@ -2,12 +2,11 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 
 import { routes } from "./services";
-import JobList from "../Pages/Job/index";
+import Home from "../Home";
 
 const Router: React.FC = () => (
   <Switch>
-    {/* <Route exact path={routes.ROOT} component={Home} /> */}
-    <Route exact path={routes.ROOT} component={JobList} />
+    <Route path={routes.ROOT} component={Home} />
   </Switch>
 );
 
