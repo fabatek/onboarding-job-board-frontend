@@ -2,7 +2,6 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 
 import { routes } from "./services";
-import Home from "../Home";
 import JobList from "../Pages/Job/index";
 
 const Router: React.FC = () => (

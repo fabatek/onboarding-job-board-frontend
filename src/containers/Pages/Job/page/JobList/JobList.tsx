@@ -1,18 +1,12 @@
 import React from 'react';
 import JobHeader from '../../components/JobHeader/JobHeader';
 import JobSearchBar from '../../components/JobSearchBar/JobSearchBar';
-
-import {useDispatch, useSelector} from 'react-redux';
-import {jobAmount, fetchAllJob} from '../../jobSlice';
+import {jobAmount} from '../../jobSlice';
+import {useSelector} from 'react-redux';
 import JobCard from '../../components/JobCard/JobCard';
 
-
 function JobList() {
-
     const jobAmounts = useSelector(jobAmount);
-    const dispatch = useDispatch();
-    dispatch(fetchAllJob({}));
-
     return (
         <div className="job-section container">
             <JobHeader/>

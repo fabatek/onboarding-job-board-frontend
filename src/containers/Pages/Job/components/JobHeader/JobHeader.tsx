@@ -7,8 +7,9 @@ import {useSelector} from 'react-redux';
 import {jobAmount} from '../../jobSlice';
 
 function JobHeader() {
-    const jobAmounts = useSelector(jobAmount);
 
+    const jobAmounts = useSelector(jobAmount);
+    
     return (
         <div className="job-section__job-header">
             <Image className="job-header__logo" src={`${ENV_URL.PUBLIC_URL}/logo.png`} rounded />
