@@ -1,10 +1,10 @@
 import {render} from "@testing-library/react";
-import Joblist from './index';
+import JobList from './JobList';
 import React from "react";
 
 test('renders learn react link', () => {
-    const { getByText } = render(<Joblist />);
+    const { getByText } = render(<JobList />);
     const linkElement = getByText(/learn react/i);
     expect(linkElement).toBeInTheDocument();
-});
+  });
   

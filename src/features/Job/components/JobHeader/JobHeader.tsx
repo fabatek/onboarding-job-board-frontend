@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {Image} from 'react-bootstrap';
 import ENV_URL from '../../../../containers/App/constants';
 import './style.scss';
@@ -9,10 +9,7 @@ import {jobAmount, fetchAllJob} from '../../jobSlice';
 function JobHeader() {
     const jobAmounts = useSelector(jobAmount);
     const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(fetchAllJob({'limit': 1605}));
-    }, [jobAmounts])
+    dispatch(fetchAllJob({'limit': 100}));
 
     return (
         <div className="job-header">

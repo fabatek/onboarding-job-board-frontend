@@ -3,12 +3,12 @@ import { Switch, Route } from "react-router-dom";
 
 import { routes } from "./services";
 import Home from "../Home";
-import JobList from "../../features/Job/page/JobList";
+import JobList from "../../features/Job/page/JobList/JobList";
 
 const Router: React.FC = () => (
   <Switch>
-    <Route exact path={routes.ROOT} component={Home} />
-    <Route exact path={routes.JOBLIST_PAGE} component={JobList} />
+    {/* <Route exact path={routes.ROOT} component={Home} /> */}
+    <Route exact path={routes.ROOT} component={JobList} />
   </Switch>
 );
 

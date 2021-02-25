@@ -1,17 +1,16 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
 import jobListApi from '../../containers/Api/jobListApi';
 import {Job} from '../../containers/App/JobInterface';
-import JobList from './page/JobList';
 import { RootState } from '../../containers/App/store';
 
 interface JobState {
     jobs: Job[],
-    jobAmount: number,
+    jobAmount: string,
     loading: string
 }
 const initialState: JobState = {
     jobs: [],
-    jobAmount: 0,
+    jobAmount: 'loading...',
     loading: 'idle'
 }
 
@@ -33,10 +32,10 @@ export const jobSlice = createSlice({
         builder.addCase(fetchAllJob.fulfilled, (state,action)=> {
             state.jobs.push(action.payload);
             state.jobAmount = action.payload['job-count'];
-            console.log(state.jobAmount);
         });
     }
 });
-const {actions, reducer} = jobSlice;
+const {reducer} = jobSlice;
 export const jobAmount = (state: RootState) => state.job.jobAmount;
+export const jobs = (state: RootState) => state.job.jobs;
 export default reducer;

@@ -1,5 +1,5 @@
 import React from 'react';
-import JobHeader from '../../components/JobHeader';
+import JobHeader from '../../components/JobHeader/JobHeader';
 
 function JobList() {
 
