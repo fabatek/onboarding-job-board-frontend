@@ -1,5 +1,5 @@
 import {configureStore, ThunkAction, Action} from '@reduxjs/toolkit';
-import jobReducer from '../../features/Job/jobSlice';
+import jobReducer from '../containers/Pages/Job/jobSlice';
 export const store = configureStore({
     reducer: {
         job:  jobReducer
