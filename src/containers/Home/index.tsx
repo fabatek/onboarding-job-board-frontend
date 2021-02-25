@@ -1,17 +1,17 @@
 import logo from '../../logo.svg';
-import React from "react";
+import React from 'react';
 
-import "./Home.scss";
+import './Home.scss';
+import Header from '../Header';
+import Footer from '../Footer';
+import JobList from '../../feartures/components/Job/JobList';
 
 function Home() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Welcome to Faba onboarding project - Job board
-        </p>
-      </header>
+    <div className="container">
+      <Header />
+      <JobList />
+      <Footer />
     </div>
   );
 }
