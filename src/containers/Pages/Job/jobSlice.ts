@@ -1,7 +1,7 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
-import jobListApi from '../../containers/Api/jobListApi';
-import {Job} from '../../containers/App/JobInterface';
-import { RootState } from '../../containers/App/store';
+import jobListApi from '../../../services/jobListApi';
+import {Job} from '../../../types/JobInterface';
+import { RootState } from '../../../store/store';
 
 interface JobState {
     jobs: Job[],
