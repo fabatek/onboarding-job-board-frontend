@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
-import jobAPI from '../../../../api/jobAPI';
+import jobAPI from '../../../../services/jobAPI';
+import JobInfoTotal from '../JobInfoTotal';
+import JobItem from '../JobItem';
 import './style.scss';
 
 function JobList(props: any) {
@@ -16,17 +18,19 @@ function JobList(props: any) {
       setTotalJobs(jobList.data['job-count']);
     };
     fecthJobs();
-  });
+  }, []);
 
   return (
     <div>
-      <h2>{totalJobs} IT jobs are available</h2>
+      <JobInfoTotal totalJobs={totalJobs} />
       <div>
         <form>
           <input type="text" placeholder="Search.." className="input-search" />
           <button type="submit">Search</button>
         </form>
       </div>
+
+      <JobItem />
     </div>
   );
 }

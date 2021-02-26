@@ -1,4 +1,5 @@
 import React from 'react';
+import { envURL } from '../../constants/envURL';
 import './Header.scss';
 function Header(props: any) {
     
@@ -9,7 +10,7 @@ function Header(props: any) {
       <div className="row">
         <img
           className="logo"
-          src={process.env.PUBLIC_URL + '/faba.png'}
+          src={envURL + '/faba.png'}
           alt=""
         />
       </div>
