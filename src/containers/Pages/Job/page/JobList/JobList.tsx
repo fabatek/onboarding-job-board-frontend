@@ -1,15 +1,16 @@
 import React from 'react';
 import JobHeader from '../../components/JobHeader/JobHeader';
 import JobSearchBar from '../../components/JobSearchBar/JobSearchBar';
-import {jobAmount} from '../../jobSlice';
-import {useSelector} from 'react-redux';
 import JobCard from '../../components/JobCard/JobCard';
 
-function JobList() {
-    const jobAmounts = useSelector(jobAmount);
+interface Props {
+    jobAmounts: string,
+}
+function JobList(props: Props) {
+    const {jobAmounts} = props;
     return (
         <div className="job-section container">
-            <JobHeader/>
+            <JobHeader jobAmounts={jobAmounts}/>
             <JobSearchBar/>
             <div className="job-section__job-list">
 

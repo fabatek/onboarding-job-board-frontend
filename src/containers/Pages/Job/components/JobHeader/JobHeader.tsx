@@ -3,13 +3,13 @@ import {Image} from 'react-bootstrap';
 import ENV_URL from '../../../../../constants/shortUrl';
 import './style.scss';
 
-import {useSelector} from 'react-redux';
-import {jobAmount} from '../../jobSlice';
+interface Props {
+    jobAmounts: any
+}
+function JobHeader(props: Props) {
 
-function JobHeader() {
+    const {jobAmounts} = props;
 
-    const jobAmounts = useSelector(jobAmount);
-    
     return (
         <div className="job-section__job-header">
             <Image className="job-header__logo" src={`${ENV_URL.PUBLIC_URL}/logo.png`} rounded />
