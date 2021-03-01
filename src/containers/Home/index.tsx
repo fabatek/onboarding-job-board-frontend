@@ -1,17 +1,18 @@
-import logo from '../../logo.svg';
-import React from "react";
+import React from 'react';
+import JobFeature from '../../feartures/pages/ListPage';
+import Footer from '../Footer';
+import Header from '../Header';
+import './Home.scss';
+import {Provider} from 'react-redux';
+import {store} from '../../store/store';
 
-import "./Home.scss";
 
 function Home() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Welcome to Faba onboarding project - Job board
-        </p>
-      </header>
+    <div className="container app">
+      <Header />
+      <JobFeature />
+      <Footer />
     </div>
   );
 }
