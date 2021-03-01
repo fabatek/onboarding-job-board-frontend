@@ -9,18 +9,19 @@ function JobFeature(props: any) {
   const [displayListJob, setDisplayListJob] = useState<Job[]>([]);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [jobsPerPage] = useState(3);
+  const [jobsPerPage] = useState(10);
 
   useEffect(() => {
     const fecthJobs = async () => {
       const params = {
-        limit: 10,
+        limit: 100,
       };
 
       const jobList = await jobAPI.getAll(null);
       setTotalJobs(jobList.data['job-count']);
 
       const displayList = await jobAPI.getAll(params);
+      // console.log(displayList.data);
       setDisplayListJob(displayList.data.jobs);
     };
     fecthJobs();

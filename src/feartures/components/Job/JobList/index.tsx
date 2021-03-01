@@ -20,7 +20,7 @@ function JobList(props: { totalJobs: string | number; displayListJob: Job[] }) {
           <button type="submit">Search</button>
         </form>
       </div>
-      <JobsFound jobFound={'20'} />
+      <JobsFound jobFound={20} />
       <div>
         {displayListJob.map((item, index) => (
           <JobItem key={item.id} item={item} index={index} />

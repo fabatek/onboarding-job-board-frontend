@@ -10,4 +10,5 @@ export default interface Job {
   candidate_required_location: string;
   salary: string;
   description: string;
+  company_logo_url: string;
 }

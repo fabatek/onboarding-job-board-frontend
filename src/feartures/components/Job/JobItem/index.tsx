@@ -4,7 +4,7 @@ import { envURL } from '../../../../constants/envURL';
 import Job from '../../../../types/Job';
 import './style.scss';
 
-function JobItem(props: { item: Job; index: number }) {
+function JobItem(props: { item: Job; index?: number }) {
   const { item, index } = props;
   const publishDesc = item.description
     .replace(/<\/?[^>]+(>|$)/g, '')
@@ -17,14 +17,15 @@ function JobItem(props: { item: Job; index: number }) {
         <div className="col-2">
           <img
             className="job-item__company-logo"
-            src={envURL + '/faba.png'}
+            src={item.company_logo_url || envURL + '/faba.png'}
             alt=""
           />
+
           <p className="job-item__company-name">{item.company_name}</p>
         </div>
         <div className="col-8 job-item__job-info">
           <h2>{item.title}</h2>
-          <p>Salary: {item.salary}</p>
+          <p>Salary: {item.salary || 'Not mention'}</p>
           <p>{publishDesc}</p>
 
           <div className="tags">

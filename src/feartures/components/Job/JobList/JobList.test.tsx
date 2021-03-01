@@ -7,6 +7,7 @@ import JobList from '.';
 import Home from '../../../../containers/Home';
 import axiosClient from '../../../../services/axiosClient';
 import jobAPI from '../../../../services/jobAPI';
+import Job from '../../../../types/Job';
 import JobInfoTotal from '../JobInfoTotal';
 import JobItem from '../JobItem';
 jest.mock('../../../../services/jobAPI');
@@ -29,6 +30,42 @@ describe('loads API', () => {
     // assert
     await wait(async () => {
       const element = await getByText(/1234 IT jobs are available/i);
+      expect(element).toBeInTheDocument();
+    });
+  });
+
+  test('render job item', async () => {
+    // arrange
+    const jobCount = 1234;
+
+    const list: Job[] = [
+      {
+        id: 1,
+        url: '',
+        title: 'Faba Front-End',
+        company_name: 'Faba',
+        category: 'Business',
+        tags: [],
+        job_type: 'full_time',
+        publication_date: '2021-03-01T01:40:35',
+        candidate_required_location: 'USA Only',
+        salary: '',
+        description: '<div><p>Faba Technology</p></div>',
+        company_logo_url: '',
+      },
+    ];
+    mockedJobAPI.getAll = jest.fn().mockResolvedValue({
+      data: {
+        'job-count': jobCount,
+        jobs: list,
+      },
+    });
+
+    // act
+    const { getByText } = render(<JobItem item={list[0]} />);
+    // assert
+    await wait(async () => {
+      const element = await getByText(/Faba Front-End/i);
       expect(element).toBeInTheDocument();
     });
   });
