@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
-
-import jobAPI from '../../../../services/jobAPI';
+import React from 'react';
 import Job from '../../../../types/Job';
 import JobInfoTotal from '../JobInfoTotal';
 import JobsFound from '../JobInfoTotal/JobsFound';
 import JobItem from '../JobItem';
 import './style.scss';
+
 
 function JobList(props: { totalJobs: string | number; displayListJob: Job[] }) {
   const { totalJobs, displayListJob } = props;

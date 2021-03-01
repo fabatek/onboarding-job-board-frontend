@@ -1,14 +1,13 @@
 // import { render, screen, wait } from '@testing-library/react';
 
 import { render, wait } from '@testing-library/react';
-import axios from 'axios';
 import React from 'react';
 import JobList from '.';
-import Home from '../../../../containers/Home';
-import axiosClient from '../../../../services/axiosClient';
 import jobAPI from '../../../../services/jobAPI';
-import JobInfoTotal from '../JobInfoTotal';
-import JobItem from '../JobItem';
+import JobFeature from '../../../pages/ListPage';
+import { Provider } from 'react-redux';
+import { store } from '../../../../store/store';
+
 jest.mock('../../../../services/jobAPI');
 const mockedJobAPI = jobAPI as jest.Mocked<typeof jobAPI>;
 
@@ -27,6 +26,29 @@ describe('loads API', () => {
       <JobList totalJobs={1234} displayListJob={[]} />
     );
     // assert
+    await wait(async () => {
+      const element = await getByText(/1234 IT jobs are available/i);
+      expect(element).toBeInTheDocument();
+    });
+  });
+
+  test('test total jobs while calling API', async () => {
+    // arrange
+    const jobCount = 1234;
+    // act
+    mockedJobAPI.getAll = jest.fn().mockResolvedValue({
+      data: {
+        'job-count': jobCount,
+        jobs: [],
+      },
+    });
+    const { getByText } = render(
+      <Provider store={store}>
+        <JobFeature />
+      </Provider>
+    );
+
+    //assert
     await wait(async () => {
       const element = await getByText(/1234 IT jobs are available/i);
       expect(element).toBeInTheDocument();

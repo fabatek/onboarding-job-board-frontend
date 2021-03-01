@@ -6,12 +6,15 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './index.scss';
 import App from './containers/App/App';
 import * as serviceWorker from './serviceWorker';
-
+import { Provider } from 'react-redux';
+import { store } from './store/store';
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
