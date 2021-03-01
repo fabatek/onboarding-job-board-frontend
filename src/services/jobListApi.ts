@@ -1,6 +1,5 @@
 import axiosClient from './axiosClient';
 
-
 const jobListApi = {
 
     getAllJob(params: any) {

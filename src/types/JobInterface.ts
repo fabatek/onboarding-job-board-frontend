@@ -11,4 +11,6 @@ export type Job = {
     company_name: string,
     publication_date: string,
     salary: string,
+    company_logo_url: string,
+    tags: []
 }

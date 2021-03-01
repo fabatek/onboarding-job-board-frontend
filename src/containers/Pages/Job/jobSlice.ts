@@ -30,12 +30,12 @@ export const jobSlice = createSlice({
     },
     extraReducers: builder =>{
         builder.addCase(fetchAllJob.fulfilled, (state,action)=> {
-            state.jobs.push(action.payload);
+            state.jobs = action.payload['jobs'];
             state.jobAmount = action.payload['job-count'];
         });
     }
 });
 const {reducer} = jobSlice;
 export const jobAmount = (state: RootState) => state.job.jobAmount;
-export const jobs = (state: RootState) => state.job.jobs;
+export const jobList = (state: RootState) => state.job.jobs;
 export default reducer;

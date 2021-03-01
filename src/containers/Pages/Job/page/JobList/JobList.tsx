@@ -2,12 +2,17 @@ import React from 'react';
 import JobHeader from '../../components/JobHeader/JobHeader';
 import JobSearchBar from '../../components/JobSearchBar/JobSearchBar';
 import JobCard from '../../components/JobCard/JobCard';
+import { Job } from '../../../../../types/JobInterface';
 
 interface Props {
-    jobAmounts: string,
+    jobAmounts: number | string,
+    jobs: Job[]
 }
+
 function JobList(props: Props) {
-    const {jobAmounts} = props;
+
+    const {jobAmounts, jobs} = props;
+
     return (
         <div className="job-section container">
             <JobHeader jobAmounts={jobAmounts}/>
@@ -18,9 +23,11 @@ function JobList(props: Props) {
                     <p>{jobAmounts} jobs found</p>
                 </div>
 
-                <div className="job-list__list">
-                    <JobCard />
-                </div>
+                <ul className="job-list__list">
+                    {jobs.map((job: Job, index: number) => {
+                       return <JobCard key={index} job={job}/>
+                    })}
+                </ul>
 
             </div>
         </div>
