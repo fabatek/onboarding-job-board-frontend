@@ -4,13 +4,13 @@ import React from 'react';
 import './Home.scss';
 import Header from '../Header';
 import Footer from '../Footer';
-import JobList from '../../feartures/components/Job/JobList';
+import JobFeature from '../../feartures/pages/ListPage';
 
 function Home() {
   return (
-    <div className="container">
+    <div className="container app">
       <Header />
-      <JobList />
+      <JobFeature />
       <Footer />
     </div>
   );

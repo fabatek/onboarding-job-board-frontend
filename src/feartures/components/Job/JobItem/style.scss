@@ -1,0 +1,26 @@
+.job-item {
+  border: 2px solid #000;
+  margin-top: 30px;
+  padding: 10px;
+  &__company-logo {
+    width: 100px;
+    height: 100px;
+    border: 1px solid;
+    margin: 15px;
+    margin-top: 10px;
+    margin-left: 0px;
+    padding: 10px;
+  }
+  &__company-name {
+    font-weight: bold;
+  }
+  &__job-info {
+    .tags {
+      display: flex;
+
+      p {
+        margin-right: 10px;
+      }
+    }
+  }
+}

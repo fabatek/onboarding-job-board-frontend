@@ -1,27 +1,18 @@
 import React, { useEffect, useState } from 'react';
 
 import jobAPI from '../../../../services/jobAPI';
+import Job from '../../../../types/Job';
 import JobInfoTotal from '../JobInfoTotal';
+import JobsFound from '../JobInfoTotal/JobsFound';
 import JobItem from '../JobItem';
 import './style.scss';
 
-function JobList(props: any) {
-  const [totalJobs, setTotalJobs] = useState('Loading...');
-
-  useEffect(() => {
-    const fecthJobs = async () => {
-      const params = {
-        // limit: 10,
-      };
-
-      const jobList = await jobAPI.getAll(params);
-      setTotalJobs(jobList.data['job-count']);
-    };
-    fecthJobs();
-  }, []);
+function JobList(props: { totalJobs: string | number; displayListJob: Job[] }) {
+  const { totalJobs, displayListJob } = props;
 
   return (
     <div>
+      {/* custom hook */}
       <JobInfoTotal totalJobs={totalJobs} />
       <div>
         <form>
@@ -29,8 +20,12 @@ function JobList(props: any) {
           <button type="submit">Search</button>
         </form>
       </div>
-
-      <JobItem />
+      <JobsFound jobFound={'20'} />
+      <div>
+        {displayListJob.map((item, index) => (
+          <JobItem key={item.id} item={item} index={index} />
+        ))}
+      </div>
     </div>
   );
 }
