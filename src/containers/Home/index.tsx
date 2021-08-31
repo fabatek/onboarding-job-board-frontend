@@ -1,18 +1,25 @@
-import logo from '../../logo.svg';
-import React from "react";
-
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllJobs, jobErrorSelector, jobsSelector, jobStatusSelector } from "../../store/slices/JobsSlice";
+import JobList from "../Pages/components/JobList/JobList";
 import "./Home.scss";
 
 function Home() {
+  const dispatch = useDispatch();
+  const jobs = useSelector(jobsSelector);
+  const loading = useSelector(jobStatusSelector);
+  const error = useSelector(jobErrorSelector);
+
+  // console.log("currentJobs:", currentJobs);
+
+  useEffect(() => {
+    dispatch(fetchAllJobs());
+  }, [dispatch]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Welcome to Faba onboarding project - Job board
-        </p>
-      </header>
-    </div>
+    <React.Fragment>
+      <JobList jobs={jobs} loading={loading} error={error} />
+    </React.Fragment>
   );
 }
 
