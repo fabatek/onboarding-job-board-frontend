@@ -11,14 +11,14 @@ function JobCard(props: Props) {
   const { job } = props;
 
   return (
-    <div className="jcard">
-      <img src="https://picsum.photos/300" className="jcard-logo" alt="" />
-      <div className="jcard-info">
+    <div className="job">
+      <img src="https://picsum.photos/300" className="job__logo" alt="logo" />
+      <div className="job__info">
         <Link to="/" className="title">
           {job.title}
         </Link>
         <p className="companyname">{job.company_name}</p>
-        <div className="salary_location">
+        <div className="salary-location">
           <p className="salary">$ {job.salary}</p>
           <p className="location">{job.candidate_required_location}</p>
         </div>

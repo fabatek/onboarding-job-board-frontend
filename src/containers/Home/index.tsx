@@ -1,22 +1,25 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAllJobs, jobsSelector } from "../../store/slices/JobsSlice";
-import JobContainer from "../Pages";
+import { fetchAllJobs, jobErrorSelector, jobsSelector, jobStatusSelector } from "../../store/slices/JobsSlice";
+import JobList from "../Pages/components/JobList/JobList";
 import "./Home.scss";
 
 function Home() {
   const dispatch = useDispatch();
   const jobs = useSelector(jobsSelector);
-  console.log(jobs);
+  const loading = useSelector(jobStatusSelector);
+  const error = useSelector(jobErrorSelector);
+
+  // console.log("currentJobs:", currentJobs);
 
   useEffect(() => {
     dispatch(fetchAllJobs());
   }, [dispatch]);
 
   return (
-    <div className="App">
-      <JobContainer />
-    </div>
+    <React.Fragment>
+      <JobList jobs={jobs} loading={loading} error={error} />
+    </React.Fragment>
   );
 }
 
