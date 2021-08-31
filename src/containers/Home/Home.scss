@@ -1,0 +1,12 @@
+.search-input {
+    width: 300px;
+    padding: 15px;
+    margin-top: 50px;
+
+    outline: none;
+    border-radius: 8px;
+
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}

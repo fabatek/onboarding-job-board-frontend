@@ -1,7 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAllJobs, jobErrorSelector, jobsSelector, jobStatusSelector } from "../../store/slices/JobsSlice";
+import {
+  fetchAllJobs,
+  jobErrorSelector,
+  jobsSelector,
+  jobStatusSelector,
+} from "../../store/slices/JobsSlice";
 import JobList from "../Pages/components/JobList/JobList";
+import Pagination from "../Pages/components/Pagination/Pagination";
 import "./Home.scss";
 
 function Home() {
@@ -10,7 +16,21 @@ function Home() {
   const loading = useSelector(jobStatusSelector);
   const error = useSelector(jobErrorSelector);
 
-  // console.log("currentJobs:", currentJobs);
+  //pagination
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const jobPerPage = 10;
+
+  const indexOfLastJob = currentPage * jobPerPage;
+  const indexOfFirstJob = indexOfLastJob - jobPerPage;
+
+  const currentJobs = jobs.slice(indexOfFirstJob, indexOfLastJob);
+
+  function paginate(pageNumber: number) {
+    setCurrentPage(pageNumber);
+  }
+
+  //search
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     dispatch(fetchAllJobs());
@@ -18,7 +38,23 @@ function Home() {
 
   return (
     <React.Fragment>
-      <JobList jobs={jobs} loading={loading} error={error} />
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        className="search-input"
+      />
+      <JobList
+        jobs={currentJobs}
+        loading={loading}
+        error={error}
+        searchTerm={searchTerm}
+      />
+      <Pagination
+        paginate={paginate}
+        jobPerPage={jobPerPage}
+        totalJobs={jobs.length}
+      />
     </React.Fragment>
   );
 }

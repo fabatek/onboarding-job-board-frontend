@@ -6,19 +6,30 @@ interface Props {
   jobs: Job[];
   loading: boolean;
   error: boolean;
+  searchTerm: string;
 }
 
 function JobList(props: Props) {
-  const { jobs, loading, error } = props;
+  const { jobs, loading, error, searchTerm } = props;
 
   const renderJobs = () => {
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Unable to load jobs!!!</p>;
     return (
       <div className="jobs">
-        {jobs.map((job: Job) => (
-          <JobCard key={job.id} job={job} />
-        ))}
+        {jobs
+          .filter((val) =>
+            searchTerm === ""
+              ? val
+              : val.title
+                  .toLocaleLowerCase()
+                  .includes(searchTerm.toLocaleLowerCase())
+              ? val
+              : null
+          )
+          .map((job: Job) => (
+            <JobCard key={job.id} job={job} />
+          ))}
       </div>
     );
   };
