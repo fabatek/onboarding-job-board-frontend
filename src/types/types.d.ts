@@ -1,5 +1,5 @@
 export default interface Job {
-  id: number;
+  id: string;
   url: string;
   title: string;
   company_name: string;

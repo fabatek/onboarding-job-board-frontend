@@ -13,8 +13,8 @@ function JobList(props: Props) {
   const { jobs, loading, error, searchTerm } = props;
 
   const renderJobs = () => {
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Unable to load jobs!!!</p>;
+    if (loading) return <p data-testid="loading">Loading...</p>;
+    if (error) return <p data-testid="error">Unable to load jobs!!!</p>;
     return (
       <div className="jobs">
         {jobs

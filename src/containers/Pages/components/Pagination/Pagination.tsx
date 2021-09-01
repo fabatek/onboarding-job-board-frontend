@@ -25,6 +25,7 @@ function Pagination(props: Props) {
             <li className="page-item" key={number}>
               <Link
                 to={`/jobs/${number}`}
+                data-testid="pagination"
                 onClick={() => paginate(number)}
                 className="page-link"
               >
