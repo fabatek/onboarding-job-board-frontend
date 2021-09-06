@@ -1,24 +1,38 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import styled from "styled-components";
 import {
-  fetchAllJobs,
   jobErrorSelector,
   jobsSelector,
   jobStatusSelector,
 } from "../../store/slices/JobsSlice";
-import JobList from "../Pages/components/JobList/JobList";
-import Pagination from "../Pages/components/Pagination/Pagination";
-import "./Home.scss";
+import { jobsActions } from "../../store/slices/JobsSlice";
+import { useAppDispatch, useAppSelector } from "../App/hooks";
+import JobList from "../Pages/JobList/JobList";
+import Pagination from "../Pages/Pagination/Pagination";
+
+const InputStyled = styled.input`
+  width: 300px;
+  padding: 15px;
+  margin-top: 50px;
+
+  outline: none;
+  border-radius: 8px;
+
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+`;
 
 function Home() {
-  const dispatch = useDispatch();
-  const jobs = useSelector(jobsSelector);
-  const loading = useSelector(jobStatusSelector);
-  const error = useSelector(jobErrorSelector);
+  const dispatch = useAppDispatch();
+  //selectors
+  const jobs = useAppSelector(jobsSelector);
+  const loading = useAppSelector(jobStatusSelector);
+  const error = useAppSelector(jobErrorSelector);
 
   //pagination
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const jobPerPage = 10;
+  const jobPerPage: number = 10;
 
   const indexOfLastJob = currentPage * jobPerPage;
   const indexOfFirstJob = indexOfLastJob - jobPerPage;
@@ -33,16 +47,16 @@ function Home() {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    dispatch(fetchAllJobs());
+    dispatch(jobsActions.fetchJobs());
   }, [dispatch]);
 
   return (
     <React.Fragment>
-      <input
+      <InputStyled
         type="text"
+        className="search-input"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        className="search-input"
       />
       <JobList
         jobs={currentJobs}

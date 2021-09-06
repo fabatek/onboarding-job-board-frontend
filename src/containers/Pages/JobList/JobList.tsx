@@ -1,5 +1,5 @@
 import React from "react";
-import Job from "../../../../types/types";
+import { Job } from "../../../types/types";
 import JobCard from "../OneJob/JobCard";
 
 interface Props {
@@ -16,21 +16,16 @@ function JobList(props: Props) {
     if (loading) return <p data-testid="loading">Loading...</p>;
     if (error) return <p data-testid="error">Unable to load jobs!!!</p>;
     return (
-      <div className="jobs">
+      <>
         {jobs
-          .filter((val) =>
-            searchTerm === ""
-              ? val
-              : val.title
-                  .toLocaleLowerCase()
-                  .includes(searchTerm.toLocaleLowerCase())
-              ? val
-              : null
+          .filter(
+            (val) =>
+              val.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1
           )
           .map((job: Job) => (
             <JobCard key={job.id} job={job} />
           ))}
-      </div>
+      </>
     );
   };
 
