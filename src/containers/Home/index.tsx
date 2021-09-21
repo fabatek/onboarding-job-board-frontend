@@ -1,19 +1,15 @@
-import logo from '../../logo.svg';
 import React from "react";
-
 import "./Home.scss";
+import Header from './component/header/index'
+import SearchBox from './component/SearchBox/index'
 
 function Home() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Welcome to Faba onboarding project - Job board
-        </p>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App container-fluid">
+            <Header/>
+            <SearchBox/>
+        </div>
+    );
 }
 
 export default Home;
