@@ -24,8 +24,8 @@ const Box:React.FC<PropsBox> = ({title, company, available, position, location, 
                 <div className='card-body'>
                     <h5 className='card-title'>{title}</h5>
                     <p className='card-text'>{company} is looking for {position} </p>
-                    <p className='card-text'>{location}</p>
-                    <p className='card-text'><b>Salary</b>: Up to {`${salary*10}`}$</p>
+                    <p className='card-text'><b>Location:</b> {location}</p>
+                    <p className='card-text'><b>Salary</b>: Up to {`${Math.round(salary*10)}`}$</p>
                     {available ? 
                     (
                         <button className='btn btn-primary btn_position'>Read more</button>
@@ -44,6 +44,7 @@ const Box:React.FC<PropsBox> = ({title, company, available, position, location, 
 const Result:React.FC<Props> = ({totalJobs}) => {
     return (
         <div className='container result_container'>
+            <h4>Detail Jobs</h4>
             <div className='row result_detail'>
                 {totalJobs && totalJobs.slice(0, 100).map(
                     (job, index) => {

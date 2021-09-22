@@ -7,11 +7,13 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "@types/react-test-renderer": "^17.0.1",
     "@types/redux-logger": "^3.0.9",
     "@types/webpack-env": "^1.16.2",
     "axios": "^0.21.4",
     "bootstrap": "^4.5.2",
     "node-sass": "^4.14.1",
+    "numeral": "^2.0.6",
     "react": "^16.13.1",
     "react-bootstrap": "^1.6.3",
     "react-dom": "^16.13.1",
@@ -20,7 +22,7 @@
     "react-scripts": "3.4.3",
     "redux": "^4.1.1",
     "redux-thunk": "^2.3.0",
-    "typescript": "~3.7.2"
+    "typescript": "^3.9.10"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -43,10 +45,11 @@
     ]
   },
   "devDependencies": {
-    "@types/react-router-dom": "^5.1.5",
     "@types/jest": "^24.0.0",
     "@types/node": "^12.0.0",
+    "@types/numeral": "^2.0.2",
     "@types/react": "^16.9.0",
-    "@types/react-dom": "^16.9.0"
+    "@types/react-dom": "^16.9.0",
+    "@types/react-router-dom": "^5.1.5"
   }
 }

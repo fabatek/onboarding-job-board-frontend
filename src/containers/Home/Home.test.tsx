@@ -1,9 +1,23 @@
-import {render} from "@testing-library/react";
-import Home from "../Home/Home";
-import React from "react";
+import axios from 'axios';
 
-test('renders learn react link', () => {
-  const { getByText } = render(<Home />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+const URL = 'https://61484173035b3600175b9d08.mockapi.io/api/jobs/jobs'
+
+module.exports = axios.get
+
+module.exports = {
+  get: async () => {
+  const response = await axios.get(URL)
+  return response.data
+  }
+}
+
+
+const axiosMock = require('axios')
+
+test('async axios action job list with mock', async (done) => {
+  const response = await axiosMock(URL)
+
+  expect(response).toBeDefined()
+  expect(response.length).toBe(100);
+  done()
 });

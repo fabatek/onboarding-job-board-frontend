@@ -23,7 +23,7 @@ export default function Header() {
                             >
                                 All Jobs
                             </button>
-                            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton" data-testid='dropdown_nav'>
                                 <a className="dropdown-item" href="#">Jobs by Skill</a>
                                 <a className="dropdown-item" href="#">Jobs by Title</a>
                                 <a className="dropdown-item" href="#">Jobs by Company</a>
