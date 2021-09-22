@@ -1,0 +1,29 @@
+.result_container {
+    .result_detail {
+        margin-top: 20px;
+        .card_custom {
+            margin-top: 10px;
+            .card {
+                height: 450px;
+                overflow: hidden;
+                background-color: rgba($color: #c4c1c1, $alpha: 0.2);
+                p {
+                    margin-bottom: 0;
+                    font-size: 16px;
+                }
+                .btn_position {
+                    position:absolute;
+                    bottom: 10px;
+                }
+                .btn_position:hover {
+                    width: 70%;
+                }
+            }
+            .card:hover {
+                box-shadow: 
+                rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, 
+                rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;;
+            }
+        }
+    }
+}

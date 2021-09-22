@@ -3,7 +3,7 @@ import "./header.scss";
 
 export default function Header() {
     return (
-        <div className="bg-dark text-white">
+        <div className="bg-dark text-white" data-testid='header'>
             <div className="header d-flex container justify-content-between align-items-center d-block">
                 <div className="left_header">
                     <ul className="nav">
