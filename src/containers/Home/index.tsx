@@ -1,22 +1,22 @@
-import React, {useState, useEffect} from "react";
+import React, { useEffect} from "react";
 import "./Home.scss";
 import Header from './component/header/index'
 import SearchBox from './component/SearchBox/index'
 import Result from "./component/Result/Result";
 import axios from 'axios'
-import {Jobs} from './component/Jobs'
+import { useAppDispatch } from '../redux/hook'
+import { addJobList} from '../redux/jobSlices'
 
 const URL = 'https://61484173035b3600175b9d08.mockapi.io/api/jobs/jobs'
 
 function Home() {
-    const [totalJobs, setTotalJobs] = useState<Jobs[]>([])
-    const [availableJobs, setAvailableJobs] = useState<number>(0)
+    const dispatch = useAppDispatch()
 
     useEffect(() => {
         const handleGetData = async () => {
             await axios.get(URL)
-            .then(res => { 
-                setTotalJobs(res.data)       
+            .then(res => {  
+                dispatch(addJobList(res.data))     
             })
             .catch(err => {
                 alert(err)
@@ -26,20 +26,14 @@ function Home() {
         
     },[])
 
-    useEffect(() => {
-        if (totalJobs) {
-            const hiringJobs:any = totalJobs.filter(job => job.Available === true)
-            setAvailableJobs(hiringJobs.length);
-        }
-    }, [totalJobs])
-
     return (
         <div className="App container-fluid">
             <Header/>
-            <SearchBox availableJobs={availableJobs} totalJobs={totalJobs.length}/>
-            <Result totalJobs={totalJobs}/>
+            <SearchBox/>
+            <Result/>
         </div>
     );
 }
 
 export default Home;
+

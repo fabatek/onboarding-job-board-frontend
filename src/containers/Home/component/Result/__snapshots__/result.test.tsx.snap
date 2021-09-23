@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render correctly when no jobs 1`] = `
+<div
+  class="col-sm-6 col-md-4 col-lg-3 col-xl-3 card_custom"
+  data-testid="job_result"
+>
+  <div
+    class="card"
+  >
+    <img
+      alt="Card img"
+      class="card-img-top"
+      src="logo.svg"
+    />
+    <div
+      class="card-body"
+    >
+      <h5
+        class="card-title"
+      />
+      <p
+        class="card-text"
+      >
+        
+         is looking for 
+        
+      </p>
+      <p
+        class="card-text"
+      >
+        <b>
+          Location:
+        </b>
+         
+        
+      </p>
+      <p
+        class="card-text"
+      >
+        <b>
+          Salary
+        </b>
+        : Up to 
+        0
+        $
+      </p>
+      <button
+        class="btn btn-danger btn_position"
+      >
+        Expired
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`render correctly when there are some jobs 1`] = `
+<div
+  class="col-sm-6 col-md-4 col-lg-3 col-xl-3 card_custom"
+  data-testid="job_result"
+>
+  <div
+    class="card"
+  >
+    <img
+      alt="Card img"
+      class="card-img-top"
+      src="logo.svg"
+    />
+    <div
+      class="card-body"
+    >
+      <h5
+        class="card-title"
+      >
+        Looking for fresher ReactJs Developer
+      </h5>
+      <p
+        class="card-text"
+      >
+        FabaTechnology
+         is looking for 
+        dev
+      </p>
+      <p
+        class="card-text"
+      >
+        <b>
+          Location:
+        </b>
+         
+        Ho chi Minh City
+      </p>
+      <p
+        class="card-text"
+      >
+        <b>
+          Salary
+        </b>
+        : Up to 
+        4500
+        $
+      </p>
+      <button
+        class="btn btn-danger btn_position"
+      >
+        Expired
+      </button>
+    </div>
+  </div>
+</div>
+`;

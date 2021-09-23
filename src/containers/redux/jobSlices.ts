@@ -2,29 +2,27 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from './store';
 import { Jobs } from '../Home/component/Jobs';
 
-//Defining our initialState's type
 type initialStateType = {
-  jobLists: Jobs[];
+    totalJobList: Jobs[];
 };
 
-const jobLists: Jobs[] = [];
-
+const totalJobList: Jobs[] = [];
 const initialState: initialStateType = {
-  jobLists,
+    totalJobList,
 };
 
 export const jobSlices = createSlice({
-  name: 'job',
-  initialState,
-  reducers: {
-    addNewJob: (state, action: PayloadAction<Jobs>) => {
-      state.jobLists.push(action.payload);
+    name: 'job',
+    initialState: initialState,
+    reducers: {
+        addJobList: (state, action: PayloadAction<[]>) => {
+            state.totalJobList = action.payload
+        },
     },
-  },
 });
 
 
-export const { addNewJob } = jobSlices.actions;
-export const selectJobList = (state: RootState) => state.jobs.jobLists;
+export const { addJobList } = jobSlices.actions;
+export const jobList = (state: RootState) => state.jobs.totalJobList;
 
 export default jobSlices.reducer;

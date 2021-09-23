@@ -1,9 +1,10 @@
-.searching_box {
+.searching {
     padding: 40px 15px 50px;
+    width: 100%;
 
     font-size: 18px;
     font-family: Arial, Helvetica, sans-serif;
-    .searching_input {
+    .searching_container {
         width: 100%;
         padding-left: 100px;
         padding-right: 100px;
@@ -16,13 +17,14 @@
 
             padding-bottom: 25px;
         }
-        .searching_input {
+        .input_field {
             padding: 0;
-            .input_field {
+            width: 80%;
+            .input_job_name {
                 width: 60%;
                 margin: 0 10px 0 0;
             }
-            .location_input {
+            .input_location {
                 width: 20%;
                 margin: 0 10px 0 0;
             }

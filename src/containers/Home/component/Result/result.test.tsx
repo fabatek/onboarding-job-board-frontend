@@ -1,12 +1,19 @@
-import renderer from "react-test-renderer";
 import React from "react";
-import Result from "./Result";
-import { Jobs } from '../Jobs'
+import Result, { Box } from "./Result";
+import { Jobs } from '../Jobs';
+import { render, screen } from "@testing-library/react";
 
 it('render correctly when no jobs', () => {
-    const fakeJobs:Jobs[] = []
-    const tree = renderer.create(<Result totalJobs={fakeJobs}/>).toJSON()
+    render(<Box 
+        title=''
+        company=''
+        available={false}
+        position=''
+        location=''
+        salary={0}/>)
+    const tree = screen.getByTestId('job_result')
     expect(tree).toMatchSnapshot()
+    expect(tree).toHaveTextContent('No Jobs Found')
 })
 
 it('render correctly when there are some jobs', () => {
@@ -34,6 +41,24 @@ it('render correctly when there are some jobs', () => {
             Title: 'Looking for fresher ReactJs Developer'
         }
     ]
-    const tree = renderer.create(<Result totalJobs={fakeJobs}/>).toJSON()
+    render(
+    <Box 
+        title='Looking for fresher ReactJs Developer'
+        company='FabaTechnology'
+        available={false}
+        position='dev'
+        location='Ho chi Minh City'
+        salary={450}/>)
+    const tree = screen.getByTestId('job_result')
     expect(tree).toMatchSnapshot()
+})
+
+test('should render result with content', () => {
+    render(<Result/>);
+    const resultElement = screen.getByTestId('job_result')
+    expect(resultElement).toBeInTheDocument()
+    expect(resultElement).toHaveTextContent('Branding')
+    expect(resultElement).toHaveTextContent('is looking for')
+    expect(resultElement).toHaveTextContent('Location:')
+    expect(resultElement).toHaveBeenCalledTimes(1)
 })

@@ -1,19 +1,18 @@
 import React from 'react'
 import './searchbox.scss'
+import { useAppSelector } from '../../../redux/hook'
 
-interface Props {
-    availableJobs: number;
-    totalJobs: number;
-}
+const Content = () => {
+    const totalJobs = useAppSelector((state) => state.jobs.totalJobList)
+    const availableJobs:any = totalJobs.filter(job => job.Available === true)
 
-const Content: React.FC<Props> = ({availableJobs, totalJobs}) => {
     return (
-        <div className='searching_box bg-dark text-white container-fluid' data-testid='searching_box'>
-            <div className='searching_input d-flex flex-column container justify-content-center align-items-start d-block'>
-                <h4 className='searching_title' data-testid='seaching_title'>{`${availableJobs}`} Jobs are availables in total {`${totalJobs}`} jobs</h4>
-                <div className='searching_input d-flex'>
-                    <input className='input_field' placeholder='Keyword skill (Java, iOS), Job Title, Company...'/>
-                    <select className='location_input'>
+        <div className='searching bg-dark text-white container-fluid' data-testid='searching_box'>
+            <div className='searching_container d-flex flex-column container justify-content-center align-items-center d-block'>
+                <h4 className='searching_title' data-testid='seaching_title'>{`${availableJobs.length}`} Jobs are availables in total {`${totalJobs.length}`} jobs</h4>
+                <div className='input_field d-flex justify-content-center'>
+                    <input className='input_job_name' placeholder='Keyword skill (Java, iOS), Job Title, Company...'/>
+                    <select className='input_location'>
                         <option value="All">All cities</option>
                         <option value="HCM">Ho Chi Minh</option>
                         <option value="HN">Ha Noi</option>
