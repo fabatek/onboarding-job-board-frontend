@@ -2,17 +2,17 @@ import React from "react";
 import Logo from "../../../../logo.svg";
 import "./result.scss";
 import { useAppSelector } from '../../../redux/hook'
-import { Jobs } from '../Jobs'
+import { Job } from '../Jobs'
 
-interface Job {
-    job:Jobs
+interface props {
+    job:Job
 }
 
-export const Box: React.FC<Job> = ({
+export const Box: React.FC<props> = ({
     job
 }) => {
     return (
-        <div className="col-sm-6 col-md-4 col-lg-3 col-xl-3 card_container" data-testid='job_result'>
+        <div className="col-sm-6 col-md-4 col-lg-3 col-xl-3 card__container" data-testid='job_result'>
             <div className="card">
                 <img className="card-img-top" src={Logo} alt="Card img" />
                 <div className="card-body">
@@ -26,13 +26,13 @@ export const Box: React.FC<Job> = ({
                     <p className="card-text">
                         <b>Salary</b>: Up to {`${Math.round(job.Salary * 10)}`}$
                     </p>
-                    {job.Available ? 
+                    {job.available ? 
                     (
-                        <button className="btn btn-primary card_btn-detail">Read more</button>
+                        <button className="btn btn-primary card__btn--detail">Read more</button>
                     ) 
                     : 
                     (
-                        <button className="btn btn-danger card_btn-expired">Expired</button>
+                        <button className="btn btn-danger card__btn--expired">Expired</button>
                     )}
                 </div>
             </div>
@@ -44,9 +44,9 @@ const Result = () => {
     const totalJobs = useAppSelector((state) => state.jobs.totalJobList)
 
     return (
-        <div className="container result_container">
+        <div className="container result__container">
             <h4>Detail Jobs</h4>
-            <div className="row result_detail">
+            <div className="row result__detail">
                 {totalJobs ? 
                 (
                     totalJobs.slice(0, 100).map((job, index) => {

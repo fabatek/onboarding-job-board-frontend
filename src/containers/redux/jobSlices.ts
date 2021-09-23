@@ -1,13 +1,13 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { Jobs } from '../Home/component/Jobs';
+import { Job } from '../Home/component/Jobs';
 import axios from 'axios';
 
 type initialStateType = {
-    totalJobList: Jobs[];
+    totalJobList: Job[];
     status: string;
 };
 
-const totalJobList: Jobs[] = [];
+const totalJobList: Job[] = [];
 
 const initialState: initialStateType = {
     totalJobList,
@@ -38,7 +38,7 @@ export const jobSlices = createSlice({
         },
         [fetchJobList.rejected.type]: (state, action) => {
             state.totalJobList = [];
-            state.status = 'loading'
+            state.status = 'idle'
         }
     }
 });

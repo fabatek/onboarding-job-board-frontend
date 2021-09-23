@@ -1,7 +1,6 @@
-export interface Jobs {
-    key: string;
+export interface Job {
     id: number;
-    Available: boolean;
+    available: boolean;
     JobName: string;
     Company: string;
     Tags: string;

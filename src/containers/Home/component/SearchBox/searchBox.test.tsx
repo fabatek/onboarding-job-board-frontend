@@ -5,7 +5,7 @@ import SearchBox from './index';
 test('Should render input', () => {
     const availableJobs:number = 50;
     const totalJobs:number = 100;
-    render(<SearchBox availableJobs={availableJobs} totalJobs={totalJobs}/>);
+    render(<SearchBox/>);
     const searchingElement = screen.getAllByTestId('searching_box')
     expect(searchingElement).toBeInTheDocument()
     expect(searchingElement).toBeCalledTimes(1)

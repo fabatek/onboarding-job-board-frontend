@@ -13,7 +13,7 @@ function Home() {
 
     useEffect(() => {
         dispatch(fetchJobList(URL))
-    },[])
+    },[dispatch])
 
     return (
         <div className="App container-fluid">
