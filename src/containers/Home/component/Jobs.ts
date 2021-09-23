@@ -1,11 +1,11 @@
 export interface Job {
     id: number;
     available: boolean;
-    JobName: string;
-    Company: string;
-    Tags: string;
+    jobName: string;
+    company: string;
+    tags: string;
     jobType: string;
-    Location: string;
-    Salary: number;
-    Title: string;
+    location: string;
+    salary: number;
+    title: string;
 }

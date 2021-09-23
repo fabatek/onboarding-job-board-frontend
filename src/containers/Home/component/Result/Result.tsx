@@ -16,15 +16,15 @@ export const Box: React.FC<props> = ({
             <div className="card">
                 <img className="card-img-top" src={Logo} alt="Card img" />
                 <div className="card-body">
-                    <h5 className="card-title">{job.Title}</h5>
+                    <h5 className="card-title">{job.title}</h5>
                     <p className="card-text">
-                        {job.Company} is looking for {job.jobType}
+                        {job.company} is looking for {job.jobType}
                     </p>
                     <p className="card-text">
-                        <b>Location:</b> {job.Location}
+                        <b>Location:</b> {job.location}
                     </p>
                     <p className="card-text">
-                        <b>Salary</b>: Up to {`${Math.round(job.Salary * 10)}`}$
+                        <b>Salary</b>: Up to {`${Math.round(job.salary * 10)}`}$
                     </p>
                     {job.available ? 
                     (
