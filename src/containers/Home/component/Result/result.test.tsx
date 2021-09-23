@@ -4,13 +4,8 @@ import { Jobs } from '../Jobs';
 import { render, screen } from "@testing-library/react";
 
 it('render correctly when no jobs', () => {
-    render(<Box 
-        title=''
-        company=''
-        available={false}
-        position=''
-        location=''
-        salary={0}/>)
+    const fakeJobs:Jobs[] = []
+    render(<Box job={fakeJobs[0]}/>)
     const tree = screen.getByTestId('job_result')
     expect(tree).toMatchSnapshot()
     expect(tree).toHaveTextContent('No Jobs Found')
@@ -42,22 +37,19 @@ it('render correctly when there are some jobs', () => {
         }
     ]
     render(
-    <Box 
-        title='Looking for fresher ReactJs Developer'
-        company='FabaTechnology'
-        available={false}
-        position='dev'
-        location='Ho chi Minh City'
-        salary={450}/>)
+    <Box job={fakeJobs[1]}/>)
     const tree = screen.getByTestId('job_result')
     expect(tree).toMatchSnapshot()
+    expect(tree).toHaveTextContent('FabaTechnology')
+    expect(tree).toHaveTextContent('dev')
+    expect(tree).toHaveTextContent('Ho Chi Minh city')
+    expect(tree).toHaveTextContent('Looing for fresher ReactJs Developert')
 })
 
 test('should render result with content', () => {
     render(<Result/>);
     const resultElement = screen.getByTestId('job_result')
     expect(resultElement).toBeInTheDocument()
-    expect(resultElement).toHaveTextContent('Branding')
     expect(resultElement).toHaveTextContent('is looking for')
     expect(resultElement).toHaveTextContent('Location:')
     expect(resultElement).toHaveBeenCalledTimes(1)

@@ -9,7 +9,7 @@
     }
     .result_detail {
         margin-top: 20px;
-        .card_custom {
+        .card_container {
             margin-top: 10px;
             .card {
                 height: 450px;
@@ -19,11 +19,11 @@
                     margin-bottom: 0;
                     font-size: 16px;
                 }
-                .btn_position {
+                .card_btn-detail, .card_btn-expired {
                     position:absolute;
                     bottom: 10px;
                 }
-                .btn_position:hover {
+                .card_btn-detail:hover, .card_btn-expired:hover {
                     width: 70%;
                 }
             }

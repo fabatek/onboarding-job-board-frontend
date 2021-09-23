@@ -1,4 +1,4 @@
-.searching {
+.searching_theme {
     padding: 40px 15px 50px;
     width: 100%;
 
@@ -17,14 +17,14 @@
 
             padding-bottom: 25px;
         }
-        .input_field {
+        .searching_input {
             padding: 0;
             width: 80%;
-            .input_job_name {
+            .searching_input-text {
                 width: 60%;
                 margin: 0 10px 0 0;
             }
-            .input_location {
+            .searching_input-select {
                 width: 20%;
                 margin: 0 10px 0 0;
             }

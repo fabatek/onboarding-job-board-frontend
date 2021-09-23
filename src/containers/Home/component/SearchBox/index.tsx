@@ -7,12 +7,12 @@ const Content = () => {
     const availableJobs:any = totalJobs.filter(job => job.Available === true)
 
     return (
-        <div className='searching bg-dark text-white container-fluid' data-testid='searching_box'>
+        <div className='searching_theme bg-dark text-white container-fluid' data-testid='searching_box'>
             <div className='searching_container d-flex flex-column container justify-content-center align-items-center d-block'>
                 <h4 className='searching_title' data-testid='seaching_title'>{`${availableJobs.length}`} Jobs are availables in total {`${totalJobs.length}`} jobs</h4>
-                <div className='input_field d-flex justify-content-center'>
-                    <input className='input_job_name' placeholder='Keyword skill (Java, iOS), Job Title, Company...'/>
-                    <select className='input_location'>
+                <div className='searching_input d-flex justify-content-center'>
+                    <input className='searching_input-text' placeholder='Keyword skill (Java, iOS), Job Title, Company...'/>
+                    <select className='searching_input-select'>
                         <option value="All">All cities</option>
                         <option value="HCM">Ho Chi Minh</option>
                         <option value="HN">Ha Noi</option>

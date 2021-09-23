@@ -1,4 +1,5 @@
 export interface Jobs {
+    key: string;
     id: number;
     Available: boolean;
     JobName: string;
