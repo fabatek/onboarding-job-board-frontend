@@ -34,4 +34,14 @@
             }
         }
     }
+    .result__pagination {
+        margin: 10px;
+        .result__pagination__btn--active {
+            background-color: #007bff;
+            color: #fff;
+        }
+        .result__pagination__btn--disable {
+            pointer-events: none;
+        }
+    }
 }
