@@ -10,7 +10,11 @@ const index = ({ jobs }: Props) => {
       <div className="row mt-3">
         {jobs.map((job, index) => {
           return (
-            <div key={index} className="col-lg-3 col-md-6 col-sm-12 job-item">
+            <div
+              key={index}
+              data-testid="job-element"
+              className="col-lg-3 col-md-6 col-sm-12 job-item"
+            >
               <div className="job-item__card">
                 <div className="header">
                   <img
@@ -26,7 +30,7 @@ const index = ({ jobs }: Props) => {
                   <span className="footer__count-job footer__count-job--red ">
                     10 job
                   </span>
-                  <span className="footer__area">Ho Chi Minh</span>
+                  <span className="footer__area">{job?.city}</span>
                 </div>
               </div>
             </div>
