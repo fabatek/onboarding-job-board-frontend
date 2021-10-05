@@ -1,19 +1,33 @@
-import logo from '../../logo.svg';
-import React from "react";
-
+import React, { useEffect } from "react";
 import "./Home.scss";
+import Total from "./total";
+import Jobs from "./jobs";
+import { typeStates } from "../Redux/type";
+import { requestJobsAction } from "../Redux/Action";
+import { SystemState } from "../Redux/type";
+import { connect } from "react-redux";
+interface AppProps {
+  jobs: SystemState;
+  requestJobsAction: any;
+}
+const Home: React.FC<AppProps> = ({ jobs, requestJobsAction }: AppProps) => {
+  useEffect(() => {
+    requestJobsAction();
+  }, []);
 
-function Home() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Welcome to Faba onboarding project - Job board
-        </p>
-      </header>
+      <Total totalJobs={jobs.jobs.length} />
+      <Jobs jobs={jobs.jobs} />
     </div>
   );
-}
+};
 
-export default Home;
+const mapStateToProps = (state: typeStates) => ({
+  jobs: state.jobs,
+});
+const mapDispatchToProps = {
+  requestJobsAction: requestJobsAction,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

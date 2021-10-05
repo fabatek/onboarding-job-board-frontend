@@ -1,0 +1,42 @@
+.detail {
+  display: flex;
+  margin: auto;
+  transform: translateY(50%);
+  width: 1000px;
+  padding: 16px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+  .detail__item {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    height: 260px;
+    margin: 0 8px;
+    &.detail__logo {
+      .image {
+        height: 240px;
+        width: 240px;
+      }
+    }
+    &.detail__info {
+      .detail__info__name {
+        font-size: 28px;
+        font-weight: 700;
+      }
+      .detail__info__item {
+        .detail__info__item__icon {
+          margin: 8px 4px;
+          .text {
+            margin: 0 4px;
+          }
+        }
+      }
+    }
+    &.detail__action {
+      .detail__action--btn {
+        min-width: 120px;
+        margin: 8px 0;
+      }
+    }
+  }
+}
