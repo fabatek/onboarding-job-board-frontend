@@ -1,4 +1,4 @@
 export const routes = {
   ROOT: "/",
-  DETAIL: "/detail",
+  DETAIL: "/job/:id",
 };
