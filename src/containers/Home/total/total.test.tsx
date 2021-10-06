@@ -12,6 +12,5 @@ test("renders learn react link", () => {
       <Total totalJobs={100} />
     </Provider>
   );
-  const totalElement = screen.getByText(/100 IT Job For Chất Developer/i);
-  expect(totalElement).toBeVisible();
+  expect(screen.getByText(/100 IT Job For Chất Developer/i)).toBeVisible();
 });

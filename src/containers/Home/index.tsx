@@ -1,19 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import "./Home.scss";
 import Total from "./total";
 import Jobs from "./jobs";
 import { typeStates } from "../Redux/type";
 import { requestJobsAction } from "../Redux/Action";
 import { SystemState } from "../Redux/type";
-import { connect } from "react-redux";
-interface AppProps {
-  jobs: SystemState;
-  requestJobsAction: any;
-}
-const Home: React.FC<AppProps> = ({ jobs, requestJobsAction }: AppProps) => {
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+
+const Home: React.FC = () => {
+  const jobs = useSelector((state: typeStates) => state.jobs);
+  const dispatch = useDispatch();
+
+  const requestJobs = useCallback(() => {
+    dispatch(requestJobsAction());
+  }, [dispatch]);
+
   useEffect(() => {
-    requestJobsAction();
-  }, []);
+    requestJobs();
+  }, [requestJobs]);
 
   return (
     <div className="App">
@@ -23,11 +28,4 @@ const Home: React.FC<AppProps> = ({ jobs, requestJobsAction }: AppProps) => {
   );
 };
 
-const mapStateToProps = (state: typeStates) => ({
-  jobs: state.jobs,
-});
-const mapDispatchToProps = {
-  requestJobsAction: requestJobsAction,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Home;
