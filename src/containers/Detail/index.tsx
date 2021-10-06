@@ -1,4 +1,3 @@
-// @flow
 import * as React from "react";
 import "./Detail.scss";
 type Props = {};
@@ -14,35 +13,35 @@ const index = (props: Props) => {
         />
       </div>
       <div className="detail__item flex-column justify-content-between  detail__info ">
-        <p className="detail__info__name">
+        <p className="info__name">
           LG Vehicle Component Solutions Development Center Vietnam (LG VS DCV)
         </p>
-        <div className="row align-self-start detail__info__item">
+        <div className="row align-self-start info__item">
           <div className="col-4">
-            <div className="detail__info__item__icon location">
+            <div className="item__icon location">
               <i className="fas fa-cog"></i>
               <span className="text">Product</span>
             </div>
-            <div className="detail__info__item__icon product">
+            <div className="item__icon product">
               {" "}
               <i className="fas fa-cog"></i>
               <span className="text">Product</span>
             </div>
-            <div className="detail__info__item__icon time-work">
-              {" "}
-              <i className="fas fa-cog"></i>
-              <span className="text">Product</span>
-            </div>
-          </div>
-          <div className="col-4 d-flex align-items-center">
-            <div className="detail__info__item__icon member">
+            <div className="item__icon time-work">
               {" "}
               <i className="fas fa-cog"></i>
               <span className="text">Product</span>
             </div>
           </div>
           <div className="col-4 d-flex align-items-center">
-            <div className="detail__info__item__icon nation">
+            <div className="item__icon member">
+              {" "}
+              <i className="fas fa-cog"></i>
+              <span className="text">Product</span>
+            </div>
+          </div>
+          <div className="col-4 d-flex align-items-center">
+            <div className="item__icon nation">
               {" "}
               <i className="fas fa-cog"></i>
               <span className="text">Product</span>
