@@ -7,8 +7,10 @@
   width: 100%;
   height: 86px;
   background-color: #221f20;
-  .total__number__contain {
-    margin: 0 16px;
+  .total__number {
+    .number__contain {
+      margin: 0 16px;
+    }
   }
 }
 
