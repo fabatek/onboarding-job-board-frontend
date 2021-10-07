@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Home from "./jobs";
+import Jobs from "./jobs";
 import configureStore from "../Redux/Store";
 import { Provider } from "react-redux";
 import { SystemState } from "../Redux/type";
@@ -24,7 +24,7 @@ test("renders learn react link", async () => {
   //pass jobs into Home to test key city
   render(
     <Provider store={store}>
-      <Home jobs={jobs} />
+      <Jobs jobs={jobs} />
     </Provider>
   );
   const element = screen.queryAllByText("tester"); //find text "tester"
