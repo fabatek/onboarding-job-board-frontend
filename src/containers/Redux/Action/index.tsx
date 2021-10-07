@@ -1,4 +1,3 @@
-// @flow
 import {
   requestJobsType,
   getJobsType,
@@ -15,7 +14,6 @@ export type actionJobs =
   | getJobsType
   | requestJobType
   | getJobType;
-
 export const requestJobsAction =
   (): ThunkAction<void, typeStates, null, Action<string>> => (dispatch) => {
     Axios.get("https://615bd6ecc298130017735dac.mockapi.io/api/jobs").then(
