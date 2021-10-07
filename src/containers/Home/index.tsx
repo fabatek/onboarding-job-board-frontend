@@ -31,12 +31,12 @@ const Home: React.FC = () => {
   useEffect(() => {
     requestJobs();
   }, [requestJobs]);
-  useEffect(() => {
-    setPage({ ...page, jobsOfPage: jobs.jobs });
-  }, [jobs]);
 
-  const onChangePage = (jobsOfPage: pageTypes["jobsOfPage"]) => {
-    setPage({ ...page, jobsOfPage });
+  const onChangePage = (
+    currentPage: number,
+    jobsOfPage: pageTypes["jobsOfPage"]
+  ) => {
+    setPage({ ...page, currentPage, jobsOfPage });
   };
   return (
     <div className="App">
@@ -46,7 +46,8 @@ const Home: React.FC = () => {
         onChangePage={onChangePage}
         pageSize={page.pageSize}
         currentPage={page.currentPage}
-        conntPage={Math.ceil(jobs.jobs.length / page.pageSize)} //100 : pageSize
+        countPage={Math.ceil(jobs.jobs.length / page.pageSize)} //100 : pageSize
+        jobList={jobs.jobs}
       />
     </div>
   );
