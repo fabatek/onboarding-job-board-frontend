@@ -1,4 +1,3 @@
-// @flow
 import {
   requestJobsType,
   getJobsType,
@@ -9,6 +8,7 @@ import { typeStates } from "../type";
 import Axios from "axios";
 import { ThunkAction } from "redux-thunk";
 import { Action } from "redux";
+import { API_URL } from "../../constant/api";
 
 export type actionJobs =
   | requestJobsType
@@ -18,12 +18,10 @@ export type actionJobs =
 
 export const requestJobsAction =
   (): ThunkAction<void, typeStates, null, Action<string>> => (dispatch) => {
-    Axios.get("https://615bd6ecc298130017735dac.mockapi.io/api/jobs").then(
-      (res) => {
-        dispatch({
-          type: "GET_JOBS",
-          jobs: res.data,
-        });
-      }
-    );
+    Axios.get(`${API_URL}/jobs`).then((res) => {
+      dispatch({
+        type: "GET_JOBS",
+        jobs: res.data,
+      });
+    });
   };
