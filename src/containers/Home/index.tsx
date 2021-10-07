@@ -4,7 +4,6 @@ import Total from "./total";
 import Jobs from "./jobs";
 import { typeStates } from "../Redux/type";
 import { requestJobsAction } from "../Redux/Action";
-import { SystemState } from "../Redux/type";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 
