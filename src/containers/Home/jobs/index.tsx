@@ -1,10 +1,10 @@
-import * as React from "react";
+import React from "react";
 import { SystemState } from "../../Redux/type";
 
 interface Props {
   jobs: SystemState["jobs"];
 }
-const index = ({ jobs }: Props) => {
+const Index = ({ jobs }: Props) => {
   return (
     <div className="container-fluid">
       <div className="row mt-3">
@@ -40,4 +40,4 @@ const index = ({ jobs }: Props) => {
     </div>
   );
 };
-export default index;
+export default Index;

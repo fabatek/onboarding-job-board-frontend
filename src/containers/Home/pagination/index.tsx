@@ -15,9 +15,13 @@ const Index: React.FC<Props> = ({
   countPage,
   jobList,
 }) => {
+  // detect jobs was change, call getPage() to set jobOfpage
+  //default page 1
   useEffect(() => {
     getPage(currentPage, pageSize, jobList);
   }, [jobList]);
+
+  //handle logic page
   const getPage = (
     currentPage: number,
     pageSize: number,
@@ -31,39 +35,52 @@ const Index: React.FC<Props> = ({
     const newJobsOfPage = jobList.slice(itemStart, itemEnd);
     onChangePage(currentPage, newJobsOfPage);
   };
+
+  //handle click page
   const onChangeIndexPage = (pageIndex: number) => {
     getPage(pageIndex, pageSize, jobList);
   };
   return (
     <div className="d-flex justify-content-center m-3 pagination-jobs">
+      <span title="Delete" id="2"></span>
       <nav aria-label="Page navigation example">
         <ul className="pagination">
           <li
+            title="pagination-jobs"
             className={`page-item ${currentPage === 1 && "disabled"}`}
             onClick={() => onChangeIndexPage(currentPage - 1)}
           >
             <span className="page-link btn " aria-label="Previous">
-              <span aria-hidden="true">«</span>
+              <span data-testid="prev" aria-hidden="true">
+                prev
+              </span>
             </span>
           </li>
           {[...Array<number>(countPage).fill(0)].map((i, index) => {
             return (
-              <li
-                key={index}
-                className={`page-item ${index + 1 === currentPage && "active"}`}
-                onClick={() => onChangeIndexPage(index + 1)}
-              >
-                <span className="page-link btn">{index + 1}</span>
-              </li>
+              <div key={index}>
+                <li
+                  className={`page-item ${
+                    index + 1 === currentPage && "active"
+                  }`}
+                  onClick={() => onChangeIndexPage(index + 1)}
+                >
+                  <span className="page-link btn">{index + 1}</span>
+                </li>
+                <span hidden>page-jobs</span>
+              </div>
             );
           })}
 
           <li
+            title="pagination-jobs"
             className={`page-item ${currentPage >= countPage && "disabled"}`}
             onClick={() => onChangeIndexPage(currentPage + 1)}
           >
             <span className="page-link btn" aria-label="Next">
-              <span aria-hidden="true">»</span>
+              <span aria-hidden="true" data-testid="next">
+                next
+              </span>
             </span>
           </li>
         </ul>
