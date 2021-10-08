@@ -1,3 +1,6 @@
+/**
+ * @jest-environment jsdom
+ */
 import { render, screen } from "@testing-library/react";
 import Jobs from "./jobs";
 import configureStore from "../Redux/Store";
@@ -21,6 +24,7 @@ test("renders learn react link", async () => {
       image: "",
     });
   }
+
   //pass jobs into Home to test key city
   render(
     <Provider store={store}>

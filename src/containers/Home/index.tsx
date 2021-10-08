@@ -21,17 +21,21 @@ const Home: React.FC = () => {
     jobsOfPage: [],
     currentPage: 1,
   });
-  const jobs = useSelector((state: typeStates) => state.jobs);
-  const dispatch = useDispatch();
 
+  const jobs = useSelector((state: typeStates) => state.jobs); //reducer
+  const dispatch = useDispatch(); //dispatch
+
+  //request jobs
   const requestJobs = useCallback(() => {
     dispatch(requestJobsAction());
   }, [dispatch]);
 
+  // when the component is first render  that call requestJobs()
   useEffect(() => {
     requestJobs();
   }, [requestJobs]);
 
+  //set jobsOfPage
   const onChangePage = (
     currentPage: number,
     jobsOfPage: pageTypes["jobsOfPage"]
