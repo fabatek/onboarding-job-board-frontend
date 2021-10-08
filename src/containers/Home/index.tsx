@@ -44,7 +44,7 @@ const Home: React.FC = () => {
   };
   return (
     <div className="App">
-      <Total totalJobs={jobs.jobs.length} />
+      <Total totalJobs={jobs.totalJobs} />
       <Jobs jobs={page.jobsOfPage} />
       <Pagination
         onChangePage={onChangePage}

@@ -13,6 +13,7 @@ export interface SystemJob {
 export interface SystemState {
   jobs: SystemJob[];
   job: SystemJob;
+  totalJobs: number;
 }
 
 export type typeStates = ReturnType<typeof rootReducer>;
