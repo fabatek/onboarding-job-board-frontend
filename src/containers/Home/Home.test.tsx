@@ -10,7 +10,7 @@ import { SystemState } from "../Redux/type";
 const store = configureStore();
 import React from "react";
 
-test("renders learn react link", async () => {
+test("renders jobs", async () => {
   let jobs: SystemState["jobs"] = [];
   for (let index = 0; index < 100; index++) {
     jobs.push({
