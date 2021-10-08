@@ -15,3 +15,7 @@ export interface getJobType {
   type: "GET_DETAIL_JOBS";
   job: SystemJob;
 }
+export interface searchJob {
+  type: "SEARCH_TITLE_JOBS";
+  key: String;
+}
