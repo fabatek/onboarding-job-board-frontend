@@ -2,7 +2,8 @@ import { actionJobs } from "../Action";
 import { SystemState } from "../type";
 
 const initialState: SystemState = {
-  jobs: [],
+  data: [], //jobs origin
+  jobs: [], //jobs display
   job: {
     name: "",
     city: "",
@@ -18,17 +19,24 @@ const initialState: SystemState = {
 const reducer = (state = initialState, action: actionJobs): SystemState => {
   switch (action.type) {
     case "GET_JOBS":
-      return { ...state, jobs: action.jobs, totalJobs: action.jobs.length };
+      return {
+        ...state,
+        jobs: action.jobs,
+        totalJobs: action.jobs.length,
+        data: action.jobs,
+      };
     case "GET_DETAIL_JOBS":
       return { ...state, job: action.job };
     case "SEARCH_TITLE_JOBS":
       const { key } = action;
-      const newJobs = state.jobs.filter((jobs) =>
+      //handle filter by name
+      const newJobs = state.data.filter((jobs) =>
         Object.values(jobs).some(
-          (item) => typeof item === "string" && item.includes(String(key))
+          (itemOfJob) =>
+            typeof itemOfJob === "string" && itemOfJob.includes(String(key))
         )
       );
-      console.log(newJobs, "newJobs");
+      //end filter
       return { ...state, jobs: [...newJobs] };
     default:
       return state;

@@ -11,7 +11,8 @@ export interface SystemJob {
   image: string;
 }
 export interface SystemState {
-  jobs: SystemJob[];
+  data: SystemJob[]; //data to use filter and login
+  jobs: SystemJob[]; //data jobs to display
   job: SystemJob;
   totalJobs: number;
 }

@@ -42,9 +42,14 @@ const Home: React.FC = () => {
   ) => {
     setPage({ ...page, currentPage, jobsOfPage });
   };
+
+  //reset page when search
+  const resetCurrentPage = () => {
+    setPage({ ...page, currentPage: 1 });
+  };
   return (
     <div className="App">
-      <Total totalJobs={jobs.totalJobs} />
+      <Total totalJobs={jobs.totalJobs} resetCurrentPage={resetCurrentPage} />
       <Jobs jobs={page.jobsOfPage} />
       <Pagination
         onChangePage={onChangePage}

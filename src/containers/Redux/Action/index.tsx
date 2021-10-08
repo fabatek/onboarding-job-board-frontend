@@ -21,12 +21,11 @@ export type actionJobs =
 export type JobsThunkAction = ThunkAction<void, typeStates, any, actionJobs>;
 
 //request jobs
-export const requestJobsAction = (): JobsThunkAction => (dispatch) => {
-  Axios.get(`${API_URL}/jobs`).then((res) => {
-    dispatch({
-      type: "GET_JOBS",
-      jobs: res.data,
-    });
+export const requestJobsAction = (): JobsThunkAction => async (dispatch) => {
+  const res = await callApi();
+  dispatch({
+    type: "GET_JOBS",
+    jobs: res.data,
   });
 };
 
@@ -41,3 +40,8 @@ export const searchTitleJob =
       });
     }, 500);
   };
+
+//call api
+const callApi = () => {
+  return Axios.get(`${API_URL}/jobs`);
+};

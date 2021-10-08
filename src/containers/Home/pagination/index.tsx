@@ -20,7 +20,6 @@ const Index: React.FC<Props> = ({
   useEffect(() => {
     getPage(currentPage, pageSize, jobList);
   }, [jobList]);
-  console.log(jobList, "jobList");
   //handle logic page
   const getPage = (
     currentPage: number,
