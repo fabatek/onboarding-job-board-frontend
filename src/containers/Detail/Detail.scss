@@ -19,16 +19,22 @@
       }
     }
     &.detail__info {
+      flex-grow: 2;
       .info__name {
+        letter-spacing: 5px;
         font-size: 28px;
         font-weight: 700;
       }
       .info__item {
         .item__icon {
-          margin: 8px 4px;
+          margin: 16px 8px;
           .text {
+            font-weight: 600;
             margin: 0 4px;
           }
+        }
+        .item__icon:hover {
+          color: red;
         }
       }
     }

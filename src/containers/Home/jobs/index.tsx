@@ -1,10 +1,13 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
+
 import { SystemState } from "../../Redux/type";
 
 interface Props {
   jobs: SystemState["jobs"];
 }
 const Index = ({ jobs }: Props) => {
+  let history = useHistory();
   return (
     <div className="container-fluid">
       <div className="row mt-3 job">
@@ -14,6 +17,7 @@ const Index = ({ jobs }: Props) => {
               key={index}
               data-testid="job-element"
               className="col-lg-3 col-md-6 col-sm-12 job__item"
+              onClick={() => history.push(`/job/${job?.id}`)}
             >
               <div className="item__card">
                 <div className="header">

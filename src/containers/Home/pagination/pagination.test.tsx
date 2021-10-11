@@ -10,6 +10,7 @@ test("renders learn react link", async () => {
   let jobs: SystemState["jobs"] = [];
   for (let index = 0; index < 100; index++) {
     jobs.push({
+      id: 0,
       name: "tester",
       city: "",
       district: "",

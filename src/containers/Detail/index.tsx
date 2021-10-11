@@ -1,8 +1,26 @@
-import * as React from "react";
+import React, { useEffect } from "react";
+import { useParams, useLocation } from "react-router-dom";
+import { requestJobAction } from "../Redux/Action";
+import { typeStates } from "../Redux/type";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+
 import "./Detail.scss";
 type Props = {};
 
-const index = (props: Props) => {
+const Index: React.FC = (props: Props) => {
+  const dispatch = useDispatch(); //dispatch
+  const jobs = useSelector((state: typeStates) => state.jobs); //reducer
+  const { job } = jobs;
+
+  const { id }: any = useParams(); //get params router
+  let { pathname } = useLocation(); //get url
+
+  //when url change
+  useEffect(() => {
+    dispatch(requestJobAction(id));
+  }, [pathname]);
+
   return (
     <div className="detail">
       <div className="detail__item detail__logo">
@@ -12,39 +30,43 @@ const index = (props: Props) => {
           className="image border"
         />
       </div>
-      <div className="detail__item flex-column justify-content-between  detail__info ">
-        <p className="info__name">
-          LG Vehicle Component Solutions Development Center Vietnam (LG VS DCV)
+      <div className="detail__item flex-column justify-content-around  detail__info ">
+        <p className="info__name" data-testid="name">
+          {job?.name}
         </p>
-        <div className="row align-self-start info__item">
-          <div className="col-4">
+        <div className="row align-self-start info__item w-100">
+          <div className="col-4 justify-content-center align-items-center">
             <div className="item__icon location">
-              <i className="fas fa-cog"></i>
-              <span className="text">Product</span>
+              <i className="fas fa-city"></i>
+              <span className="text" data-testid="city">
+                {job?.city}
+              </span>
             </div>
             <div className="item__icon product">
-              {" "}
               <i className="fas fa-cog"></i>
               <span className="text">Product</span>
             </div>
             <div className="item__icon time-work">
-              {" "}
-              <i className="fas fa-cog"></i>
-              <span className="text">Product</span>
+              <i className="fas fa-clock"></i>
+              <span className="text" data-testid="dateWork">
+                {job?.dateWork}
+              </span>
             </div>
           </div>
-          <div className="col-4 d-flex align-items-center">
+          <div className="col-4 d-flex justify-content-center align-items-center">
             <div className="item__icon member">
-              {" "}
               <i className="fas fa-cog"></i>
-              <span className="text">Product</span>
+              <span className="text" data-testid="member">
+                {job?.memberMin} - {job?.memberMax}
+              </span>
             </div>
           </div>
-          <div className="col-4 d-flex align-items-center">
+          <div className="col-4 d-flex justify-content-center align-items-center">
             <div className="item__icon nation">
-              {" "}
-              <i className="fas fa-cog"></i>
-              <span className="text">Product</span>
+              <i className="fas fa-location-arrow"></i>
+              <span className="text" data-testid="nation">
+                {job?.nation}
+              </span>
             </div>
           </div>
         </div>
@@ -63,4 +85,4 @@ const index = (props: Props) => {
     </div>
   );
 };
-export default index;
+export default Index;

@@ -5,6 +5,7 @@ const initialState: SystemState = {
   data: [], //jobs origin
   jobs: [], //jobs display
   job: {
+    id: 0,
     name: "",
     city: "",
     district: "",
@@ -25,7 +26,7 @@ const reducer = (state = initialState, action: actionJobs): SystemState => {
         totalJobs: action.jobs.length,
         data: action.jobs,
       };
-    case "GET_DETAIL_JOBS":
+    case "GET_JOB":
       return { ...state, job: action.job };
     case "SEARCH_TITLE_JOBS":
       const { key } = action;

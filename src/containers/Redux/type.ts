@@ -1,6 +1,7 @@
 import rootReducer from "./Reducers";
 
 export interface SystemJob {
+  id: number;
   name: string;
   city: string;
   district: string;
