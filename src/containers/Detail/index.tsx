@@ -11,7 +11,7 @@ type Props = {};
 const Index: React.FC = (props: Props) => {
   const dispatch = useDispatch(); //dispatch
   const jobs = useSelector((state: typeStates) => state.jobs); //reducer
-  const { job } = jobs;
+  const { job } = jobs; //job
 
   const { id }: any = useParams(); //get params router
   let { pathname } = useLocation(); //get url

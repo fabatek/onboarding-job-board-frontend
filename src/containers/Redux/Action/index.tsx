@@ -1,44 +1,39 @@
-import {
-  requestJobsType,
-  getJobsType,
-  // requestJobType,
-  getJobType,
-  searchJob,
-} from "./type";
+import { getJobsType, getJobType, searchJob } from "./type";
 import { typeStates } from "../type";
-import Axios from "axios";
+import { getJobsApi, getJobApi } from "../../common/jobApi";
 import { ThunkAction } from "redux-thunk";
-import { API_URL } from "../../constant/api";
 
-export type actionJobs =
-  | requestJobsType
-  | getJobsType
-  // | requestJobType
-  | getJobType
-  | searchJob;
+export type actionJobs = getJobsType | getJobType | searchJob;
 
 //define type JobsThunk
 export type JobsThunkAction = ThunkAction<void, typeStates, any, actionJobs>;
 
 //request jobs
 export const requestJobsAction = (): JobsThunkAction => async (dispatch) => {
-  const res = await callApi();
-
-  dispatch({
-    type: "GET_JOBS",
-    jobs: res.data,
-  });
+  try {
+    const res = await getJobsApi();
+    dispatch({
+      type: "GET_JOBS",
+      jobs: res?.data,
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 //request jobs
 export const requestJobAction =
   (id: number): JobsThunkAction =>
   async (dispatch) => {
-    const res = await callApi(id);
-    dispatch({
-      type: "GET_JOB",
-      job: res.data,
-    });
+    try {
+      const res = await getJobApi(id);
+      dispatch({
+        type: "GET_JOB",
+        job: res.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
 //search
@@ -52,12 +47,3 @@ export const searchTitleJob =
       });
     }, 500);
   };
-
-//call api
-const callApi = (param?: number) => {
-  if (typeof param === "undefined") {
-    return Axios.get(`${API_URL}/jobs`);
-  } else {
-    return Axios.get(`${API_URL}/jobs/${param}`);
-  }
-};
