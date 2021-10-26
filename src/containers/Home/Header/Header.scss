@@ -1,8 +1,8 @@
+@import '../../../index.scss';
 
 .header-app{
-    background-color: var(--text-color);
+    background-color: $text_color;
     width: 100%;
-   
     position: fixed;
     height: 60px;
     top: 0;
@@ -12,7 +12,7 @@
         height: 100%    ;
         max-width: 1340px;
         margin: 0 auto;
-        color: var(--text-header);
+        color: $text_header;
         display: flex;
         justify-content: space-between;
         align-items: center;

@@ -1,5 +1,5 @@
 import {render} from "@testing-library/react";
-import Home from "../Home/Home";
+import Home from "../Home/index";
 import React from "react";
 
 test('renders learn react link', () => {

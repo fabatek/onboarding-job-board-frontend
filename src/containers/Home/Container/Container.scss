@@ -1,10 +1,12 @@
+@import '../../../index.scss';
+
 .container{
     max-width: 100%;
-    background-color: var(--bg-container);
+    background-color: $bg_container;
     height: 100vh;
+    padding-top: 20px;
     .container__body{
         max-width: 1340px;
         margin: 0 auto;
-        
     }
 }

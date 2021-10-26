@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+
 import { getJobs } from '../../redux/actions/JobsAction';
 import Router from "../Router";
 
-function App() {
+const App = () => {
 	const dispatch = useDispatch()
-	useEffect(()=>{
+	useEffect(() => {
 		dispatch(getJobs())
-	},[dispatch])
+	}, [dispatch])
 	return (
 		<>
 			<Router />
