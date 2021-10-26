@@ -1,0 +1,71 @@
+.DetailJob{
+    margin-top: 20px;
+    width: 60%;
+    background-color: var(--bg-body);
+    overflow: scroll;
+    overflow-x: hidden;
+    max-height: 1340px;
+    padding: 22px 32px;
+    align-items: center;
+    .detail__title{
+        font-size: 2.5rem;
+        font-weight: 500;
+    }
+    .detail__action{
+        align-items: center;
+        margin-top: 20px;
+        border-bottom: 2px solid rgb(224, 218, 218);
+        padding-bottom: 20px;
+        .detail__action-apply{
+            width: 90%;
+            border: none;
+            background-color: var(--hover-color);
+            color: white;
+            border-radius: 10px;
+            padding-top: 8px ;
+            padding-bottom: 8px;
+            font-size: 1.8rem;
+            font-weight: 400;
+        }
+        .detail__action-apply:hover{
+            opacity: 0.8;
+        }
+        .detail__action-icon{
+            text-align: center;
+            margin-left: 3%;
+            font-size: 3rem;
+        }
+    }
+    .detail__salary{
+        color: var(--salary-color);
+        margin-top: 10px;
+        .detail__salary-icon{
+            font-size: 1.6rem;
+            border: 1px solid var(--salary-color);
+            border-radius: 50%;
+            padding: 1px 4px
+        }
+        .detail__salary-usd{
+            font-size: 1.6rem;
+            margin-left: 5px;
+        }
+    }
+    .detail__reason-title, .detail__desc-title , .detail__skills-title{
+        margin-top: 32px;
+        font-size: 2.2rem;
+        font-weight: 500;
+    }
+    .detail__reason-list,.detail__desc-list,.detail__skills-list{
+        margin-top: 15px;
+        .detail__reason-item {
+            margin-left: 30px;
+            font-size: 1.6rem;
+            font-weight: 500;
+        }
+        .detail__desc-item, .detail__skill-item{
+            font-size: 1.6rem;
+            margin-left: 30px;
+        }
+    }
+    
+}

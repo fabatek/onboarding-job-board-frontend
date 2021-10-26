@@ -1,21 +1,23 @@
 
 
 import React, { FC, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootStore } from "../../../../utils/TypeScripts";
-import { jobs } from "../../../../redux/types/jobsType";
+import { Job } from "../../../../redux/types/jobsType";
 import "./ListsJobs.scss";
 import Paginate from "./Paginate/Paginate";
+import { setDetailJob } from "../../../../redux/actions/JobsAction";
 
 
 const ListsJobs: FC = () => {
     const jobs = useSelector((state: RootStore) => state.jobs)
+    const detailJob = useSelector((state: RootStore)=>state.detailJob)
+    const dispatch  = useDispatch()
     const [lists, setLists] = useState([])
-    const [pageNumber, setPageNumber] = useState(0);
-    const jobsPerPage = 10;
-    const pagesVisited = pageNumber * jobsPerPage;
+    
     useEffect(() => {
         setLists(jobs)
+        
     }, [jobs])
 
     return (
@@ -27,12 +29,15 @@ const ListsJobs: FC = () => {
             {
                 lists && <ul className="list__jobs">
                     {
-                        lists.map((item: jobs, index) => {
+                        lists.map((item: Job, index) => {
                             return (
-                                <li className="job__item" key={index} >
+                                <li 
+                                className="job__item" 
+                                key={index} 
+                                onClick={()=>dispatch(setDetailJob(item))}>
                                     <img
                                         className="job__item-img"
-                                        src="https://icdn.dantri.com.vn/thumb_w/660/2021/09/08/316784x441-1631079051594.jpg"
+                                        src={item.image}
                                         alt=""
                                     />
                                     <div className="job__item-info">
@@ -43,8 +48,9 @@ const ListsJobs: FC = () => {
                                             ${item.salary}
                                         </div>
                                         <div className="job__skill">
+                                            
                                             {
-                                                item.skills.map((skill, index) => {
+                                                item.skills && item.skills.map((skill, index) => {
                                                     return (
                                                         <div key={index} className="job__skill-item">
                                                             {skill}
