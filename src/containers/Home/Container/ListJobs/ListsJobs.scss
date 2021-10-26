@@ -1,5 +1,7 @@
+@import '../../../../index.scss';
+
 .ListsJobs{
-    background-color: var(--bg-body);
+    background-color:$bg_body;
     margin-top: 20px;
     width: 40%;
     max-height: 1340px;
@@ -9,55 +11,6 @@
         font-size: 2.5rem;
         font-weight: 600;
         padding: 20px 24px;
-    }
-    .list__jobs{
-        list-style: none;
-        align-items: center;
-        .job__item{
-            padding: 34px 24px;
-            display: flex;
-            align-items: center;
-            .job__item-img{
-                width: 65px;
-                height: 65px;
-                object-fit: cover;
-
-            }
-            .job__item-info{
-                margin-left: 30px;
-                font-size: 1.4rem;
-                .job__name{
-                    font-size: 2rem;
-                    color: var(--text-color);
-                    font-weight: 500;
-                    display: -webkit-box;
-                    -webkit-line-clamp: 1;
-                    -webkit-box-orient: vertical;
-                    overflow: hidden;
-                  
-                }
-                .job__salary{
-                    color: var(--salary-color);
-                    font-weight: 600;
-                }
-                .job__skill{
-                    margin-top: 10px;
-                    
-                }
-                
-                .job__skill-item{
-                    margin-left: 10px;
-                    padding: 3px;
-                 
-                    
-                }
-            }
-        }
-        .job__item:hover{
-            box-shadow: 0 0 3px rgba($color: #000000, $alpha: 0.2);
-            cursor: pointer;
-            color: var(--hover-color)
-        }
     }
   
 }
