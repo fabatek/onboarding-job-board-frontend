@@ -21,7 +21,7 @@ const ListsJobs: FC = () => {
                     {
                         lists.map((item: Job, index) => {
                             return (
-                                <li className="job__item" key={index} >
+                                <li className="job__item" key={index} data-testid= "item-job" >
                                     <img
                                         className="job__item-img"
                                         src="https://icdn.dantri.com.vn/thumb_w/660/2021/09/08/316784x441-1631079051594.jpg"
