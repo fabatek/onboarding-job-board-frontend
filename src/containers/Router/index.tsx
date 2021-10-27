@@ -1,13 +1,20 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route,BrowserRouter } from "react-router-dom";
 
 import { routes } from "./services";
-import Home from "../Home";
+
+import Header from "../../components/Header";
+import Home from "../Home/index"
+import AllJobs from "../../components/AllJobs/AllJobs";
 
 const Router: React.FC = () => (
-  <Switch>
-    <Route path={routes.ROOT} component={Home} />
-  </Switch>
+  <BrowserRouter>
+    <Switch>
+      <Route path={routes.ROOT} component={Home} />
+      <Route path="/alljobs" component={AllJobs} />
+    </Switch>
+  </BrowserRouter>
+  
 );
 
 export default Router;
