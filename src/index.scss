@@ -1,20 +1,15 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-html{
+html {
   font-size: 62.5%;
 }
-:root{
-  --text-color: rgb(34,31,32);
-  --hover-color: rgb(234,30,48);
-  --salary-color: rgb(117,191,117);
-  --bg-body: rgb(255,255,255);
-  --bg-container: rgb(233,233,233);
-  --text-header: rgb(187,189,191);
-}
 
-.App{
-
-}
+$text_color: rgb(34, 31, 32);
+$hover_color: rgb(234, 30, 48);
+$salary_color: rgb(117, 191, 117);
+$bg_body: rgb(255, 255, 255);
+$bg_container: rgb(233, 233, 233);
+$text_header: rgb(187, 189, 191);

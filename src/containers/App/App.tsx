@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { getJobs } from '../../redux/actions/JobsAction';
+import { filterTitleJob, getJobs, setJobsPerPage } from '../../redux/actions/JobsAction';
 import Router from "../Router";
 
-function App() {
+const App = () => {
 	const dispatch = useDispatch()
-	useEffect(()=>{
+	useEffect(() => {
 		dispatch(getJobs())
-	},[dispatch])
+		dispatch(setJobsPerPage(2))
+		dispatch(filterTitleJob('eng'))
+	}, [dispatch])
 	return (
 		<>
 			<Router />

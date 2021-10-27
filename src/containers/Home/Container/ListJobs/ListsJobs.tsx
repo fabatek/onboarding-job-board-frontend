@@ -1,17 +1,14 @@
-
-
 import React, { FC, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import { RootStore } from "../../../../utils/TypeScripts";
 import { Job } from "../../../../redux/types/jobsType";
-import "./ListsJobs.scss";
-import Paginate from "./Paginate/Paginate";
 import { setDetailJob } from "../../../../redux/actions/JobsAction";
+import "./ListsJobs.scss";
 
 
 const ListsJobs: FC = () => {
     const jobs = useSelector((state: RootStore) => state.jobs)
-    const detailJob = useSelector((state: RootStore)=>state.detailJob)
     const dispatch  = useDispatch()
     const [lists, setLists] = useState([])
     
@@ -65,12 +62,8 @@ const ListsJobs: FC = () => {
                             )
                         })
                     }
-                </ul>
-              
+                </ul> 
             }
-            <Paginate />
-            
-
         </div>
     );
 }

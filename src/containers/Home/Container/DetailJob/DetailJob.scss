@@ -1,7 +1,9 @@
+@import '../../../../index.scss';
+
 .DetailJob{
     margin-top: 20px;
     width: 60%;
-    background-color: var(--bg-body);
+    background-color: $bg_body;
     overflow: scroll;
     overflow-x: hidden;
     max-height: 1340px;
@@ -19,7 +21,7 @@
         .detail__action-apply{
             width: 90%;
             border: none;
-            background-color: var(--hover-color);
+            background-color: $hover_color;
             color: white;
             border-radius: 10px;
             padding-top: 8px ;
@@ -37,11 +39,11 @@
         }
     }
     .detail__salary{
-        color: var(--salary-color);
+        color: $salary_color;
         margin-top: 10px;
         .detail__salary-icon{
             font-size: 1.6rem;
-            border: 1px solid var(--salary-color);
+            border: 1px solid $salary_color;
             border-radius: 50%;
             padding: 1px 4px
         }

@@ -1,6 +1,7 @@
 export const GETJOBS = 'GETJOBS'
 export const JOB = 'DETAILJOB'
 export const PAGE = 'PAGE'
+
 export interface Job {
     id?: string,
     title?: string,

@@ -1,5 +1,7 @@
+@import '../../../../index.scss';
+
 .ListsJobs{
-    background-color: var(--bg-body);
+    background-color: $bg-body;
     margin-top: 20px;
     width: 40%;
     max-height: 1340px;
@@ -28,7 +30,7 @@
                 font-size: 1.4rem;
                 .job__name{
                     font-size: 2rem;
-                    color: var(--text-color);
+                    color: $text_color;
                     font-weight: 500;
                     display: -webkit-box;
                     -webkit-line-clamp: 1;
@@ -37,7 +39,7 @@
                   
                 }
                 .job__salary{
-                    color: var(--salary-color);
+                    color: $salary_color;
                     font-weight: 600;
                 }
                 .job__skill{
@@ -56,7 +58,7 @@
         .job__item:hover{
             box-shadow: 0 0 3px rgba($color: #000000, $alpha: 0.2);
             cursor: pointer;
-            color: var(--hover-color)
+            color: $hover_color
         }
     }
   

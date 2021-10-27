@@ -7,4 +7,5 @@ const detailReducer = (state:Job = {}, action: IJob )=>{
         default: return state
     }
 }
+
 export default detailReducer
