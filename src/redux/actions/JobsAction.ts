@@ -1,57 +1,62 @@
 import { Dispatch } from "redux"
 
 import { getAPI } from "../../api/FetchData"
-import { GETJOBS, Job, GetJobs, IJob, JOB } from "../types/jobsType"
+import { ALERT, IAlertType } from "../types/alertType"
+import { GETJOBS, Job, GetJobs, IJob, JOB, JOBSPERPAGE } from "../types/jobsType"
 
-export const getJobs = () => async (dispatch: Dispatch<GetJobs>) => {
+export const getJobs = () => async (dispatch: Dispatch<GetJobs | IAlertType>) => {
     try {
+        dispatch({
+            type: ALERT,
+            payload: {
+                loading: true
+            }
+        })
         const res = await getAPI('jobs')
         dispatch({
             type: GETJOBS,
             payload: res.data
         })
+        dispatch({
+            type: ALERT,
+            payload: {
+                loading: false
+            }
+        })
     } catch (error) {
-        alert('Error')
+        alert(error)
     }
 }
 
-export const setJobsPerPage = (currentPage: number = 2) => async (dispatch: Dispatch<GetJobs>) => {
+export const setJobsPerPage = (currentPage: number) => async (dispatch: Dispatch<GetJobs | IAlertType>) => {
     const jobsPerPage = 10
     const jobIndexStart = (currentPage - 1) * jobsPerPage
     const jobIndexEnd = (currentPage - 1) * jobsPerPage + jobsPerPage
     try {
+        dispatch({
+            type: ALERT,
+            payload: {
+                loading: true
+            }
+        })
         const res = await getAPI('jobs')
         var jobs = res.data.slice(jobIndexStart, jobIndexEnd)
         dispatch({
-            type: GETJOBS,
+            type: JOBSPERPAGE,
             payload: jobs
+        })
+        dispatch({
+            type: ALERT,
+            payload: {
+                loading: false
+            }
         })
     } catch (error) {
         alert('Error')
     }
 }
 
-export const filterTitleJob = (filter: string) => async (dispatch: Dispatch<GetJobs>) => {
-    try {
-        try {
-            const res = await getAPI('jobs')
-            const jobs = res.data.filter((job) => {
-                if(job.title) return job.title.toLowerCase().indexOf(filter) !== -1
-            })
-            dispatch({
-                type: GETJOBS,
-                payload: jobs
-            })
-            console.log(jobs)
-        } catch (error) {
-            alert('Error')
-        }
-    } catch (error) {
-
-    }
-}
-
-export const setDetailJob = (job: Job) => async (dispatch: Dispatch<IJob>) => {
+export const setDetailJob = (job: Job) => async (dispatch: Dispatch<IJob | IAlertType>) => {
     dispatch({
         type: JOB,
         payload: job

@@ -1,6 +1,7 @@
 export const GETJOBS = 'GETJOBS'
 export const JOB = 'DETAILJOB'
 export const PAGE = 'PAGE'
+export const JOBSPERPAGE = 'JOBS_PER_PAGE'
 
 export interface Job {
     id?: string,
@@ -12,6 +13,7 @@ export interface Job {
     desc?: Array<string>
 }
 
+
 export interface IJob{
     type: typeof JOB,
     payload: Job
@@ -19,6 +21,6 @@ export interface IJob{
 
 
 export interface GetJobs  {
-    type: typeof GETJOBS,
+    type: typeof GETJOBS | typeof JOBSPERPAGE,
     payload: Job[]
 }
