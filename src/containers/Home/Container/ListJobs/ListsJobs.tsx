@@ -1,12 +1,13 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { Job } from "../../../../redux/types/jobsType";
 
 import { RootStore } from "../../../../utils/TypeScripts";
 import "./ListsJobs.scss";
 
-const ListsJobs: FC = () => {
+const ListsJobs= () => {
     const getjobs = useSelector((state: RootStore) => state.jobs)
-    const [lists, setLists] = useState([])
+    const [lists, setLists] = useState<Job[]>([])
     useEffect(() => {
         setLists(getjobs)
     }, [getjobs])

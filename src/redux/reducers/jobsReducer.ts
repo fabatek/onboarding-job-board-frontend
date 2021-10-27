@@ -1,6 +1,6 @@
-import { GetJobs ,GETJOBS} from "../types/jobsType";
+import { GetJobs ,GETJOBS ,Job} from "../types/jobsType";
 
-const jobsReducer = (state  = [], action: GetJobs )=>{
+const jobsReducer = (state: Job[]  = [], action: GetJobs )=>{
     switch(action.type){
         case GETJOBS:
             return action.payload

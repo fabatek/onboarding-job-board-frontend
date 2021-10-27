@@ -1,5 +1,6 @@
 export const GETJOBS = 'GETJOBS'
-export interface jobs {
+
+export interface Job {
     id: string,
     title: string,
     salary: number,
@@ -10,5 +11,5 @@ export interface jobs {
 
 export interface GetJobs  {
     type: typeof GETJOBS,
-    payload: []
+    payload: Job[]
 }
