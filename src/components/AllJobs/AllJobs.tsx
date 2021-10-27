@@ -16,7 +16,7 @@ const AllJobs: FC = () => {
     },[])
     return (
         <div>
-            <h2>All Jobs</h2>
+            <h2>All Jobs({jobs.length} Jobs)</h2>
             {jobs.map((jobs:any) => (       
                 <div key={jobs.id} className="jobsCard">
                     <div className="jobsCard__left">
