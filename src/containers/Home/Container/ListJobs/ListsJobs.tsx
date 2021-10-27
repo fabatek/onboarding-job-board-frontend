@@ -44,7 +44,6 @@ const ListsJobs: FC = () => {
                                                     )
                                                 })
                                             }
-
                                         </div>
                                     </div>
                                 </li>
