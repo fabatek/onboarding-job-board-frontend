@@ -9,6 +9,8 @@ import "./DetailJob.scss";
 
 function DetailJob() {
     const detailJob = useSelector((state: RootStore) => state.detailJob)
+    const page = useSelector((state:RootStore)=>state.page)
+    console.log(page)
     const jobs = useSelector((state: RootStore) => state.jobs)
     const [job, setJob] = useState<Job>({})
     useEffect(() => {

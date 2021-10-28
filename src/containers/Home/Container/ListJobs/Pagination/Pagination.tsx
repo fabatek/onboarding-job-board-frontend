@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 
 import { RootStore } from "../../../../../utils/TypeScripts"
 import { setJobsPerPage } from "../../../../../redux/actions/JobsAction"
+import { Job } from "../../../../../redux/types/jobsType"
 import './Pagination.scss'
 
 const Pagination = () => {
@@ -24,7 +25,7 @@ const Pagination = () => {
             {
                 newArr && newArr.map((arr, index) => {
                     return (
-                        <a href="/#" className="paginate__button" onClick={() => dispatch(setJobsPerPage(index + 1))} key={index}>{index + 1}</a>
+                        <a href="/#" className="paginate__button" onClick={() => dispatch(setJobsPerPage(index + 1,currentTotalJobs))} key={index}>{index + 1}</a>
                     )
                 })
             }
