@@ -5,13 +5,17 @@ import { RootStore } from '../../utils/TypeScripts';
 import Router from "../Router";
 
 const App = () => {
-	const jobs = useSelector((state:RootStore)=>state.jobs)
+	const jobs = useSelector((state: RootStore) => state.jobs)
 	const dispatch = useDispatch()
 	useEffect(() => {
 		dispatch(getJobs())
-		dispatch(setJobsPerPage(1,jobs))
-		dispatch(setDetailJob({}))
 	}, [dispatch])
+	useEffect(() => {
+		if (jobs) {
+			dispatch(setJobsPerPage(1, jobs))
+			dispatch(setDetailJob(jobs[0]))
+		}
+	}, [jobs])
 	return (
 		<>
 			<Router />

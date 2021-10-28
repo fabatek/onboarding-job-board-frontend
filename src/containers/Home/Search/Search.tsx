@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import { filterTitleJob } from "../../../redux/actions/JobsAction";
 import { RootStore } from "../../../utils/TypeScripts";
-
 import './Search.scss'
 
 const Search = () => {

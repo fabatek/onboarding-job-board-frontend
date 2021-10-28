@@ -1,9 +1,9 @@
-.paginate{
+.paginate {
     align-items: center;
     margin-top: 20px;
     margin-bottom: 20px;
     text-align: center;
-    .paginate__button{
+    .paginate__button {
         padding: 5px 10px;
         border: 1px solid #ccc;
         font-size: 1.4rem;
@@ -12,8 +12,18 @@
         border-radius: 4px;
         text-decoration: none;
     }
-    .paginate__button:hover{
+    .paginate__button:hover {
         background-color: #ccc;
-       
+    }
+    .paginate__button--active {
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        font-size: 1.4rem;
+        cursor: pointer;
+        margin: 3px 2px;
+        border-radius: 4px;
+        text-decoration: none;
+        background-color: rgb(51, 122, 183);
+        color: white;
     }
 }

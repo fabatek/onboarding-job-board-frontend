@@ -17,7 +17,6 @@ const Home = () => {
             {
                 alertType.loading ===true? <Loading /> : <Container />
             }
-            
         </div>
     );
 }

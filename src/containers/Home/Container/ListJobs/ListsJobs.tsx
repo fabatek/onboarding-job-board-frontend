@@ -12,11 +12,9 @@ const ListsJobs = () => {
     const jobs = useSelector((state: RootStore) => state.jobs)
     const dispatch = useDispatch()
     const [lists, setLists] = useState<Job[]>()
-
     useEffect(() => {
         setLists(jobsPerPage)
     }, [jobsPerPage])
-
     return (
         <div className="ListsJobs">
 
@@ -45,7 +43,6 @@ const ListsJobs = () => {
                                             ${item.salary}
                                         </div>
                                         <div className="job__skill">
-
                                             {
                                                 item.skills && item.skills.map((skill, index) => {
                                                     return (
@@ -55,7 +52,6 @@ const ListsJobs = () => {
                                                     )
                                                 })
                                             }
-
                                         </div>
                                     </div>
                                 </li>

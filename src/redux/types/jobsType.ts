@@ -13,12 +13,10 @@ export interface Job {
     desc?: Array<string>
 }
 
-
 export interface IJob{
     type: typeof JOB,
     payload: Job
 }
-
 
 export interface GetJobs  {
     type: typeof GETJOBS | typeof JOBSPERPAGE,
