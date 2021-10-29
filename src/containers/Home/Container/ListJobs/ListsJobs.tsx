@@ -5,7 +5,7 @@ import { Job } from "../../../../redux/types/jobsType";
 import { RootStore } from "../../../../utils/TypeScripts";
 import "./ListsJobs.scss";
 
-const ListsJobs= () => {
+const ListsJobs = () => {
     const getjobs = useSelector((state: RootStore) => state.jobs)
     const [lists, setLists] = useState<Job[]>([])
     useEffect(() => {
@@ -13,9 +13,12 @@ const ListsJobs= () => {
     }, [getjobs])
     return (
         <div className="ListsJobs">
-            <div className="jobs__title">
-                {lists.length} việc làm IT tại Việt Nam
-            </div>
+            {
+                lists && 
+                <div className="jobs__title">
+                    {lists.length} việc làm IT tại Việt Nam
+                </div>
+            }
         </div>
     );
 }
