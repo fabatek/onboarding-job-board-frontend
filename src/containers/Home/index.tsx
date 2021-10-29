@@ -8,7 +8,6 @@ function Home() {
   return (
     <div className="App">
       <Header/>
-      {/* <Dashboard/> */}
     </div>
   );
 }
