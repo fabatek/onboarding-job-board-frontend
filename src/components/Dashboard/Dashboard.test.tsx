@@ -26,3 +26,28 @@ describe("Step form interactive", () => {
     expect(paginationActive).toHaveBeenCalledTimes(1);
   });
 });
+//Search jobs
+describe('Input value', () => {
+  it('updates on change', () => {
+    const setSearch = jest.fn((value) => {})
+    
+    const { getByLabelText } = render(<Dashboard />)
+
+    const searchInput = getByLabelText('Search') as HTMLInputElement;
+
+    fireEvent.change(searchInput, { target: { value: 'test' } })
+
+    expect(searchInput.value).toBe('test')
+  })
+  it('value is null', () => {
+    const setSearch = jest.fn((value) => {})
+    
+    const { getByLabelText } = render(<Dashboard />)
+
+    const searchInput = getByLabelText('Search') as HTMLInputElement;
+
+    fireEvent.change(searchInput, { target: { value: '' } })
+
+    expect(searchInput.value).toBe('')
+  })
+})

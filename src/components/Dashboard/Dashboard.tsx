@@ -40,7 +40,7 @@ const Dashboard : FC = () => {
                     noValidate
                     autoComplete="off"
                     >
-                    <TextField id="outlined-basic" label="Search" variant="outlined"/>
+                    <TextField id="outlined-basic" label="Search" variant="outlined" onChange={(e)=>{ setSearchTerm(e.target.value)}}/>
                     
                     </Box>
                     <Autocomplete
@@ -52,8 +52,18 @@ const Dashboard : FC = () => {
                         />
                 </div>
             </div>
-                {jobs.slice(pagesVisited, pagesVisited + jobsPerPage)
-                     .map((jobs:any) => {
+                {jobs.filter((val:any)=>{
+                    if(searchTerm===""){
+                        return val;
+                    } else if(
+                        val.jobName.toLowerCase().includes(searchTerm.toLowerCase()) 
+                    ){
+                        return val;
+                    }
+                    
+                    })
+                    .slice(pagesVisited, pagesVisited + jobsPerPage)
+                    .map((jobs:any) => {
                         return (
                             <div key={jobs.id} className="jobsCard">
                                 <div className="jobsCard__left">
