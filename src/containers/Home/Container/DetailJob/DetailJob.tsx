@@ -27,10 +27,11 @@ const DetailJob = () => {
             }
         }
     }, [jobs, job, detailJob, currentPage])
+    console.log(job)
     return (
         <>
             {
-                job.id && <div className="DetailJob DetailJosb--actiove">
+                job.id !== "" && <div className="DetailJob DetailJosb--actiove">
                     <div className="detail__title">{job.title}</div>
                     <div className="detail__action">
                         <button className="detail__action-apply">Apply Now</button>

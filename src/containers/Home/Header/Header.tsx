@@ -11,7 +11,8 @@ const Header = () => {
                         <img
                             className="header__logo"
                             src="https://itviec.com/assets/logo-itviec-4492a2f2577a15a0a1d55444c21c0fa55810822b3b189fc689b450fb62ce0b5b.png"
-                            alt="logo" />
+                            alt="logo" 
+                            onClick={()=>window.location.href="/"}/>
                     </li>
                     <li className="header__menu-item">Việc Làm IT</li>
                     <li className="header__menu-item">Công ty IT Hàng Đầu</li>
@@ -30,7 +31,6 @@ const Header = () => {
                 </div>
             </div>
         </header>
-
     );
 }
 
