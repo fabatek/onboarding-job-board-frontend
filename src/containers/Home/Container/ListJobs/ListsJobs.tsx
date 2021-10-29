@@ -13,7 +13,7 @@ const ListsJobs: FC = () => {
     }, [getJobs])
     return (
         <div className="ListsJobs">
-            <div className="jobs__title">
+            <div className="jobs__title" data-testid= "test">
                 {lists.length} việc làm IT tại Việt Nam
             </div>
             {

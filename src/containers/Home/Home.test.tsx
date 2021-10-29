@@ -7,8 +7,15 @@ import Container from "./Container/Container";
 import Header from "./Header/Header";
 import Search from "./Search/Search";
 
-test('renders learn three components', () => {
-    render(<Header />)
-    render(<Search />)
-    render(<Provider store={store}><Container/></Provider>)
+describe('renders learn three components', () => {
+    it('render header component', () => {
+        render(<Header />)
+    })
+    it('render search component', () => {
+        render(<Search />)
+    })
+    it('render provider component', () => {
+        expect(render(<Provider store={store}><Container /></Provider>))
+    })
+
 });

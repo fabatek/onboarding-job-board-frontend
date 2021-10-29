@@ -12,6 +12,7 @@ const Search = () => {
                         className="search__input-input"
                         type="text"
                         placeholder="Tìm kiếm theo kỹ năng, chức vụ, công ty,..."
+                        aria-label="search-input"
                     />
                     <i className="search__input-icon fas fa-times"></i>
                 </div>
@@ -19,7 +20,7 @@ const Search = () => {
                     <i className="search__location-icon fas fa-map-marker-alt"></i>
                     <div>Thành phố</div>
                 </div>
-                <button className="search__button">
+                <button className="search__button" data-testid= "search-button">
                     Tìm kiếm
                 </button>
             </div>
