@@ -11,6 +11,7 @@ const Router: React.FC = () => (
   <BrowserRouter>
     <Switch>
       <Route path={routes.ROOT} component={Home} />
+      <Route path="/dashboard" component={Dashboard} />
       <Route path="/alljobs" component={AllJobs} />
     </Switch>
   </BrowserRouter>
