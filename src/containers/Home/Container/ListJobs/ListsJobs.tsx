@@ -7,14 +7,14 @@ import "./ListsJobs.scss";
 
 const ListsJobs: FC = () => {
     const getJobs = useSelector((state: RootStore) => state.jobs)
-    const [lists, setLists] = useState([])
+    const [lists, setLists] = useState<Job[]>()
     useEffect(() => {
         setLists(getJobs)
     }, [getJobs])
     return (
         <div className="ListsJobs">
-            <div className="jobs__title" data-testid= "test">
-                {lists.length} việc làm IT tại Việt Nam
+            <div className="jobs__title">
+                {Object.keys(getJobs).length} việc làm IT tại Việt Nam
             </div>
             {
                 lists && <ul className="list__jobs">
