@@ -14,8 +14,9 @@ const AllJobs: FC = () => {
             console.log(err);
         })
     },[])
+    
     return (
-        <div>
+        <div className = "allJobs">
             <h2>All Jobs({jobs.length} Jobs)</h2>
             {jobs.map((jobs:any) => (       
                 <div key={jobs.id} className="jobsCard">
@@ -23,7 +24,7 @@ const AllJobs: FC = () => {
                         <img src={jobs.jobImg} alt="" />
                     </div>
                     <div className = "jobsCard__center">
-                        <a href="" id="name">{jobs.jobName}</a>
+                        <a href="" id="name" >{jobs.jobName}</a>
                         <a href="" id="company">{jobs.jobCompany}</a>
                         <a href="" id="type">{jobs.jobType}</a>
                     </div>

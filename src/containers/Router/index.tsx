@@ -6,11 +6,13 @@ import { routes } from "./services";
 import Header from "../../components/Header";
 import Home from "../Home/index"
 import AllJobs from "../../components/AllJobs/AllJobs";
+import Dashboard from "../../components/Dashboard/Dashboard";
 
 const Router: React.FC = () => (
   <BrowserRouter>
     <Switch>
       <Route path={routes.ROOT} component={Home} />
+      <Route path="/dashboard" component={Dashboard} />
       <Route path="/alljobs" component={AllJobs} />
     </Switch>
   </BrowserRouter>
