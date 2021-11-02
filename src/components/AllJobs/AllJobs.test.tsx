@@ -3,8 +3,19 @@ import AllJobs from "./AllJobs";
 import React from "react";
 
 
-test('renders learn react link', () => {
-
-  render(<AllJobs />)
+describe("Step form reandering", () => {
+  it('it should render a step form`', () => {
+    const {container} = render(<AllJobs />);
+    
+    expect(container).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
+  });
 });
 
+describe("Display jobs test", () => {
+  it('renders an `.jobscard`', () => {
+    const {container} = render(<AllJobs  />);
+    expect(container.querySelectorAll('.allJobs').length).toBe(1);
+  });
+  
+});

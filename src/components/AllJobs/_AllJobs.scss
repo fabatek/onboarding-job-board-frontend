@@ -14,6 +14,11 @@
             height: 100%;
         }
     }
+    .jobsCard__right{
+        padding-right: auto;
+        margin-right: 2%;
+        text-align: right;
+    }
     .jobsCard__center{
         display: flex;
         flex-direction: column;
@@ -36,9 +41,5 @@
             line-height: 2.5;
         }
     }
-    .jobsCard__right{
-        padding-right: auto;
-        margin-right: 2%;
-        text-align: right;
-    }
+    
 }

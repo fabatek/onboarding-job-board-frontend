@@ -3,7 +3,6 @@ import './_AllJobs.scss'
 import axios from 'axios';
 import { jobs } from '../../types/jobsType'
 
-
 const AllJobs: FC = () => {
     const [jobs, setJobs] = useState([]);
     useEffect(() => {
@@ -30,9 +29,8 @@ const AllJobs: FC = () => {
                     <div className="jobsCard__right">
                         <p>{jobs.jobArea}</p>
                     </div>
-                    
                 </div>
-        ))}
+            ))}
         </div>
         
     )
