@@ -4,6 +4,7 @@ import React from "react";
 import Header from "../../components/Header";
 
 test('renders learn react link', () => {
-    render(<Home />)
+  const { container } = render(<Header />);
+  expect(container).toBeInTheDocument();
 });
 
