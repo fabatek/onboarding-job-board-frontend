@@ -16,13 +16,3 @@ describe('<Dashboard />', () => {
       expect(container.querySelectorAll('.dashBoard').length).toBe(1);
     });
 });
-//Click Pagination
-describe("Step form interactive", () => {
-  const paginationActive = jest.fn;
-  it('should got to next or prev step', () => {
-    const {container, getByRole} = render(<Dashboard />);
-    const prev = container.querySelector('paginatonBttns') as HTMLElement;
-    fireEvent.click(prev)
-    expect(paginationActive).toHaveBeenCalledTimes(1);
-  });
-});
