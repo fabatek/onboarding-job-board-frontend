@@ -1,13 +1,8 @@
 import React,{useState, useEffect, FC} from 'react'
 import './Dashboard.scss'
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
-import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
 import ReactPaginate from 'react-paginate';
 import axios from 'axios';
-const options = ['Ho Chi Minh', 'Ha Noi', 'Da Nang', 'Can Tho'];
+
 const Dashboard : FC = () => {
     const [jobs, setJobs] = useState([].slice(0, 100));
     const [pageNumber, setPageNumber] = useState(0);
@@ -35,21 +30,20 @@ const Dashboard : FC = () => {
             <h1>Có tất cả {jobs.length} IT Jobs For Chất Developers</h1>
             <div className='search'>
                 <div className="search__form">
-                    <Box component="form" sx={{'& > :not(style)': { m: 1, width: '55ch' },
-                    }}
-                    noValidate
-                    autoComplete="off"
-                    >
-                    <TextField id="outlined-basic" label="Search" variant="outlined" onChange={(e)=>{ setSearchTerm(e.target.value)}}/>
                     
-                    </Box>
-                    <Autocomplete
-                        disablePortal
-                        id="combo-box-demo"
-                        options={options}
-                        sx={{ width: 300 }}
-                        renderInput={(params) => <TextField {...params} label="City" />}
-                        />
+                    <Form.Control type="text" placeholder="Search..." onChange={(e)=>{ setSearchTerm(e.target.value)}} />
+                    
+                    <Dropdown>
+                        <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                            City
+                        </Dropdown.Toggle>
+
+                        <Dropdown.Menu>
+                            <Dropdown.Item href="#/action-1">Ha Noi</Dropdown.Item>
+                            <Dropdown.Item href="#/action-2">Ho Chi Minh</Dropdown.Item>
+                            <Dropdown.Item href="#/action-3">Da Nang</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
                 </div>
             </div>
                 {jobs.filter((val:any)=>{
@@ -94,11 +88,8 @@ const Dashboard : FC = () => {
                     activeClassName={"paginationActive"}
                     pageRangeDisplayed={10} marginPagesDisplayed={10}
                     data-testid="pagination"
-                    
-                     />
-                    
-        </div>
-        
+                     />         
+        </div> 
     )
 }
 
