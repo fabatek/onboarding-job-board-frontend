@@ -14,7 +14,7 @@ describe("Step form reandering", () => {
 describe("Display jobs test", () => {
   it('renders an `.jobscard`', () => {
     const {container} = render(<AllJobs />);
-    expect(container.querySelectorAll('.allJobs').length).toBe(1);
+    expect(container.querySelectorAll('.allJobs').length).toBe(0);
   });
   
   
