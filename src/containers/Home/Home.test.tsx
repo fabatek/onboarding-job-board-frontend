@@ -7,4 +7,3 @@ test('renders learn react link', () => {
   const { container } = render(<Header />);
   expect(container).toBeInTheDocument();
 });
-
