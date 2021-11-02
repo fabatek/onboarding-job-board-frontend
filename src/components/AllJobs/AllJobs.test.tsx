@@ -10,7 +10,6 @@ describe("Step form reandering", () => {
     expect(container).toMatchSnapshot();
   });
 });
-
 describe("Display jobs test", () => {
   it('renders an `.jobscard`', () => {
     const {container} = render(<AllJobs  />);
