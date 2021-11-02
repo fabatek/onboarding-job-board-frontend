@@ -2,6 +2,7 @@ import {render, fireEvent, screen} from "@testing-library/react";
 import Dashboard from "./Dashboard";
 import React from "react";
 import ReactPaginate from "react-paginate";
+
 describe("Step form reandering", () => {
   it('it should render a step form`', () => {
     const {container} = render(<Dashboard />);
