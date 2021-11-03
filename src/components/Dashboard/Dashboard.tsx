@@ -1,24 +1,26 @@
 import React,{useState, useEffect, FC} from 'react'
 import './Dashboard.scss'
+import { Dropdown, Form } from 'react-bootstrap';
 import ReactPaginate from 'react-paginate';
-import axios from 'axios';
-
+import { JobTotal } from '../TotalJobs/Job';
+import { useSelector, useDispatch } from 'react-redux';
+import {fetchJobs} from '../../data/api'
+interface RootState {
+    Job: [],
+    loading: boolean,
+    error: null
+  }
 const Dashboard : FC = () => {
-    const [jobs, setJobs] = useState([].slice(0, 100));
     const [pageNumber, setPageNumber] = useState(0);
     const jobsPerPage = 10; 
     const pagesVisited = pageNumber * jobsPerPage;
     const [searchTerm,setSearchTerm ] = useState("");
+    const jobs = useSelector((state: RootState) => state.Job.slice(0, 100));
+    const dispatch = useDispatch()
+     useEffect(() => {
+        dispatch(fetchJobs())
+        }, [dispatch])
         
-    useEffect(() => {
-        axios.get('https://6176370c03178d00173daae3.mockapi.io/api/api')
-        .then(res => {
-            setJobs(res.data)
-        }).catch(err => {
-            console.log(err);
-        })
-    },[])
-    
     //Pagination
     const pageCount = Math.ceil(jobs.length / jobsPerPage);
     const changePage = ( {selected}:any ) => {
@@ -27,7 +29,7 @@ const Dashboard : FC = () => {
     
     return (
         <div className="dashBoard">
-            <h1>Có tất cả {jobs.length} IT Jobs For Chất Developers</h1>
+            <JobTotal/>
             <div className='search'>
                 <div className="search__form">
                     
