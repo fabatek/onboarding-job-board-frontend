@@ -18,7 +18,6 @@ describe('<Dashboard />', () => {
 
 //Search jobs
 describe('Input value', () => {
-  const setSearch = jest.fn((value) => {})
   const { getByLabelText } = render(<Provider store={store}><Dashboard /></Provider>)
   const searchInput = getByLabelText('Search') as HTMLInputElement;
   it('updates on change', () => {
