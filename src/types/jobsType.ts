@@ -1,6 +1,4 @@
 
-
-export const GETJOBS = 'GETJOBS'
 export interface Job {
     id: string,
     jobName: string,
@@ -9,7 +7,3 @@ export interface Job {
     jobArea: string,
     jobImg: string
    }
-   export interface GetJobs  {
-    type: typeof GETJOBS,
-    payload: Job[]
-}
