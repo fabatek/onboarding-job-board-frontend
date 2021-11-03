@@ -7,16 +7,14 @@ import store from '../../store'
 describe("Step form reandering", () => {
   it('it should render a step form`', () => {
     const {container} = render(<Provider store={store}><AllJobs /></Provider>);
-    
     expect(container).toBeInTheDocument();
-    expect(container).toMatchSnapshot();
   });
 });
 
 describe("Display jobs test", () => {
   it('renders an `.jobscard`', () => {
     const {container} = render(<Provider store={store}><AllJobs /></Provider>);
-    expect(container.querySelectorAll('.allJobs').length).toBe(0);
+    expect(container.querySelectorAll('.alljobs').length).toBe(1);
   });
   
 });
