@@ -1,19 +1,24 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect } from 'react'
 import './_AllJobs.scss'
-import axios from 'axios';
+
+import { useSelector, useDispatch } from 'react-redux';
+import {fetchJobs} from '../../data/api'
+interface RootState {
+    Job: [],
+    loading: boolean,
+    error: null
+  }
 
 const AllJobs: FC = () => {
-    const [jobs, setJobs] = useState([]);
-    useEffect(() => {
-        axios.get('https://6176370c03178d00173daae3.mockapi.io/api/api')
-        .then(res => {
-            setJobs(res.data)
-        }).catch(err => {
-            console.log(err);
-        })
-    },[])
+    const jobs = useSelector((state: RootState) => state.Job);
+    const dispatch = useDispatch()
+     useEffect(() => {
+        dispatch(fetchJobs())
+        }, [dispatch])
+        
     return (
         <div>
+            
             <h2>All Jobs</h2>
             {jobs.map((jobs:any) => (       
                 <div key={jobs.id} className="jobsCard">
