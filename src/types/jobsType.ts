@@ -1,5 +1,5 @@
 
-export interface jobs {
+export interface Job {
     id: string,
     jobName: string,
     jobCompany:string,
