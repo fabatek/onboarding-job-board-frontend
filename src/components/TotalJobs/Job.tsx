@@ -10,8 +10,6 @@ interface RootState {
   }
 export function JobTotal() {
     const jobs = useSelector((state: RootState) => state.Job);
-    const [lists, setLists] = useState<Job[]>()
-   
     const dispatch = useDispatch()
      useEffect(() => {
         dispatch(fetchJobs())
