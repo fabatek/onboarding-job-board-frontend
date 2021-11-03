@@ -66,9 +66,9 @@ const Dashboard : FC = () => {
                                     <img src={jobs.jobImg} alt="" />
                                 </div>
                                 <div className="jobsCard__center">
-                                    <a href="" id="name">{jobs.jobName}</a>
-                                    <a href="" id="company">{jobs.jobCompany}</a>
-                                    <a href="" id="type">{jobs.jobType}</a>
+                                    <a href="" className="name">{jobs.jobName}</a>
+                                    <a href="" className="company">{jobs.jobCompany}</a>
+                                    <a href="" className="type">{jobs.jobType}</a>
                                 </div>
                                 <div className="jobsCard__right">
                                     <p>{jobs.jobArea}</p>
@@ -89,8 +89,7 @@ const Dashboard : FC = () => {
                     disabledClassName={"paginationDisabled"}
                     activeClassName={"paginationActive"}
                     pageRangeDisplayed={10} marginPagesDisplayed={10}
-                    data-testid="pagination"
-                     />         
+                    data-testid="pagination" />         
         </div> 
     )
 }
