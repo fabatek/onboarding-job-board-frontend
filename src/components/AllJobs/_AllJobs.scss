@@ -26,18 +26,18 @@
         margin-left: 5%;
         
         width: 70%;
-        #name,#company,#type{
+        .name,.company,.type{
             color: black;
             text-decoration: none;
         }
-        #name{
+        .name{
             font-size: 25px;
             font-weight: 500;
             &:hover{
                 color: brown;
             }
         }
-        #company,#type{
+        .company,.type{
             line-height: 2.5;
         }
     }

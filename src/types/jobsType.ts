@@ -1,5 +1,7 @@
 
-export interface jobs {
+
+export const GETJOBS = 'GETJOBS'
+export interface Job {
     id: string,
     jobName: string,
     jobCompany:string,
@@ -7,3 +9,7 @@ export interface jobs {
     jobArea: string,
     jobImg: string
    }
+   export interface GetJobs  {
+    type: typeof GETJOBS,
+    payload: Job[]
+}

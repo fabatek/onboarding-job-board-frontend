@@ -1,8 +1,6 @@
 import React from "react";
 import { Switch, Route,BrowserRouter } from "react-router-dom";
-
 import { routes } from "./services";
-
 import Header from "../../components/Header";
 import Home from "../Home/index"
 import AllJobs from "../../components/AllJobs/AllJobs";

@@ -1,29 +1,27 @@
 import React,{useState, useEffect, FC} from 'react'
 import './Dashboard.scss'
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
-import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
+import { Dropdown, Form } from 'react-bootstrap';
 import ReactPaginate from 'react-paginate';
-import axios from 'axios';
-const options = ['Ho Chi Minh', 'Ha Noi', 'Da Nang', 'Can Tho'];
+import { JobTotal } from '../TotalJobs/Job';
+import { useSelector, useDispatch } from 'react-redux';
+import {fetchJobs} from '../../data/api'
+interface RootState {
+    Job: [],
+    loading: boolean,
+    error: null
+  }
 const Dashboard : FC = () => {
-    const [jobs, setJobs] = useState([].slice(0, 100));
+    // const [jobs, setJobs] = useState([].slice(0, 100));
     const [pageNumber, setPageNumber] = useState(0);
     const jobsPerPage = 10; 
     const pagesVisited = pageNumber * jobsPerPage;
     const [searchTerm,setSearchTerm ] = useState("");
+    const jobs = useSelector((state: RootState) => state.Job.slice(0, 100));
+    const dispatch = useDispatch()
+     useEffect(() => {
+        dispatch(fetchJobs())
+        }, [dispatch])
         
-    useEffect(() => {
-        axios.get('https://6176370c03178d00173daae3.mockapi.io/api/api')
-        .then(res => {
-            setJobs(res.data)
-        }).catch(err => {
-            console.log(err);
-        })
-    },[])
-    
     //Pagination
     const pageCount = Math.ceil(jobs.length / jobsPerPage);
     const changePage = ( {selected}:any ) => {
@@ -32,24 +30,23 @@ const Dashboard : FC = () => {
     
     return (
         <div className="dashBoard">
-            <h1>Có tất cả {jobs.length} IT Jobs For Chất Developers</h1>
+            <JobTotal/>
             <div className='search'>
                 <div className="search__form">
-                    <Box component="form" sx={{'& > :not(style)': { m: 1, width: '55ch' },
-                    }}
-                    noValidate
-                    autoComplete="off"
-                    >
-                    <TextField id="outlined-basic" label="Search" variant="outlined" onChange={(e)=>{ setSearchTerm(e.target.value)}}/>
                     
-                    </Box>
-                    <Autocomplete
-                        disablePortal
-                        id="combo-box-demo"
-                        options={options}
-                        sx={{ width: 300 }}
-                        renderInput={(params) => <TextField {...params} label="City" />}
-                        />
+                    <Form.Control type="text" placeholder="Search..." onChange={(e)=>{ setSearchTerm(e.target.value)}} />
+                    
+                    <Dropdown>
+                        <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                            City
+                        </Dropdown.Toggle>
+
+                        <Dropdown.Menu>
+                            <Dropdown.Item href="#/action-1">Ha Noi</Dropdown.Item>
+                            <Dropdown.Item href="#/action-2">Ho Chi Minh</Dropdown.Item>
+                            <Dropdown.Item href="#/action-3">Da Nang</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
                 </div>
             </div>
                 {jobs.filter((val:any)=>{
