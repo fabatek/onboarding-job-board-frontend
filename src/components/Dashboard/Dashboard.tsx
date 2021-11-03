@@ -33,7 +33,7 @@ const Dashboard : FC = () => {
             <div className='search'>
                 <div className="search__form">
                     
-                    <Form.Control type="text" placeholder="Search..." onChange={(e)=>{ setSearchTerm(e.target.value)}} />
+                    <Form.Control aria-label='Search' type="text" placeholder="Search..." onChange={(e)=>{ setSearchTerm(e.target.value)}} />
                     
                     <Dropdown>
                         <Dropdown.Toggle variant="secondary" id="dropdown-basic">
