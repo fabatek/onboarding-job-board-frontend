@@ -17,7 +17,7 @@ const AllJobs: FC = () => {
         }, [dispatch])
         
     return (
-        <div>
+        <div className = 'alljobs'>
             
             <h2>All Jobs</h2>
             {jobs.map((jobs:any) => (       
