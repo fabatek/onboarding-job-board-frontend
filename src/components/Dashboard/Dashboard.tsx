@@ -1,40 +1,41 @@
-import React,{useState, useEffect, FC} from 'react'
+import React, { useState, useEffect, FC } from 'react'
 import './Dashboard.scss'
 import { Dropdown, Form } from 'react-bootstrap';
 import ReactPaginate from 'react-paginate';
 import { JobTotal } from '../TotalJobs/Job';
 import { useSelector, useDispatch } from 'react-redux';
-import {fetchJobs} from '../../data/api'
+import { fetchJobs } from '../../data/api'
+import { Job } from '../../types/jobsType';
 interface RootState {
     Job: [],
     loading: boolean,
     error: null
-  }
-const Dashboard : FC = () => {
+}
+const Dashboard: FC = () => {
     const [pageNumber, setPageNumber] = useState(0);
-    const jobsPerPage = 10; 
+    const jobsPerPage = 10;
     const pagesVisited = pageNumber * jobsPerPage;
-    const [searchTerm,setSearchTerm ] = useState("");
+    const [searchTerm, setSearchTerm] = useState("");
     const jobs = useSelector((state: RootState) => state.Job.slice(0, 100));
     const dispatch = useDispatch()
-     useEffect(() => {
+    useEffect(() => {
         dispatch(fetchJobs())
-        }, [dispatch])
-        
+    }, [dispatch])
+
     //Pagination
     const pageCount = Math.ceil(jobs.length / jobsPerPage);
-    const changePage = ( {selected}:any ) => {
-            setPageNumber(selected);
-        };
-    
+    const changePage = ({ selected }: any) => {
+        setPageNumber(selected);
+    };
+
     return (
         <div className="dashBoard">
-            <JobTotal/>
+            <JobTotal />
             <div className='search'>
                 <div className="search__form">
-                    
-                    <Form.Control aria-label='Search' type="text" placeholder="Search..." onChange={(e)=>{ setSearchTerm(e.target.value)}} />
-                    
+
+                    <Form.Control aria-label='Search' type="text" placeholder="Search..." onChange={(e) => { setSearchTerm(e.target.value) }} />
+
                     <Dropdown>
                         <Dropdown.Toggle variant="secondary" id="dropdown-basic">
                             City
@@ -48,50 +49,50 @@ const Dashboard : FC = () => {
                     </Dropdown>
                 </div>
             </div>
-                {jobs.filter((val:any)=>{
-                    if(searchTerm===""){
-                        return val;
-                    } else if(
-                        val.jobName.toLowerCase().includes(searchTerm.toLowerCase()) 
-                    ){
-                        return val;
-                    }
-                    
-                    })
-                    .slice(pagesVisited, pagesVisited + jobsPerPage)
-                    .map((jobs:any) => {
-                        return (
-                            <div key={jobs.id} className="jobsCard">
-                                <div className="jobsCard__left">
-                                    <img src={jobs.jobImg} alt="" />
-                                </div>
-                                <div className="jobsCard__center">
-                                    <a href="" className="name">{jobs.jobName}</a>
-                                    <a href="" className="company">{jobs.jobCompany}</a>
-                                    <a href="" className="type">{jobs.jobType}</a>
-                                </div>
-                                <div className="jobsCard__right">
-                                    <p>{jobs.jobArea}</p>
-                                </div>
-                                
+            {jobs.filter((val: any) => {
+                if (searchTerm === "") {
+                    return val;
+                } else if (
+                    val.jobName.toLowerCase().includes(searchTerm.toLowerCase())
+                ) {
+                    return val;
+                }
+
+            })
+                .slice(pagesVisited, pagesVisited + jobsPerPage)
+                .map((jobs: Job) => {
+                    return (
+                        <div key={jobs.id} className="jobsCard">
+                            <div className="jobsCard__left">
+                                <img src={jobs.jobImg} alt="" />
+                            </div>
+                            <div className="jobsCard__center">
+                                <a href="" className="name">{jobs.jobName}</a>
+                                <a href="" className="company">{jobs.jobCompany}</a>
+                                <a href="" className="type">{jobs.jobType}</a>
+                            </div>
+                            <div className="jobsCard__right">
+                                <p>{jobs.jobArea}</p>
                             </div>
 
-                        );
-                    })}
-                    <ReactPaginate 
-                    previousLabel={"Previous"}
-                    nextLabel={"Next"}
-                    pageCount={pageCount}
-                    onPageChange={changePage}
-                    containerClassName={"paginationBttns"}
-                    previousLinkClassName={"previousBttn"}
-                    nextLinkClassName={"nextBttn"}
-                    disabledClassName={"paginationDisabled"}
-                    activeClassName={"paginationActive"}
-                    pageRangeDisplayed={10} marginPagesDisplayed={10}
-                    data-testid="pagination"
-                     />         
-        </div> 
+                        </div>
+
+                    );
+                })}
+            <ReactPaginate
+                previousLabel={"Previous"}
+                nextLabel={"Next"}
+                pageCount={pageCount}
+                onPageChange={changePage}
+                containerClassName={"paginationBttns"}
+                previousLinkClassName={"previousBttn"}
+                nextLinkClassName={"nextBttn"}
+                disabledClassName={"paginationDisabled"}
+                activeClassName={"paginationActive"}
+                pageRangeDisplayed={10} marginPagesDisplayed={10}
+                data-testid="pagination"
+            />
+        </div>
     )
 }
 
