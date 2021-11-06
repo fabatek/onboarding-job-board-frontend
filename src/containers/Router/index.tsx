@@ -1,13 +1,13 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import { routes } from "./services";
 import Home from "../Home";
 
 const Router: React.FC = () => (
-  <Switch>
-    <Route path={routes.ROOT} component={Home} />
-  </Switch>
+  <Routes>
+    <Route path={routes.ROOT} element={<Home />} />
+  </Routes>
 );
 
 export default Router;
