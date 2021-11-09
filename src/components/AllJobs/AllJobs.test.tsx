@@ -11,7 +11,7 @@ describe("Step form reandering", () => {
 });
 
 describe("Display jobs test", () => {
-  it('renders an `.jobscard`', () => {
+  it('renders an `.alljobs`', () => {
     const { container } = render(<Provider store={store}><AllJobs /></Provider>);
     expect(container.querySelectorAll('.alljobs').length).toBe(1);
   });

@@ -18,4 +18,3 @@ export function fetchJobs() {
 
     }
 }
-export default fetchJobs;

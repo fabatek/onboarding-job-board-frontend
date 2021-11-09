@@ -9,8 +9,8 @@ const Router: React.FC = () => (
   <BrowserRouter>
     <Switch>
       <Route path={routes.ROOT} component={Home} />
-      <Route path={routes.alljob} component={AllJobs} />
-      <Route path={routes.dashBoard} component={Dashboard} />
+      <Route path={routes.ALLJOBS} component={AllJobs} />
+      <Route path={routes.DASHBOARD} component={Dashboard} />
     </Switch>
   </BrowserRouter>
 

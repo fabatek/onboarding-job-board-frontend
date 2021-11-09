@@ -3,7 +3,7 @@ import { Switch, Route, Link, BrowserRouter } from "react-router-dom";
 import { Navbar, Container, Nav, NavDropdown, Collapse } from 'react-bootstrap';
 import AllJobs from './AllJobs/AllJobs';
 import Dashboard from './Dashboard/Dashboard';
-
+import { routes } from "../containers/Router/services/index";
 const Header = () => {
     return (
         <div className='header'>
@@ -35,8 +35,8 @@ const Header = () => {
             <div className="container mt-3">
                 <BrowserRouter>
                     <Switch>
-                        <Route exact path={["/"]} component={Dashboard} />
-                        <Route exact path={["/alljobs"]} component={AllJobs} />
+                        <Route exact path={routes.ROOT} component={Dashboard} />
+                        <Route exact path={routes.ALLJOBS} component={AllJobs} />
                     </Switch>
                 </BrowserRouter>
 

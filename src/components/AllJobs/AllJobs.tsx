@@ -4,13 +4,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchJobs } from '../../data/api'
 import { Job } from '../../types/jobsType';
 interface RootState {
-    Job: [],
+    jobs: [],
     loading: boolean,
     error: null
 }
 
 const AllJobs: FC = () => {
-    const jobs = useSelector((state: RootState) => state.Job);
+    const jobs = useSelector((state: RootState) => state.jobs);
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(fetchJobs())
@@ -21,18 +21,18 @@ const AllJobs: FC = () => {
 
             <h2>All Jobs</h2>
 
-            {jobs.map((jobs: Job) => (
-                <div key={jobs.id} className="jobsCard">
+            {jobs.map((jobVal: Job) => (
+                <div key={jobVal.id} className="jobsCard">
                     <div className="jobsCard__left">
-                        <img src={jobs.jobImg} alt="" />
+                        <img src={jobVal.jobImg} alt="image job" />
                     </div>
                     <div className="jobsCard__center">
-                        <p className="name">{jobs.jobName}</p>
-                        <p className="company">{jobs.jobCompany}</p>
-                        <p className="type">{jobs.jobType}</p>
+                        <p className="name">{jobVal.jobName}</p>
+                        <p className="company">{jobVal.jobCompany}</p>
+                        <p className="type">{jobVal.jobType}</p>
                     </div>
                     <div className="jobsCard__right">
-                        <p>{jobs.jobArea}</p>
+                        <p>{jobVal.jobArea}</p>
                     </div>
                 </div>
             ))}

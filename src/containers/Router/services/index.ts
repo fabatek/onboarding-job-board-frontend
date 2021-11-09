@@ -1,5 +1,5 @@
 export const routes = {
   ROOT: "/",
-  dashBoard: "/dasboard",
-  alljob: "/alljobs"
+  DASHBOARD: "/dasboard",
+  ALLJOBS: "/alljobs"
 };
