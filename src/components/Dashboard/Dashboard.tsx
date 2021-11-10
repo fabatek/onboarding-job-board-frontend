@@ -11,7 +11,6 @@ import { RootState } from '../../reducer/reducer';
 const Dashboard: FC = () => {
     const jobs = useSelector((state: RootState) => state.jobs);
     const pagecount = useSelector((state: RootState) => state.pagecount);
-    const perpage = useSelector((state: RootState) => state.perpage);
 
     const dispatch = useDispatch();
 
@@ -26,25 +25,28 @@ const Dashboard: FC = () => {
 
     return (
         <div className="dashBoard">
-            <JobTotal />
-            <div className='search'>
-                <div className="search__form">
+            <div className="search-wrapper">
+                <JobTotal />
+                <div className='search'>
+                    <div className="search__form">
 
-                    <Form.Control aria-label='Search' type="text" placeholder="Search..." onChange={(e) => { dispatch(search(e.target.value)) }} />
+                        <Form.Control aria-label='Search' type="text" placeholder="Search..." onChange={(e) => { dispatch(search(e.target.value)) }} />
 
-                    <Dropdown>
-                        <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                            City
-                        </Dropdown.Toggle>
+                        <Dropdown>
+                            <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                                City
+                            </Dropdown.Toggle>
 
-                        <Dropdown.Menu>
-                            <Dropdown.Item href="#/action-1">Ha Noi</Dropdown.Item>
-                            <Dropdown.Item href="#/action-2">Ho Chi Minh</Dropdown.Item>
-                            <Dropdown.Item href="#/action-3">Da Nang</Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
+                            <Dropdown.Menu>
+                                <Dropdown.Item href="#/action-1">Ha Noi</Dropdown.Item>
+                                <Dropdown.Item href="#/action-2">Ho Chi Minh</Dropdown.Item>
+                                <Dropdown.Item href="#/action-3">Da Nang</Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
+                    </div>
                 </div>
             </div>
+           
             {jobs
                 .map((jobVal: Job) => (
                     <div key={jobVal.id} className="jobsCard">

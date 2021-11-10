@@ -3,14 +3,10 @@ import './_AllJobs.scss'
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchJobs } from '../../data/api'
 import { Job } from '../../types/jobsType';
-interface RootState {
-    jobs: [],
-    loading: boolean,
-    error: null
-}
+import { RootState } from '../../reducer/reducer';
 
 const AllJobs: FC = () => {
-    const jobs = useSelector((state: RootState) => state.jobs);
+    const jobs = useSelector((state: RootState) => state.allJobs);
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(fetchJobs())

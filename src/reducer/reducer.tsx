@@ -65,13 +65,13 @@ export function jobsReducer(state = initialStare, action: any) {
 
 
             const searchJobs = state.allJobs.filter((jobVal: Job) => {
-                return !value || jobVal.jobName.toLowerCase().includes(value.toLowerCase())
+                return !value || jobVal.jobName.toLowerCase().includes(value.toString().toLowerCase())
             }).slice(offset, offset + perpage);
             
             return {
                 ...state,
                 loading: false,
-                allJobs: searchJobs,
+                jobs: searchJobs,
             };
 
         default:
