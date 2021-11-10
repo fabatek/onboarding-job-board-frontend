@@ -11,7 +11,10 @@ import { RootState } from '../../reducer/reducer';
 const Dashboard: FC = () => {
     const jobs = useSelector((state: RootState) => state.jobs);
     const pagecount = useSelector((state: RootState) => state.pagecount);
+<<<<<<< HEAD
 
+=======
+>>>>>>> d6812a978e0ae3be5b96a04dd22d1863b6e55d67
     const dispatch = useDispatch();
 
     useEffect(() => {
