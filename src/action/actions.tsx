@@ -46,10 +46,3 @@ export function setOffset(offset: RootState['offset']) {
         }
     }
 }
-
-// export function setJobs(jobs: RootState['jobs']) {
-//     return {
-//         type: SET_JOBS,
-//         payload: jobs
-//     }
-// }
