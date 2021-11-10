@@ -2,21 +2,17 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchJobs } from '../../data/api'
-interface RootState {
-    Job: [],
-    loading: boolean,
-    error: null
-}
+import { RootState } from '../../reducer/reducer'
+
 export function JobTotal() {
-    const jobs = useSelector((state: RootState) => state.Job);
+    const allJobs = useSelector((state: RootState) => state.allJobs);
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(fetchJobs())
     }, [dispatch])
-
     return (
         <div>
-            <h1>Có tất cả {jobs?.length} IT Jobs For Chất Developers</h1>
+            <h1>Có tất cả {allJobs?.length} IT Jobs For Chất Developers</h1>
 
         </div>
 
