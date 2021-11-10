@@ -63,19 +63,13 @@ export function jobsReducer(state:RootState = initialStare, action: any) {
                 offset: action.payload,
                 jobs: arr[offset] || [],
             }
-        // case SET_JOBS:
-        //     return {
-        //         ...state,
-        //         loading: false
-        //     }
+       
         case SEARCH_JOB:
             let { value } = action.payload;
             value = value ?? state.value;
-
             const searchJobs = state.allJobs.filter((jobVal: Job) => {
                 return !value || jobVal.jobName.toLowerCase().includes(value.toString().toLowerCase())
             });
-
             return {
                 ...state,
                 loading: false,

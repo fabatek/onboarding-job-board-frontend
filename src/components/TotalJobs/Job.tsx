@@ -6,6 +6,7 @@ import { RootState } from '../../reducer/reducer'
 
 export function JobTotal() {
     const allJobs = useSelector((state: RootState) => state.jobs);
+
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(fetchJobs())
