@@ -1,17 +1,24 @@
-import logo from '../../logo.svg';
-import React from "react";
+
+import React,{FC,useEffect} from "react";
+import {useDispatch} from 'react-redux';
+import {useSelector} from '../hooks/useTypeSelector'
+import { jobActions } from "../store";
 
 import "./styles.scss";
 
-function Home() {
+const Home:FC  = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(jobActions.getJobs());
+  },[])
+
+  const { total,jobs } = useSelector(state => state.jobs)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Welcome to Faba onboarding project - Job board
-        </p>
-      </header>
+      <h1>{total}</h1>
+      <ul>
+        {jobs && jobs.map(job => (<li key={job.id}>{job.title}</li>))}
+      </ul>
     </div>
   );
 }
