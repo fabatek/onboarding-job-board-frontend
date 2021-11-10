@@ -1,3 +1,4 @@
+import { Action } from "redux";
 import { FETCH_JOB_FAIL, FETCH_JOB_SUCCESS, FETCH_JOB_LOADING, SEARCH_JOB, SET_OFFSET, SET_JOBS } from "../action/actions";
 import { Job } from "../types/jobsType";
 export const initialStare = {
@@ -8,7 +9,7 @@ export const initialStare = {
     value: '',
     perpage: 10,
     pagecount: 0,
-    offset: 0
+    offset: 0,
 }
 export interface RootState {
     jobs: Job[],
@@ -20,7 +21,7 @@ export interface RootState {
     pagecount: number;
     offset: number;
 }
-export function jobsReducer(state = initialStare, action: any) {
+export function jobsReducer(state:RootState = initialStare, action: any) {
     switch (action.type) {
         case FETCH_JOB_LOADING:
             return {
@@ -28,13 +29,13 @@ export function jobsReducer(state = initialStare, action: any) {
                 loading: true
             }
         case FETCH_JOB_SUCCESS: {
-            const { perpage, offset } = state;
+            const { offset, perpage } = state;
             return {
                 ...state,
                 loading: false,
                 allJobs: action.payload,
                 pagecount: action.payload.length / 10,
-                jobs: action.payload.slice(offset, offset + perpage),
+                jobs: action.payload.slice(offset, offset + perpage)
             }
         }
 
@@ -45,29 +46,36 @@ export function jobsReducer(state = initialStare, action: any) {
                 error: action.error
             }
         case SET_OFFSET:
-
-            return {
-                ...state,
-                offset: action.payload
-            }
-        case SET_JOBS:
-            return {
-                ...state,
-                loading: false,
-                jobs: action.payload
-            }
-        case SEARCH_JOB:
             const { perpage } = state;
-            let { value, offset } = action.payload;
-
-            value = value ?? state.value;
+            let { offset } = action.payload;
             offset = offset ?? state.offset;
+            let size = Math.floor(state.allJobs.length / perpage);
+            let arr = [];
+            let i = 0;
+            while (i < state.allJobs.length) {
+                arr.push(state.allJobs.slice(i, i += size));
 
+            }
+            console.log(arr)
+
+            return {
+                ...state,
+                offset: action.payload,
+                jobs: arr[offset] || [],
+            }
+        // case SET_JOBS:
+        //     return {
+        //         ...state,
+        //         loading: false
+        //     }
+        case SEARCH_JOB:
+            let { value } = action.payload;
+            value = value ?? state.value;
 
             const searchJobs = state.allJobs.filter((jobVal: Job) => {
                 return !value || jobVal.jobName.toLowerCase().includes(value.toString().toLowerCase())
-            }).slice(offset, offset + perpage);
-            
+            });
+
             return {
                 ...state,
                 loading: false,
