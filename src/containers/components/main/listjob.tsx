@@ -1,8 +1,5 @@
-import axios from 'axios'
-import React, { FC, useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { FC } from 'react'
 import { Link } from 'react-router-dom'
-import { getJobs } from '../../../api'
 import './listjob.scss'
 
 interface Job {

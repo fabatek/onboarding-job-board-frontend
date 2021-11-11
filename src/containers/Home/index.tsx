@@ -1,22 +1,10 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { isInterfaceDeclaration } from "typescript";
-import { JobList } from '../components/header/header';
-import { Content } from '../components/main/listjob';
-import { getJobs } from "../../api";
-import "./styles.scss";
 import { useDispatch, useSelector } from "react-redux";
-
-// type JobsType = {
-//   readonly id?: string,
-//   readonly job_name?: string,
-//   readonly salary?: number,
-//   readonly avatar?: string,
-//   readonly job_description?: string,
-//   readonly location?: string,
-//   readonly time?: string,
-//   readonly skill?: string[],
-// }
+import { getJobs } from "../../api";
+import { JobList } from '../components/header/header';
+import { Content } from "../components/main/listjob";
+import { Pagination } from "../components/pagination/pagination";
+import "./styles.scss";
 
 interface Job {
   jobs: [],
@@ -25,17 +13,33 @@ interface Job {
 }
 
 const Home: React.FC = () => {
-  const jobs = useSelector((state: Job)=>{return state.jobs})
+  const jobs = useSelector((state: any)=>{return state.jobs})
   const dispatch = useDispatch();
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [jobPerPage,setJobPerPage] = useState(10)
 
   useEffect(() => {
     dispatch(getJobs());
   }, [])
 
+  const indexLastPost = currentPage * jobPerPage;
+  const indexFirstPost = indexLastPost - jobPerPage;
+  const currentJob = jobs.slice(indexFirstPost,indexLastPost);
+  const pagination = (pageNumber: number) =>{
+    setCurrentPage(pageNumber);
+  }
+
   return (
     <div className="App">
       <JobList jobs={jobs}/>
-      <Content jobs={jobs}/>     
+      <Content jobs={currentJob} />
+      <Pagination
+          jobPerPage={jobPerPage}
+          totalJobs={jobs.length}
+          pagination={pagination}
+          className="pagination"
+      />
     </div>
   );
 }
