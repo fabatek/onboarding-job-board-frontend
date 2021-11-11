@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { RootState } from "../reducer/reducer";
 
 export const FETCH_JOB_LOADING = 'FETCH_JOBS_LOADING';
@@ -51,3 +52,32 @@ export function setJobs(jobs: RootState['jobs']) {
         payload: jobs
     }
 }
+=======
+export const FETCH_JOB_LOADING = 'FETCH_JOBS_LOADING';
+export const FETCH_JOB_SUCCESS = 'FETCH_JOBS_SUCCESS';
+export const FETCH_JOB_FAIL ='FETCH_JOBS_FAIL';
+interface RootState {
+    Job: [],
+    loading: boolean,
+    error: null
+  }
+export function fetchJobsLoading() {
+    return {
+        type: FETCH_JOB_LOADING
+    }
+}
+
+export function fetchJobsSuccess(Job:RootState) {
+    return {
+        type: FETCH_JOB_SUCCESS,
+        payload: Job
+    }
+}
+
+export function fetchJobsError(error: RootState) {
+    return {
+        type: FETCH_JOB_FAIL,
+        error: error
+    }
+}
+>>>>>>> 7b44d4d19e513edb805d5a0e39bfa89ef55dde3d
