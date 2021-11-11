@@ -18,6 +18,7 @@ const Dashboard: FC = () => {
 
     const changePage = ({ selected }: any) => {
         dispatch(setOffset(selected));
+        window.scrollTo(0, 0);//scroll to top
     }
 
 
