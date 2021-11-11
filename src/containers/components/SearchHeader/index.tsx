@@ -1,15 +1,15 @@
 import React, { FC, useEffect } from "react";
 import "./style.scss";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
+// import { jobActions } from "../../store";
 import { useSelector } from "../../hooks/useTypeSelector";
-import { jobActions } from "../../store";
 import { BsSearch, BsXLg, BsGeoAlt } from "react-icons/bs";
 
 export const SearchHeader: FC = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(jobActions.getJobs());
-  }, []);
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(jobActions.getJobs());
+  // }, []);
   const { total, jobs } = useSelector((state) => state.jobs);
   return (
     <div className="search-header ">

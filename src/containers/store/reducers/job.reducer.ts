@@ -8,22 +8,26 @@ interface JobState {
   page:number;
   totalPage: number;
   perPage: number;
-  jobs:Job[] | null
+  jobs:Job[] | null;
+  isLoading:boolean;
 }
 const initialState = {
     total:0,
     page:0,
     totalPage:0,
     perPage:0,
-    jobs:null
+    jobs:null,
+    isLoading:false
 }
 export const jobReducer = (state:JobState = initialState,action:Action):JobState => {
     switch (action.type) {
         case ActionTypes.GET_JOBS_REQUEST: 
-            return {...state}
+            return {...state,isLoading:true}
         case ActionTypes.GET_JOBS_SUCCESS:
-            let lengJobs:number = action.payload.length;
-            return {...state,jobs:action.payload,total:lengJobs}
+            let lengthJobs:number = action.payload.length;
+            return {...state,jobs:action.payload,total:lengthJobs,isLoading:false}
+        case ActionTypes.GET_JOBS_FAIL :
+            return {...state,isLoading:false}
         default : 
         return state
     }

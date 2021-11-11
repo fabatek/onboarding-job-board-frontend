@@ -10,10 +10,12 @@ export const getJobs = () => async (dispatch: Dispatch<Action>)  => {
         })
 
         const {data} = await axios.get<Job[]>("https://618b9928ded7fb0017bb90d0.mockapi.io/api/v1/jobs/jobs");
-        dispatch({
-            type: ActionTypes.GET_JOBS_SUCCESS,
-            payload: data
-        })
+        setTimeout(() => {
+            dispatch({
+                type: ActionTypes.GET_JOBS_SUCCESS,
+                payload: data
+            })
+        },1000)
     }catch (err:any) {
         dispatch({
             type: ActionTypes.GET_JOBS_SUCCESS,
