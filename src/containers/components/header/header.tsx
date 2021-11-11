@@ -8,7 +8,6 @@ interface Job {
 }
 
 export const JobList: FC<Job> = (jobs): JSX.Element => {
-  console.log(jobs);
   return (
     <section className="header">
         <h1 className="title">{jobs.jobs.length} Jobs are available</h1>

@@ -26,6 +26,7 @@
     .job_name {
       font-weight: bold;
       font-size: 22px;
+      text-decoration: none;
       @include paraStyle;
     }
 

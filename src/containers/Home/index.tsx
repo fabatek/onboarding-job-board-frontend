@@ -28,8 +28,6 @@ const Home: React.FC = () => {
   const jobs = useSelector((state: Job)=>{return state.jobs})
   const dispatch = useDispatch();
 
-  console.log(jobs);
-
   useEffect(() => {
     dispatch(getJobs());
   }, [])

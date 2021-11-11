@@ -21,17 +21,20 @@ type JobsType = {
 }
 
 export const Content: FC<Job> = (jobs): JSX.Element => {
-  console.log(jobs)
+  const changeDate = (date: string) => {
+		var newDate = new Date(date);
+		return newDate.toDateString();
+	}
+
   return (
     <section className="list_job">
-        {/* {jobs ? jobs.map((job,index)=>{
-          console.log(job)
+        {jobs ? jobs.jobs.map((job: JobsType,index)=>{
           return (
             <div className="short-list-job" key={job.id}>
               <img src={job.avatar} alt="#" className="job_img"/>
               <div className="info">
-                <p className="job_name">
-                  <Link to={`/jobList/${job.id}`}>{job.job_name}</Link>
+                <p>
+                  <Link to={`/jobList/${job.id}`} className="job_name">{job.job_name}</Link>
                   </p>
                 <p className="salary">• Salary: {job.salary}$</p>
                 <p className="location">• Location: {job.location}</p>
@@ -39,7 +42,7 @@ export const Content: FC<Job> = (jobs): JSX.Element => {
               </div>
             </div>
           )
-        }) : null} */}
+        }) : null}
         <div className="detail">
 
         </div>
