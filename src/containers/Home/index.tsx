@@ -2,6 +2,8 @@
 import React,{FC, useEffect} from "react";
 import { Header } from "../components/Header";
 import { Loading } from "../components/Loading";
+import { JobContent } from "../components/JobContent";
+
 import { SearchHeader } from "../components/SearchHeader";
 import { useDispatch } from "react-redux";
 import { useSelector } from "../hooks/useTypeSelector";
@@ -23,6 +25,7 @@ const Home:FC  = () => {
       <Header/>
       <div id="container">
         <SearchHeader/>
+        <JobContent/>
       </div>
     </div>
   );
