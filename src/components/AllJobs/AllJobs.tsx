@@ -13,6 +13,7 @@ const AllJobs: FC = () => {
     }, [dispatch])
 
     return (
+
         <div className='alljobs'>
 
             <h2>All Jobs</h2>

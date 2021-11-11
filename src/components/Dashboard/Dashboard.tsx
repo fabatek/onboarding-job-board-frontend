@@ -2,7 +2,6 @@ import React, { useEffect, FC } from 'react'
 import './Dashboard.scss'
 import { Dropdown, Form } from 'react-bootstrap';
 import ReactPaginate from 'react-paginate';
-import { JobTotal } from '../TotalJobs/Job';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchJobs } from '../../data/api'
 import { Job } from '../../types/jobsType';
@@ -11,21 +10,20 @@ import { RootState } from '../../reducer/reducer';
 const Dashboard: FC = () => {
     const jobs = useSelector((state: RootState) => state.jobs);
     const pagecount = useSelector((state: RootState) => state.pagecount);
+    const allJobs = useSelector((state: RootState) => state.allJobs);
     const dispatch = useDispatch();
-
     useEffect(() => {
         dispatch(fetchJobs())
     }, [dispatch]);
 
     const changePage = ({ selected }: any) => {
         dispatch(setOffset(selected));
-        console.log(setOffset(selected), "value")
     }
 
 
     return (
         <div className="dashBoard">
-            <JobTotal />
+            <h1>Có tất cả {allJobs?.length} IT Jobs For Chất Developers</h1>
             <div className='search'>
                 <div className="search__form">
                     <Form.Control aria-label='Search' type="text" placeholder="Search..." onChange={(e) => { dispatch(search(e.target.value)) }} />
@@ -41,8 +39,7 @@ const Dashboard: FC = () => {
                     </Dropdown>
                 </div>
             </div>
-
-            {jobs.map((jobVal: Job) => (
+            {jobs?.map((jobVal: Job) => (
                 <div key={jobVal.id} className="jobsCard">
                     <div className="jobsCard__left">
                         <img src={jobVal.jobImg} alt="image job" />
