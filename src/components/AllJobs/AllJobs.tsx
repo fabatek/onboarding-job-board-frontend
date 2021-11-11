@@ -1,41 +1,40 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect } from 'react'
 import './_AllJobs.scss'
-import axios from 'axios';
-import { jobs } from '../../types/jobsType'
-
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchJobs } from '../../data/api'
+import { Job } from '../../types/jobsType';
+import { RootState } from '../../reducer/reducer';
 
 const AllJobs: FC = () => {
-    const [jobs, setJobs] = useState([]);
+    const jobs = useSelector((state: RootState) => state.allJobs);
+    const dispatch = useDispatch()
     useEffect(() => {
-        axios.get('https://6176370c03178d00173daae3.mockapi.io/api/api')
-        .then(res => {
-            setJobs(res.data)
-        }).catch(err => {
-            console.log(err);
-        })
-    },[])
-    
+        dispatch(fetchJobs())
+    }, [dispatch])
+
     return (
-        <div className = "allJobs">
-            <h2>All Jobs({jobs.length} Jobs)</h2>
-            {jobs.map((jobs:any) => (       
-                <div key={jobs.id} className="jobsCard" >
+
+        <div className='alljobs'>
+
+            <h2>All Jobs</h2>
+
+            {jobs.map((jobVal: Job) => (
+                <div key={jobVal.id} className="jobsCard">
                     <div className="jobsCard__left">
-                        <img src={jobs.jobImg} alt="" />
+                        <img src={jobVal.jobImg} alt="image job" />
                     </div>
-                    <div className = "jobsCard__center">
-                        <a href="" id="name" >{jobs.jobName}</a>
-                        <a href="" id="company">{jobs.jobCompany}</a>
-                        <a href="" id="type">{jobs.jobType}</a>
+                    <div className="jobsCard__center">
+                        <p className="name">{jobVal.jobName}</p>
+                        <p className="company">{jobVal.jobCompany}</p>
+                        <p className="type">{jobVal.jobType}</p>
                     </div>
                     <div className="jobsCard__right">
-                        <p>{jobs.jobArea}</p>
+                        <p>{jobVal.jobArea}</p>
                     </div>
-                    
                 </div>
-        ))}
+            ))}
         </div>
-        
+
     )
 }
 

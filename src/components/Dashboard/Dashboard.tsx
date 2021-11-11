@@ -1,105 +1,75 @@
-import React,{useState, useEffect, FC} from 'react'
+import React, { useEffect, FC } from 'react'
 import './Dashboard.scss'
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
-import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
+import { Dropdown, Form } from 'react-bootstrap';
 import ReactPaginate from 'react-paginate';
-import axios from 'axios';
-const options = ['Ho Chi Minh', 'Ha Noi', 'Da Nang', 'Can Tho'];
-const Dashboard : FC = () => {
-    const [jobs, setJobs] = useState([].slice(0, 100));
-    const [pageNumber, setPageNumber] = useState(0);
-    const jobsPerPage = 10; 
-    const pagesVisited = pageNumber * jobsPerPage;
-    const [searchTerm,setSearchTerm ] = useState("");
-        
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchJobs } from '../../data/api'
+import { Job } from '../../types/jobsType';
+import { search, setOffset } from '../../action/actions';
+import { RootState } from '../../reducer/reducer';
+const Dashboard: FC = () => {
+    const jobs = useSelector((state: RootState) => state.jobs);
+    const pagecount = useSelector((state: RootState) => state.pagecount);
+    const allJobs = useSelector((state: RootState) => state.allJobs);
+    const dispatch = useDispatch();
     useEffect(() => {
-        axios.get('https://6176370c03178d00173daae3.mockapi.io/api/api')
-        .then(res => {
-            setJobs(res.data)
-        }).catch(err => {
-            console.log(err);
-        })
-    },[])
-    
-    //Pagination
-    const pageCount = Math.ceil(jobs.length / jobsPerPage);
-    const changePage = ( {selected}:any ) => {
-            setPageNumber(selected);
-        };
-    
+        dispatch(fetchJobs())
+    }, [dispatch]);
+
+    const changePage = ({ selected }: any) => {
+        dispatch(setOffset(selected));
+        window.scrollTo(0, 0);//scroll to top
+    }
+
     return (
         <div className="dashBoard">
-            <h1>Có tất cả {jobs.length} IT Jobs For Chất Developers</h1>
+            <h1>Có tất cả {allJobs?.length} IT Jobs For Chất Developers</h1>
             <div className='search'>
                 <div className="search__form">
-                    <Box component="form" sx={{'& > :not(style)': { m: 1, width: '55ch' },
-                    }}
-                    noValidate
-                    autoComplete="off"
-                    >
-                    <TextField id="outlined-basic" label="Search" variant="outlined" onChange={(e)=>{ setSearchTerm(e.target.value)}}/>
-                    
-                    </Box>
-                    <Autocomplete
-                        disablePortal
-                        id="combo-box-demo"
-                        options={options}
-                        sx={{ width: 300 }}
-                        renderInput={(params) => <TextField {...params} label="City" />}
-                        />
+
+                    <Form.Control aria-label='Search' type="text" placeholder="Search..." onChange={(e) => { dispatch(search(e.target.value)) }} />
+                    <Dropdown>
+                        <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                            City
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu>
+                            <Dropdown.Item href="#/action-1">Ha Noi</Dropdown.Item>
+                            <Dropdown.Item href="#/action-2">Ho Chi Minh</Dropdown.Item>
+                            <Dropdown.Item href="#/action-3">Da Nang</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
                 </div>
             </div>
-                {jobs.filter((val:any)=>{
-                    if(searchTerm===""){
-                        return val;
-                    } else if(
-                        val.jobName.toLowerCase().includes(searchTerm.toLowerCase()) 
-                    ){
-                        return val;
-                    }
-                    
-                    })
-                    .slice(pagesVisited, pagesVisited + jobsPerPage)
-                    .map((jobs:any) => {
-                        return (
-                            <div key={jobs.id} className="jobsCard">
-                                <div className="jobsCard__left">
-                                    <img src={jobs.jobImg} alt="" />
-                                </div>
-                                <div className="jobsCard__center">
-                                    <a href="" id="name">{jobs.jobName}</a>
-                                    <a href="" id="company">{jobs.jobCompany}</a>
-                                    <a href="" id="type">{jobs.jobType}</a>
-                                </div>
-                                <div className="jobsCard__right">
-                                    <p>{jobs.jobArea}</p>
-                                </div>
-                                
-                            </div>
-
-                        );
-                    })}
-                    <ReactPaginate 
-                    previousLabel={"Previous"}
-                    nextLabel={"Next"}
-                    pageCount={pageCount}
-                    onPageChange={changePage}
-                    containerClassName={"paginationBttns"}
-                    previousLinkClassName={"previousBttn"}
-                    nextLinkClassName={"nextBttn"}
-                    disabledClassName={"paginationDisabled"}
-                    activeClassName={"paginationActive"}
-                    pageRangeDisplayed={10} marginPagesDisplayed={10}
-                    data-testid="pagination"
-                    
-                     />
-                    
+            {jobs?.map((jobVal: Job) => (
+                <div key={jobVal.id} className="jobsCard">
+                    <div className="jobsCard__left">
+                        <img src={jobVal.jobImg} alt="image job" />
+                    </div>
+                    <div className="jobsCard__center">
+                        <p className="name">{jobVal.jobName}</p>
+                        <p className="company">{jobVal.jobCompany}</p>
+                        <p className="type">{jobVal.jobType}</p>
+                    </div>
+                    <div className="jobsCard__right">
+                        <p>{jobVal.jobArea}</p>
+                    </div>
+                </div>
+            ))}
+            <ReactPaginate
+                previousLabel={"Previous"}
+                nextLabel={"Next"}
+                pageCount={pagecount}
+                onPageChange={changePage}
+                containerClassName={"paginationBttns"}
+                previousLinkClassName={"previousBttn"}
+                nextLinkClassName={"nextBttn"}
+                disabledClassName={"paginationDisabled"}
+                activeClassName={"paginationActive"}
+                pageRangeDisplayed={10} marginPagesDisplayed={1}
+            />
         </div>
-        
     )
 }
 
 export default Dashboard
+

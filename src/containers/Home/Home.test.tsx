@@ -1,9 +1,11 @@
-import {render} from "@testing-library/react";
-import Home from "../Home/index";
-import React from "react";
+import { render } from "@testing-library/react";
 import Header from "../../components/Header";
+import { Provider } from 'react-redux';
+import store from '../../store'
 
-test('renders learn react link', () => {
-    render(<Home />)
+describe("Step form reandering", () => {
+  it('it should render a step form`', () => {
+    const { container } = render(<Provider store={store}><Header /></Provider>);
+    expect(container).toBeInTheDocument();
+  });
 });
-
