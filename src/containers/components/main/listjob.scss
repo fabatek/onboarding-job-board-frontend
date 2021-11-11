@@ -1,0 +1,44 @@
+@mixin paraStyle {
+  margin: 0px;
+  padding: 0px;
+}
+
+.list_job {
+  text-align: left;
+
+  .short-list-job {
+    margin: 50px 0px -40px 50px;
+    height: 200px;
+    width: 581px;
+
+    border: 1px solid #000;
+    margin-bottom: -50px;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 0px;
+
+    .job_img {
+      margin: 20px 30px 0px 30px;
+      height: 60px;
+      width: 60px;
+    }
+
+    .job_name {
+      font-weight: bold;
+      font-size: 22px;
+      @include paraStyle;
+    }
+
+    .salary {
+      @include paraStyle;
+    }
+
+    .location {
+      @include paraStyle;
+    }
+  }
+
+  .short-list-job:hover {
+    border: 2px solid #ff0000;
+  }
+}
