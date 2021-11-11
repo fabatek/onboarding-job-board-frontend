@@ -3,21 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "@emotion/react": "^11.5.0",
-    "@emotion/styled": "^11.3.0",
-    "@mui/material": "^5.0.4",
-    "@testing-library/react": "^9.3.2",
-=======
     "@reduxjs/toolkit": "^1.6.2",
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^12.1.2",
->>>>>>> 52716a70f7dd490c2acba65e07f543f80865078e
-=======
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^12.1.2",
->>>>>>> 7b44d4d19e513edb805d5a0e39bfa89ef55dde3d
     "@testing-library/user-event": "^7.1.2",
     "@types/react-bootstrap": "^0.32.28",
     "@types/react-redux": "^7.1.20",
