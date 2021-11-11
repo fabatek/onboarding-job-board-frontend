@@ -1,3 +1,4 @@
+
 import { FETCH_JOB_FAIL, FETCH_JOB_SUCCESS, FETCH_JOB_LOADING, SEARCH_JOB, SET_OFFSET, SET_JOBS } from "../action/actions";
 import { Job } from "../types/jobsType";
 export const initialStare = {

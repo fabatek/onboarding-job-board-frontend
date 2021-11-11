@@ -39,6 +39,7 @@ const Dashboard: FC = () => {
                     </Dropdown>
                 </div>
             </div>
+
             {jobs?.map((jobVal: Job) => (
                 <div key={jobVal.id} className="jobsCard">
                     <div className="jobsCard__left">
@@ -67,6 +68,7 @@ const Dashboard: FC = () => {
                 pageRangeDisplayed={10} marginPagesDisplayed={1}
             />
         </div>
+                
     )
 }
 
