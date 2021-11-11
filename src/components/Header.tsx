@@ -1,6 +1,6 @@
 import React from 'react'
-import { Switch, Route, BrowserRouter } from "react-router-dom";
 import { Navbar, Container, Nav } from 'react-bootstrap';
+import { Switch, Route, BrowserRouter } from "react-router-dom";
 import AllJobs from './AllJobs/AllJobs';
 import Dashboard from './Dashboard/Dashboard';
 import { routes } from "../containers/Router/services/index";

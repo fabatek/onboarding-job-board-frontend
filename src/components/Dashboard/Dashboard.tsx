@@ -20,7 +20,6 @@ const Dashboard: FC = () => {
         dispatch(setOffset(selected));
         window.scrollTo(0, 0);//scroll to top
     }
-
     return (
         <div className="dashBoard">
             <h1>Có tất cả {allJobs?.length} IT Jobs For Chất Developers</h1>

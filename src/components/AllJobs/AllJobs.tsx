@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from 'react'
-import './_AllJobs.scss'
 import { useSelector, useDispatch } from 'react-redux';
+import './_AllJobs.scss'
 import { fetchJobs } from '../../data/api'
 import { Job } from '../../types/jobsType';
 import { RootState } from '../../reducer/reducer';
@@ -13,11 +13,8 @@ const AllJobs: FC = () => {
     }, [dispatch])
 
     return (
-
         <div className='alljobs'>
-
             <h2>All Jobs</h2>
-
             {jobs.map((jobVal: Job) => (
                 <div key={jobVal.id} className="jobsCard">
                     <div className="jobsCard__left">
@@ -34,7 +31,6 @@ const AllJobs: FC = () => {
                 </div>
             ))}
         </div>
-
     )
 }
 

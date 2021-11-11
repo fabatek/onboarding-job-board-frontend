@@ -1,6 +1,6 @@
 import { render, fireEvent } from "@testing-library/react";
-import Dashboard from "./Dashboard";
 import { Provider } from 'react-redux';
+import Dashboard from "./Dashboard";
 import store from '../../store'
 describe("Step form reandering", () => {
   it('it should render a step form`', () => {
@@ -15,7 +15,6 @@ describe('<Dashboard />', () => {
     expect(container.querySelectorAll('.dashBoard').length).toBe(1);
   });
 });
-
 //Search jobs
 describe('Input value', () => {
   const { getByLabelText } = render(<Provider store={store}><Dashboard /></Provider>)

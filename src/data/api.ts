@@ -15,6 +15,5 @@ export function fetchJobs() {
                 dispatch(fetchJobsError(error));
 
             });
-
     }
 }

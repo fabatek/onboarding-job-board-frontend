@@ -1,12 +1,10 @@
 @import '../AllJobs/AllJobs';
 .dashBoard{
-
     .search{
         .search__form{
             display: flex;
             align-items: center;
             justify-content: center;
-
         }
     }
     .paginationBttns {
@@ -17,28 +15,25 @@
         justify-content: center;
         align-items: flex-end;
         margin-top: 20px;
-         
         a {
             padding: 10px;
             margin: 8px;
             border-radius: 5px;
-            border: 1px solid #2b2eff;
-            color: #2b2eff;
+            border: 1px solid #43464B;
+            color: #43464B;
             cursor: pointer;
             &:hover {
                 color: white;
-                background-color: #2b2eff;
+                background-color: #43464B;
               }
-          }
-          
+          } 
       }
-      .paginationActive a {
+    .paginationActive a {
         color: white;
-        background-color: #2b2eff;
-      }
-      
-      .paginationDisabled a {
+        background-color: #43464B;
+    }
+    .paginationDisabled a {
         color: grey;
         background-color: grey;
-      }
+    }
 }

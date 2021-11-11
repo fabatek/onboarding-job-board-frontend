@@ -8,5 +8,4 @@ const store = createStore(
     jobsReducer,
     composeWithDevTools(applyMiddleware(thunk))
 )
-
 export default store

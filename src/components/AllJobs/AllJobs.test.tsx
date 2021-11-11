@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
-import AllJobs from "./AllJobs";
 import { Provider } from 'react-redux';
+import AllJobs from "./AllJobs";
 import store from '../../store'
 
 describe("Step form reandering", () => {

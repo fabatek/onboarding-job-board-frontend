@@ -6,3 +6,4 @@ export interface Job {
     jobArea: string,
     jobImg: string
 }
+ 
