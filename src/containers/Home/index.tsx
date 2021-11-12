@@ -5,17 +5,6 @@ import { JobList } from '../components/header/header';
 import { Content } from '../components/main/listjob';
 import "./styles.scss";
 
-// type JobsType = {
-//   readonly id?: string,
-//   readonly job_name?: string,
-//   readonly salary?: number,
-//   readonly avatar?: string,
-//   readonly job_description?: string,
-//   readonly location?: string,
-//   readonly time?: string,
-//   readonly skill?: string[],
-// }
-
 interface Job {
   jobs: [],
   error: null
@@ -33,7 +22,7 @@ const Home: React.FC = () => {
   return (
     <div className="App">
       <JobList />
-      <Content jobs={jobs}/>     
+      <Content />     
     </div>
   );
 }

@@ -20,7 +20,9 @@ type JobsType = {
   readonly skill?: string[],
 }
 
-export const Content: FC<Job> = (jobs): JSX.Element => {
+export const Content: FC = (): JSX.Element => {
+  const jobs = useSelector((state: Job)=>{return state.jobs})
+
   const changeDate = (date: string) => {
 		var newDate = new Date(date);
 		return newDate.toDateString();
@@ -28,7 +30,7 @@ export const Content: FC<Job> = (jobs): JSX.Element => {
 
   return (
     <section className="list_job">
-        {jobs ? jobs.jobs.map((job: JobsType,index)=>{
+        {jobs ? jobs.map((job: JobsType,index)=>{
           return (
             <div className="short-list-job" key={job.id}>
               <img src={job.avatar} alt="#" className="job_img"/>
