@@ -1,8 +1,7 @@
 import axios from 'axios';
-import React, { Children, FC, useEffect, useRef, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getJobs } from '../../../api';
-import './header.scss'
+import React, { FC, useEffect, useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
+import './header.scss';
 
 
 interface FuncProps {
@@ -37,7 +36,7 @@ export const JobList: FC<FuncProps> = ({onSubmit}): JSX.Element => {
       if(onSubmit){
         onSubmit(value);
       }
-    },500)
+    },300)
 
   }
 

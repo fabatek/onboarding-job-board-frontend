@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getJobs } from "../../api";
 import { JobList } from '../components/header/header';
-import { Content } from "../components/main/listjob";
+import { Content } from '../components/main/listjob';
 import { Pagination } from "../components/pagination/pagination";
 import "./styles.scss";
 
@@ -29,6 +29,7 @@ const Home: React.FC = () => {
   const indexLastPost = currentPage * jobPerPage;
   const indexFirstPost = indexLastPost - jobPerPage;
   const currentJob = jobs.slice(indexFirstPost,indexLastPost);
+  
   const pagination = (pageNumber: number) =>{
     setCurrentPage(pageNumber);
   }
@@ -50,6 +51,7 @@ const Home: React.FC = () => {
           pagination={pagination}
           className="pagination"
       />
+    
     </div>
   );
 }
