@@ -1,0 +1,31 @@
+$darkColor: #221f20;
+$lightColor: #ececec;
+
+.search-header {
+  background-color: $darkColor;
+  padding: 3rem 8rem;
+
+  h2 {
+    color: $lightColor;
+  }
+
+  &__form {
+    display: flex;
+    height: 3rem;
+
+    input {
+      flex: 10;
+      margin-right: 0.7rem;
+    }
+
+    select {
+      flex: 2;
+      margin-right: 0.7rem;
+    }
+
+    button {
+      flex: 1;
+      font-size: 20px;
+    }
+  }
+}
