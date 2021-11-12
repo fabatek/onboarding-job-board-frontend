@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../../components/Header";
-import ListJob from "../../components/JobList";
+import ListJob from "../../components/ListJob";
 import SearchHeader from "../../components/SearchHeader";
 
 import "./styles.scss";
