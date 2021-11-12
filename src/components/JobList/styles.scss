@@ -1,0 +1,15 @@
+.jobs-container {
+  display: grid;
+  grid-template-columns: 35rem 1fr;
+  margin: 1rem;
+  height: 70rem;
+  position: absolute;
+}
+
+.jobs-inner {
+  overflow-y: scroll;
+}
+
+.jobs-content {}
+
+.jobs-preview {}
