@@ -18,10 +18,13 @@ const Home: React.FC = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [jobPerPage,setJobPerPage] = useState(10)
+  const [searchByKey,setSearchByKey] = useState({
+    key: ''
+  })
 
   useEffect(() => {
-    dispatch(getJobs());
-  }, [])
+    dispatch(getJobs(searchByKey.key));
+  }, [searchByKey])
 
   const indexLastPost = currentPage * jobPerPage;
   const indexFirstPost = indexLastPost - jobPerPage;
@@ -30,9 +33,16 @@ const Home: React.FC = () => {
     setCurrentPage(pageNumber);
   }
 
+  const handleSubmitChange = (newSearchKey: any) =>{
+    setSearchByKey({
+      key: newSearchKey.searchKey
+    });
+    setCurrentPage(1);
+  }
+
   return (
     <div className="App">
-      <JobList jobs={jobs}/>
+      <JobList onSubmit={(key: {})=> handleSubmitChange(key)}/>
       <Content jobs={currentJob} />
       <Pagination
           jobPerPage={jobPerPage}
