@@ -76,9 +76,7 @@ export function jobsReducer(state: RootState = initialStare, action: any) {
             const searchResult = state.allJobs.filter((jobVal: Job) => {
                 return !value || jobVal.jobName.toLowerCase().includes(value.toString().toLowerCase())
             });
-            console.log(searchResult, 'ket qua')
             const searchPageCount = Math.ceil(searchResult.length / 10);
-            console.log(searchResult.slice(state.offset, state.offset + state.perpage), "search")
             return {
                 ...state,
                 loading: false,
