@@ -11,29 +11,22 @@ const Dashboard: FC = () => {
     const jobs = useSelector((state: RootState) => state.jobs);
     const pagecount = useSelector((state: RootState) => state.pagecount);
     const allJobs = useSelector((state: RootState) => state.allJobs);
-    const searchPagi = useSelector((state: RootState) => state.searchPagi);
-    const offset  = useSelector((state: RootState) => state.offset)
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(fetchJobs())
     }, [dispatch]);
-   
-    const handleGetCurrentPage = () => {
-        dispatch(setOffset(0));
-    };    
     const changePage = (e: any) => {
-        dispatch(setOffset(e.selected));  
+        dispatch(setOffset(e.selected));
     }
-        
-    console.log(jobs,"job")
-    
     return (
         <div className="dashBoard">
             <h1>Có tất cả {allJobs?.length} IT Jobs For Chất Developers</h1>
             <div className='search'>
                 <div className="search__form">
-                    <Form.Control aria-label='Search' type="text" placeholder="Search..." onChange={(e) => { dispatch(search(e.target.value))
-                    dispatch(setOffset(0)); }}  />
+                    <Form.Control aria-label='Search' type="text" placeholder="Search..." onChange={(e) => {
+                        dispatch(search(e.target.value))
+                        dispatch(setOffset(0));
+                    }} />
                     <Dropdown>
                         <Dropdown.Toggle variant="secondary" id="dropdown-basic">
                             City
@@ -75,7 +68,7 @@ const Dashboard: FC = () => {
                 pageRangeDisplayed={10} marginPagesDisplayed={1}
             />
         </div>
-                
+
     )
 }
 

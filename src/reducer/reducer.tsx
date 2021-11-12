@@ -11,8 +11,7 @@ export const initialStare = {
     value: '',
     perpage: 10,
     pagecount: 0,
-    offset: 0,
-    searchPagi: false
+    offset: 0
 }
 export interface RootState {
     jobs: Job[],
@@ -23,8 +22,7 @@ export interface RootState {
     value: string,
     perpage: number,
     pagecount: number,
-    offset: number,
-    searchPagi: boolean
+    offset: number
 }
 export function jobsReducer(state: RootState = initialStare, action: any) {
     switch (action.type) {
@@ -60,8 +58,6 @@ export function jobsReducer(state: RootState = initialStare, action: any) {
         case SET_OFFSET:
             const fromIndex = action.payload * state.perpage;
             const toIndex = action.payload * state.perpage + state.perpage;
-            // const jobs = state.searchJobs.slice(fromIndex, toIndex)
-            // console.log(jobs, "reducer")
             return {
                 ...state,
                 offset: action.payload,
@@ -77,18 +73,16 @@ export function jobsReducer(state: RootState = initialStare, action: any) {
             
         case SEARCH_JOB:
             const { value } = action.payload;
-            
             const searchResult = state.allJobs.filter((jobVal: Job) => {
                 return !value || jobVal.jobName.toLowerCase().includes(value.toString().toLowerCase())
             });
-            
             console.log(searchResult, 'ket qua')
             const searchPageCount = Math.ceil(searchResult.length / 10);
             console.log(searchResult.slice(state.offset, state.offset + state.perpage), "search")
             return {
                 ...state,
                 loading: false,
-                searhJobs: searchResult,
+                searchJobs: searchResult,
                 jobs: searchResult.slice(state.offset, state.offset + state.perpage),
                 pagecount: searchPageCount
             };
