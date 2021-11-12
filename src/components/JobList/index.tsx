@@ -5,9 +5,11 @@ import { RootState } from '../../state/reducers';
 import JobContent from '../JobContent/index'
 import JobContentPreview from '../JobContentPreview';
 import MessageBox from '../MessageBox/index';
+import Pagination from '../Pagination';
 import './styles.scss'
 
 function ListJob() {
+  const [currentPage, setCurrentPage] = useState(1);
   const [jobList, setJobList] = useState<Job[]>([]);
   const jobsData = useSelector((state: RootState) => state.getJobData);
   const { loading, jobs, error } = jobsData;
@@ -17,9 +19,18 @@ function ListJob() {
     if (jobs) {
       setJobList(jobs);
       setSelectedJob(jobs[0])
+      setCurrentPage(1);
     }
 
   }, [jobs])
+  const jobsPerPage = 10;
+  const indexOfLastJob = jobsPerPage * currentPage;
+  const indexOfFirstJob = indexOfLastJob - jobsPerPage;
+  const currentJobs = jobList.slice(indexOfFirstJob, indexOfLastJob);
+
+  const paginate = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  }
   return (
     <div className="jobs-container">
       {loading ? <MessageBox variant="success"><i className="fas fa-spinner fa-spin" /> Loading</MessageBox> :
@@ -27,7 +38,7 @@ function ListJob() {
           <div className="jobs-inner">
             <h2>{jobList.length} IT jobs for Developers</h2>
             <div className="jobs-content">
-              {selectedJob && jobList.map(job => {
+              {selectedJob && currentJobs.map(job => {
                 return <JobContent
                   key={job.id}
                   title={job.title}
@@ -39,6 +50,12 @@ function ListJob() {
                 />
               })}
             </div>
+            <Pagination
+              jobsPerPage={jobsPerPage}
+              totalJob={jobList.length}
+              paginate={paginate}
+              pageIsActive={currentPage}
+            />
           </div>
       }
       <div className="jobs-preview">
