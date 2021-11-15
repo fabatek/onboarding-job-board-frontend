@@ -1,9 +1,8 @@
 import { fetchJobsData } from "../../api/jobApi"
 import { Dispatch } from 'redux'
-import { getJobsAction, getJobsLoading, GET_JOBS, GET_JOBS_ERROR, GET_JOBS_LOADING } from "../constants/jobConstant";
+import { getJobsAction, GET_JOBS, GET_JOBS_ERROR } from "../constants/jobConstant";
 
-export const getData = (name: string) => async (dispatch: Dispatch<getJobsAction | getJobsLoading>) => {
-  dispatch({ type: GET_JOBS_LOADING, loading: true });
+export const getData = (name: string) => async (dispatch: Dispatch<getJobsAction>) => {
   try {
     const jobs = await fetchJobsData(name);
     dispatch({ type: GET_JOBS, payload: jobs, loading: false });
