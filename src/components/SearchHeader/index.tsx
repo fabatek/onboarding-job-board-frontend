@@ -17,7 +17,7 @@ function SearchHeader() {
 
   return (
     <div className="search-header">
-      <h2 className="mb-3 total__job">{jobs && `${jobList.length} IT jobs for Developers`}</h2>
+      <h2 className="mb-3" data-testid="total-job">{jobs && `${jobList.length} IT jobs for Developers`}</h2>
       <h2 className="mb-3">{error && error}</h2>
       <form className="search-header__form">
         <FormControl
