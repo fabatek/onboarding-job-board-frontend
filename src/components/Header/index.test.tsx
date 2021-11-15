@@ -4,6 +4,15 @@ import store from '../../state/store';
 import Header from './index'
 
 test("render header bar", async () => {
-  const { container } = render(<Provider store={store}><Header /></Provider>);
-  expect(container).toBeInTheDocument();
+  const { getByText } = render(<Provider store={store}><Header /></Provider>);
+  const brand = getByText(/Job-Board/i);
+  const allJobs = getByText(/All jobs/i);
+  const allCompanies = getByText(/All companies/i);
+  const signIn = getByText(/Sign in/i);
+  const signUp = getByText(/Sign up/i);
+  expect(brand).toBeTruthy();
+  expect(allJobs).toBeTruthy();
+  expect(allCompanies).toBeTruthy();
+  expect(signIn).toBeTruthy();
+  expect(signUp).toBeTruthy();
 })
