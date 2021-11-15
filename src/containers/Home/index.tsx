@@ -1,17 +1,31 @@
-import logo from '../../logo.svg';
-import React from "react";
+
+import React,{FC, useEffect} from "react";
+import { Header } from "../components/Header";
+import { Loading } from "../components/Loading";
+
+import { SearchHeader } from "../components/SearchHeader";
+import { useDispatch } from "react-redux";
+import { useSelector } from "../hooks/useTypeSelector";
+import { jobActions } from "../store";
 
 import "./styles.scss";
 
-function Home() {
+const Home:FC  = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(jobActions.getJobs());
+  }, []);
+  const { isLoading} = useSelector((state) => state.jobs);
+
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Welcome to Faba onboarding project - Job board
-        </p>
-      </header>
+      {isLoading && <Loading/>}
+      <Header/>
+      <div id="container">
+        <SearchHeader/>
+    
+      </div>
     </div>
   );
 }
