@@ -1,4 +1,4 @@
-import { getJobsAction, GET_JOBS, GET_JOBS_ERROR, GET_JOBS_LOADING, Job } from "../constants/jobConstant";
+import { getJobsAction, GET_JOBS, GET_JOBS_ERROR, Job } from "../constants/jobConstant";
 
 interface jobState {
   jobs?: Job[],
@@ -12,11 +12,6 @@ export const getJobsData = (state: jobState = { loading: false }, action: getJob
       return {
         jobs: action.payload,
         loading: false
-      }
-    case GET_JOBS_LOADING:
-      return {
-        jobs: [],
-        loading: true
       }
     case GET_JOBS_ERROR:
       return {

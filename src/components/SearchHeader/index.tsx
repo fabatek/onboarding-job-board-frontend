@@ -8,7 +8,7 @@ import './styles.scss'
 function SearchHeader() {
   const [jobList, setJobList] = useState<Job[]>([]);
   const jobsData = useSelector((state: RootState) => state.getJobData);
-  const { jobs } = jobsData;
+  const { jobs, error } = jobsData;
   useEffect(() => {
     if (jobs) {
       setJobList(jobs);
@@ -17,7 +17,8 @@ function SearchHeader() {
 
   return (
     <div className="search-header">
-      <h2 className="mb-3">{jobs ? `${jobList.length} IT jobs for Developers` : "We are looking for talent IT Developers"}</h2>
+      <h2 className="mb-3 total__job">{jobs && `${jobList.length} IT jobs for Developers`}</h2>
+      <h2 className="mb-3">{error && error}</h2>
       <form className="search-header__form">
         <FormControl
           type="text"
