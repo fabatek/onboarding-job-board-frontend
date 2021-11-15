@@ -1,15 +1,22 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, memo, useEffect } from "react";
 import "./style.scss";
 // import { useDispatch } from "react-redux";
 // import { jobActions } from "../../store";
 import { useSelector } from "../../hooks/useTypeSelector";
 import { BsSearch, BsXLg, BsGeoAlt } from "react-icons/bs";
+import { useLocation } from "react-router-dom";
 
-export const SearchHeader: FC = () => {
+export  function useQuery() {
+  const { search } = useLocation();
+
+  return React.useMemo(() => new URLSearchParams(search), [search]);
+}
+const SearchHeader: FC = () => {
   // const dispatch = useDispatch();
   // useEffect(() => {
   //   dispatch(jobActions.getJobs());
   // }, []);
+  
   const { total, jobs } = useSelector((state) => state.jobs);
   return (
     <div className="search-header ">
@@ -44,3 +51,4 @@ export const SearchHeader: FC = () => {
     </div>
   );
 };
+export default  memo(SearchHeader) 

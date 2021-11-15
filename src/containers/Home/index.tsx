@@ -4,7 +4,7 @@ import { Header } from "../components/Header";
 import { Loading } from "../components/Loading";
 import { JobContent } from "../components/JobContent";
 
-import { SearchHeader } from "../components/SearchHeader";
+import  SearchHeader  from "../components/SearchHeader";
 import { useDispatch } from "react-redux";
 import { useSelector } from "../hooks/useTypeSelector";
 import { jobActions } from "../store";
@@ -13,10 +13,13 @@ import "./styles.scss";
 
 const Home:FC  = () => {
   const dispatch = useDispatch();
+  const { isLoading, perPage } = useSelector((state) => state.jobs);
+  
+  
   useEffect(() => {
-    dispatch(jobActions.getJobs());
+    dispatch(jobActions.getJobs(perPage));
   }, []);
-  const { isLoading} = useSelector((state) => state.jobs);
+ 
 
   
   return (
