@@ -16,8 +16,7 @@ const Home:FC  = () => {
     dispatch(jobActions.getJobs());
   }, []);
   const { isLoading} = useSelector((state) => state.jobs);
-
-  
+ 
   return (
     <div className="App">
       {isLoading && <Loading/>}
@@ -29,5 +28,4 @@ const Home:FC  = () => {
     </div>
   );
 }
-
 export default Home;
