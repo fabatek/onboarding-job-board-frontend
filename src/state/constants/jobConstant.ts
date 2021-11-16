@@ -15,11 +15,5 @@ export interface Job {
 
 export interface getJobsAction {
   type: string,
-  loading: boolean,
   payload: Job[] | string
-}
-
-export interface getJobsLoading {
-  type: string,
-  loading: boolean
 }
