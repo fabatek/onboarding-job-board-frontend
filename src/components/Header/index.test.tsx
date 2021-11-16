@@ -1,10 +1,9 @@
-import { render } from "@testing-library/react";
-import { Provider } from "react-redux";
-import Header from ".";
-import store from "../../state/store";
+import { render } from '@testing-library/react'
+import { Provider } from 'react-redux';
+import store from '../../state/store';
+import Header from './index'
 
-
-test("render header bar", () => {
+test("render header bar", async () => {
   const { getByText } = render(<Provider store={store}><Header /></Provider>);
   const brand = getByText(/Job-Board/i);
   const allJobs = getByText(/All jobs/i);
