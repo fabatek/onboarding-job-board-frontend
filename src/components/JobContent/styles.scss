@@ -1,11 +1,13 @@
+@import '../../index.scss';
+
 .job-content {
   cursor: pointer;
 
   &__salary {
-    color: #20a020;
+    color: $successColor;
   }
 
   &__selected {
-    background-color: #d6d6d6;
+    background-color: $lightColor;
   }
 }
