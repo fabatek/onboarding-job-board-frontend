@@ -7,7 +7,7 @@ export const Header: FC = () => {
     <header className="">
 
       <nav className="container  navbar navbar-expand-lg navbar-dark bg-dark d-flex   justify-content-between">
-        <Link to="/" style={{marginRight:50}}>
+        <Link to="/">
           <img src={logo} className="" alt="itviet" width={108} height={42} />
         </Link>
         <button

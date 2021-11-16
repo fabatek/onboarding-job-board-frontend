@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import Router from "../Router";
 
 function App() {
@@ -8,7 +8,4 @@ function App() {
     </>
   );
 }
-
 export default App;
-
-
