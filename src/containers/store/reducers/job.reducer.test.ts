@@ -68,7 +68,7 @@ describe("Jobs reducer tests", () => {
     ).toEqual({
       total: 2,
       page: 0,
-      totalPage: 1,
+      totalPage: 0,
       perPage: 10,
       jobs: jobs,
       isLoading: false,

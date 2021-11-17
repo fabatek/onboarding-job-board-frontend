@@ -7,21 +7,22 @@ import TimeAgo from "javascript-time-ago";
 import './style.scss'
 TimeAgo.addDefaultLocale(vi);
 
+export const getTimeAgo = (time: string) => {
+  const timeAgo = new TimeAgo("vi");
+  return timeAgo.format(
+    Date.now() - new Date(moment(time).utc().format("LLLL")).getTime() / 1000
+  );
+};
+export const formatString = (str: string) => {
+  const arrString: string[] = str.split(" ");
+  const newString = arrString
+    .map((title) => title[0].toUpperCase() + title.slice(1))
+    .join(" ")
+    .trim();
+  return newString;
+};
 const JobItem: FC<JobProps> = ({ job }) => {
-  const getTimeAgo = (time: string) => {
-    const timeAgo = new TimeAgo("vi");
-    return timeAgo.format(
-      Date.now() - new Date(moment(time).utc().format("LLLL")).getTime() / 1000
-    );
-  };
-  const formatString = (str: string) => {
-    const arrString: string[] = str.split(" ");
-    const newString = arrString
-      .map((title) => title[0].toUpperCase() + title.slice(1))
-      .join(" ")
-      .trim();
-    return newString;
-  };
+
   return (
     <div className="job-item">
       <div className="row">
@@ -38,7 +39,7 @@ const JobItem: FC<JobProps> = ({ job }) => {
           </ul>
         </div>
         <div className="content__preview col-2 d-flex flex-column justify-content-between">
-          <span
+          <span data-testid="is-hot"
             className={`content__preview__hot  ${job.is_hot ? "active" : ""}`}
           >
             Hot
