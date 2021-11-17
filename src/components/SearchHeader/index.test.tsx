@@ -3,7 +3,6 @@ import { Provider } from "react-redux";
 import SearchHeader from ".";
 import store from "../../state/store";
 
-
 describe("SearchHeader", () => {
   it("should render search header element", () => {
     const { getByPlaceholderText, getByRole, getByTestId } = render(<Provider store={store}><SearchHeader /></Provider>);
