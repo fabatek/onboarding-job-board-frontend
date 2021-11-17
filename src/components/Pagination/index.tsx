@@ -15,9 +15,10 @@ function Pagination(props: paginationProps) {
   }
 
   return (
-    <ul className="pagination" >
+    <ul className="pagination">
       {pageNumbers.map(number => (
         <li
+          data-testid={`page-item-${number}`}
           key={number}
           className={number === props.pageIsActive ? "page-item active" : "page-item"}
           style={{ cursor: "pointer" }}
