@@ -17,3 +17,7 @@ export interface getJobsAction {
   type: string,
   payload: Job[] | string
 }
+
+export interface getJobsLoading {
+  type: string,
+}

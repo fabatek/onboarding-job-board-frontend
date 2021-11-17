@@ -1,25 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { FormControl, Button, Form } from 'react-bootstrap'
-import { useSelector } from 'react-redux'
-import { Job } from '../../state/constants/jobConstant'
-import { RootState } from '../../state/reducers'
 import './styles.scss'
 
 function SearchHeader() {
-  const [jobList, setJobList] = useState<Job[]>([]);
-  const jobsData = useSelector((state: RootState) => state.getJobData);
-  const { jobs, error } = jobsData;
-  useEffect(() => {
-    if (jobs) {
-      setJobList(jobs);
-    }
-  }, [jobs])
 
+  const searchHandler = (e: React.FormEvent) => {
+    e.preventDefault();
+
+  }
   return (
     <div className="search-header">
-      <h2 className="mb-3" data-testid="total-job">{jobs && `${jobList.length} IT jobs for Developers`}</h2>
-      <h2 className="mb-3">{error && error}</h2>
-      <form className="search-header__form">
+      <h2 className="mb-3" data-testid="job-hiring"> We are looking for talent IT Developers</h2>
+      <form className="search-header__form" onSubmit={searchHandler}>
         <FormControl
           type="text"
           placeholder="Keyword skills, Job Title, Company..."
