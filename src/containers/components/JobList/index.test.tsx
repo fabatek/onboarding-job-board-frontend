@@ -1,16 +1,16 @@
 import {render} from "@testing-library/react";
-import Home from "../Home";
 import { Provider} from "react-redux";
-import {store} from '../store'
 import { BrowserRouter } from "react-router-dom";
-
+import  JobList  from ".";
+import { store } from "../../store";
 describe('With React Testing Library', () => {
-  it("should render Home", () => {
-    const { container } = render(<Provider store={store}>
+  it("should render JobContent", () => {
+    const { container } = render(
+    <Provider store={store}>
       <BrowserRouter>
-      <Home />
+        <JobList/>
       </BrowserRouter>
       </Provider>);
     expect(container).toBeInTheDocument();
-  });
+  }); 
 })

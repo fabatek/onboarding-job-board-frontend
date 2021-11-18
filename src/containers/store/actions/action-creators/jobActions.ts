@@ -16,7 +16,7 @@ export const getJobs = () => async (dispatch: Dispatch<Action>)  => {
         })
     }catch (err:any) {
         dispatch({
-            type: ActionTypes.GET_JOBS_SUCCESS,
+            type: ActionTypes.GET_JOBS_FAIL,
             payload: err.message
         })
     }

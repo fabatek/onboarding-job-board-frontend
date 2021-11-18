@@ -9,6 +9,7 @@ import { useSelector } from "../hooks/useTypeSelector";
 import { jobActions } from "../store";
 
 import "./styles.scss";
+import JobList from "../components/JobList";
 
 const Home:FC  = () => {
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ const Home:FC  = () => {
       <Header/>
       <div id="container">
         <SearchHeader/>
-    
+        <JobList/>
       </div>
     </div>
   );
