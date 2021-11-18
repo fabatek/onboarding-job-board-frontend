@@ -14,9 +14,10 @@ function SearchHeader() {
   }
   return (
     <div className="search-header">
-      <h2 className="mb-3">We are looking for talent IT Developers</h2>
+      <h2 className="mb-3" data-testid="job-hiring"> We are looking for talent IT Developers</h2>
       <form className="search-header__form" onSubmit={searchHandler}>
         <FormControl
+          data-testid="input-search"
           type="text"
           placeholder="Keyword skills, Job Title, Company..."
           value={text}

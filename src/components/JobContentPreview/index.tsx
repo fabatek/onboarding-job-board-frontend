@@ -1,5 +1,6 @@
 import React from 'react'
 import { Card, Button } from 'react-bootstrap'
+import "./styles.scss"
 
 type jobContentPreviewProps = {
   title: string,
@@ -26,7 +27,7 @@ function JobContentPreview(props: jobContentPreviewProps) {
         <Card.Text>{props.requirement}</Card.Text>
         <Card.Title>What you'll love working here</Card.Title>
         <Card.Text>{props.benefits}</Card.Text>
-        <Button variant="danger">Apply Now</Button>
+        <Button className="apply-btn" variant="danger">Apply Now</Button>
       </Card.Body>
       <Card.Footer className="text-muted">Public at {props.createAt}</Card.Footer>
     </Card>

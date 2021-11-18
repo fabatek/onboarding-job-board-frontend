@@ -1,9 +1,10 @@
-import {render} from "@testing-library/react";
+import { render } from "@testing-library/react";
 import Home from "../Home";
 import React from "react";
+import { Provider } from "react-redux";
+import store from "../../state/store";
 
 test('renders welcome message', () => {
-  const { getByText } = render(<Home />);
-  const linkElement = getByText(/Welcome to Faba onboarding project - Job board/i);
-  expect(linkElement).toBeInTheDocument();
+  const { container } = render(<Provider store={store}><Home /></Provider>);
+  expect(container).toBeInTheDocument();
 });

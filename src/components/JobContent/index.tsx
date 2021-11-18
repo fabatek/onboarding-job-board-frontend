@@ -13,7 +13,7 @@ type jobContentProps = {
 
 function JobContent(props: jobContentProps) {
   return (
-    <Card className={props.isSelected ? "job-content__selected" : "job-content"} style={{ width: "100%" }} onClick={props.clickHandler}>
+    <Card className={props.isSelected ? "job-content__selected" : "job-content"} onClick={props.clickHandler}>
       <Card.Body>
         <Card.Title>{props.title}</Card.Title>
         <Card.Text as="h6"> {props.company}</Card.Text>

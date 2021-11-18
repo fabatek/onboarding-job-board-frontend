@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../../components/Header";
-import ListJob from "../../components/ListJob";
+import JobList from "../../components/JobList/index";
 import SearchHeader from "../../components/SearchHeader";
 
 import "./styles.scss";
@@ -10,7 +10,7 @@ function Home() {
     <div className="App">
       <Header />
       <SearchHeader />
-      <ListJob />
+      <JobList />
     </div>
   );
 }
