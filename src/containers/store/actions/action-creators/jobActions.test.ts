@@ -17,7 +17,8 @@ describe("fetch jobs action", () => {
   afterEach(() => {
     axiosMock.reset();
   });
-
+  const numberPage: number = 1;
+  const perPage: number = 10;
   it("should fire GET_JOBS_REQUEST and GET_JOBS_SUCCESSS in case of success", () => {
     const data: Job[] = [
       {
@@ -43,33 +44,56 @@ describe("fetch jobs action", () => {
         id: "2",
       },
     ];
+    const jobsPage:Job[] = [
+      {
+        title: "model",
+        image: "http://placeimg.com/64/480/transport",
+        description: "Human",
+        is_hot: true,
+        city: "New Madgeville",
+        salary: "338.00",
+        create_at: "2021-02-14T08:06:34.850Z",
+        update_at: "2022-06-16T06:07:03.795Z",
+        id: "2",
+      },
+    ]
 
     axiosMock
       .onGet("https://618b9928ded7fb0017bb90d0.mockapi.io/api/v1/jobs/jobs")
-      .reply(200, { response: data });
-
+      .reply(200, { response: data })
+      .onGet(
+        `https://618b9928ded7fb0017bb90d0.mockapi.io/api/v1/jobs/jobs?page=${numberPage}&limit=${perPage}`
+      )
+      .reply(200, { jobsPage });
     const expectedActions = [
       { type: ActionTypes.GET_JOBS_REQUEST },
       {
         type: ActionTypes.GET_JOBS_SUCCESS,
-        payload: data,
+        payload: {
+          jobs: data,
+          jobsPage: jobsPage,
+          page: numberPage,
+        },
       },
     ];
 
     const store = mockStore();
-    store.dispatch(getJobs()).then(() => {
+    store.dispatch(getJobs(perPage,numberPage)).then(() => {
       store.getActions();
       expect(store.getActions()).toEqual(expectedActions);
     });
   });
   it("should fire GET_JOBS_REQUEST and GET_JOBS_FAIL in case of an error", () => {
+
     axiosMock
       .onGet("https://618b9928ded7fb0017bb90d0.mockapi.io/api/v1/jobs/jobs")
-      .networkError();
-
+      .networkError()
+      .onGet(
+        `https://618b9928ded7fb0017bb90d0.mockapi.io/api/v1/jobs/jobs?page=${numberPage}&limit=${perPage}`
+      ).networkError()
     const store = mockStore();
     store
-      .dispatch(getJobs())
+      .dispatch(getJobs(numberPage, perPage))
       .then(() => {})
       .catch((error) => {
         const expectedActions = [

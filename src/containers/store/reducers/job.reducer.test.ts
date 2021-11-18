@@ -27,6 +27,21 @@ const jobs: Job[] = [
   },
 ];
 
+const jobsPage: Job[] = [
+  {
+    title: "model",
+    image: "http://placeimg.com/64/480/transport",
+    description: "Human",
+    is_hot: true,
+    city: "New Madgeville",
+    salary: "338.00",
+    create_at: "2021-02-14T08:06:34.850Z",
+    update_at: "2022-06-16T06:07:03.795Z",
+    id: "2",
+  }
+
+];
+
 interface JobState {
   total: number;
   page: number;
@@ -35,7 +50,7 @@ interface JobState {
   jobs: Job[] | null;
   isLoading: boolean;
 }
-const initialState = {
+const initialState:JobState = {
   total: 0,
   page: 0,
   totalPage: 0,
@@ -63,16 +78,34 @@ describe("Jobs reducer tests", () => {
     expect(
       jobReducer(initialState, {
         type: ActionTypes.GET_JOBS_SUCCESS,
-        payload: jobs
+        payload: {
+          jobs: jobs,
+          jobsPage: jobsPage,
+          page:1
+        },
       })
     ).toEqual({
       total: 2,
       page: 0,
-      totalPage: 0,
+      totalPage: 1,
       perPage: 10,
-      jobs: jobs,
+      jobs: jobsPage,
       isLoading: false,
     });
   });
-
+  it("should handle FETCH_USER_REJECTED", () => {
+    expect(
+      jobReducer(initialState, {
+        type: ActionTypes.GET_JOBS_FAIL,
+        payload: "Something went wrong",
+      })
+    ).toEqual({
+      total: 0,
+      page: 0,
+      totalPage: 0,
+      perPage: 10,
+      jobs: null,
+      isLoading: false,
+    });
+  });
 });

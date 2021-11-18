@@ -7,7 +7,11 @@ interface GetJobsRequestAction {
 
 interface GetJobsSuccessAction {
     type:ActionTypes.GET_JOBS_SUCCESS;
-    payload:Job[];
+    payload:{
+        jobs:Job[];
+        jobsPage:Job[];
+        page:number;
+    };
 }
 
 interface GetJobsFailureAction {
