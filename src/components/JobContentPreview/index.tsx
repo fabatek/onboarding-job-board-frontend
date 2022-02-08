@@ -19,6 +19,7 @@ function JobContentPreview(props: jobContentPreviewProps) {
         <p>{props.company}</p>
       </Card.Header>
       <Card.Body>
+        <Button variant="danger">Apply Now</Button>
         <Card.Text>$ {props.salary} USD</Card.Text>
         <Card.Title>Job description</Card.Title>
         <Card.Text>{props.description}</Card.Text>
@@ -26,9 +27,10 @@ function JobContentPreview(props: jobContentPreviewProps) {
         <Card.Text>{props.requirement}</Card.Text>
         <Card.Title>What you'll love working here</Card.Title>
         <Card.Text>{props.benefits}</Card.Text>
-        <Button variant="danger">Apply Now</Button>
+        
+        
       </Card.Body>
-      <Card.Footer className="text-muted">Public at {props.createAt}</Card.Footer>
+      <Card.Footer className="text-muted"> Việc làm IT</Card.Footer>
     </Card>
   )
 }

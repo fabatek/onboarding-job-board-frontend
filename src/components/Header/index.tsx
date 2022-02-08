@@ -6,16 +6,16 @@ function Header() {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand href="/">Job-Board</Navbar.Brand>
+        <Navbar.Brand href="/">ITVIET</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link >All jobs</Nav.Link>
-            <Nav.Link >All companies</Nav.Link>
+            <Nav.Link >Việc Làm IT</Nav.Link>
+            <Nav.Link >Công Ty IT</Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link >Sign in</Nav.Link>
-            <Nav.Link >Sign up</Nav.Link>
+            <Nav.Link >Đăng Nhập</Nav.Link>
+            <Nav.Link >Đăng Ký</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

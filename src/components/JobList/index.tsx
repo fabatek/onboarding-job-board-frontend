@@ -25,7 +25,7 @@ function JobList() {
       {loading ? <MessageBox variant="success"><i className="fas fa-spinner fa-spin" /> Loading</MessageBox> :
         error ? <MessageBox variant="danger">{error}</MessageBox> :
           <div className="jobs-inner">
-            <h2>{jobList.length} IT jobs for Developers</h2>
+            <h2>Có {jobList.length} Công Việc IT Dành Cho Bạn</h2>
             <div className="jobs-content">
               {selectedJob && jobList.map((job, index) => {
                 return <JobContent
