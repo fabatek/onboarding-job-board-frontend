@@ -8,7 +8,6 @@ type jobContentPreviewProps = {
   benefits: string,
   salary: number,
   company: string,
-  createAt: string
 }
 
 function JobContentPreview(props: jobContentPreviewProps) {
