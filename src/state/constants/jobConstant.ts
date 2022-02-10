@@ -10,7 +10,7 @@ export interface Job {
   benefits: string,
   salary: number,
   company: string,
-  createdAt: string
+  createAt: string
 };
 
 export interface getJobsAction {

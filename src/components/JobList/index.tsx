@@ -50,6 +50,7 @@ function JobList() {
           requirement={selectedJob.requirements}
           benefits={selectedJob.benefits}
           salary={selectedJob.salary}
+          createAt={selectedJob.createAt}
         />}
       </div>
     </div>
