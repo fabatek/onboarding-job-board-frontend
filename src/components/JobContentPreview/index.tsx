@@ -29,7 +29,7 @@ function JobContentPreview(props: jobContentPreviewProps) {
         <Card.Title>What you'll love working here</Card.Title>
         <Card.Text>{props.benefits}</Card.Text>
       </Card.Body>
-      <Card.Footer className="text-muted">public at {moment(props.createAt).format("DD/MM/YYYY")}</Card.Footer>
+      <Card.Footer className="text-muted">public at {moment(props.createAt).format("DD-MM-YYYY")}</Card.Footer>
     </Card>
   )
 }
