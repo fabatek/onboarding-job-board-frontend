@@ -1,5 +1,6 @@
 import React from 'react'
 import { Card, Button } from 'react-bootstrap'
+import moment from 'moment';
 
 type jobContentPreviewProps = {
   title: string,
@@ -27,10 +28,8 @@ function JobContentPreview(props: jobContentPreviewProps) {
         <Card.Text>{props.requirement}</Card.Text>
         <Card.Title>What you'll love working here</Card.Title>
         <Card.Text>{props.benefits}</Card.Text>
-        
-        
       </Card.Body>
-      <Card.Footer className="text-muted"> Việc làm IT</Card.Footer>
+      <Card.Footer className="text-muted">public at {moment(props.createAt).format("DD/MM/YYYY")}</Card.Footer>
     </Card>
   )
 }

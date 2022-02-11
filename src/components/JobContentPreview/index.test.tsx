@@ -14,7 +14,7 @@ describe("JobContentPreview", () => {
         company="AB Company"
         description="This is description"
         requirement="There are 3 requirements"
-        createAt="2021-11-09T15:15:35.670Z"
+        createAt="2010-12-15T18:28:46.170Z"
       />
     </Provider>);
     const titleElement = getByText(/manual tester/i);
@@ -23,7 +23,7 @@ describe("JobContentPreview", () => {
     const companyElement = getByText(/ab company/i);
     const descriptionElement = getByText(/this is description/i);
     const requirementElement = getByText(/there are 3 requirements/i);
-    const dateElement = getByText(/public at 2021-11-09T15:15:35.670Z/i);
+    const dateElement = getByText(/public at 2010-12-15T18:28:46.170Z/i);
     const applyElement = getByRole('button', { name: "Apply Now" });
     expect(titleElement).toBeInTheDocument();
     expect(salaryElement).toBeInTheDocument();

@@ -44,14 +44,13 @@ function JobList() {
       }
       <div className="jobs-preview" data-testid="job-preview">
         {selectedJob && <JobContentPreview
-
           title={selectedJob.title}
           company={selectedJob.company}
           description={selectedJob.description}
           requirement={selectedJob.requirements}
           benefits={selectedJob.benefits}
           salary={selectedJob.salary}
-          createAt={selectedJob.createdAt}
+          createAt={selectedJob.createAt}
         />}
       </div>
     </div>

@@ -5,11 +5,11 @@ import Header from './index'
 
 test("render header bar", async () => {
   const { getByText } = render(<Provider store={store}><Header /></Provider>);
-  const brand = getByText(/Job-Board/i);
-  const allJobs = getByText(/All jobs/i);
-  const allCompanies = getByText(/All companies/i);
-  const signIn = getByText(/Sign in/i);
-  const signUp = getByText(/Sign up/i);
+  const brand = getByText(/ITVIET/i);
+  const allJobs = getByText(/Việc Làm IT/i);
+  const allCompanies = getByText(/Công Ty IT/i);
+  const signIn = getByText(/Đăng Nhập/i);
+  const signUp = getByText(/Đăng Ký/i);
   expect(brand).toBeTruthy();
   expect(allJobs).toBeTruthy();
   expect(allCompanies).toBeTruthy();
