@@ -21,7 +21,7 @@ function Page(props : PropsType) {
         <div className='page'>
           <Pagination >
             {Array(Math.ceil(props.jobList.length/10)).fill(0).map((item,index)=>
-               <Pagination.Item onClick={() => handePagination(index+1)}  
+               <Pagination.Item role="testpage" data-testid="test-page" onClick={() => handePagination(index+1)}  
                key={index}>{index+1}
                </Pagination.Item>
             )}
