@@ -6,9 +6,18 @@ import store from "../../state/store"
 
 describe("Page", () => {
     it("should render first job", async () => {
-        
+        const jobs=Array(50).fill(0).map((item,index)=>{ return {
+            id: `${index}`,
+            title: 'test',
+            description: 'test',
+            requirements: 'test',
+            benefits: 'test',
+            salary: 100,
+            company: 'test',
+            createAt: 'test'
+        }});
         <Provider store={store}>
-            <Page/>
+            <Page jobList={jobs}/>
         </Provider>;
       })
 })
