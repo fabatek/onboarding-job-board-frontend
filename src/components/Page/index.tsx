@@ -8,7 +8,8 @@ import { useDispatch } from 'react-redux';
 import "./styles.scss"
 
 interface PropsType {
-  jobList: Job[]
+  jobList: Job[];
+  
 }
 
 function Page(props : PropsType) {

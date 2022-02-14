@@ -7,6 +7,8 @@ import store from "../../state/store"
 describe("Page", () => {
     it("should render first job", async () => {
         
-      
+        <Provider store={store}>
+            <Page/>
+        </Provider>;
       })
 })
