@@ -8,8 +8,8 @@ import { RootState } from '../../state/reducers';
 function SearchHeader() {
   const [jobList, setJobList] = useState<Job[]>([]);
   const jobsData = useSelector((state: RootState) => state.getJobData);
-  const {  jobs } = jobsData;
-  
+  const { jobs } = jobsData;
+
 
   const searchHandler = (e: React.FormEvent) => {
     e.preventDefault();

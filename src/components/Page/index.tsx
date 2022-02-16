@@ -9,25 +9,25 @@ import "./styles.scss"
 
 interface PropsType {
   jobList: Job[];
-  
+
 }
 
-function Page(props : PropsType) {
+function Page(props: PropsType) {
   const dispatch = useDispatch();
-  const handePagination = (page :Number) =>{
-    dispatch({type:GET_PAGINATION_JOBS,payload:page });
+  const handePagination = (page: Number) => {
+    dispatch({ type: GET_PAGINATION_JOBS, payload: page });
   }
   return (
-        <div className='page'>
-          <Pagination >
-            {Array(Math.ceil(props.jobList.length/10)).fill(0).map((item,index)=>
-               <Pagination.Item role="testpage" data-testid="test-page" onClick={() => handePagination(index+1)}  
-               key={index}>{index+1}
-               </Pagination.Item>
-            )}
-          </Pagination>
-        </div>
-      );
+    <div className='page'>
+      <Pagination >
+        {Array(Math.ceil(props.jobList.length / 10)).fill(0).map((item, index) =>
+          <Pagination.Item role="testpage" data-testid="test-page" onClick={() => handePagination(index + 1)}
+            key={index}>{index + 1}
+          </Pagination.Item>
+        )}
+      </Pagination>
+    </div>
+  );
 }
 
 export default Page

@@ -1,4 +1,4 @@
-import { getJobsAction, GET_JOBS, GET_JOBS_ERROR, GET_JOBS_LOADING, Job,GET_PAGINATION_JOBS } from "../constants/jobConstant";
+import { getJobsAction, GET_JOBS, GET_JOBS_ERROR, GET_JOBS_LOADING, Job, GET_PAGINATION_JOBS } from "../constants/jobConstant";
 
 export interface jobState {
   jobs?: Job[];
@@ -7,7 +7,7 @@ export interface jobState {
   error?: string;
 }
 
-const initialState : jobState = {
+const initialState: jobState = {
   jobs: [],
   jobsOfPage: [],
   loading: false,
@@ -20,12 +20,12 @@ export const getJobsData = (state: jobState = initialState, action: getJobsActio
       return {
         jobs: action.payload,
         loading: false,
-        jobsOfPage :action.payload.slice(0,10)
+        jobsOfPage: action.payload.slice(0, 10)
       }
     case GET_JOBS_LOADING:
       return {
         jobs: [],
-        jobsOfPage:[],
+        jobsOfPage: [],
         loading: true
       }
     case GET_JOBS_ERROR:
@@ -36,11 +36,11 @@ export const getJobsData = (state: jobState = initialState, action: getJobsActio
     case GET_PAGINATION_JOBS:
       const page = action.payload;
       const countPerPage = 10;
-      const startJobs = (page * countPerPage - 9) - 1; 
+      const startJobs = (page * countPerPage - 9) - 1;
       const endJobs = page * 10;
-      const jobsOfPage =state.jobs ? state.jobs.slice(startJobs,endJobs) : [];
+      const jobsOfPage = state.jobs ? state.jobs.slice(startJobs, endJobs) : [];
       return {
-        jobs:state.jobs,
+        jobs: state.jobs,
         jobsOfPage,
         loading: false
       }

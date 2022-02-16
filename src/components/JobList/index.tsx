@@ -11,7 +11,7 @@ import './styles.scss'
 function JobList() {
   const [jobList, setJobList] = useState<Job[]>([]);
   const jobsData = useSelector((state: RootState) => state.getJobData);
-  const { loading, jobs, error,jobsOfPage } = jobsData;
+  const { loading, jobs, error, jobsOfPage } = jobsData;
   const [selectedJob, setSelectedJob] = useState<Job>();
 
   useEffect(() => {
@@ -42,8 +42,8 @@ function JobList() {
                 />
               })}
             </div>
-            <Page 
-            jobList={jobs}
+            <Page
+              jobList={jobs}
             />
           </div>
       }
