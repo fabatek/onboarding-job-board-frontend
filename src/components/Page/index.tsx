@@ -4,6 +4,9 @@ import Pagination from 'react-bootstrap/Pagination'
 import { Job } from '../../state/constants/jobConstant';
 import { useDispatch } from 'react-redux';
 import {getData} from '../../state/actions/jobActions';
+import { GET_PAGINATION_JOBS } from "../../state/constants/jobConstant";
+
+
 
 import "./styles.scss"
 

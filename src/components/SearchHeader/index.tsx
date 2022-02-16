@@ -4,18 +4,30 @@ import './styles.scss';
 import { useSelector } from 'react-redux';
 import { Job } from '../../state/constants/jobConstant';
 import { RootState } from '../../state/reducers';
+import { useDispatch } from 'react-redux';
+import { SEARCH_JOBS,GET_JOBS_LOADING } from "../../state/constants/jobConstant";
+import { fetchJobsData } from "../../api/jobApi"
+
+
+
 
 function SearchHeader() {
+  const dispatch = useDispatch();
   const [jobList, setJobList] = useState<Job[]>([]);
+  const [text, setText] = useState<String>("");
   const jobsData = useSelector((state: RootState) => state.getJobData);
   const { jobs } = jobsData;
 
 
-  const searchHandler = (e: React.FormEvent) => {
+  const searchHandler =async (e: React.FormEvent) => {
     e.preventDefault();
-
+    dispatch({ type: GET_JOBS_LOADING });
+    const oldJobs = await fetchJobsData("");
+    dispatch({type:SEARCH_JOBS ,payload:{ oldJobs, text}})
   }
-
+  const onChange = (e: any) => {
+      setText(e.target.value);
+  }
   useEffect(() => {
     if (jobs) {
       setJobList(jobs);
@@ -29,6 +41,7 @@ function SearchHeader() {
         <FormControl
           type="text"
           placeholder="Tìm kiếm theo chức vụ, kỹ năng, công ty..."
+          onChange={onChange}
         />
         <Form.Select aria-label="Default select example">
           <option value="1">Tất Cả</option>
