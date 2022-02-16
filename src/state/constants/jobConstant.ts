@@ -1,6 +1,8 @@
 export const GET_JOBS = "GET_JOBS";
 export const GET_JOBS_LOADING = "GET_JOBS_LOADING";
 export const GET_JOBS_ERROR = "GET_JOBS_ERROR";
+export const GET_PAGINATION_JOBS = "GET_PAGINATION_JOBS";
+
 
 export interface Job {
   id: string,
@@ -15,7 +17,7 @@ export interface Job {
 
 export interface getJobsAction {
   type: string,
-  payload: Job[] | string
+  payload: Job[] | string | number | any
 }
 
 export interface getJobsLoading {

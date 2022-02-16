@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react"
+import { getByTitle, render } from "@testing-library/react"
 import { Provider } from "react-redux"
 import JobContentPreview from "."
 import store from "../../state/store"
