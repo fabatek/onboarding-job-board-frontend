@@ -6,8 +6,6 @@ export const API = "https://6201d6f6b8735d00174cb605.mockapi.io/api/job";
 export const DEFAULT_LIMIT = 10;
 export const SEARCH_JOBS = "SEARCH_JOBS";
 
-
-
 export interface Job {
   id: string,
   title: string,

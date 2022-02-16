@@ -21,7 +21,6 @@ function JobList() {
     }
   }, [jobs, jobsOfPage])
 
-
   return (
     <div className="jobs-container" >
       {loading ? <MessageBox variant="success"><i className="fas fa-spinner fa-spin" /> Loading</MessageBox> :

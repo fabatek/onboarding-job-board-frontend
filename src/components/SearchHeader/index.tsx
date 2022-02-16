@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { Job } from '../../state/constants/jobConstant';
 import { RootState } from '../../state/reducers';
 import { useDispatch } from 'react-redux';
-import { SEARCH_JOBS,GET_JOBS_LOADING } from "../../state/constants/jobConstant";
+import { SEARCH_JOBS, GET_JOBS_LOADING } from "../../state/constants/jobConstant";
 import { fetchJobsData } from "../../api/jobApi"
 
 
@@ -19,14 +19,14 @@ function SearchHeader() {
   const { jobs } = jobsData;
 
 
-  const searchHandler =async (e: React.FormEvent) => {
+  const searchHandler = async (e: React.FormEvent) => {
     e.preventDefault();
     dispatch({ type: GET_JOBS_LOADING });
     const oldJobs = await fetchJobsData("");
-    dispatch({type:SEARCH_JOBS ,payload:{ oldJobs, text}})
+    dispatch({ type: SEARCH_JOBS, payload: { oldJobs, text } })
   }
   const onChange = (e: any) => {
-      setText(e.target.value);
+    setText(e.target.value);
   }
   useEffect(() => {
     if (jobs) {
