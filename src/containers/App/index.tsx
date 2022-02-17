@@ -6,7 +6,7 @@ import Router from "../Router";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getData(""));
+    dispatch(getData(1));
   }, [dispatch]);
   return (
     <>

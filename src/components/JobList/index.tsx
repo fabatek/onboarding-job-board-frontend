@@ -5,20 +5,22 @@ import { RootState } from '../../state/reducers';
 import JobContent from '../JobContent/index'
 import JobContentPreview from '../JobContentPreview';
 import MessageBox from '../MessageBox/index';
+import Page from '../Page';
 import './styles.scss'
 
 function JobList() {
   const [jobList, setJobList] = useState<Job[]>([]);
   const jobsData = useSelector((state: RootState) => state.getJobData);
-  const { loading, jobs, error } = jobsData;
+  const { loading, jobs, error, jobsOfPage } = jobsData;
   const [selectedJob, setSelectedJob] = useState<Job>();
 
   useEffect(() => {
-    if (jobs) {
-      setJobList(jobs);
+    if (jobsOfPage) {
+      setJobList(jobsOfPage);
       setSelectedJob(jobs[0])
     }
-  }, [jobs])
+  }, [jobs, jobsOfPage])
+
 
   return (
     <div className="jobs-container" >
@@ -40,6 +42,9 @@ function JobList() {
                 />
               })}
             </div>
+            <Page
+              jobList={jobs}
+            />
           </div>
       }
       <div className="jobs-preview" data-testid="job-preview">
