@@ -13,6 +13,8 @@ function JobList() {
   const jobsData = useSelector((state: RootState) => state.getJobData);
   const { loading, jobs, error, jobsOfPage } = jobsData;
   const [selectedJob, setSelectedJob] = useState<Job>();
+  console.log(jobsOfPage, 'jobsOfPage')
+  console.log(jobs, 'jobs')
 
   useEffect(() => {
     if (jobsOfPage) {

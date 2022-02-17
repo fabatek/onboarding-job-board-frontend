@@ -4,6 +4,7 @@ import Pagination from 'react-bootstrap/Pagination'
 import { Job } from '../../state/constants/jobConstant';
 import { GET_PAGINATION_JOBS } from "../../state/constants/jobConstant";
 import { useDispatch } from 'react-redux';
+import {getDataByPage} from '../../state/actions/jobActions';
 
 import "./styles.scss"
 
@@ -15,7 +16,7 @@ interface PropsType {
 function Page(props: PropsType) {
   const dispatch = useDispatch();
   const handePagination = (page: Number) => {
-    dispatch({ type: GET_PAGINATION_JOBS, payload: page });
+    dispatch(getDataByPage(page));
   }
   return (
     <div className='page'>

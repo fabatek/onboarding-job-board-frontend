@@ -24,7 +24,7 @@ export const getJobsData = (state: jobState = initialState, action: getJobsActio
       }
     case GET_JOBS_LOADING:
       return {
-        jobs: [],
+        ...state,
         jobsOfPage: [],
         loading: true
       }
@@ -34,13 +34,9 @@ export const getJobsData = (state: jobState = initialState, action: getJobsActio
         error: action.payload
       }
     case GET_PAGINATION_JOBS:
-      const page = action.payload;
-      const countPerPage = 10;
-      const startJobs = (page * countPerPage - 9) - 1;
-      const endJobs = page * 10;
-      const jobsOfPage = state.jobs ? state.jobs.slice(startJobs, endJobs) : [];
+      const jobsOfPage = action.payload;
       return {
-        jobs: state.jobs,
+        ...state,
         jobsOfPage,
         loading: false
       }
