@@ -1,11 +1,9 @@
 import axios from "axios"
 import { Job, DEFAULT_LIMIT, API } from "../state/constants/jobConstant";
 
-export const fetchJobsData = async (name: string) => {
-  const { data } = await axios.get<Job[]>(API);
-  const jobs = data.slice(0, 100);
-  return jobs;
-
+export const fetchJobsData = async () => {
+  const {data } = await axios.get<Job[]>(API);
+  return data;
 }
 
 export const fetchJobsDataByPage = async (page: Number) => {

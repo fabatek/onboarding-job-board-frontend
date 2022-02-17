@@ -18,9 +18,9 @@ export const getJobsData = (state: jobState = initialState, action: getJobsActio
   switch (action.type) {
     case GET_JOBS:
       return {
-        jobs: action.payload,
+        jobs: action.payload.jobs,
         loading: false,
-        jobsOfPage: action.payload.slice(0, 10)
+        jobsOfPage: action.payload.jobsOfPage
       }
     case GET_JOBS_LOADING:
       return {
