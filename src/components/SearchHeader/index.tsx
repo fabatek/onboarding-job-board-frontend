@@ -5,16 +5,18 @@ import { useSelector } from 'react-redux';
 import { Job } from '../../state/constants/jobConstant';
 import { RootState } from '../../state/reducers';
 import { useDispatch } from 'react-redux';
-import { SEARCH_JOBS, GET_JOBS_LOADING } from "../../state/constants/jobConstant";
-import { fetchJobsData } from "../../api/jobApi"
+import { GET_JOBS_LOADING } from "../../state/constants/jobConstant";
+import { getDataBySearch } from "../../state/actions/jobActions"
+
+interface PropsType {
+  handleSearch:(text:String) => void;
+  text:String;
+}
 
 
-
-
-function SearchHeader() {
+function SearchHeader(props :PropsType) {
   const dispatch = useDispatch();
   const [jobList, setJobList] = useState<Job[]>([]);
-  const [text, setText] = useState<String>("");
   const jobsData = useSelector((state: RootState) => state.getJobData);
   const { jobs } = jobsData;
 
@@ -22,11 +24,10 @@ function SearchHeader() {
   const searchHandler = async (e: React.FormEvent) => {
     e.preventDefault();
     dispatch({ type: GET_JOBS_LOADING });
-    const oldJobs = await fetchJobsData("");
-    dispatch({ type: SEARCH_JOBS, payload: { oldJobs, text } })
+    dispatch(getDataBySearch(props.text))
   }
   const onChange = (e: any) => {
-    setText(e.target.value);
+    props.handleSearch(e.target.value);
   }
   useEffect(() => {
     if (jobs) {

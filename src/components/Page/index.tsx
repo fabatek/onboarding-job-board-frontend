@@ -3,8 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Pagination from 'react-bootstrap/Pagination'
 import { Job } from '../../state/constants/jobConstant';
 import { useDispatch } from 'react-redux';
-import {getData} from '../../state/actions/jobActions';
-import { GET_PAGINATION_JOBS } from "../../state/constants/jobConstant";
+import {getData, getDataSearch} from '../../state/actions/jobActions';
 
 
 
@@ -12,13 +11,18 @@ import "./styles.scss"
 
 interface PropsType {
   jobList: Job[];
+  text:String;
 
 }
 
 function Page(props: PropsType) {
   const dispatch = useDispatch();
   const handePagination = (page: Number) => {
-    dispatch(getData(page));
+    if(props.text === ""){
+      dispatch(getData(page));
+    }else{
+      dispatch(getDataSearch(props.text,page));
+    }   
   }
   return (
     <div className='page'>

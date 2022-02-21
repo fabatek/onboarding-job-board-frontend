@@ -7,8 +7,10 @@ import JobContentPreview from '../JobContentPreview';
 import MessageBox from '../MessageBox/index';
 import Page from '../Page';
 import './styles.scss'
-
-function JobList() {
+interface PropsType {
+  text:String;
+}
+function JobList({text} :PropsType) {
   const [jobList, setJobList] = useState<Job[]>([]);
   const jobsData = useSelector((state: RootState) => state.getJobData);
   const { loading, jobs, error, jobsOfPage } = jobsData;
@@ -20,7 +22,7 @@ function JobList() {
       setSelectedJob(jobs[0])
     }
   }, [jobs, jobsOfPage])
-
+  
   return (
     <div className="jobs-container" >
       {loading ? <MessageBox variant="success"><i className="fas fa-spinner fa-spin" /> Loading</MessageBox> :
@@ -42,6 +44,7 @@ function JobList() {
               })}
             </div>
             <Page
+            text={text}
               jobList={jobs}
             />
           </div>
