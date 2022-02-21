@@ -40,7 +40,7 @@ export const getJobsData = (state: jobState = initialState, action: getJobsActio
         ...state,
         loading: false,
         jobs: jobsOfSearch,
-        jobsOfPage: jobsOfSearch.slice(0, DEFAULT_LIMIT),
+        jobsOfPage: jobsOfSearch,
       }
     case SEARCH_JOBS_TEXT:
       const { jobsOfSearchPage } = action.payload;

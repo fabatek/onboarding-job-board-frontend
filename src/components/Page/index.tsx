@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Pagination from 'react-bootstrap/Pagination'
 import { Job } from '../../state/constants/jobConstant';
 import { useDispatch } from 'react-redux';
-import {getData, getDataSearch} from '../../state/actions/jobActions';
+import {getData, getSearchData} from '../../state/actions/jobActions';
 
 
 
@@ -21,7 +21,7 @@ function Page(props: PropsType) {
     if(props.text === ""){
       dispatch(getData(page));
     }else{
-      dispatch(getDataSearch(props.text,page));
+      dispatch(getSearchData(props.text,page));
     }   
   }
   return (

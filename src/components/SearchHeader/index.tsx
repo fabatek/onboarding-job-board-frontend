@@ -6,7 +6,7 @@ import { Job } from '../../state/constants/jobConstant';
 import { RootState } from '../../state/reducers';
 import { useDispatch } from 'react-redux';
 import { GET_JOBS_LOADING } from "../../state/constants/jobConstant";
-import { getDataBySearch } from "../../state/actions/jobActions"
+import { getDataBySearch, getSearchData } from "../../state/actions/jobActions"
 
 interface PropsType {
   handleSearch:(text:String) => void;
@@ -24,7 +24,8 @@ function SearchHeader(props :PropsType) {
   const searchHandler = async (e: React.FormEvent) => {
     e.preventDefault();
     dispatch({ type: GET_JOBS_LOADING });
-    dispatch(getDataBySearch(props.text))
+    await dispatch(getDataBySearch(props.text));
+    dispatch(getSearchData(props.text,1))
   }
   const onChange = (e: any) => {
     props.handleSearch(e.target.value);

@@ -23,7 +23,7 @@ export const getDataBySearch = (text : String) => async (dispatch: Dispatch<getJ
   }
 }
 
-export const getDataSearch = (text: String, page: Number) => async (dispatch: Dispatch<getJobsAction | getJobsLoading>) => {
+export const getSearchData = (text: String, page: Number) => async (dispatch: Dispatch<getJobsAction | getJobsLoading>) => {
   dispatch({ type: GET_JOBS_LOADING });
   try {
     const jobsOfSearchPage = await fetchJobsDataBySearch(text, page);
