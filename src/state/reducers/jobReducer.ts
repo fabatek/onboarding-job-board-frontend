@@ -1,4 +1,4 @@
-import { getJobsAction, GET_JOBS, GET_JOBS_ERROR, GET_JOBS_LOADING, Job, SEARCH_JOBS ,SEARCH_JOBS_TEXT} from "../constants/jobConstant";
+import { getJobsAction, GET_JOBS, GET_JOBS_ERROR, GET_JOBS_LOADING, Job, SEARCH_JOBS, SEARCH_JOBS_TEXT, DEFAULT_LIMIT } from "../constants/jobConstant";
 
 export interface jobState {
   jobs?: Job[];
@@ -33,22 +33,22 @@ export const getJobsData = (state: jobState = initialState, action: getJobsActio
         loading: false,
         error: action.payload
       }
-   
+
     case SEARCH_JOBS:
-      const {jobsOfSearch} = action.payload;
+      const { jobsOfSearch } = action.payload;
       return {
         ...state,
         loading: false,
-        jobs:jobsOfSearch,
-        jobsOfPage:jobsOfSearch,
+        jobs: jobsOfSearch,
+        jobsOfPage: jobsOfSearch.slice(0, DEFAULT_LIMIT),
       }
     case SEARCH_JOBS_TEXT:
-        const {jobsOfSearchPage} = action.payload;
-        return {
-          ...state,
-          loading: false,
-          jobsOfPage:jobsOfSearchPage,
-        }
+      const { jobsOfSearchPage } = action.payload;
+      return {
+        ...state,
+        loading: false,
+        jobsOfPage: jobsOfSearchPage,
+      }
     default:
       return state;
   }
