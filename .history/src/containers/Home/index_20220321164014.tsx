@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import "./styles.scss";
 
 function Home() {
-  const [count, setCount] = useState();
+  const [count, setCount] = useState(0);
 
   const getData = async() => {
     try {

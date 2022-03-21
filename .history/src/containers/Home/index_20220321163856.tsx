@@ -7,7 +7,7 @@ import "./styles.scss";
 function Home() {
   const [count, setCount] = useState();
 
-  const getData = async() => {
+  async function getData() {
     try {
       const res = await axios.get('https://6238236700ed1dbc5aaedc08.mockapi.io/api/jobs');
       setCount(res.data?.count);
