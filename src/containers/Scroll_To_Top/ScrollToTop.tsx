@@ -26,7 +26,7 @@ const ScrollToTop = () => {
         <div>
             {isVisible && (
             <div onClick={scrollToTop}>
-                <button id="btn__totop" type="button">
+                <button className="btn__totop" type="button">
                 <span>
                     <BsArrowUpShort></BsArrowUpShort>
                 </span>

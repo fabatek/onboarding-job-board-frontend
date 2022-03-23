@@ -2,6 +2,86 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const Footer = () => {
+  const footerLeftItems = [
+    {
+      id: 1,
+      title: "About",
+      className: "nav-link disable text-light fw-bold mb-1",
+    },
+    {
+      id: 2,
+      title: "Home",
+      className: "nav-link text-secondary fw-normal",
+    },
+    {
+      id: 3,
+      title: "About Us",
+      className: "nav-link text-secondary fw-normal",
+    },
+    {
+      id: 4,
+      title: "Contact Us",
+      className: "nav-link text-secondary fw-normal",
+    },
+    {
+      id: 5,
+      title: "All Jobs",
+      className: "nav-link text-secondary fw-normal",
+    },
+    {
+      id: 6,
+      title: "FAQ",
+      className: "nav-link text-secondary fw-normal",
+    },
+  ]
+  const footerRightItems = [
+    {
+      id: 1,
+      title: "Terms & Conditions",
+      className: "nav-link disable text-light fw-bold mb-1",
+    },
+    {
+      id: 2,
+      title: "Privacy Policy",
+      className: "nav-link text-secondary fw-normal",
+    },
+    {
+      id: 3,
+      title: "Operating Regulation",
+      className: "nav-link text-secondary fw-normal",
+    },
+    {
+      id: 4,
+      title: "Complaint Handling",
+      className: "nav-link text-secondary fw-normal",
+    },
+    {
+      id: 5,
+      title: "Term & Conditions",
+      className: "nav-link text-secondary fw-normal",
+    },
+    {
+      id: 6,
+      title: "Press",
+      className: "nav-link text-secondary fw-normal",
+    },
+  ]
+  const renderFooterLeft = footerLeftItems.map((footerItem) => {
+    return(
+      <li className="nav-item" key = {footerItem.id}>
+        <Link to="/" className={footerItem.className}>{footerItem.title}</Link>
+      </li>
+    )
+  })
+  const renderFooterRight = footerRightItems.map((footerItem) => {
+    return(
+      <li className="nav-item" key = {footerItem.id}>
+        <Link to="/" className={footerItem.className}>{footerItem.title}</Link>
+      </li>
+    )
+  })
+
+
   return (
     <footer className="bg-dark">
       <div className="container container-fluid text-white">
@@ -10,42 +90,12 @@ const Footer = () => {
             <div className="row pb-4">
               <div className="col navbar">
                 <ul className="navbar-nav fs-15">
-                  <li className="nav-item text-light disable fw-bold mb-1">About</li>
-                  <li className="nav-item">
-                    <Link to="/" className="nav-link text-secondary fw-normal">Home</Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link to="/" className="nav-link text-secondary fw-normal">About Us</Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link to="/" className="nav-link text-secondary fw-normal">Contact Us</Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link to="/" className="nav-link text-secondary fw-normal">All Jobs</Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link to="/" className="nav-link text-secondary fw-normal">FAQ</Link>
-                  </li>
+                  {renderFooterLeft}
                 </ul>
               </div>
               <div className="col navbar">
                 <ul className="navbar-nav fs-15">
-                  <li className="nav-item text-light disable fw-bold mb-1">Terms & Conditions</li>
-                  <li className="nav-item">
-                    <Link to="/" className="nav-link text-secondary fw-normal">Privacy Policy</Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link to="/" className="nav-link text-secondary fw-normal">Operating Regulation</Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link to="/" className="nav-link text-secondary fw-normal">Complaint Handling</Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link to="/" className="nav-link text-secondary fw-normal">Term & Conditions</Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link to="/" className="nav-link text-secondary fw-normal">Press</Link>
-                  </li>
+                  {renderFooterRight}
                 </ul>
               </div>
             </div>
@@ -55,7 +105,6 @@ const Footer = () => {
               </p>
               <p className="text-secondary  mb-5 fw-normal">
                 Ho Chi Minh: (+84) 977 460 519  -  Ha Noi: (+84) 983 131 351  -  Email: love@itviec.com
-
               </p>
             </div>
           </div>
