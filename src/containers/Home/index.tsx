@@ -1,18 +1,27 @@
-import logo from '../../logo.svg';
-import React from "react";
-
+import React, { useEffect } from "react";
 import "./styles.scss";
+import { useDispatch } from "react-redux";
+import GetJobs from "../../redux/jobs/jobs-action";
 
-function Home() {
+import Header from "../../components/Header/header";
+import Footer from "../../components/Footer/footer";
+
+function Home(): JSX.Element {
+  const dispatch = useDispatch();
+  //const jobState = useSelector((state:RootStore)=>state.job);
+
+  useEffect(() => {
+    dispatch(GetJobs());
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Welcome to Faba onboarding project - Job board
-        </p>
-      </header>
-    </div>
+    <>
+      <div className="App">
+        <Header />
+        <h1>Main Here</h1>
+        <Footer />
+      </div>
+    </>
   );
 }
 
