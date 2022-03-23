@@ -1,16 +1,42 @@
 import React from 'react';
 import JobItem from '../jobItem/JobItem';
 
-const JobList = () => {
+const JobList: React.FC = () => {
   return (
-    <div className='d-flex justify-content-center'>
+    <div className=''>
+      <JobItem />
+      <JobItem />
+      <JobItem />
+      <JobItem />
+      <JobItem />
+      <JobItem />
+      <JobItem />
+      <JobItem />
+      <JobItem />
+      <JobItem />
+      <JobItem />
+      <JobItem />
+      <JobItem />
+      <JobItem />
+      <JobItem />
+      <JobItem />
+      <JobItem />
+      <JobItem />
+      <JobItem />
+      <JobItem />
+      <JobItem />
+      <JobItem />
+      <JobItem />
+      <JobItem />
+      <JobItem />
+      <JobItem />
+      <JobItem />
+      <JobItem />
+      <JobItem />
+      <JobItem />
+      <JobItem />
       <JobItem />
     </div>
-    //   <div>
-    //   {jobState.job?.map((i) => {
-    //     return i.name + ' ';
-    //   })}
-    // </div>
   );
 };
 

@@ -4,10 +4,7 @@ import './header.scss';
 
 const Header: React.FC = () => {
   return (
-    <header
-      className='navbar navbar-expand-lg m-auto navbar-dark bg-dark h-auto px-5 '
-      id='header'
-    >
+    <header className='header navbar navbar-expand-lg m-auto fixed-top navbar-dark bg-dark h-auto px-5'>
       <img
         width='100x'
         height='40px'
