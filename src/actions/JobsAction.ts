@@ -7,7 +7,7 @@ import {
   JobDispatchTypes,
 } from '../actions/JobsActionType';
 
-export const GetJob = () => async (dispatch: Dispatch<JobDispatchTypes>) => {
+export const GetJob = () => async (dispatch: Dispatch<JobDispatchTypes>): Promise<void> => {
   try {
     dispatch({
       type: JOBS_LOADING,
