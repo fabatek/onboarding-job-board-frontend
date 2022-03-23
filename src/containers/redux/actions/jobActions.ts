@@ -3,9 +3,10 @@ import { ActionTypes } from "../contants/action-type"
 
 //Asynchronous Function Redux Thunk
 //Fetch Jobs Data with FETCH_JOBS
-export const fetchJobs = () => async (dispatch:any) =>{
-    const response = await pathStore.get("/jobs") 
-    dispatch({type: ActionTypes.FETCH_JOBS, payload: response.data })
+export const fetchJobs = () => async (dispatch:any):Promise<void> => {
+  
+  const response = await pathStore.get("/jobs") 
+  dispatch({type: ActionTypes.FETCH_JOBS, payload: response.data })
 }
 
 export const setJobs = (jobs :any) => {
