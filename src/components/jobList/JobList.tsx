@@ -5,37 +5,6 @@ const JobList: React.FC = () => {
   return (
     <div className=''>
       <JobItem />
-      <JobItem />
-      <JobItem />
-      <JobItem />
-      <JobItem />
-      <JobItem />
-      <JobItem />
-      <JobItem />
-      <JobItem />
-      <JobItem />
-      <JobItem />
-      <JobItem />
-      <JobItem />
-      <JobItem />
-      <JobItem />
-      <JobItem />
-      <JobItem />
-      <JobItem />
-      <JobItem />
-      <JobItem />
-      <JobItem />
-      <JobItem />
-      <JobItem />
-      <JobItem />
-      <JobItem />
-      <JobItem />
-      <JobItem />
-      <JobItem />
-      <JobItem />
-      <JobItem />
-      <JobItem />
-      <JobItem />
     </div>
   );
 };

@@ -1,27 +1,32 @@
 import React from 'react';
 
 const Footer: React.FC = () => {
-  interface list {
+  interface List {
+    id: number;
     name: string;
   }
-  const listItemLeft: list[] = [
-    { name: 'Home' },
-    { name: 'About Us' },
-    { name: 'Contact Us' },
-    { name: 'All Jobs' },
-    { name: 'FAQ' },
+  const listItemLeft: List[] = [
+    { id: 1, name: 'Home' },
+    { id: 2, name: 'About Us' },
+    { id: 3, name: 'Contact Us' },
+    { id: 4, name: 'All Jobs' },
+    { id: 5, name: 'FAQ' },
   ];
-  const listItemRight: list[] = [
-    { name: 'Privacy Policy' },
-    { name: 'Operating Regulation' },
-    { name: 'Operating Regulation' },
-    { name: 'Complaint Handling' },
-    { name: 'Term & Conditions' },
+  const listItemRight: List[] = [
+    { id: 1, name: 'Privacy Policy' },
+    { id: 2, name: 'Operating Regulation' },
+    { id: 3, name: 'Operating Regulation' },
+    { id: 4, name: 'Complaint Handling' },
+    { id: 5, name: 'Term & Conditions' },
   ];
 
-  const renderList = (list: list[]) => {
+  const RenderList = (list: List[]) => {
     return list.map((i) => {
-      return <li className='nav-item text-secondary fw-normal'>{i.name}</li>;
+      return (
+        <li key={i.id} className='nav-item text-secondary fw-normal'>
+          {i.name}
+        </li>
+      );
     });
   };
 
@@ -35,7 +40,7 @@ const Footer: React.FC = () => {
                 <li className='nav-item text-light disable fw-bold mb-1'>
                   About Us
                 </li>
-                {renderList(listItemLeft)}
+                {RenderList(listItemLeft)}
               </ul>
             </div>
             <div className='col-6'>
@@ -43,7 +48,7 @@ const Footer: React.FC = () => {
                 <li className='nav-item text-light disable fw-bold mb-1'>
                   Terms & Conditions
                 </li>
-                {renderList(listItemRight)}
+                {RenderList(listItemRight)}
               </ul>
             </div>
           </div>
@@ -57,7 +62,7 @@ const Footer: React.FC = () => {
             </p>
           </div>
         </div>
-        <div className='col-5s'>
+        <div className='col-5'>
           <div className=''>
             <ul className='navbar-nav fs-15'>
               <li className='nav-item text-secondary fw-normal'>

@@ -2,6 +2,7 @@
 import './searchContainer.scss';
 import { useSelector } from 'react-redux';
 import { RootStore } from '../../store';
+import React, { ReactElement } from 'react';
 
 const SearchContainer: React.FC = () => {
   const jobState = useSelector((state: RootStore) => state.job);
@@ -17,21 +18,23 @@ const SearchContainer: React.FC = () => {
     'QA QC',
   ];
 
-  const renderList = () => {
+  const RenderList = (): ReactElement[] => {
     return listItem.map((i) => (
-      <li className='nav-item list-inline-item'>
-        <a
-          href='#'
-          className='nav-link col-auto ms-xl-2 p-2 bg-white-hover text-white'
-        >
-          {i}
-        </a>
-      </li>
+      <React.Fragment>
+        <li key={i} className='nav-item list-inline-item '>
+          <a
+            href='#'
+            className='nav-link col-auto ms-xl-2 p-2 bg-white-hover text-white'
+          >
+            {i}
+          </a>
+        </li>
+      </React.Fragment>
     ));
   };
 
   return (
-    <div className='searchContainer container-fluid px-5 mb-2 bg-dark text-white'>
+    <div className='search__container container-fluid px-5 mb-2 bg-dark text-white'>
       <h3 className='px-5 pt-5 pb-3 text-white fs-2 text-wrap'>
         {jobState.job?.length} IT Jobs For Chất Developers
       </h3>
@@ -68,7 +71,10 @@ const SearchContainer: React.FC = () => {
         </div>
       </div>
       <div>
-        <ul className='d-inline-flex'>{renderList()}</ul>
+        <ul className='d-inline-flex'>
+          {/* <RenderList /> */}
+          {RenderList()}
+        </ul>
       </div>
     </div>
   );
