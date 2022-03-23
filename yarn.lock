@@ -10125,7 +10125,7 @@ react-scripts@4.0.3:
 
 react-spring@^9.4.4:
   version "9.4.4"
-  resolved "https://registry.npmjs.org/react-spring/-/react-spring-9.4.4.tgz"
+  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-9.4.4.tgz#0a53440013f97c1ebaa739a24a902487f36a5c1e"
   integrity sha512-VOqilh9DJBsS6Pf550YLhdReS3j9a2AQVh7NcsNtWoxTYIeuErWi6ym0++6bBhQp4yT5xvVvUDaJ8ez8vrFgaw==
   dependencies:
     "@react-spring/core" "~9.4.4"

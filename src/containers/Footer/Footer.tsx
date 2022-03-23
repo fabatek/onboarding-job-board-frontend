@@ -1,8 +1,13 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { ReactElement } from "react";
+import { Link } from "react-router-dom";
+const Footer = (): ReactElement => {
+  interface FooterList {
+    id: number;
+    title: string;
+    className: string;
+  }
 
-const Footer = () => {
-  const footerLeftItems = [
+  const footerListLeft: FooterList[] = [
     {
       id: 1,
       title: "About",
@@ -33,8 +38,8 @@ const Footer = () => {
       title: "FAQ",
       className: "nav-link text-secondary fw-normal",
     },
-  ]
-  const footerRightItems = [
+  ];
+  const footerListRight: FooterList[] = [
     {
       id: 1,
       title: "Terms & Conditions",
@@ -65,22 +70,23 @@ const Footer = () => {
       title: "Press",
       className: "nav-link text-secondary fw-normal",
     },
-  ]
-  const renderFooterLeft = footerLeftItems.map((footerItem) => {
-    return(
-      <li className="nav-item" key = {footerItem.id}>
-        <Link to="/" className={footerItem.className}>{footerItem.title}</Link>
-      </li>
-    )
-  })
-  const renderFooterRight = footerRightItems.map((footerItem) => {
-    return(
-      <li className="nav-item" key = {footerItem.id}>
-        <Link to="/" className={footerItem.className}>{footerItem.title}</Link>
-      </li>
-    )
-  })
+  ];
 
+  const RenderFooterItem = (footerList: FooterList[]): ReactElement => {
+    return (
+      <>
+        {footerList.map((item) => {
+          return (
+            <li className="nav-item" key={item.id}>
+              <Link to="/" className={item.className}>
+                {item.title}
+              </Link>
+            </li>
+          );
+        })}
+      </>
+    );
+  };
 
   return (
     <footer className="bg-dark">
@@ -90,12 +96,12 @@ const Footer = () => {
             <div className="row pb-4">
               <div className="col navbar">
                 <ul className="navbar-nav fs-15">
-                  {renderFooterLeft}
+                  {RenderFooterItem(footerListLeft)}
                 </ul>
               </div>
               <div className="col navbar">
                 <ul className="navbar-nav fs-15">
-                  {renderFooterRight}
+                  {RenderFooterItem(footerListRight)}
                 </ul>
               </div>
             </div>
@@ -104,20 +110,21 @@ const Footer = () => {
                 Want to post a job? Contact us at:
               </p>
               <p className="text-secondary  mb-5 fw-normal">
-                Ho Chi Minh: (+84) 977 460 519  -  Ha Noi: (+84) 983 131 351  -  Email: love@itviec.com
+                Ho Chi Minh: (+84) 977 460 519 - Ha Noi: (+84) 983 131 351 -
+                Email: love@itviec.com
               </p>
             </div>
           </div>
           <div className="col-auto fs-6 pb-5">
-           <div className="pt-1 text-secondary">
-            <p className="pb-2">Copyright © IT VIEC JSC</p>
-            <p>Tax code: 0312192258</p>
-           </div>
+            <div className="pt-1 text-secondary">
+              <p className="pb-2">Copyright © IT VIEC JSC</p>
+              <p>Tax code: 0312192258</p>
+            </div>
           </div>
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

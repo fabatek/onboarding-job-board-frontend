@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
-const JobDetail =()=>{
-  return (
-    <section>jobDetail</section>
-  );
-}
+const JobDetail: React.FC = () => {
+  return <section>jobDetail</section>;
+};
 
-export default JobDetail
+export default JobDetail;

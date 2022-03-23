@@ -1,8 +1,8 @@
-import {combineReducers} from "redux"
-import { jobReducer } from "./jobReducer"
+import { combineReducers } from "redux";
+import { jobReducer } from "./jobReducer";
 
 export const reducers = combineReducers({
-    allJobs: jobReducer,
-})
+  allJobs: jobReducer,
+});
 
-export type RootStateOrAny = ReturnType<typeof reducers>
+export type RootStateOrAny = ReturnType<typeof reducers>;
