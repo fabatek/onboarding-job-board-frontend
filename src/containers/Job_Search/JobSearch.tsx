@@ -2,12 +2,14 @@ import { RootStateOrAny, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { animated, useSpring } from 'react-spring';
 
-function RenderListMajors() {
+const RenderListMajors = () => {
     const majors = ["Tester", "Java", "PHP", "Android", ".NET", "iOS", "Business Analyst","QA QC"];
     return majors.map((major, index) =>
         <Link to="/" key={index} className="col-auto ms-xl-2 p-2 bg-white-hover text-white">{major}</Link>
     );
 }
+
+
 const JobSearch = () => {
     //Get Number Jobs From jobs state
     const jobs =  useSelector((state:RootStateOrAny) => state.allJobs.jobs)
@@ -15,6 +17,29 @@ const JobSearch = () => {
     //Using useSpring => Animated Job number
     //totalJobs : jobs length & totalJobs: from Job number Start
     const totalJob = useSpring({ totalJobs: jobs.length, from: { totalJobs: 0  } });
+
+    const listOptions = [
+        {
+            id:1,
+            value:1,
+            title: "Ho Chi Minh",
+        },
+        {
+            id:2,
+            value:2,
+            title: "Ha Noi",
+        },
+        {
+            id:3,
+            value:3,
+            title: "Da Nang",
+        }
+    ]
+    const renderOption  = listOptions.map((listOption)=>{
+        return(
+            <option value={listOption.value} key={listOption.id}>{listOption.title}</option>
+        )
+    })
 
     return (
         <section className="container-fluid p-3 mb-2 bg-dark text-white">
@@ -37,9 +62,7 @@ const JobSearch = () => {
                         <div className="col-lg-2">
                             <select defaultValue={'DEFAULT'} className="form-select" aria-label="Default select example">
                             <option value="DEFAULT" disabled>All Cities</option>
-                            <option value="1">Ho Chi Minh</option>
-                            <option value="2">Ha Noi</option>
-                            <option value="3">Da Nang</option>
+                            {renderOption}
                             </select>
                         </div>
                             <div className="col col-lg-2">
