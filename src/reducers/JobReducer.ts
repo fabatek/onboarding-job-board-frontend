@@ -6,7 +6,7 @@ import {
   JobType,
 } from '../actions/JobsActionType';
 
-interface DefaultStateI {
+export interface DefaultStateI {
   loading: boolean;
   job?: JobType[];
 }

@@ -18,19 +18,21 @@ const SearchContainer: React.FC = () => {
     'QA QC',
   ];
 
-  const RenderList = (): ReactElement[] => {
-    return listItem.map((i) => (
-      <React.Fragment>
-        <li key={i} className='nav-item list-inline-item '>
-          <a
-            href='#'
-            className='nav-link col-auto ms-xl-2 p-2 bg-white-hover text-white'
-          >
-            {i}
-          </a>
-        </li>
-      </React.Fragment>
-    ));
+  const RenderList = (): ReactElement => {
+    return (
+      <>
+        {listItem.map((e, i) => (
+          <li key={i} className='nav-item list-inline-item '>
+            <a
+              href='#'
+              className='nav-link col-auto ms-xl-2 p-2 bg-white-hover text-white'
+            >
+              {e}
+            </a>
+          </li>
+        ))}
+      </>
+    );
   };
 
   return (
@@ -72,8 +74,7 @@ const SearchContainer: React.FC = () => {
       </div>
       <div>
         <ul className='d-inline-flex'>
-          {/* <RenderList /> */}
-          {RenderList()}
+          <RenderList />
         </ul>
       </div>
     </div>

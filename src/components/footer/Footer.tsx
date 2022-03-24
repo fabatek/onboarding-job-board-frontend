@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 
 const Footer: React.FC = () => {
   interface List {
@@ -20,14 +20,18 @@ const Footer: React.FC = () => {
     { id: 5, name: 'Term & Conditions' },
   ];
 
-  const RenderList = (list: List[]) => {
-    return list.map((i) => {
-      return (
-        <li key={i.id} className='nav-item text-secondary fw-normal'>
-          {i.name}
-        </li>
-      );
-    });
+  const RenderList = ({ list }: { list: List[] }): ReactElement => {
+    return (
+      <>
+        {list.map((i) => {
+          return (
+            <li key={i.id} className='nav-item text-secondary fw-normal'>
+              {i.name}
+            </li>
+          );
+        })}
+      </>
+    );
   };
 
   return (
@@ -40,7 +44,7 @@ const Footer: React.FC = () => {
                 <li className='nav-item text-light disable fw-bold mb-1'>
                   About Us
                 </li>
-                {RenderList(listItemLeft)}
+                <RenderList list={listItemLeft} />
               </ul>
             </div>
             <div className='col-6'>
@@ -48,7 +52,7 @@ const Footer: React.FC = () => {
                 <li className='nav-item text-light disable fw-bold mb-1'>
                   Terms & Conditions
                 </li>
-                {RenderList(listItemRight)}
+                <RenderList list={listItemRight} />
               </ul>
             </div>
           </div>
