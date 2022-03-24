@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { fetchJobs } from "../redux/actions/jobActions";
-import JobComponent from "../JobComponent/JobComponent";
+import JobComponent from "../JobComponent";
 const JobList: React.FC = () => {
   const dispatch = useDispatch();
 
