@@ -5,6 +5,7 @@ import getJobs from "../../redux/jobs/jobs-action";
 
 import Header from "../../components/Header/header";
 import Footer from "../../components/Footer/footer";
+import MainContent from "../../components/Main/MainContent";
 
 function Home(): JSX.Element {
   const dispatch = useDispatch();
@@ -18,7 +19,10 @@ function Home(): JSX.Element {
     <>
       <div className="App">
         <Header />
-        <h1>Main Here</h1>
+        <div className="main">
+          <MainContent />
+        </div>
+
         <Footer />
       </div>
     </>
