@@ -1,8 +1,8 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Home from '../Home';
 
-import { routes } from "./services";
-import Home from "../Home";
+import { routes } from './services';
 
 const Router: React.FC = () => (
   <Routes>
