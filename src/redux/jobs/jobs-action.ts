@@ -3,7 +3,7 @@ import { Dispatch } from 'react';
 import { JobDispatchTypes, JOBS_FAIL, JOBS_LOADING, JOBS_SUCCESS, } from './jobs-action-types';
 
 
-const GetJobs = () => async (dispatch:Dispatch<JobDispatchTypes>):Promise<void>=>{
+const getJobs = () => async (dispatch:Dispatch<JobDispatchTypes>):Promise<void>=>{
     try{
         dispatch({
             type:JOBS_LOADING
@@ -19,9 +19,8 @@ const GetJobs = () => async (dispatch:Dispatch<JobDispatchTypes>):Promise<void>=
     }catch(err){
         dispatch({
             type:JOBS_FAIL,
-            //payload:err.message,
         });
     }
 };
 
-export default GetJobs;
+export default getJobs;

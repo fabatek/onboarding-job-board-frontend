@@ -8,7 +8,6 @@ import {
 interface IState{
     job?:JobType[];
     loading:boolean;
-    //message?:string;
 }
 
 const intitalState:IState={
@@ -31,7 +30,6 @@ const jobsReducer=(
                 return {
                     ...state,
                     loading: false,
-                    //message:action.payload,
                 };
             }
             case JOBS_SUCCESS:{

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./styles.scss";
 import { useDispatch } from "react-redux";
-import GetJobs from "../../redux/jobs/jobs-action";
+import getJobs from "../../redux/jobs/jobs-action";
 
 import Header from "../../components/Header/header";
 import Footer from "../../components/Footer/footer";
@@ -11,7 +11,7 @@ function Home(): JSX.Element {
   //const jobState = useSelector((state:RootStore)=>state.job);
 
   useEffect(() => {
-    dispatch(GetJobs());
+    dispatch(getJobs());
   }, []);
 
   return (
