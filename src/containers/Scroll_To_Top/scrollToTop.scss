@@ -1,0 +1,31 @@
+/*-----Scroll To Top Start-----*/
+.btn__totop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    bottom: 20px;
+    right: 20px;
+    position: fixed;
+    background-color: #fff;
+    color: rgb(195, 195, 195);
+    cursor: pointer;
+    z-index: 9999;
+    border-radius: 5px;
+    outline: none;
+    transition: all 0.2s linear;
+    border: none;
+
+    span {
+        font-size: 35px;
+    }
+
+    &:hover {
+        color: #fff;
+        background-color: rgb(195, 195, 195);
+        transition: all 0.2s linear;
+    }
+}
+
+/*-----Scroll To Top End-----*/
