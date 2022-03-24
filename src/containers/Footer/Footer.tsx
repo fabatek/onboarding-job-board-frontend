@@ -104,7 +104,7 @@ const Footer: React.FC = () => {
               </div>
               <div className="col navbar">
                 <ul className="navbar-nav fs-15">
-                  <RenderFooterItem footerList={footerListLeft} />
+                  <RenderFooterItem footerList={footerListRight} />
                 </ul>
               </div>
             </div>
