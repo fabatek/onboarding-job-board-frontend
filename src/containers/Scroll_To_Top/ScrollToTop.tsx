@@ -28,7 +28,7 @@ const ScrollToTop = () => {
         <div onClick={scrollToTop}>
           <button className="btn__totop" type="button">
             <span>
-              <BsArrowUpShort></BsArrowUpShort>
+              <BsArrowUpShort />
             </span>
           </button>
         </div>

@@ -13,18 +13,22 @@ const majors = [
   "Business Analyst",
   "QA QC",
 ];
-const RenderListMajors = (): ReactElement[] => {
-  return majors.map((item, index) => (
+const RenderListMajors = (): ReactElement => {
+  return (
     <>
-      <Link
-        to="/"
-        key={index}
-        className="col-auto ms-xl-2 p-2 bg-white-hover text-white"
-      >
-        {item}
-      </Link>
+      {majors.map((item, index) => {
+        return (
+          <Link
+            to="/"
+            key={index}
+            className="col-auto ms-xl-2 p-2 bg-white-hover text-white"
+          >
+            {item}
+          </Link>
+        );
+      })}
     </>
-  ));
+  );
 };
 
 const JobSearch: React.FC = () => {
@@ -117,7 +121,9 @@ const JobSearch: React.FC = () => {
           </div>
         </div>
         <div className="px-5 text-white fs-14">
-          <ul className="row d-inline-flex">{RenderListMajors()}</ul>
+          <ul className="row d-inline-flex">
+            <RenderListMajors />
+          </ul>
         </div>
       </div>
     </section>

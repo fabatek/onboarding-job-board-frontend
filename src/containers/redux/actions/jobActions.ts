@@ -10,17 +10,17 @@ export const fetchJobs =
     dispatch({ type: ActionTypes.FETCH_JOBS, payload: response.data });
   };
 
-export const setJobs = (jobs: any) => {
+export const setJobs = () => {
   //Get Jobs with SET_JOBS
-  return { type: ActionTypes.SET_JOBS, payload: jobs };
+  return { type: ActionTypes.SET_JOBS, payload: null };
 };
 
-export const selectedJobs = (job: any) => {
+export const selectedJobs = () => {
   //Selected Jobs With SELECTED_JOB
-  return { type: ActionTypes.SELECTED_JOB, payload: job };
+  return { type: ActionTypes.SELECTED_JOB, payload: null };
 };
 
-export const removeSelectedJob = (job: any) => {
+export const removeSelectedJob = () => {
   //Remove Selected Jobs With REMOVE_SELECTED_JOB
-  return { type: ActionTypes.REMOVE_SELECTED_JOB, payload: job };
+  return { type: ActionTypes.REMOVE_SELECTED_JOB, payload: null };
 };

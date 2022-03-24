@@ -1,12 +1,11 @@
 import React, { ReactElement } from "react";
 import { Link } from "react-router-dom";
-const Footer = (): ReactElement => {
-  interface FooterList {
-    id: number;
-    title: string;
-    className: string;
-  }
-
+interface FooterList {
+  id: number;
+  title: string;
+  className: string;
+}
+const Footer: React.FC = () => {
   const footerListLeft: FooterList[] = [
     {
       id: 1,
@@ -72,7 +71,11 @@ const Footer = (): ReactElement => {
     },
   ];
 
-  const RenderFooterItem = (footerList: FooterList[]): ReactElement => {
+  const RenderFooterItem = ({
+    footerList,
+  }: {
+    footerList: FooterList[];
+  }): ReactElement => {
     return (
       <>
         {footerList.map((item) => {
@@ -96,12 +99,12 @@ const Footer = (): ReactElement => {
             <div className="row pb-4">
               <div className="col navbar">
                 <ul className="navbar-nav fs-15">
-                  {RenderFooterItem(footerListLeft)}
+                  <RenderFooterItem footerList={footerListLeft} />
                 </ul>
               </div>
               <div className="col navbar">
                 <ul className="navbar-nav fs-15">
-                  {RenderFooterItem(footerListRight)}
+                  <RenderFooterItem footerList={footerListLeft} />
                 </ul>
               </div>
             </div>

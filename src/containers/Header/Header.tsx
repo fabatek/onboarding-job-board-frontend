@@ -1,12 +1,11 @@
 import React, { ReactElement } from "react";
 import "./header.scss";
 
+interface menuList {
+  id: number;
+  title: string;
+}
 const Header: React.FC = () => {
-  interface menuList {
-    id: number;
-    title: string;
-  }
-
   const menuListLeft: menuList[] = [
     {
       id: 1,
@@ -36,20 +35,28 @@ const Header: React.FC = () => {
     },
   ];
 
-  const RenderMenuItem = (menuList: menuList[]) => {
-    return menuList.map((item) => {
-      return (
-        <li className="nav-item ms-xl-4" key={item.id}>
-          <a
-            className="nav-link fs-15 text-shadow-white"
-            aria-current="page"
-            href="/#"
-          >
-            {item.title}
-          </a>
-        </li>
-      );
-    });
+  const RenderMenuItem = ({
+    menuList,
+  }: {
+    menuList: menuList[];
+  }): ReactElement => {
+    return (
+      <>
+        {menuList.map((item) => {
+          return (
+            <li className="nav-item ms-xl-4" key={item.id}>
+              <a
+                className="nav-link fs-15 text-shadow-white"
+                aria-current="page"
+                href="/#"
+              >
+                {item.title}
+              </a>
+            </li>
+          );
+        })}
+      </>
+    );
   };
 
   return (
@@ -75,10 +82,10 @@ const Header: React.FC = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarText">
             <ul className="navbar-nav me-auto mb-2 pl-4 mb-lg-0">
-              {RenderMenuItem(menuListLeft)}
+              <RenderMenuItem menuList={menuListLeft} />
             </ul>
             <ul className="navbar-nav mb-2 mb-lg-0">
-              {RenderMenuItem(menuListRight)}
+              <RenderMenuItem menuList={menuListRight} />
             </ul>
           </div>
         </div>
