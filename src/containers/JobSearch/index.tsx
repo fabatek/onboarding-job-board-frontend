@@ -1,7 +1,8 @@
 import { ReactElement } from "react";
-import { RootStateOrAny, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { animated, useSpring } from "react-spring";
+import { RootStore } from "../redux/store";
 
 const majors = [
   "Tester",
@@ -33,12 +34,12 @@ const RenderListMajors = (): ReactElement => {
 
 const JobSearch: React.FC = () => {
   //Get Number Jobs From jobs state
-  const jobs = useSelector((state: RootStateOrAny) => state.allJobs.jobs);
+  const jobs = useSelector((state: RootStore) => state.allJobs);
 
   //Using useSpring => Animated Job number
   //totalJobs : jobs length & totalJobs: from Job number Start
   const totalJob = useSpring({
-    totalJobs: jobs.length,
+    totalJobs: jobs.allJobs?.length,
     from: { totalJobs: 0 },
   });
 

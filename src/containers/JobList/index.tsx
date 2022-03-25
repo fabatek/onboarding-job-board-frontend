@@ -1,26 +1,20 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { fetchJobs } from "../redux/actions/jobActions";
-
+import JobComponent from "../JobComponent";
 const JobList: React.FC = () => {
   const dispatch = useDispatch();
-
-  //jobs =>  #t02
-  const jobs = useSelector((state) => state);
 
   //FetchJobs Data With Axios From MockAPI(jobs)
   //Use Hook useEffect
   useEffect(() => {
     dispatch(fetchJobs());
-  }, []);
+  }, [dispatch]);
   return (
     <section className="container container-fluid py-5">
       <div className="row py-5">
-        <div className="card-body">
-          <div className="card-heading d-flex justify-content-center align-content-center">
-            This is Top Jobs
-          </div>
-        </div>
+        <div className="fs-2 fw-normal mb-4">Display The First 100 Jobs</div>
+        <JobComponent />
       </div>
     </section>
   );

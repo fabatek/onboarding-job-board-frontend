@@ -1,4 +1,31 @@
-.image-size {
-    width: 170px;
-    height: 170px;
+.card {
+    &__image {
+        object-fit: cover;
+    }
+
+    &__custom {
+        border-radius: 0.5px;
+        border: none;
+        box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px,
+            rgba(17, 17, 26, 0.05) 0px 8px 32px;
+        position: relative;
+
+        &::after {
+            position: absolute;
+            content: "";
+            height: 5px;
+            border-radius: 0.3px;
+            background: linear-gradient(to right, rgb(253, 188, 164), rgb(255, 95, 37));
+            transition: all 0.15s linear;
+            width: 0;
+            top: 0;
+            left: 0;
+        }
+
+        &:hover::after {
+            right: 0;
+            width: 100%;
+            transition: all 0.3s linear;
+        }
+    }
 }
