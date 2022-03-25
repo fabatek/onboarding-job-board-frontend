@@ -21,7 +21,7 @@ const MainContent: React.FC = () => {
                 className="card-img-top"
                 alt=""
               />
-              <div className="card-body">
+              <div className="card-body card__body">
                 <h5 className="card-title">{item.name}</h5>
                 <p className="card-text">{item.description}</p>
                 <p className="card-text">{item.address1}</p>
