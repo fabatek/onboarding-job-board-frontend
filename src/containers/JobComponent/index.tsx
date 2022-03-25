@@ -14,9 +14,9 @@ const JobComponent: React.FC = () => {
             <>
               <section className="col-md-3" key={job.id}>
                 <Link to={`job/${job.id}`}>
-                  <div className="card mb-4 card-custom">
+                  <div className="card mb-4 card__custom">
                     <img
-                      className="card-img-top img-size"
+                      className="card-img-top card__image"
                       src={job.image}
                       alt={job.image}
                     />
