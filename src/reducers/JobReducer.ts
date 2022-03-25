@@ -2,17 +2,20 @@ import {
   JOBS_FAIL,
   JOBS_LOADING,
   JOBS_SUCCESS,
+  SEARCH_FILTER,
   JobDispatchTypes,
   JobType,
 } from '../actions/JobsActionType';
 
 export interface DefaultStateI {
   loading: boolean;
+  search: string;
   job?: JobType[];
 }
 
 const defaultState: DefaultStateI = {
   loading: false,
+  search: '',
 };
 
 const jobReducer = (
@@ -23,21 +26,26 @@ const jobReducer = (
     case JOBS_FAIL:
       return {
         loading: false,
+        search: '',
       };
 
     case JOBS_LOADING:
       return {
         loading: true,
+        search: '',
       };
 
     case JOBS_SUCCESS:
       return {
         loading: false,
+        search: '',
+
         job: action.payload,
       };
 
-    default: return state
+    default:
+      return state;
   }
 };
 
-export default jobReducer
+export default jobReducer;

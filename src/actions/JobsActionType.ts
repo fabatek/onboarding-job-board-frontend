@@ -1,6 +1,7 @@
 export const JOBS_LOADING = "JOBS_LOADING";
 export const JOBS_FAIL = "JOBS_FAIL";
 export const JOBS_SUCCESS = "JOBS_SUCCESS";
+export const SEARCH_FILTER = "SEARCH_FILTER";
 
 export type JobType = {
   name: string,
@@ -23,5 +24,9 @@ export interface JobSuccess {
   type: typeof JOBS_SUCCESS
   payload: JobType[]
 }
+export interface SearchFilter {
+  type: typeof SEARCH_FILTER
+  payload: JobType[]
+}
 
-export type JobDispatchTypes = JobLoading | JobFail | JobSuccess;
+export type JobDispatchTypes = JobLoading | JobFail | JobSuccess | SearchFilter;

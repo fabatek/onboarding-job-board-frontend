@@ -22,7 +22,7 @@ const SearchContainer: React.FC = () => {
     return (
       <>
         {listItem.map((e, i) => (
-          <li key={i} className='nav-item list-inline-item '>
+          <li key={i} className='nav-item list-inline-item'>
             <a
               href='#'
               className='nav-link col-auto ms-xl-2 p-2 bg-white-hover text-white'

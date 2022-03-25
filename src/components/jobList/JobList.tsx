@@ -9,11 +9,11 @@ const JobList: React.FC = () => {
   const jobState = useSelector((state: RootStore) => state.job);
 
   return (
-    <div className='d-flex flex-wrap'>
+    <div className='d-flex flex-wrap justify-content-center job__list'>
       {jobState.job?.map((i) => {
         return (
           <>
-            <div key={i.id} className='card w-25 p-3 '>
+            <div key={i.id} className='card m-2 job__list--item'>
               <img
                 width='250px'
                 className='card-img-top'
