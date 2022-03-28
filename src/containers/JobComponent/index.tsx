@@ -17,19 +17,19 @@ const JobComponent: React.FC = () => {
   const [pageNumber, setPageNumber] = useState<number>(0);
 
   //Default Job Number Appear in Page is 10
-  const jobPerPage: number = 10;
+  const JOBS_PER_PAGE: number = 10;
 
   //Example PageNumber
   //---2: JobPerPage:10 = 20 11->20
   //---3: JobPerPage:20 = 30 21->30
-  const pageVisited: number = pageNumber * jobPerPage;
+  const pageVisited: number = pageNumber * JOBS_PER_PAGE;
 
   //Page Count
   //Create ItemPageCount receive length jobs....
   const jobLength: number = jobs.allJobs?.length!;
 
   // const pageCount = Math.ceil(jobs.allJobs?.length / jobPerPage);
-  const pageCount: number = Math.ceil(jobLength / jobPerPage);
+  const pageCount: number = Math.ceil(jobLength / JOBS_PER_PAGE);
 
   //Change page when click button
   const pageChange = ({ selected }: { selected: number }): void => {
@@ -41,7 +41,7 @@ const JobComponent: React.FC = () => {
     return (
       <>
         {jobs.allJobs
-          ?.slice(pageVisited, pageVisited + jobPerPage)
+          ?.slice(pageVisited, pageVisited + JOBS_PER_PAGE)
           .map((job) => {
             return (
               <>
