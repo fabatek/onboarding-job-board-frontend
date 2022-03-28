@@ -39,7 +39,6 @@ const jobReducer = (
       return {
         loading: false,
         search: '',
-
         job: action.payload,
       };
 

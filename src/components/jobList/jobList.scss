@@ -5,3 +5,21 @@
 .job__list--item{
   width: 300px;
 }
+
+@media only screen and (max-width: 768px) {
+  .job__list {
+    margin: 0 10px !important;
+  }
+  
+  .job__list--item{
+    width: 300px;
+  }
+}
+
+@media only screen and (max-width: 390px) {
+  .search__container {
+    padding-top: 0px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+}
