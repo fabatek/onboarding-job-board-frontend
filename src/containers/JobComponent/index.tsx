@@ -6,22 +6,17 @@ import { GrFormNextLink, GrFormPreviousLink } from "react-icons/gr";
 import { HiOutlineCursorClick } from "react-icons/hi";
 import "./jobcomponent.scss";
 
+//Default Job Number Appear in Page is 10
+const JOBS_PER_PAGE: number = 10;
+
 const JobComponent: React.FC = () => {
   //get Data Jobs
   const jobs = useSelector((state: RootStore) => state.allJobs);
 
   //Set Default Page number
-  //Example:
-  //---Set useState<number>(0): job[1->10]
-  //---Set useState<number>(5): job[50->60]
   const [pageNumber, setPageNumber] = useState<number>(0);
 
-  //Default Job Number Appear in Page is 10
-  const JOBS_PER_PAGE: number = 10;
-
   //Example PageNumber
-  //---2: JobPerPage:10 = 20 11->20
-  //---3: JobPerPage:20 = 30 21->30
   const pageVisited: number = pageNumber * JOBS_PER_PAGE;
 
   //Page Count
