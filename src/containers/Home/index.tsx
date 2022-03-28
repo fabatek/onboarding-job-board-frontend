@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
 import "./styles.scss";
 import { useDispatch } from "react-redux";
 import getJobs from "../../redux/jobs/jobs-action";
@@ -7,12 +7,17 @@ import Header from "../../components/Header/header";
 import Footer from "../../components/Footer/footer";
 import MainContent from "../../components/Main/MainContent";
 
-function Home(): JSX.Element {
+const Home = (): ReactElement => {
   const dispatch = useDispatch();
-  //const jobState = useSelector((state:RootStore)=>state.job);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    dispatch(getJobs());
+    const fetchJob = async (): Promise<void> => {
+      setLoading(true);
+      await dispatch(getJobs());
+      setLoading(false);
+    };
+    fetchJob();
   }, []);
 
   return (
@@ -20,13 +25,13 @@ function Home(): JSX.Element {
       <div className="App">
         <Header />
         <div className="main">
-          <MainContent />
+          <MainContent loading={loading} />
         </div>
 
         <Footer />
       </div>
     </>
   );
-}
+};
 
 export default Home;

@@ -5,6 +5,10 @@ type FooterItem = {
   title: string;
 };
 
+interface ListFooterItem {
+  list: FooterItem[];
+}
+
 const aboutUsList: FooterItem[] = [
   { id: 1, title: "Home" },
   { id: 2, title: "About Us" },
@@ -22,7 +26,7 @@ const termAndConditionList: FooterItem[] = [
 ];
 
 const Footer: React.FC = () => {
-  const RenderFooterList = ({ list }: { list: FooterItem[] }): ReactElement => {
+  const RenderFooterList = ({ list }: ListFooterItem): ReactElement => {
     return (
       <>
         {list.map((item) => {
