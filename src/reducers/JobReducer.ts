@@ -41,6 +41,12 @@ const jobReducer = (
         search: '',
         job: action.payload,
       };
+    case SEARCH_FILTER:
+      return {
+        loading: false,
+        search: action.payload.search,
+        job: action.payload.jobs,
+      };
 
     default:
       return state;
