@@ -1,0 +1,23 @@
+.job__list {
+  margin: 0 150px !important;
+}
+
+.job__list--item {
+  width: 300px;
+}
+
+@media only screen and (max-width: 768px) {
+  .job__list {
+    margin: 0 10px !important;
+  }
+
+  .job__list--item {
+    width: 300px;
+  }
+}
+
+@media only screen and (max-width: 390px) {
+  .search__container {
+    padding: 0;
+  }
+}

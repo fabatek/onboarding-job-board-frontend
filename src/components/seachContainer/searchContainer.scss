@@ -1,5 +1,15 @@
 .search__container {
-  padding-top: 50px !important;
-  padding-left: 200px !important;
-  padding-right: 200px !important;
+  padding: 50px 200px !important;
+}
+
+@media only screen and (max-width: 768px) {
+  .search__container {
+    padding: 20px 100px !important;
+  }
+}
+
+@media only screen and (max-width: 390px) {
+  .search__container {
+    padding: 0 !important;
+  }
 }

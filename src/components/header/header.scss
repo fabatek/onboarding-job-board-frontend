@@ -1,4 +1,15 @@
 .header {
-  padding-left: 150px !important;
-  padding-right: 150px !important;
+  padding: 20px 150px !important;
+}
+
+@media only screen and (max-width: 768px) {
+  .header {
+    padding: 20px 50px !important;
+  }
+}
+
+@media only screen and (max-width: 390px) {
+  .header {
+    padding: 20px 10px !important;
+  }
 }

@@ -1,4 +1,5 @@
 import React, { ReactElement } from 'react';
+import './footer.scss';
 
 const Footer: React.FC = () => {
   interface List {
@@ -36,7 +37,7 @@ const Footer: React.FC = () => {
 
   return (
     <footer className='bg-dark'>
-      <div className='row px-5 d-flex justify-content-center py-5'>
+      <div className='footer__container row px-5 d-flex justify-content-center py-5'>
         <div className='col-5'>
           <div className='row'>
             <div className='col-6'>
