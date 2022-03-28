@@ -1,10 +1,15 @@
 .card {
+    cursor: pointer;
+
     &__image {
+        width: 220px;
+        height: 220px;
+        margin: 0 auto;
         object-fit: cover;
     }
 
     &__custom {
-        border-radius: 0.5px;
+        border-radius: 5px;
         border: none;
         box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px,
             rgba(17, 17, 26, 0.05) 0px 8px 32px;
@@ -13,9 +18,9 @@
         &::after {
             position: absolute;
             content: "";
-            height: 5px;
-            border-radius: 0.3px;
-            background: linear-gradient(to right, rgb(253, 188, 164), rgb(255, 95, 37));
+            height: 7px;
+            border-radius: 5px 5px 0 0;
+            background: linear-gradient(to right, rgb(141, 255, 255), rgb(12, 194, 200));
             transition: all 0.15s linear;
             width: 0;
             top: 0;
@@ -26,6 +31,47 @@
             right: 0;
             width: 100%;
             transition: all 0.3s linear;
+        }
+    }
+
+
+}
+
+.pagination {
+    font-size: 20px;
+
+    &__item {
+        cursor: pointer;
+        margin: 0 4px;
+        border-radius: 10px;
+        background: #fff;
+        box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.1);
+        outline: none;
+        border: none;
+
+        &.active {
+            background: rgb(234, 234, 234);
+
+        }
+
+        &--link {
+            color: #000;
+            padding: 8px 10px;
+            display: inline-block;
+        }
+
+        &:hover {
+            background-color: rgb(255, 255, 255);
+            box-shadow: 0px 15px 20px rgba(119, 156, 161, 0.4);
+            color: #fff;
+        }
+
+        &:first-child {
+            margin-right: 20px;
+        }
+
+        &:last-child {
+            margin-left: 20px;
         }
     }
 }

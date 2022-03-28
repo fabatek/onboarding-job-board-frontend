@@ -1,12 +1,9 @@
 import React, { ReactElement } from "react";
+import { CustomItem, CustomList } from "../Interfaces";
 import "./header.scss";
 
-interface menuList {
-  id: number;
-  title: string;
-}
 const Header: React.FC = () => {
-  const menuListLeft: menuList[] = [
+  const menuListLeft: CustomItem[] = [
     {
       id: 1,
       title: "All jobs",
@@ -20,29 +17,25 @@ const Header: React.FC = () => {
       title: "Blog",
     },
   ];
-  const menuListRight: menuList[] = [
+  const menuListRight: CustomItem[] = [
     {
       id: 1,
-      title: "All jobs",
+      title: "Sign in",
     },
     {
       id: 2,
-      title: "IT Companies",
+      title: "PhuongTM",
     },
     {
       id: 3,
-      title: "Blog",
+      title: "Employers",
     },
   ];
 
-  const RenderMenuItem = ({
-    menuList,
-  }: {
-    menuList: menuList[];
-  }): ReactElement => {
+  const RenderMenuItem = (menuList: CustomList): ReactElement => {
     return (
       <>
-        {menuList.map((item) => {
+        {menuList.list.map((item) => {
           return (
             <li className="nav-item ms-xl-4" key={item.id}>
               <a
@@ -82,10 +75,10 @@ const Header: React.FC = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarText">
             <ul className="navbar-nav me-auto mb-2 pl-4 mb-lg-0">
-              <RenderMenuItem menuList={menuListLeft} />
+              <RenderMenuItem list={menuListLeft} />
             </ul>
             <ul className="navbar-nav mb-2 mb-lg-0">
-              <RenderMenuItem menuList={menuListRight} />
+              <RenderMenuItem list={menuListRight} />
             </ul>
           </div>
         </div>

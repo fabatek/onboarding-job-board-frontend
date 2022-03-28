@@ -3,36 +3,37 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { animated, useSpring } from "react-spring";
 import { RootStore } from "../redux/store";
-
-const majors = [
-  "Tester",
-  "Java",
-  "PHP",
-  "Android",
-  ".NET",
-  "iOS",
-  "Business Analyst",
-  "QA QC",
-];
-const RenderListMajors = (): ReactElement => {
-  return (
-    <>
-      {majors.map((item, index) => {
-        return (
-          <Link
-            to="/"
-            key={index}
-            className="col-auto ms-xl-2 p-2 bg-white-hover text-white"
-          >
-            {item}
-          </Link>
-        );
-      })}
-    </>
-  );
-};
+import "./jobSearch.scss";
 
 const JobSearch: React.FC = () => {
+  const majors = [
+    "Tester",
+    "Java",
+    "PHP",
+    "Android",
+    ".NET",
+    "iOS",
+    "Business Analyst",
+    "QA QC",
+  ];
+  const RenderListMajors = (): ReactElement => {
+    return (
+      <>
+        {majors.map((item, index) => {
+          return (
+            <Link
+              to="/"
+              key={index}
+              className="col-auto ms-xl-2 p-2 bg-white-hover text-white"
+            >
+              {item}
+            </Link>
+          );
+        })}
+      </>
+    );
+  };
+
   //Get Number Jobs From jobs state
   const jobs = useSelector((state: RootStore) => state.allJobs);
 
@@ -58,6 +59,11 @@ const JobSearch: React.FC = () => {
       id: 3,
       value: 3,
       title: "Da Nang",
+    },
+    {
+      id: 4,
+      value: 4,
+      title: "Others",
     },
   ];
 
