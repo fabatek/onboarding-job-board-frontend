@@ -6,11 +6,12 @@ import {
 } from "./jobs-action-types";
 
 interface IState{
-    job?:JobType[];
+    job:JobType[];
     loading:boolean;
 }
 
 const intitalState:IState={
+    job: [],
     loading:false,
 };
 

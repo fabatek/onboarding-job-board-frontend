@@ -13,7 +13,6 @@ const Home = (): ReactElement => {
 
   useEffect(() => {
     const fetchJob = async (): Promise<void> => {
-      setLoading(true);
       await dispatch(getJobs());
       setLoading(false);
     };
