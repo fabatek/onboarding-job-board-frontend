@@ -1,28 +1,37 @@
-import React, { useEffect } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
 import "./styles.scss";
 import { useDispatch } from "react-redux";
 import getJobs from "../../redux/jobs/jobs-action";
 
 import Header from "../../components/Header/header";
 import Footer from "../../components/Footer/footer";
+import MainContent from "../../components/Main/MainContent";
 
-function Home(): JSX.Element {
+const Home = (): ReactElement => {
   const dispatch = useDispatch();
-  //const jobState = useSelector((state:RootStore)=>state.job);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    dispatch(getJobs());
+    const fetchJob = async (): Promise<void> => {
+      setLoading(true);
+      await dispatch(getJobs());
+      setLoading(false);
+    };
+    fetchJob();
   }, []);
 
   return (
     <>
       <div className="App">
         <Header />
-        <h1>Main Here</h1>
+        <div className="main">
+          <MainContent loading={loading} />
+        </div>
+
         <Footer />
       </div>
     </>
   );
-}
+};
 
 export default Home;
