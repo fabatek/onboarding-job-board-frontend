@@ -1,9 +1,9 @@
 import React, { ReactElement } from "react";
-import { CustomItem, CustomList } from "../Interfaces";
+import { CustomListItem } from "../Interfaces";
 import "./header.scss";
 
 const Header: React.FC = () => {
-  const menuListLeft: CustomItem[] = [
+  const menuListLeft: CustomListItem[] = [
     {
       id: 1,
       title: "All jobs",
@@ -17,7 +17,7 @@ const Header: React.FC = () => {
       title: "Blog",
     },
   ];
-  const menuListRight: CustomItem[] = [
+  const menuListRight: CustomListItem[] = [
     {
       id: 1,
       title: "Sign in",
@@ -32,10 +32,14 @@ const Header: React.FC = () => {
     },
   ];
 
-  const RenderMenuItem = (menuList: CustomList): ReactElement => {
+  const RenderMenuItem = ({
+    props,
+  }: {
+    props: CustomListItem[];
+  }): ReactElement => {
     return (
       <>
-        {menuList.list.map((item) => {
+        {props.map((item) => {
           return (
             <li className="nav-item ms-xl-4" key={item.id}>
               <a
@@ -75,10 +79,10 @@ const Header: React.FC = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarText">
             <ul className="navbar-nav me-auto mb-2 pl-4 mb-lg-0">
-              <RenderMenuItem list={menuListLeft} />
+              <RenderMenuItem props={menuListLeft} />
             </ul>
             <ul className="navbar-nav mb-2 mb-lg-0">
-              <RenderMenuItem list={menuListRight} />
+              <RenderMenuItem props={menuListRight} />
             </ul>
           </div>
         </div>

@@ -5,6 +5,7 @@ import { RootStore } from "../redux/store";
 import { GrFormNextLink, GrFormPreviousLink } from "react-icons/gr";
 import { HiOutlineCursorClick } from "react-icons/hi";
 import "./jobcomponent.scss";
+import RenderLoading from "../CustomReuse/Loading";
 
 //Default Job Number Appear in Page is 10
 const JOBS_PER_PAGE: number = 10;
@@ -74,19 +75,6 @@ const JobComponent: React.FC = () => {
               </>
             );
           })}
-      </>
-    );
-  };
-
-  //Loading Element
-  //Load render is taking advantage of async
-  const RenderLoading = (): ReactElement => {
-    return (
-      <>
-        <div className="d-flex align-items-center justify-content-center py-5 text-dark">
-          <div className="spinner-border" role="status"></div>
-          <span className="px-2 fs-6 fw-normal">Loading...</span>
-        </div>
       </>
     );
   };
