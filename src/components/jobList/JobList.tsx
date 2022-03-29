@@ -3,16 +3,36 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootStore } from '../../store';
+import { useState } from 'react';
+import ReactPaginate from 'react-paginate';
 import './jobList.scss';
+
+const JOB_PER_PAGE = 10;
 
 const JobList: React.FC = () => {
   const jobState = useSelector((state: RootStore) => state.job);
 
+  //Set Page Number
+  const [currentPageNumber, setCurrentPageNumber] = useState<number>(0);
+
+  //Number of pages based on the number of items
+  const pageOld: number = currentPageNumber * JOB_PER_PAGE;
+
+  const jobLength: number = jobState.job?.length || 0;
+
+  //Page Count
+  const pageCount = Math.ceil(jobLength / JOB_PER_PAGE);
+
+  //Change Page
+  const changePage = (selectedItem: { selected: number }) => {
+    setCurrentPageNumber(selectedItem.selected);
+  };
+
   return (
-    <div className='d-flex flex-wrap justify-content-center job__list'>
-      {jobState.job?.map((i) => {
-        return (
-          <>
+    <>
+      <div className='job__list container d-flex flex-wrap py-3 mx-5 '>
+        {jobState.job?.slice(pageOld, pageOld + JOB_PER_PAGE).map((i) => {
+          return (
             <div key={i.id} className='card m-2 job__list--item'>
               <img
                 width='350px'
@@ -28,10 +48,26 @@ const JobList: React.FC = () => {
                 </a>
               </div>
             </div>
-          </>
-        );
-      })}
-    </div>
+          );
+        })}
+      </div>
+
+      <ReactPaginate
+        previousLabel={'previous'}
+        nextLabel={'next'}
+        pageCount={pageCount}
+        onPageChange={changePage}
+        disabledClassName={'disable'}
+        containerClassName={'pagination justify-content-center'}
+        previousClassName={'page-item'}
+        previousLinkClassName={'page-link'}
+        pageClassName={'page-item'}
+        pageLinkClassName={'page-link'}
+        nextClassName={'page-item'}
+        nextLinkClassName={'page-link'}
+        activeClassName={'active'}
+      />
+    </>
   );
 };
 

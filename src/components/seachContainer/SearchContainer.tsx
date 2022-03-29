@@ -40,7 +40,7 @@ const SearchContainer: React.FC = () => {
       <h3 className='px-5 pt-5 pb-3 text-white fs-2 text-wrap'>
         {jobState.job?.length} IT Jobs For Chất Developers
       </h3>
-      <div className='p-5 text-white fs-3 row g-3 form'>
+      <div className='search__container--item p-5 text-white fs-3 row g-3 form'>
         <div className='col-lg-8'>
           <input
             className='form-control form-input col-lg-2'
