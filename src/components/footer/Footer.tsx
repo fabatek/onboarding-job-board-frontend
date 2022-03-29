@@ -37,7 +37,7 @@ const Footer: React.FC = () => {
 
   return (
     <footer className='bg-dark'>
-      <div className='footer__container row px-5 d-flex justify-content-center py-5'>
+      <div className='footer__container px-5 d-flex justify-content-center py-5'>
         <div className='col-5'>
           <div className='row'>
             <div className='col-6'>
@@ -68,7 +68,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
         <div className='col-5'>
-          <div className=''>
+          <div className='px-3'>
             <ul className='navbar-nav fs-15'>
               <li className='nav-item text-secondary fw-normal'>
                 Copyright © IT VIEC JSC

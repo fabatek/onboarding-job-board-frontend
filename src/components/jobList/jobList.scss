@@ -1,5 +1,9 @@
 .job__list {
-  margin: 0 150px !important;
+  margin: 0 50px !important;
+  position: relative;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 0%);
 }
 
 .job__list--item {
@@ -8,7 +12,10 @@
 
 @media only screen and (max-width: 768px) {
   .job__list {
-    margin: 0 10px !important;
+    position: relative;
+    top: 100%;
+    left: 48%;
+    transform: translate(-52%, 0%);
   }
 
   .job__list--item {
@@ -17,6 +24,14 @@
 }
 
 @media only screen and (max-width: 390px) {
+  .job__list {
+    justify-content: center;
+    position: static;
+    top: 0;
+    left: 0;
+    transform: translate(-0%, 0%);
+  }
+
   .search__container {
     padding: 0;
   }
