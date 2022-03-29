@@ -30,7 +30,7 @@ const JobList: React.FC = () => {
 
   return (
     <>
-      <div className='job__list d-flex flex-wrap py-3 mx-5 '>
+      <div className='job__list container d-flex flex-wrap py-3 mx-5 '>
         {jobState.job?.slice(pageOld, pageOld + JOB_PER_PAGE).map((i) => {
           return (
             <div key={i.id} className='card m-2 job__list--item'>
