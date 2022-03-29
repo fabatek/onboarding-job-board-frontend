@@ -1,9 +1,9 @@
 import React, { ReactElement } from "react";
 import { Link } from "react-router-dom";
-import { CustomListItem } from "../Interfaces";
+import { CustomItem, CustomList } from "../Interfaces";
 
 const Footer: React.FC = () => {
-  const footerListLeft: CustomListItem[] = [
+  const footerListLeft: CustomItem[] = [
     {
       id: 1,
       title: "About",
@@ -35,7 +35,7 @@ const Footer: React.FC = () => {
       className: "nav-link text-secondary fw-normal",
     },
   ];
-  const footerListRight: CustomListItem[] = [
+  const footerListRight: CustomItem[] = [
     {
       id: 1,
       title: "Terms & Conditions",
@@ -68,14 +68,10 @@ const Footer: React.FC = () => {
     },
   ];
 
-  const RenderFooterItem = ({
-    props,
-  }: {
-    props: CustomListItem[];
-  }): ReactElement => {
+  const RenderFooterItem = ({ list }: CustomList): ReactElement => {
     return (
       <>
-        {props.map((item) => {
+        {list.map((item) => {
           return (
             <li className="nav-item" key={item.id}>
               <Link to="/" className={item.className}>
@@ -96,12 +92,12 @@ const Footer: React.FC = () => {
             <div className="row pb-4">
               <div className="col navbar">
                 <ul className="navbar-nav fs-15">
-                  <RenderFooterItem props={footerListLeft} />
+                  <RenderFooterItem list={footerListLeft} />
                 </ul>
               </div>
               <div className="col navbar">
                 <ul className="navbar-nav fs-15">
-                  <RenderFooterItem props={footerListRight} />
+                  <RenderFooterItem list={footerListRight} />
                 </ul>
               </div>
             </div>
