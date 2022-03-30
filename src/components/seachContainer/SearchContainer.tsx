@@ -1,11 +1,14 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import './searchContainer.scss';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootStore } from '../../store';
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useState } from 'react';
+import { GetJob } from '../../actions/JobsAction';
 
 const SearchContainer: React.FC = () => {
   const jobState = useSelector((state: RootStore) => state.job);
+  const dispatch = useDispatch();
+  const [searchText, setSearchText] = useState('');
 
   const listItem = [
     'Tester',
@@ -35,6 +38,11 @@ const SearchContainer: React.FC = () => {
     );
   };
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setSearchText(e.target.value);
+
+  const handleSubmit = () => dispatch(GetJob(searchText));
+
   return (
     <div className='search__container container-fluid px-5 my-5 bg-dark text-white'>
       <h3 className='px-5 pt-5 pb-3 text-white fs-2 text-wrap'>
@@ -43,6 +51,7 @@ const SearchContainer: React.FC = () => {
       <div className='search__container--item p-5 text-white fs-3 row g-3 form'>
         <div className='col-lg-8'>
           <input
+            onChange={handleChange}
             className='form-control form-input col-lg-2'
             type='text'
             placeholder='Keyword skill (Java, iOS...), Job Title, Company...'
@@ -65,6 +74,7 @@ const SearchContainer: React.FC = () => {
         </div>
         <div className='col col-lg-2'>
           <button
+            onClick={handleSubmit}
             type='submit'
             className='d-flex justify-content-center align-items-center btn btn-danger col w-100 fs-7 fw-bold'
           >

@@ -16,7 +16,7 @@ const Home: React.FC = () => {
   const jobState = useSelector((state: RootStore) => state.job);
 
   useEffect(() => {
-    dispatch(GetJob());
+    dispatch(GetJob(''));
   }, []);
 
   console.log(jobState);
