@@ -1,25 +1,36 @@
 import { TypeJobsDispatch } from "../actions/jobActions";
-import { ActionTypes, JobType } from "../contants/action-type";
+import { JobType } from "../contants/action-type";
 
+export const FETCH_JOBS = "FETCH_JOBS";
+export const SEARCH_JOBS = "SEARCH_JOBS";
 //Create defaultState
-export interface DefaultState {
+export interface DefaultStateI {
   start: boolean;
+  searchJobs: string;
   allJobs?: JobType[];
 }
-const defaultState: DefaultState = {
+const defaultState: DefaultStateI = {
   start: false,
+  searchJobs: "",
 };
 
 //Create JobReducer Process State & Payload
 export const jobReducer = (
-  state: DefaultState = defaultState,
+  state: DefaultStateI = defaultState,
   action: TypeJobsDispatch
-): DefaultState => {
+): DefaultStateI => {
   switch (action.type) {
-    case ActionTypes.FETCH_JOBS:
+    case FETCH_JOBS:
       return {
         start: false,
+        searchJobs: "",
         allJobs: action.payload,
+      };
+    case SEARCH_JOBS:
+      return {
+        start: false,
+        searchJobs: action.payload.searchJobs,
+        allJobs: action.payload.allJobs,
       };
     default:
       return state;

@@ -10,6 +10,7 @@ import ScrollToTop from "../Scroll_To_Top/ScrollToTop";
 import JobList from "../JobList";
 import JobSearch from "../JobSearch";
 import JobComponent from "../JobComponent";
+import pathStore from "../apis/pathStore";
 
 //Custom Reuse Render Text Is Exists
 const RenderReuseText = (component: ReactElement | React.FC, text: string) => {
@@ -39,5 +40,19 @@ test("verify renders text in jobcomponent is exists", () => {
   RenderReuseText(<JobComponent />, "Loading...");
 });
 test("verify renders text in joblist is exists", () => {
-  RenderReuseText(<JobList />, "Display The First 100 Jobs");
+  RenderReuseText(<JobList />, "List of popular jobs");
+});
+
+describe("get/ - api request", () => {
+  it("api request successfully", async () => {
+    const result = await pathStore.get(`/jobs/`);
+    expect(result.status).toEqual(200);
+  });
+});
+describe("get/ - a simple api endpoint", () => {
+  it("api request successfully", async () => {
+    const itemSearch: string = "name 1";
+    const result = await pathStore.get(`/jobs?name=${itemSearch}`);
+    expect(result.status).toEqual(200);
+  });
 });

@@ -81,25 +81,29 @@ const JobComponent: React.FC = () => {
 
   return (
     <>
-      {jobLength > 0 ? (
+      {jobLength >= 0 ? (
         <>
           <RenderListJobs />
-          <ReactPaginate
-            pageCount={pageCount}
-            onPageChange={pageChange}
-            breakLabel="..."
-            previousClassName={"pagination__item"}
-            previousLinkClassName={"pagination__item--link"}
-            pageClassName={"pagination__item"}
-            pageLinkClassName={"pagination__item--link"}
-            nextClassName={"pagination__item"}
-            nextLinkClassName={"pagination__item--link"}
-            activeClassName={"active"}
-            previousLabel={<GrFormPreviousLink />}
-            nextLabel={<GrFormNextLink />}
-            disabledClassName={"disable"}
-            containerClassName={"pagination justify-content-center"}
-          />
+          {jobLength > 10 ? (
+            <ReactPaginate
+              pageCount={pageCount}
+              onPageChange={pageChange}
+              breakLabel="..."
+              previousClassName={"pagination__item"}
+              previousLinkClassName={"pagination__item--link"}
+              pageClassName={"pagination__item"}
+              pageLinkClassName={"pagination__item--link"}
+              nextClassName={"pagination__item"}
+              nextLinkClassName={"pagination__item--link"}
+              activeClassName={"active"}
+              previousLabel={<GrFormPreviousLink />}
+              nextLabel={<GrFormNextLink />}
+              disabledClassName={"disable"}
+              containerClassName={"pagination justify-content-center"}
+            />
+          ) : (
+            ""
+          )}
         </>
       ) : (
         <RenderLoading />
