@@ -2,7 +2,8 @@ import { JobDispatchTypes, JobType } from "./jobs-action-types";
 import {
     JOBS_LOADING,
     JOBS_SUCCESS,
-    JOBS_FAIL
+    JOBS_FAIL,
+    JOBS_FILTER
 } from "./jobs-action-types";
 
 interface IState{

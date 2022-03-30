@@ -15,7 +15,7 @@ interface Items {
 
 const MainContent = ({ loading }: IsLoading): ReactElement => {
   const jobState = useSelector((state: RootStore) => state.job);
-  const jobPerPage = 10;
+  const JOB_PER_PAGE = 10;
   const [currentItems, setCurrentItems] = useState<JobType[]>([]);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
@@ -23,8 +23,8 @@ const MainContent = ({ loading }: IsLoading): ReactElement => {
   useEffect(() => {
     if (jobState.job.length) {
       setCurrentItems(jobState.job);
-      const endOffset = itemOffset + jobPerPage;
-      setPageCount(Math.ceil(jobState.job.length / jobPerPage));
+      const endOffset = itemOffset + JOB_PER_PAGE;
+      setPageCount(Math.ceil(jobState.job.length / JOB_PER_PAGE));
       setCurrentItems(jobState.job.slice(itemOffset, endOffset));
     }
   }, [jobState.job, itemOffset]);
@@ -65,12 +65,8 @@ const MainContent = ({ loading }: IsLoading): ReactElement => {
     );
   };
   const handlePageClick = (selectedItem: { selected: number }) => {
-    let newOffset: number;
-    if (jobState.job?.length != null) {
-      newOffset = (selectedItem.selected * jobPerPage) % jobState.job.length;
-    } else {
-      newOffset = (selectedItem.selected * jobPerPage) % 1;
-    }
+    const newOffset =
+      (selectedItem.selected * JOB_PER_PAGE) % jobState.job.length;
     setItemOffset(newOffset);
   };
 

@@ -26,7 +26,6 @@ const Home = (): ReactElement => {
         <div className="main">
           <MainContent loading={loading} />
         </div>
-
         <Footer />
       </div>
     </>
