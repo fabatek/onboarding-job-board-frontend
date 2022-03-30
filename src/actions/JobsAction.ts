@@ -8,16 +8,16 @@ import {
   JobDispatchTypes,
 } from '../actions/JobsActionType';
 
-export const GetJob =
+const BASE_URL = 'https://6239311d043817a543df0a3f.mockapi.io/api/jobs';
+
+export const getJob =
   (searchTitle: string) =>
   async (dispatch: Dispatch<JobDispatchTypes>): Promise<void> => {
     try {
       dispatch({
         type: JOBS_LOADING,
       });
-      const res = await axios.get(
-        `https://6239311d043817a543df0a3f.mockapi.io/api/jobs`
-      );
+      const res = await axios.get(BASE_URL + `?name=${searchTitle}`);
 
       searchTitle === ''
         ? dispatch({
@@ -28,10 +28,7 @@ export const GetJob =
             type: SEARCH_FILTER,
             payload: {
               search: searchTitle,
-              jobs: res.data.filter(
-                (i: { name: string | string[] }) =>
-                  i.name.indexOf(searchTitle) >= 0
-              ),
+              jobs: res.data,
             },
           });
     } catch (e) {

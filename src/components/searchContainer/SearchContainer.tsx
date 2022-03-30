@@ -3,12 +3,12 @@ import './searchContainer.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootStore } from '../../store';
 import React, { ReactElement, useState } from 'react';
-import { GetJob } from '../../actions/JobsAction';
+import { getJob } from '../../actions/JobsAction';
 
 const SearchContainer: React.FC = () => {
   const jobState = useSelector((state: RootStore) => state.job);
   const dispatch = useDispatch();
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState<string>('');
 
   const listItem = [
     'Tester',
@@ -38,10 +38,12 @@ const SearchContainer: React.FC = () => {
     );
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setSearchText(e.target.value);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.value);
+    return setSearchText(e.target.value);
+  };
 
-  const handleSubmit = () => dispatch(GetJob(searchText));
+  const handleSubmit = () => dispatch(getJob(searchText));
 
   return (
     <div className='search__container container-fluid px-5 my-5 bg-dark text-white'>

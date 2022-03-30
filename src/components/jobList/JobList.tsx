@@ -29,19 +29,21 @@ const JobList: React.FC = () => {
   };
 
   return jobState.loading ? (
-    <div className='py-5 d-flex justify-content-center'>
-      <button className='btn btn-primary ' type='button' disabled>
-        <span
-          className='spinner-border spinner-border-sm'
-          role='status'
-          aria-hidden='true'
-        ></span>
-        Loading...
-      </button>
-    </div>
+    <>
+      <div className='py-5 d-flex justify-content-center'>
+        <button className='btn btn-primary' type='button' disabled>
+          <span
+            className='spinner-border spinner-border-sm'
+            role='status'
+            aria-hidden='true'
+          ></span>
+          Loading...
+        </button>
+      </div>
+    </>
   ) : (
     <>
-      <div className='job__list container d-flex flex-wrap py-3 mx-5 '>
+      <div className='job__list container d-flex flex-wrap py-3 mx-5'>
         {jobState.job?.slice(pageOld, pageOld + JOB_PER_PAGE).map((i) => {
           return (
             <div key={i.id} className='card m-2 job__list--item'>
