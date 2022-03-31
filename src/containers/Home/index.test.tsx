@@ -42,16 +42,15 @@ test("verify renders text in jobcomponent is exists", () => {
 test("verify renders text in joblist is exists", () => {
   RenderReuseText(<JobList />, "List of popular jobs");
 });
-
-describe("get/ - api request", () => {
+describe("get/ - api request all jobs", () => {
   it("api request successfully", async () => {
     const result = await pathStore.get(`/jobs/`);
     expect(result.status).toEqual(200);
   });
 });
-describe("get/ - a simple api endpoint", () => {
+describe("get/ - api request endpoint with name", () => {
   it("api request successfully", async () => {
-    const itemSearch: string = "name 1";
+    const itemSearch: string = "name 57";
     const result = await pathStore.get(`/jobs?name=${itemSearch}`);
     expect(result.status).toEqual(200);
   });

@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import { useSelector } from "react-redux";
 import { RootStore } from "../redux/store";
@@ -11,20 +11,15 @@ import RenderLoading from "../CustomReuse/Loading";
 const JOBS_PER_PAGE: number = 10;
 
 const JobComponent: React.FC = () => {
-  //get Data Jobs
   const jobs = useSelector((state: RootStore) => state.allJobs);
 
   //Set Default Page number
   const [pageNumber, setPageNumber] = useState<number>(0);
 
-  //Example PageNumber
   const pageVisited: number = pageNumber * JOBS_PER_PAGE;
 
   //Page Count
-  //Create ItemPageCount receive length jobs....
   const jobLength: number = jobs.allJobs?.length!;
-
-  // const pageCount = Math.ceil(jobs.allJobs?.length / jobPerPage);
   const pageCount: number = Math.ceil(jobLength / JOBS_PER_PAGE);
 
   //Change page when click button
@@ -32,7 +27,11 @@ const JobComponent: React.FC = () => {
     setPageNumber(selected);
   };
 
-  //Render List Jobs
+  //setPageNumber when state change
+  useEffect(() => {
+    setPageNumber(0);
+  }, [jobs.allJobs]);
+
   const RenderListJobs = (): ReactElement => {
     return (
       <>
@@ -49,14 +48,14 @@ const JobComponent: React.FC = () => {
                       alt={job.image}
                     />
                     <div className="card-body">
-                      <h5 className="card-heading d-flex justify-content-center text-lg-center fs-4 fw-bold text-danger">
+                      <h5 className="card-heading d-flex justify-content-center text-lg-center fs-4 fw-bold text-danger mb-2">
                         {job.company}
                       </h5>
                       <div className="fw-normal text-center px-2 d-inline py-1 text-danger mb-2 border border-danger rounded-circle">
                         {job.id}
                       </div>
                       <div className="card-text my-4 text-dark fw-normal">
-                        {job.name}
+                        {job.title}
                       </div>
                       <div className="card-text mb-4 text-black fw-bold">
                         {job.status.toString() === "1" ? (
@@ -65,7 +64,7 @@ const JobComponent: React.FC = () => {
                           <div className="text-danger">Tạm ngưng</div>
                         )}
                       </div>
-                      <button className="btn btn-outline-primary d-flex justify-content-center align-items-center w-100 fw-normal fs-5">
+                      <button className="btn btn-outline-primary d-flex justify-content-center align-items-center w-100 fw-normal fs-6">
                         <HiOutlineCursorClick />
                         See detail
                       </button>
@@ -81,10 +80,13 @@ const JobComponent: React.FC = () => {
 
   return (
     <>
-      {jobLength >= 0 ? (
+      {/* jobs.start -> false loading... -> request data successfully */}
+      {jobs.start ? (
+        <RenderLoading />
+      ) : (
         <>
           <RenderListJobs />
-          {jobLength > 10 ? (
+          {jobLength > 10 && (
             <ReactPaginate
               pageCount={pageCount}
               onPageChange={pageChange}
@@ -101,12 +103,8 @@ const JobComponent: React.FC = () => {
               disabledClassName={"disable"}
               containerClassName={"pagination justify-content-center"}
             />
-          ) : (
-            ""
           )}
         </>
-      ) : (
-        <RenderLoading />
       )}
     </>
   );

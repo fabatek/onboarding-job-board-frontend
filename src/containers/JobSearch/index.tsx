@@ -26,13 +26,10 @@ const JobSearch: React.FC = () => {
     }
     const valueTarget: string = e.target.value;
 
-    //setTimeout when after {500 or another time period} milliseconds no input will automatically send
+    //setTimeout when after {300 or another time period} milliseconds no input will automatically send
     typingTimeOutRef.current = setTimeout(() => {
-      //Sorry in advance
-      //I know I have to delete test code but I'll leave it here for you to check
-      console.log(valueTarget);
       return setSearchJobByTitle(valueTarget);
-    }, 500);
+    }, 300);
   };
 
   //Initialize function to submit
@@ -72,7 +69,6 @@ const JobSearch: React.FC = () => {
   ];
 
   //Using useSpring => Animated Job number
-  //totalJobs : jobs length & totalJobs: from Job number Start
   const totalJob = useSpring({
     totalJobs: jobs.allJobs?.length,
     from: { totalJobs: 0 },

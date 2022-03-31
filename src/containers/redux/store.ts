@@ -7,6 +7,5 @@ const composeEnhancers =
 
 const Store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)));
 
-//Default RootStore reducer type
 export type RootStore = ReturnType<typeof reducers>;
 export default Store;
