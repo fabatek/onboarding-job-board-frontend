@@ -11,7 +11,7 @@ const Home: React.FC = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getJob(''));
+    dispatch(getJob());
   }, [dispatch]);
 
   return (

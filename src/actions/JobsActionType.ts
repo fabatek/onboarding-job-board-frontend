@@ -14,11 +14,6 @@ export type JobType = {
   id: string;
 };
 
-export type Job = {
-  jobs: JobType[];
-  search: string;
-};
-
 export interface JobLoading {
   type: typeof JOBS_LOADING;
 }
@@ -31,7 +26,7 @@ export interface JobSuccess {
 }
 export interface SearchFilter {
   type: typeof SEARCH_FILTER;
-  payload: Job;
+  payload: JobType[];
 }
 
 export type JobDispatchTypes = JobLoading | JobFail | JobSuccess | SearchFilter;

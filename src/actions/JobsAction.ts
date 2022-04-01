@@ -11,26 +11,26 @@ import {
 export const BASE_URL = 'https://6239311d043817a543df0a3f.mockapi.io/api/jobs';
 
 export const getJob =
-  (searchTitle: string) =>
+  (searchTitle: string = '') =>
   async (dispatch: Dispatch<JobDispatchTypes>): Promise<void> => {
     try {
       dispatch({
         type: JOBS_LOADING,
       });
-      const res = await axios.get(BASE_URL + `?name=${searchTitle}`);
 
-      searchTitle === ''
-        ? dispatch({
-            type: JOBS_SUCCESS,
-            payload: res.data,
-          })
-        : dispatch({
-            type: SEARCH_FILTER,
-            payload: {
-              search: searchTitle,
-              jobs: res.data,
-            },
-          });
+      if (searchTitle === '') {
+        const res = await axios.get(BASE_URL);
+        dispatch({
+          type: JOBS_SUCCESS,
+          payload: res.data,
+        });
+      } else {
+        const res = await axios.get(`${BASE_URL}?name=${searchTitle}`);
+        dispatch({
+          type: SEARCH_FILTER,
+          payload: res.data,
+        });
+      }
     } catch (e) {
       dispatch({
         type: JOBS_FAIL,

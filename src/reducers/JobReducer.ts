@@ -9,13 +9,11 @@ import {
 
 export interface DefaultStateI {
   loading: boolean;
-  search: string;
   job?: JobType[];
 }
 
 const defaultState: DefaultStateI = {
   loading: false,
-  search: '',
 };
 
 const jobReducer = (
@@ -26,26 +24,22 @@ const jobReducer = (
     case JOBS_FAIL:
       return {
         loading: false,
-        search: '',
       };
 
     case JOBS_LOADING:
       return {
         loading: true,
-        search: '',
       };
 
     case JOBS_SUCCESS:
       return {
         loading: false,
-        search: '',
         job: action.payload,
       };
     case SEARCH_FILTER:
       return {
         loading: false,
-        search: action.payload.search,
-        job: action.payload.jobs,
+        job: action.payload,
       };
 
     default:

@@ -28,7 +28,7 @@ const JobList: React.FC = () => {
     setCurrentPageNumber(0);
   }, [jobState.job]);
 
-  return jobState.loading ? (
+  const Loading: React.FC = () => (
     <>
       <div className='py-5 d-flex justify-content-center'>
         <button className='btn btn-primary' type='button' disabled>
@@ -41,6 +41,10 @@ const JobList: React.FC = () => {
         </button>
       </div>
     </>
+  );
+
+  return jobState.loading ? (
+    <Loading />
   ) : (
     <>
       <div className='job__list container d-flex flex-wrap py-3 mx-5'>
@@ -83,5 +87,20 @@ const JobList: React.FC = () => {
     </>
   );
 };
+
+export const Loading: React.FC = () => (
+  <>
+    <div className='py-5 d-flex justify-content-center'>
+      <button className='btn btn-primary' type='button' disabled>
+        <span
+          className='spinner-border spinner-border-sm'
+          role='status'
+          aria-hidden='true'
+        ></span>
+        Loading...
+      </button>
+    </div>
+  </>
+);
 
 export default JobList;

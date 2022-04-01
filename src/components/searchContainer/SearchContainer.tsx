@@ -39,7 +39,6 @@ const SearchContainer: React.FC = () => {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
     return setSearchText(e.target.value);
   };
 
