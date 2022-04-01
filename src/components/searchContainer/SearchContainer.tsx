@@ -38,9 +38,8 @@ const SearchContainer: React.FC = () => {
     );
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    return setSearchText(e.target.value);
-  };
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setSearchText(e.target.value);
 
   const handleSubmit = () => dispatch(getJob(searchText));
 

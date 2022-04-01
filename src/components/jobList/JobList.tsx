@@ -21,9 +21,8 @@ const JobList: React.FC = () => {
 
   const pageCount = Math.ceil(jobLength / JOB_PER_PAGE);
 
-  const changePage = (selectedItem: { selected: number }) => {
+  const changePage = (selectedItem: { selected: number }) =>
     setCurrentPageNumber(selectedItem.selected);
-  };
 
   useEffect(() => {
     setCurrentPageNumber(0);
@@ -31,10 +30,6 @@ const JobList: React.FC = () => {
 
   return jobState.loading ? (
     <Loading />
-  ) : jobState.job == null ? (
-    <div className='container w-50 alert alert-danger' role='alert'>
-      ERROR
-    </div>
   ) : (
     <>
       <div className='job__list container d-flex flex-wrap py-3 mx-5'>
