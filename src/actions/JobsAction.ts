@@ -11,7 +11,7 @@ import {
 export const BASE_URL = 'https://6239311d043817a543df0a3f.mockapi.io/api/jobs';
 
 export const getJob =
-  (searchTitle: string = '') =>
+  (searchTitle?: string) =>
   async (dispatch: Dispatch<JobDispatchTypes>): Promise<void> => {
     try {
       dispatch({
