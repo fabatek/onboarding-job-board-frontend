@@ -37,11 +37,3 @@ describe('Should test get data API', () => {
     expect(result.data[0].name === 'name 100').toBe(true);
   });
 });
-
-// describe('Should test get data API with endpoint', () => {
-//   it('api request successfully', async () => {
-//     const itemSearch: string = 'name 100';
-//     const result = await axios.get(BASE_URL + `?name=${itemSearch}`);
-//     expect(result.data[0].name === 'name 100').toBe(true);
-//   });
-// });
