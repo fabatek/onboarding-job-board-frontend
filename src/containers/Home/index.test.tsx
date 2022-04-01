@@ -42,16 +42,19 @@ test("verify renders text in jobcomponent is exists", () => {
 test("verify renders text in joblist is exists", () => {
   RenderReuseText(<JobList />, "List of popular jobs");
 });
+test("verify renders text in job search is exists", () => {
+  RenderReuseText(<JobSearch />, "IT Jobs For Chất Developers");
+});
 describe("get/ - api request all jobs", () => {
   it("api request successfully", async () => {
     const result = await pathStore.get(`/jobs/`);
     expect(result.status).toEqual(200);
   });
 });
-describe("get/ - api request endpoint with name", () => {
+describe("get/ - api request endpoint with title", () => {
   it("api request successfully", async () => {
-    const itemSearch: string = "name 57";
-    const result = await pathStore.get(`/jobs?name=${itemSearch}`);
+    const itemSearch: string = "title 57";
+    const result = await pathStore.get(`/jobs?title=${itemSearch}`);
     expect(result.status).toEqual(200);
   });
 });

@@ -4,21 +4,25 @@ import { Dispatch } from "redux";
 import { REQUEST_JOBS, FETCH_JOBS, SEARCH_JOBS } from "../reducers/jobReducer";
 
 export const fetchJobs =
-  (itemSearch: string = "") =>
+  (itemSearch?: string) =>
   async (dispatch: Dispatch<TypeJobsDispatch>): Promise<void> => {
+    //Loading...
     dispatch({
       type: REQUEST_JOBS,
     });
-    const response = await pathStore.get(`/jobs?title=${itemSearch}`);
-    itemSearch
-      ? dispatch({
-          type: FETCH_JOBS,
-          payload: response.data,
-        })
-      : dispatch({
-          type: SEARCH_JOBS,
-          payload: { searchJobs: itemSearch, allJobs: response.data },
-        });
+    if (itemSearch) {
+      const response = await pathStore.get(`/jobs?title=${itemSearch}`);
+      dispatch({
+        type: SEARCH_JOBS,
+        payload: { allJobs: response.data },
+      });
+    } else {
+      const response = await pathStore.get(`/jobs`);
+      dispatch({
+        type: FETCH_JOBS,
+        payload: response.data,
+      });
+    }
   };
 export interface RequestJobs {
   type: typeof REQUEST_JOBS;
@@ -29,7 +33,7 @@ export interface FetchJobs {
 }
 export interface SearchJobs {
   type: typeof SEARCH_JOBS;
-  payload: { searchJobs: string; allJobs: JobType[] };
+  payload: { allJobs: JobType[] };
 }
 
 export type TypeJobsDispatch = FetchJobs | RequestJobs | SearchJobs;

@@ -19,7 +19,7 @@ const JobComponent: React.FC = () => {
   const pageVisited: number = pageNumber * JOBS_PER_PAGE;
 
   //Page Count
-  const jobLength: number = jobs.allJobs?.length!;
+  const jobLength: number = jobs.allJobs.length!;
   const pageCount: number = Math.ceil(jobLength / JOBS_PER_PAGE);
 
   //Change page when click button
@@ -36,7 +36,7 @@ const JobComponent: React.FC = () => {
     return (
       <>
         {jobs.allJobs
-          ?.slice(pageVisited, pageVisited + JOBS_PER_PAGE)
+          .slice(pageVisited, pageVisited + JOBS_PER_PAGE)
           .map((job) => {
             return (
               <>

@@ -1,4 +1,4 @@
-import React, { ReactElement, useRef, useState } from "react";
+import React, { ReactElement, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { animated, useSpring } from "react-spring";
@@ -14,22 +14,10 @@ const JobSearch: React.FC = () => {
   //Initialize the variable to receive text and set text
   const [searchJobByTitle, setSearchJobByTitle] = useState<string>("");
 
-  //Create Variable Default with Hooks useRef - Debounce
-  const typingTimeOutRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
   //Initialize function to receive text on change
   const handleChangeWithDebounce = (e: React.ChangeEvent<HTMLInputElement>) => {
-    //setTimeout -- ClearTimeout Old -> Timeout News
-    //Exp: setTimeout 100ms --Clear -> Timeout News :300ms
-    if (typingTimeOutRef.current) {
-      clearTimeout(typingTimeOutRef.current);
-    }
     const valueTarget: string = e.target.value;
-
-    //setTimeout when after {300 or another time period} milliseconds no input will automatically send
-    typingTimeOutRef.current = setTimeout(() => {
-      return setSearchJobByTitle(valueTarget);
-    }, 300);
+    return setSearchJobByTitle(valueTarget);
   };
 
   //Initialize function to submit
@@ -70,7 +58,7 @@ const JobSearch: React.FC = () => {
 
   //Using useSpring => Animated Job number
   const totalJob = useSpring({
-    totalJobs: jobs.allJobs?.length,
+    totalJobs: jobs.allJobs.length,
     from: { totalJobs: 0 },
   });
   const RenderListMajors = (): ReactElement => {

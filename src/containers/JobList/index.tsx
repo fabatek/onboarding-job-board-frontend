@@ -8,7 +8,7 @@ const JobList: React.FC = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchJobs(""));
+    dispatch(fetchJobs());
   }, [dispatch]);
 
   //Style Animated Element
