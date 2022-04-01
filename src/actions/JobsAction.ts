@@ -8,7 +8,7 @@ import {
   JobDispatchTypes,
 } from '../actions/JobsActionType';
 
-const BASE_URL = 'https://6239311d043817a543df0a3f.mockapi.io/api/jobs';
+export const BASE_URL = 'https://6239311d043817a543df0a3f.mockapi.io/api/jobs';
 
 export const getJob =
   (searchTitle: string) =>

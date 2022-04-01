@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { RootStore } from '../../store';
 import { useState } from 'react';
@@ -12,21 +12,21 @@ const JOB_PER_PAGE = 10;
 const JobList: React.FC = () => {
   const jobState = useSelector((state: RootStore) => state.job);
 
-  //Set Page Number
   const [currentPageNumber, setCurrentPageNumber] = useState<number>(0);
 
-  //Number of pages based on the number of items
   const pageOld: number = currentPageNumber * JOB_PER_PAGE;
 
   const jobLength: number = jobState.job?.length || 0;
 
-  //Page Count
   const pageCount = Math.ceil(jobLength / JOB_PER_PAGE);
 
-  //Change Page
   const changePage = (selectedItem: { selected: number }) => {
     setCurrentPageNumber(selectedItem.selected);
   };
+
+  useEffect(() => {
+    setCurrentPageNumber(0);
+  }, [jobState.job]);
 
   return jobState.loading ? (
     <>
