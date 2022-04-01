@@ -18,7 +18,7 @@ export const getJob =
         type: JOBS_LOADING,
       });
 
-      if (searchTitle === '') {
+      if (!searchTitle) {
         const res = await axios.get(BASE_URL);
         dispatch({
           type: JOBS_SUCCESS,
