@@ -31,6 +31,10 @@ const JobList: React.FC = () => {
 
   return jobState.loading ? (
     <Loading />
+  ) : jobState.job == null ? (
+    <div className='container w-50 alert alert-danger' role='alert'>
+      ERROR
+    </div>
   ) : (
     <>
       <div className='job__list container d-flex flex-wrap py-3 mx-5'>
