@@ -15,10 +15,8 @@ const JobSearch: React.FC = () => {
   const [searchJobByTitle, setSearchJobByTitle] = useState<string>("");
 
   //Initialize function to receive text on change
-  const handleChangeWithDebounce = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const valueTarget: string = e.target.value;
-    return setSearchJobByTitle(valueTarget);
-  };
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setSearchJobByTitle(e.target.value);
 
   //Initialize function to submit
   const handleSubmitSearch = () => dispatch(fetchJobs(searchJobByTitle));
@@ -114,7 +112,7 @@ const JobSearch: React.FC = () => {
                 placeholder="Keyword skill (Java, IOS...), Job Title, Company..."
                 aria-label="Search"
                 aria-describedby="search-addon"
-                onChange={handleChangeWithDebounce}
+                onChange={handleChange}
               />
             </div>
             <div className="col-lg-2">
