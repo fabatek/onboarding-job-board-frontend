@@ -1,6 +1,9 @@
 import axios from 'axios';
 import { Dispatch } from 'react';
-import { JobDispatchTypes, JOBS_FAIL, JOBS_LOADING, JOBS_SUCCESS, } from './jobs-action-types';
+import { JobDispatchTypes, JOBS_FAIL, JOBS_LOADING, JOBS_SUCCESS,JOBS_FILTER } from './jobs-action-types';
+
+export const JOBS_URL="https://623804ad0a54d2ceab6f951b.mockapi.io/api/jobs";
+
 
 
 const getJobs = () => async (dispatch:Dispatch<JobDispatchTypes>):Promise<void>=>{
@@ -9,8 +12,7 @@ const getJobs = () => async (dispatch:Dispatch<JobDispatchTypes>):Promise<void>=
             type:JOBS_LOADING
         });
 
-        const jobUrl="https://623804ad0a54d2ceab6f951b.mockapi.io/api/jobs";
-        const response=await axios.get(jobUrl);
+        const response=await axios.get(JOBS_URL);
 
         dispatch({
             type:JOBS_SUCCESS,
@@ -23,4 +25,27 @@ const getJobs = () => async (dispatch:Dispatch<JobDispatchTypes>):Promise<void>=
     }
 };
 
-export default getJobs;
+const getJobsFilter = (searchKey:string) => async (dispatch:Dispatch<JobDispatchTypes>):Promise<void>=>{
+    try{
+        dispatch({
+            type:JOBS_LOADING
+        });
+
+        const response=await axios.get(`${JOBS_URL}?name=${searchKey}`);
+
+        dispatch({
+            type:JOBS_FILTER,
+            payload:{
+                jobs:response.data,
+                keyword:searchKey,
+            },
+        });
+    }catch(err){
+        dispatch({
+            type:JOBS_FAIL,
+        });
+    }
+};
+
+
+export {getJobs, getJobsFilter};

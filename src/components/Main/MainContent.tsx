@@ -4,16 +4,11 @@ import { useSelector } from "react-redux";
 import { RootStore } from "../../redux/store";
 import { JobType } from "../../redux/jobs/jobs-action-types";
 import ReactPaginate from "react-paginate";
-
-interface IsLoading {
-  loading: boolean;
-}
-
 interface Items {
   currentItems: JobType[];
 }
 
-const MainContent = ({ loading }: IsLoading): ReactElement => {
+const MainContent = (): ReactElement => {
   const jobState = useSelector((state: RootStore) => state.job);
   const JOB_PER_PAGE = 10;
   const [currentItems, setCurrentItems] = useState<JobType[]>([]);
@@ -29,11 +24,16 @@ const MainContent = ({ loading }: IsLoading): ReactElement => {
     }
   }, [jobState.job, itemOffset]);
 
+  //Is there another way to fix this, Sir ? (reset state of page number)
+  useEffect(() => {
+    setItemOffset(0);
+  }, [jobState.job]);
+
   const JobMain = ({ currentItems }: Items): ReactElement => {
     return (
       <>
         <h2>Top Jobs</h2>
-        {loading ? (
+        {jobState.loading ? (
           <div className="text-center">
             <div className="spinner-border" role="status">
               <span className="sr-only"></span>
@@ -88,7 +88,6 @@ const MainContent = ({ loading }: IsLoading): ReactElement => {
         nextLinkClassName={"page-link"}
         breakClassName={"page-item"}
         breakLinkClassName={"page-link"}
-        activeClassName={"active"}
       />
     </>
   );
