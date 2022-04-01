@@ -6,7 +6,7 @@ import { RootStore } from "../../../redux/store";
 const UnderHeader: React.FC = () => {
   const dispatch = useDispatch();
   const jobState = useSelector((state: RootStore) => state.job);
-  const [inputSearch, SetInputSearch] = useState<string>("");
+  const [inputSearch, setInputSearch] = useState<string>("");
   const languagesList = [
     "Tester",
     "Java",
@@ -18,9 +18,8 @@ const UnderHeader: React.FC = () => {
     "QA QC",
   ];
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    SetInputSearch(e.target.value);
-  };
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setInputSearch(e.target.value);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

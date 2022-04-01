@@ -20,7 +20,6 @@ interface JobLoading {
 
 interface JobFail {
   type: typeof JOBS_FAIL;
-  //payload:''
 }
 
 interface JobSuccess {
@@ -30,10 +29,7 @@ interface JobSuccess {
 
 interface JobFilter {
   type: typeof JOBS_FILTER;
-  payload:{
-      keyword:string, 
-      jobs:JobType[];
-  }
+  payload: JobType[];
 }
 
 export type JobDispatchTypes = JobLoading | JobFail | JobSuccess | JobFilter;

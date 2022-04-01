@@ -8,6 +8,18 @@ interface Items {
   currentItems: JobType[];
 }
 
+const LoadingScr = (): ReactElement => {
+  return (
+    <>
+      <div className="text-center">
+        <div className="spinner-border" role="status">
+          <span className="sr-only"></span>
+        </div>
+      </div>
+    </>
+  );
+};
+
 const MainContent = (): ReactElement => {
   const jobState = useSelector((state: RootStore) => state.job);
   const JOB_PER_PAGE = 10;
@@ -16,15 +28,21 @@ const MainContent = (): ReactElement => {
   const [itemOffset, setItemOffset] = useState(0);
 
   useEffect(() => {
+    const endOffset = itemOffset + JOB_PER_PAGE;
+
+    //Set default currentItem and default pageCount before updating
+    let currentItemsUpdated: JobType[] = [];
+    let pageCountUpdated = 0;
+
     if (jobState.job.length) {
-      setCurrentItems(jobState.job);
-      const endOffset = itemOffset + JOB_PER_PAGE;
-      setPageCount(Math.ceil(jobState.job.length / JOB_PER_PAGE));
-      setCurrentItems(jobState.job.slice(itemOffset, endOffset));
+      currentItemsUpdated = jobState.job.slice(itemOffset, endOffset);
+      pageCountUpdated = Math.ceil(jobState.job.length / JOB_PER_PAGE);
     }
+
+    setPageCount(pageCountUpdated);
+    setCurrentItems(currentItemsUpdated);
   }, [jobState.job, itemOffset]);
 
-  //Is there another way to fix this, Sir ? (reset state of page number)
   useEffect(() => {
     setItemOffset(0);
   }, [jobState.job]);
@@ -34,11 +52,7 @@ const MainContent = (): ReactElement => {
       <>
         <h2>Top Jobs</h2>
         {jobState.loading ? (
-          <div className="text-center">
-            <div className="spinner-border" role="status">
-              <span className="sr-only"></span>
-            </div>
-          </div>
+          <LoadingScr />
         ) : (
           <div className="d-flex flex-wrap justify-content-start">
             {currentItems.map((item: JobType) => {

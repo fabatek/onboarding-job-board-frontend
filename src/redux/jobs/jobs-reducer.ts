@@ -23,14 +23,14 @@ const jobsReducer = (
   switch (action.type) {
     case JOBS_LOADING: {
       return {
-        ...state,
         loading: true,
+        job: [],
       };
     }
     case JOBS_FAIL: {
       return {
-        ...state,
         loading: false,
+        job: [],
       };
     }
     case JOBS_SUCCESS: {
@@ -41,9 +41,8 @@ const jobsReducer = (
     }
     case JOBS_FILTER: {
       return {
-        ...state,
         loading: false,
-        job: action.payload.jobs,
+        job: action.payload,
       };
     }
     default: {
