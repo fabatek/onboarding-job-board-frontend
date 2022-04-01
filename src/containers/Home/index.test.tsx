@@ -21,21 +21,27 @@ describe('Should test components', () => {
         <JobList />
       </Provider>
     );
-    getByText('Loading...');
+    expect(getByText('Loading...')).toBeInTheDocument();
   });
 });
 
-describe('Should test get all data API', () => {
-  it('api request successfully', async () => {
+describe('Should test get data API', () => {
+  it('Get all data API request successfully', async () => {
     const result = await axios.get(BASE_URL);
     expect(result.data.length).toBe(100);
   });
-});
 
-describe('Should test get data API with endpoint', () => {
-  it('api request successfully', async () => {
+  it('get data API with endpoint request successfully', async () => {
     const itemSearch: string = 'name 100';
     const result = await axios.get(BASE_URL + `?name=${itemSearch}`);
-    expect(result.data.length).toBe(1);
+    expect(result.data[0].name === 'name 100').toBe(true);
   });
 });
+
+// describe('Should test get data API with endpoint', () => {
+//   it('api request successfully', async () => {
+//     const itemSearch: string = 'name 100';
+//     const result = await axios.get(BASE_URL + `?name=${itemSearch}`);
+//     expect(result.data[0].name === 'name 100').toBe(true);
+//   });
+// });
