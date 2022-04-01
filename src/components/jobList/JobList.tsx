@@ -6,6 +6,7 @@ import { RootStore } from '../../store';
 import { useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import './jobList.scss';
+import Loading from '../loading/Loading';
 
 const JOB_PER_PAGE = 10;
 
@@ -72,20 +73,5 @@ const JobList: React.FC = () => {
     </>
   );
 };
-
-export const Loading: React.FC = () => (
-  <>
-    <div className='py-5 d-flex justify-content-center'>
-      <button className='btn btn-primary' type='button' disabled>
-        <span
-          className='spinner-border spinner-border-sm'
-          role='status'
-          aria-hidden='true'
-        ></span>
-        Loading...
-      </button>
-    </div>
-  </>
-);
 
 export default JobList;
