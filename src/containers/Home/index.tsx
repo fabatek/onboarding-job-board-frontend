@@ -1,5 +1,5 @@
 import logo from "../../logo.svg";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import "./styles.scss";
 interface Job {
@@ -12,6 +12,7 @@ interface Jobs {
 }
 function Home() {
   const [job, setJob] = useState<Job[]>([]);
+  const [count, setCount] = useState(0);
   const [findJob, setFindJob] = useState<Job[]>([]);
   const [jobName, setJobName] = useState("");
   const [number, setNumber] = useState(10);
@@ -20,9 +21,9 @@ function Home() {
     let jobs: Job[] = [];
     for (let i = 1; i <= 150; i++) {
       if (i % 2 === 0) {
-        jobs.push({ id: i, name: `job${i}`, status: "Not Available" });
+        jobs.push({ id: i, name: `Job ${i}`, status: "Not Available" });
       } else {
-        jobs.push({ id: i, name: `job${i}`, status: "Available" });
+        jobs.push({ id: i, name: `Job ${i}`, status: "Available" });
       }
     }
     setJob(jobs);
@@ -54,77 +55,88 @@ function Home() {
   function findJobs() {
     setFindJob(job.filter((j) => j.name === jobName));
   }
+  function countAvailableJob() {
+    let count = 0;
+    for (let i = 0; i < job.length; i++) {
+      if (job[i].status === "Available") {
+        count++;
+      }
+    }
+    setCount(count);
+  }
   console.log("number", number);
   console.log("numberRef", numberRef.current);
-
+  useEffect(() => {
+    create100Jobs();
+    countAvailableJob();
+  }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        <p>Welcome to Faba onboarding project - Job board</p>
-        <button onClick={create100Jobs}>Show jobs</button>
-        <div style={{ display: "flex" }}>
-          <ul>
-            {job.map((j) => {
-              if (
-                (j.id >= numberRef.current && j.id <= number) ||
-                (j.id <= numberRef.current && j.id >= number)
-              ) {
-                return (
-                  <li key={j.id} style={{ color: "yellow", fontSize: "12px" }}>
-                    {j.name}
-                    <span style={{ color: "green" }}> {j.status}</span>
-                  </li>
-                );
-              }
-            })}
-            <button
-              onClick={() => {
-                previous();
-              }}
-            >
-              Previous
-            </button>
-            <button
-              onClick={() => {
-                next();
-              }}
-            >
-              Next
-            </button>
-          </ul>
-          <div style={{ marginLeft: "300px" }}>
-            <input type="text" value={jobName} onChange={changeFindName} />
-            <button
-              onClick={() => {
-                findJobs();
-              }}
-            >
-              Find
-            </button>
-            <ul>
-              {findJob.map((fj) => {
-                return (
-                  <li key={fj.id} style={{ color: "yellow", fontSize: "20px" }}>
-                    {fj.name}
-                    <span style={{ color: "green" }}> {fj.status}</span>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-          {/* <ul>
-            {job.map((j) => {
-              return (
-                <li key={j.id} style={{ color: "yellow", fontSize: "12px" }}>
-                  {j.name}
-                  <span style={{ color: "green" }}> {j.status}</span>
-                </li>
-              );
-            })}
-          </ul> */}
-        </div>
-      </header>
+      {/* <button onClick={create100Jobs}>Show jobs</button> */}
+      {/* <div>
+        <input type="text" value={jobName} onChange={changeFindName} />
+        <button
+          onClick={() => {
+            findJobs();
+          }}
+        >
+          Find
+        </button>
+        <ul>
+          {findJob.map((fj) => {
+            return (
+              <li key={fj.id} style={{ fontSize: "20px" }}>
+                {fj.name}
+                <span style={{ color: "green" }}> {fj.status}</span>
+              </li>
+            );
+          })}
+        </ul>
+      </div> */}
+
+      {/* <ul>
+        {job.map((j) => {
+          if (
+            (j.id >= numberRef.current && j.id <= number) ||
+            (j.id <= numberRef.current && j.id >= number)
+          ) {
+            return (
+              <li key={j.id} style={{ fontSize: "12px" }}>
+                {j.name}
+                <span style={{ color: "green" }}> {j.status}</span>
+              </li>
+            );
+          }
+        })}
+        <button
+          onClick={() => {
+            previous();
+          }}
+        >
+          Previous
+        </button>
+        <button
+          onClick={() => {
+            next();
+          }}
+        >
+          Next
+        </button>
+      </ul> */}
+      <h1 style={{ textAlign: "left" }}>Nhà tuyển dụng hàng đầu</h1>
+      <h2>{count} Có Việc Làm IT Cho Developer "Chất"</h2>
+      <div className="productList">
+        {job.map((j) => {
+          return (
+            <div className="box">
+              <div className="content" key="j.id">
+                <h3>{j.name}</h3>
+                <h4>{j.status}</h4>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
