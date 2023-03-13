@@ -12,6 +12,8 @@ interface Jobs {
 }
 function Home() {
   const [job, setJob] = useState<Job[]>([]);
+  const [findJob, setFindJob] = useState<Job[]>([]);
+  const [jobName, setJobName] = useState("");
   const [number, setNumber] = useState(10);
   const numberRef = useRef(1);
   function create100Jobs() {
@@ -44,6 +46,13 @@ function Home() {
       setNumber(150);
       numberRef.current = 141;
     }
+  }
+  function changeFindName(event: React.ChangeEvent<HTMLInputElement>) {
+    setJobName(event.target.value);
+    console.log(jobName);
+  }
+  function findJobs() {
+    setFindJob(job.filter((j) => j.name === jobName));
   }
   console.log("number", number);
   console.log("numberRef", numberRef.current);
@@ -84,7 +93,26 @@ function Home() {
               Next
             </button>
           </ul>
-
+          <div style={{ marginLeft: "300px" }}>
+            <input type="text" value={jobName} onChange={changeFindName} />
+            <button
+              onClick={() => {
+                findJobs();
+              }}
+            >
+              Find
+            </button>
+            <ul>
+              {findJob.map((fj) => {
+                return (
+                  <li key={fj.id} style={{ color: "yellow", fontSize: "20px" }}>
+                    {fj.name}
+                    <span style={{ color: "green" }}> {fj.status}</span>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
           {/* <ul>
             {job.map((j) => {
               return (
