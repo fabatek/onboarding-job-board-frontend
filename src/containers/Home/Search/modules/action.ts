@@ -30,3 +30,31 @@ export const actFetchJobFailed = (error:any) => {
 };
 
 
+export const actFetchCity = () => {
+  return (dispatch:any) => {
+    dispatch(actFetchCityRequest());
+    api
+      .get(`https://6183cb0191d76c00172d1b6b.mockapi.io/api/qltt`)
+      .then((result) => { dispatch(actFetchCitySuccess(result.data)); })
+      .catch((error) => { dispatch(actFetchCityFailed(error)); });
+  };
+};
+
+export const actFetchCityRequest = () => {
+  return {
+    type: ActionType.CITY_REQUEST,
+  };
+};
+
+export const actFetchCitySuccess = (data:any) => {
+  return {
+    type: ActionType.CITY_SUCCESS,
+    payload: data,
+  };
+};
+export const actFetchCityFailed = (error:any) => {
+  return {
+    type: ActionType.CITY_FAILED,
+    payload: error,
+  };
+};

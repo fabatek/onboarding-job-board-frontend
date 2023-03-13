@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react'
 import {useDispatch,useSelector} from "react-redux"
-import { actFetchJob } from './modules/action';
+import { actFetchJob,actFetchCity } from './modules/action';
 export default function Search() {
     const dispatch = useDispatch();
     useEffect(()=>{
        dispatch(actFetchJob());
+       dispatch(actFetchCity());
     },[])
-    const jobs = useSelector((state)=> state.jobReducer.data);
+    const jobs = useSelector((state: any)=> state.jobReducer.data);
+    const city = useSelector((state:any)=> state.cityReducer.data)
     const renderJobs = () =>{
         let dem = 0;
         jobs?.map((item:any)=>{
@@ -20,7 +22,7 @@ export default function Search() {
         }
     }
     const renderLocation = () =>{
-        return jobs?.map((item:any)=>{
+        return city?.map((item:any)=>{
             return(<option value={item.city}>{item.city}</option>)
         })
     }

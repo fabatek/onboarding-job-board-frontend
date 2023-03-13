@@ -1,7 +1,8 @@
 import {combineReducers} from "redux"
-import jobReducer from "../Home/Search/modules/reducer";
+import {jobReducer,cityReducer} from "../Home/Search/modules/reducer";
 const rootReducer = combineReducers({
     jobReducer,
+    cityReducer
 })
 
 export default rootReducer;
