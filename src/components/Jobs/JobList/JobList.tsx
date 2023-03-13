@@ -17,6 +17,7 @@ const JobList = (props: Props) => {
   return (
     <div className="container my-5">
       <div className="row">
+        {/* Show the list of jobs */}
         {jobList?.map((item: JobModel) => {
           return (
             <div className="col-lg-4" key={item.id}>
