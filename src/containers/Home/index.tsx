@@ -1,6 +1,6 @@
 import logo from "../../logo.svg";
 import React, { useEffect, useRef, useState } from "react";
-
+import axios from "axios";
 import "./styles.scss";
 interface Job {
   id: number;
@@ -17,21 +17,20 @@ function Home() {
   const [jobName, setJobName] = useState("");
   const [number, setNumber] = useState(10);
   const numberRef = useRef(1);
-  function create100Jobs() {
-    let jobs: Job[] = [];
-    for (let i = 1; i <= 150; i++) {
-      if (i % 2 === 0) {
-        jobs.push({ id: i, name: `Job ${i}`, status: "Not Available" });
-      } else {
-        jobs.push({ id: i, name: `Job ${i}`, status: "Available" });
-      }
+  const getJobAPi = async () => {
+    try {
+      const response = await axios.get(
+        "https://640ef43f4ed25579dc412e27.mockapi.io/api/showJob/job"
+      );
+      setJob(response.data);
+    } catch (erro) {
+      console.log(erro);
     }
-    setJob(jobs);
-  }
+  };
   function next() {
     numberRef.current = number;
     setNumber(number + 10);
-    if (number > 150) {
+    if (number > 200) {
       setNumber(10);
       numberRef.current = 1;
     }
@@ -44,8 +43,8 @@ function Home() {
     }
     setNumber(number - 10);
     if (number < 1) {
-      setNumber(150);
-      numberRef.current = 141;
+      setNumber(200);
+      numberRef.current = 191;
     }
   }
   function changeFindName(event: React.ChangeEvent<HTMLInputElement>) {
@@ -58,16 +57,15 @@ function Home() {
   function countAvailableJob() {
     let count = 0;
     for (let i = 0; i < job.length; i++) {
-      if (job[i].status === "Available") {
+      if (job[i].status) {
         count++;
       }
     }
     setCount(count);
   }
-  console.log("number", number);
-  console.log("numberRef", numberRef.current);
+
   useEffect(() => {
-    create100Jobs();
+    getJobAPi();
     countAvailableJob();
   }, []);
   return (
@@ -125,13 +123,12 @@ function Home() {
       </ul> */}
       <h1 style={{ textAlign: "left" }}>Nhà tuyển dụng hàng đầu</h1>
       <h2>{count} Có Việc Làm IT Cho Developer "Chất"</h2>
-      <div className="productList">
+      <div className="jobList">
         {job.map((j) => {
           return (
-            <div className="box">
-              <div className="content" key="j.id">
+            <div className="jobList__job">
+              <div className="job-content" key="j.id">
                 <h3>{j.name}</h3>
-                <h4>{j.status}</h4>
               </div>
             </div>
           );
