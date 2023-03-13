@@ -14,7 +14,7 @@ const initialState = {
   jobList: [],
 };
 
-const jobReducer = createSlice({
+const JobReducer = createSlice({
   name: "jobReducer",
   initialState,
   reducers: {
@@ -24,9 +24,9 @@ const jobReducer = createSlice({
   },
 });
 
-export const { getAllJobsAction } = jobReducer.actions;
+export const { getAllJobsAction } = JobReducer.actions;
 
-export default jobReducer.reducer;
+export default JobReducer.reducer;
 
 export const getAllJobsApi = () => {
   return async (dispatch: DispatchType) => {
