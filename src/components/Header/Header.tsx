@@ -7,7 +7,7 @@ const Header = (props: Props) => {
     <div className="header bg-black">
       <div className="container">
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
-          <div className="container-fluid">
+          <div className="container-fluid p-0">
             <a href="nav-link">
               <img
                 src="https://itviec.com/assets/logo-itviec-4492a2f2577a15a0a1d55444c21c0fa55810822b3b189fc689b450fb62ce0b5b.png"
@@ -92,10 +92,12 @@ const Header = (props: Props) => {
                     className="form-select"
                     aria-label="Default select example"
                   >
-                    <option selected>Open this select menu</option>
-                    <option value={1}>One</option>
-                    <option value={2}>Two</option>
-                    <option value={3}>Three</option>
+                    <option selected>Hồ Chí Minh</option>
+                    <option value={1}>All Cities</option>
+                    <option value={2}>Hồ Chí Minh</option>
+                    <option value={3}>Hà nội</option>
+                    <option value={4}>Đà Nẵng</option>
+                    <option value={5}>Others</option>
                   </select>
                 </li>
 
@@ -107,13 +109,30 @@ const Header = (props: Props) => {
                   placeholder="Search"
                   aria-label="Search"
                 />
-                <button className="btn btn-outline-success" type="submit">
-                  Search
+                <button className="btn btn-danger" type="submit">
+                <i className="fa-solid fa-magnifying-glass" />
+
                 </button>
               </form>
                 </li>
               </ul>
-             
+                <ul className="d-flex navbar-nav me-auto mb-2 mb-lg-0">
+                <li className="nav-item">
+                  <a className="nav-link text-light" href="#">
+                    For Employers
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link text-light" href="#">
+                    Sign In
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link text-light" href="#">
+                    EN | VI
+                  </a>
+                </li>
+                </ul>
             </div>
           </div>
         </nav>
