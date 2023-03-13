@@ -35,9 +35,9 @@ function Home() {
         <p>Welcome to Faba onboarding project - Job board</p>
         <button onClick={create100Jobs}>Show jobs</button>
         <div style={{ display: "flex" }}>
-          {/* <ul>
+          <ul>
             {job.map((j) => {
-              if (j.id <= number * 10 && j.id >= number) {
+              if (j.id <= 100) {
                 return (
                   <li key={j.id} style={{ color: "yellow", fontSize: "12px" }}>
                     {j.name}
@@ -46,17 +46,17 @@ function Home() {
                 );
               }
             })}
-            <button>Previous</button>
+            {/* <button>Previous</button>
             <button
               onClick={() => {
                 next();
               }}
             >
               Next
-            </button>
-          </ul> */}
+            </button> */}
+          </ul>
 
-          <ul>
+          {/* <ul>
             {job.map((j) => {
               return (
                 <li key={j.id} style={{ color: "yellow", fontSize: "12px" }}>
@@ -65,7 +65,7 @@ function Home() {
                 </li>
               );
             })}
-          </ul>
+          </ul> */}
         </div>
       </header>
     </div>
