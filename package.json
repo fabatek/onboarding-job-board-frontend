@@ -2,16 +2,23 @@
   "name": "job_board_v2",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.3",
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^12.1.2",
+    "@testing-library/react-hooks": "^8.0.1",
     "@testing-library/user-event": "^13.5.0",
+    "@types/redux-mock-store": "^1.0.3",
+    "axios": "^1.3.4",
     "bootstrap": "^5.1.3",
     "node-sass": "^6.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-router-dom": "^6.0.1",
-    "react-scripts": "4.0.3",
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.9.0",
+    "react-scripts": "^5.0.1",
+    "redux-mock-store": "^1.5.4",
     "typescript": "~4.4.4"
   },
   "scripts": {
@@ -35,10 +42,14 @@
     ]
   },
   "devDependencies": {
+    "@babel/cli": "^7.21.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.21.2",
+    "@babel/preset-react": "^7.18.6",
     "@types/jest": "^27.0.2",
     "@types/node": "^16.11.6",
     "@types/react": "^17.0.34",
     "@types/react-dom": "^17.0.11",
-    "@types/react-router-dom": "^5.1.5"
+    "@types/react-router-dom": "^5.1.5",
+    "babel-preset-react-app": "^10.0.1"
   }
 }

@@ -1,17 +1,23 @@
 import logo from '../../logo.svg';
-import React from "react";
+import React, { useEffect } from "react";
 
 import "./styles.scss";
+import Header from '../../components/Header/Header';
+import Navbar from '../../components/Navbar/Navbar';
+import ShowAllJobs from '../../components/ShowAllJobs/ShowAllJobs';
+
 
 function Home() {
+ 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Welcome to Faba onboarding project - Job board
-        </p>
+      <header >
+        <Header/>
       </header>
+      <main className="home__body">
+        <Navbar/>
+        <ShowAllJobs/>
+      </main>
     </div>
   );
 }
