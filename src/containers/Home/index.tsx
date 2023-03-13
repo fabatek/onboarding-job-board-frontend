@@ -1,5 +1,5 @@
 import logo from "../../logo.svg";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 import "./styles.scss";
 interface Job {
@@ -12,7 +12,8 @@ interface Jobs {
 }
 function Home() {
   const [job, setJob] = useState<Job[]>([]);
-  const [number, setNumber] = useState(1);
+  const [number, setNumber] = useState(10);
+  const numberRef = useRef(1);
   function create100Jobs() {
     let jobs: Job[] = [];
     for (let i = 1; i <= 150; i++) {
@@ -25,9 +26,28 @@ function Home() {
     setJob(jobs);
   }
   function next() {
-    setNumber(number + 1);
+    numberRef.current = number;
+    setNumber(number + 10);
+    if (number > 150) {
+      setNumber(10);
+      numberRef.current = 1;
+    }
   }
-  console.log(job);
+  function previous() {
+    numberRef.current = number;
+    setNumber(number - 10);
+    if (numberRef.current > number) {
+      setNumber(numberRef.current);
+    }
+    setNumber(number - 10);
+    if (number < 1) {
+      setNumber(150);
+      numberRef.current = 141;
+    }
+  }
+  console.log("number", number);
+  console.log("numberRef", numberRef.current);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -37,7 +57,10 @@ function Home() {
         <div style={{ display: "flex" }}>
           <ul>
             {job.map((j) => {
-              if (j.id <= 100) {
+              if (
+                (j.id >= numberRef.current && j.id <= number) ||
+                (j.id <= numberRef.current && j.id >= number)
+              ) {
                 return (
                   <li key={j.id} style={{ color: "yellow", fontSize: "12px" }}>
                     {j.name}
@@ -46,14 +69,20 @@ function Home() {
                 );
               }
             })}
-            {/* <button>Previous</button>
+            <button
+              onClick={() => {
+                previous();
+              }}
+            >
+              Previous
+            </button>
             <button
               onClick={() => {
                 next();
               }}
             >
               Next
-            </button> */}
+            </button>
           </ul>
 
           {/* <ul>
