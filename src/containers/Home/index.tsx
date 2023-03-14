@@ -1,28 +1,22 @@
-import logo from "../../logo.svg";
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+
 import "./styles.scss";
-interface Job {
+import { jobAPI } from "../../redux/reducer/JobReducer";
+import { DispatchType, RootState } from "../../redux/configStore";
+export interface Job {
   id: number;
   name: string;
   status: string;
 }
 
 function Home() {
+  const { jobs } = useSelector((state: RootState) => {
+    return state.JobReducer;
+  });
   const [job, setJob] = useState<Job[]>([]);
   const [count, setCount] = useState(0);
-
-  const getJobAPi = async () => {
-    try {
-      const response = await axios.get(
-        "https://640ef43f4ed25579dc412e27.mockapi.io/api/showJob/job"
-      );
-      setJob(response.data);
-    } catch (erro) {
-      console.log(erro);
-    }
-  };
-
+  const dispatch: DispatchType = useDispatch();
   const countAvailableJob = () => {
     let count = 0;
     for (let i = 0; i < job.length; i++) {
@@ -34,9 +28,10 @@ function Home() {
   };
 
   useEffect(() => {
-    getJobAPi();
+    dispatch(jobAPI());
+    setJob(jobs);
     countAvailableJob();
-  }, []);
+  }, [job]);
   return (
     <div className="App">
       <h1 style={{ textAlign: "left" }}>Nhà tuyển dụng hàng đầu</h1>
