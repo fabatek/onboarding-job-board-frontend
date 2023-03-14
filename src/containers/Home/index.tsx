@@ -11,19 +11,18 @@ export interface Job {
 }
 
 function Home() {
-  const { jobsAPI } = useSelector((state: RootState) => {
+  const { jobs } = useSelector((state: RootState) => {
     return state.JobReducer;
   });
 
-  const [jobs, setJobs] = useState<Job[]>([]);
+  // const [jobs, setJobs] = useState<Job[]>([]);
   const [count, setCount] = useState(0);
 
   const dispatch: DispatchType = useDispatch();
 
   useEffect(() => {
     dispatch(jobAPI());
-    setJobs(jobsAPI);
-
+    // setJobs(jobsAPI);
     countAvailableJob();
   });
 
@@ -47,10 +46,16 @@ function Home() {
         {jobs.map((job) => {
           return (
             <div className="job" key={job.id}>
-              <div
-                className="job__content"
-                style={{ backgroundColor: job.status ? "green" : "red" }}
-              >
+              <div className="job__content">
+                <div
+                  className={`content-tag job__content--${
+                    job.status ? "green" : "red"
+                  }`}
+                >
+                  <span className="content__status">
+                    {job.status ? "Available" : "Non-available"}
+                  </span>
+                </div>
                 <h2 className="content-name">{job.name}</h2>
               </div>
             </div>
