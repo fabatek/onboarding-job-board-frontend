@@ -25,7 +25,7 @@ const JobList = (props: Props) => {
         ) : (
           jobList?.map((item: JobModel) => {
             return (
-              <div className="col-lg-4" key={item.id}>
+              <div className="col-lg-6" key={item.id}>
                 <JobCard item={item} />
               </div>
             );

@@ -18,11 +18,11 @@ const JobCard = (props: Props) => {
           </div>
         </div>
         <div className="col-8">
-          <h6 className="job-title mb-1 text-truncate">
+          <h4 className="job-title mb-1 text-truncate">
             <AiFillInfoCircle className="mb-1 me-1" />
             {item.jobTitle}
-          </h6>
-          <span className="company-name text-truncate">
+          </h4>
+          <span className="company-name text-truncate fs-5">
             <AiFillHome className="mb-1 me-1" /> {item.companyName}
           </span>
           <div className="mt-2">
