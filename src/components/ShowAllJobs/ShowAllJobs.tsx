@@ -10,7 +10,7 @@ type Props = {}
 const ShowAllJobs = (props: Props) => {
     // const {allJobs} = useSelector((state:RootState) => state.jobReducer)
     // const dispatch:DispatchType = useDispatch()
-    const [arr,setArr] = useState<any>([])
+    const [arr,setArr] = useState<JobModal[]>([])
     useEffect(() =>{
       // const getjobFromApi = () => {
       //   dispatch(getAllJobs())
