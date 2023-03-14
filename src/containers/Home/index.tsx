@@ -40,6 +40,17 @@ function Home() {
     <div className="App">
       <h1 style={{ textAlign: "left" }}>Nhà tuyển dụng hàng đầu</h1>
       <h2>{count} Có Việc Làm IT Cho Developer "Chất"</h2>
+      <div style={{ display: "flex", flexWrap: "wrap" }}>
+        {job.map((j) => {
+          return (
+            <div className="job" key={j.id}>
+              <div className="job__content">
+                <h2 className="content-name">{j.name}</h2>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
