@@ -14,9 +14,18 @@ function Home() {
   const { jobs } = useSelector((state: RootState) => {
     return state.JobReducer;
   });
+
   const [job, setJob] = useState<Job[]>([]);
   const [count, setCount] = useState(0);
   const dispatch: DispatchType = useDispatch();
+
+  useEffect(() => {
+    dispatch(jobAPI());
+    setJob(jobs);
+
+    countAvailableJob();
+  });
+
   const countAvailableJob = () => {
     let count = 0;
     for (let i = 0; i < job.length; i++) {
@@ -27,11 +36,6 @@ function Home() {
     setCount(count);
   };
 
-  useEffect(() => {
-    dispatch(jobAPI());
-    setJob(jobs);
-    countAvailableJob();
-  }, [job]);
   return (
     <div className="App">
       <h1 style={{ textAlign: "left" }}>Nhà tuyển dụng hàng đầu</h1>

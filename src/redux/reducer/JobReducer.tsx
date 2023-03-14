@@ -5,7 +5,7 @@ import { DispatchType } from "../configStore";
 export interface JobState {
   jobs: Job[];
 }
-const initialState = {
+const initialState: JobState = {
   jobs: [],
 };
 
@@ -23,10 +23,7 @@ export const { getJobAction } = JobReducer.actions;
 
 export const jobAPI = () => {
   return async (dispatch: DispatchType) => {
-    const result = await axios({
-      url: `${process.env.REACT_APP_API_BASE_URL}/job`,
-      method: "GET",
-    });
+    const result = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/job`);
 
     dispatch(getJobAction(result.data));
   };
