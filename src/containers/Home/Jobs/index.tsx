@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { actFetchJob } from '../Search/modules/action';
-import ReactDOM from 'react-dom';
-import ReactPaginate from 'react-paginate';
 export default function Jobs() {
     const dispatch = useDispatch();
 
@@ -26,7 +24,7 @@ export default function Jobs() {
             return (
 
                 <li className='page-item' key={number}>
-                    <a onClick={()=>{paginate(number)}} href='#jobs' className='page-link'>
+                    <a onClick={()=>{paginate(number)}} href='#listJobs' className='page-link'>
                         {number}
                     </a>
                 </li>
@@ -49,7 +47,7 @@ export default function Jobs() {
     }
     return (
         <div className='container mt-5'>
-            <ul className='list-group mb-2' id='jobs'>
+            <ul className='list-group mb-2' id='listJobs'>
                 {renderJob()}
             </ul>
             <nav >
