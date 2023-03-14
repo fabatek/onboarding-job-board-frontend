@@ -3,7 +3,7 @@ import { http } from "../../util/config";
 import { DispatchType } from "../store/store";
 
 interface JobModal {
-    allJobs: any[]
+    allJobs: JobModal[] | []
 }
 const initialState:JobModal = {
     allJobs: []
@@ -13,7 +13,7 @@ const jobReducer = createSlice({
     name: 'jobReducer',
     initialState,
     reducers:{
-        allJobs: (state,action:PayloadAction<any>) => {
+        allJobs: (state,action:PayloadAction<JobModal[]>) => {
             state.allJobs = action.payload
         }
     }

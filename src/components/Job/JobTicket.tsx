@@ -2,18 +2,18 @@ import React from 'react'
 import './jobticket.scss'
 import { JobModal } from '../../type/type'
 type Props = {
-    item:JobModal
+   
 }
 
-const JobTicket = ({item}: Props) => {
-    console.log(item)
+const JobTicket = (props: Props) => {
+   
   return (
     <div className='job-ticket'>
         <div className='job-ticket__left'>
-            <img src={item.avatar} alt="234" />
+            <img src='https://cdn.logojoy.com/wp-content/uploads/2018/05/01104813/1268-768x591.png' alt="234" />
         </div>
         <div className='job-ticket__center'> 
-            <h2>{item.title}</h2>
+            <h2>Mid/Senior Fullstack .Net Developer (Angular, ReactJS)</h2>
             <div className='job-ticket__center-more'><span>$</span>
              <p>Sign in to view <span><i className="fa-sharp fa-solid fa-caret-right"></i></span></p>
              </div>
@@ -24,7 +24,7 @@ const JobTicket = ({item}: Props) => {
         </div>
         <div className='job-ticket__right'>
             <span className='job-ticket__right__status'>hot</span>
-            <p className='job-ticket__right__address'>{item.address}</p>
+            <p className='job-ticket__right__address'>Ho Chi Minh</p>
             <p className='job-ticket__right__time'>3h</p>
         </div>
     </div>
