@@ -11,25 +11,26 @@ export interface Job {
 }
 
 function Home() {
-  const { jobs } = useSelector((state: RootState) => {
+  const { jobsAPI } = useSelector((state: RootState) => {
     return state.JobReducer;
   });
 
-  const [job, setJob] = useState<Job[]>([]);
+  const [jobs, setJobs] = useState<Job[]>([]);
   const [count, setCount] = useState(0);
+
   const dispatch: DispatchType = useDispatch();
 
   useEffect(() => {
     dispatch(jobAPI());
-    setJob(jobs);
+    setJobs(jobsAPI);
 
     countAvailableJob();
   });
 
   const countAvailableJob = () => {
     let count = 0;
-    for (let i = 0; i < job.length; i++) {
-      if (job[i].status) {
+    for (let i = 0; i < jobs.length; i++) {
+      if (jobs[i].status) {
         count++;
       }
     }
@@ -40,12 +41,17 @@ function Home() {
     <div className="App">
       <h1 style={{ textAlign: "left" }}>Nhà tuyển dụng hàng đầu</h1>
       <h2>{count} Có Việc Làm IT Cho Developer "Chất"</h2>
-      <div style={{ display: "flex", flexWrap: "wrap" }}>
-        {job.map((j) => {
+      <div
+        style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
+      >
+        {jobs.map((job) => {
           return (
-            <div className="job" key={j.id}>
-              <div className="job__content">
-                <h2 className="content-name">{j.name}</h2>
+            <div className="job" key={job.id}>
+              <div
+                className="job__content"
+                style={{ backgroundColor: job.status ? "green" : "red" }}
+              >
+                <h2 className="content-name">{job.name}</h2>
               </div>
             </div>
           );

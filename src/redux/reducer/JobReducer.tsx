@@ -3,10 +3,10 @@ import axios from "axios";
 import { Job } from "../../containers/Home";
 import { DispatchType } from "../configStore";
 export interface JobState {
-  jobs: Job[];
+  jobsAPI: Job[];
 }
 const initialState: JobState = {
-  jobs: [],
+  jobsAPI: [],
 };
 
 const JobReducer = createSlice({
@@ -14,7 +14,7 @@ const JobReducer = createSlice({
   initialState,
   reducers: {
     getJobAction: (state: JobState, action: PayloadAction<Job[]>) => {
-      state.jobs = action.payload;
+      state.jobsAPI = action.payload;
     },
   },
 });
