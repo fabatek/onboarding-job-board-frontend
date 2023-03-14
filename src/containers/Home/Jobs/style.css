@@ -1,0 +1,12 @@
+.job-tittle{
+    margin-left: 50px;
+}
+.job-city{
+    position: absolute;
+    top: 40px;
+    right: 20px;
+    content: "";
+}
+.job-content-active{
+    border: solid 1px red;
+}
