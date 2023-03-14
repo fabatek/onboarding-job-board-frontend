@@ -1,5 +1,5 @@
 import logo from "../../logo.svg";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./styles.scss";
 interface Job {
@@ -7,16 +7,11 @@ interface Job {
   name: string;
   status: string;
 }
-interface Jobs {
-  job: Job[];
-}
+
 function Home() {
   const [job, setJob] = useState<Job[]>([]);
   const [count, setCount] = useState(0);
-  const [findJob, setFindJob] = useState<Job[]>([]);
-  const [jobName, setJobName] = useState("");
-  const [number, setNumber] = useState(10);
-  const numberRef = useRef(1);
+
   const getJobAPi = async () => {
     try {
       const response = await axios.get(
@@ -27,34 +22,8 @@ function Home() {
       console.log(erro);
     }
   };
-  function next() {
-    numberRef.current = number;
-    setNumber(number + 10);
-    if (number > 200) {
-      setNumber(10);
-      numberRef.current = 1;
-    }
-  }
-  function previous() {
-    numberRef.current = number;
-    setNumber(number - 10);
-    if (numberRef.current > number) {
-      setNumber(numberRef.current);
-    }
-    setNumber(number - 10);
-    if (number < 1) {
-      setNumber(200);
-      numberRef.current = 191;
-    }
-  }
-  function changeFindName(event: React.ChangeEvent<HTMLInputElement>) {
-    setJobName(event.target.value);
-    console.log(jobName);
-  }
-  function findJobs() {
-    setFindJob(job.filter((j) => j.name === jobName));
-  }
-  function countAvailableJob() {
+
+  const countAvailableJob = () => {
     let count = 0;
     for (let i = 0; i < job.length; i++) {
       if (job[i].status) {
@@ -62,7 +31,7 @@ function Home() {
       }
     }
     setCount(count);
-  }
+  };
 
   useEffect(() => {
     getJobAPi();
