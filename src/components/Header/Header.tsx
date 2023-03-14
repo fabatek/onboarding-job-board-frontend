@@ -32,61 +32,11 @@ const Header = (props: Props) => {
               id="navbarSupportedContent"
             >
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                <li className="nav-item">
-                  <a
-                    className="nav-link active text-light"
-                    aria-current="page"
-                    href="#"
-                  >
-                    All Jobs
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link text-light" href="#">
-                    It Companies
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link text-light" href="#">
-                    Blog
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link text-light" href="#">
-                    It Story
-                  </a>
-                </li>
-                {/* <li className="nav-item dropdown">
-                  <a
-                    className="nav-link text-light dropdown-toggle"
-                    href="#"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    Dropdown
-                  </a>
-                  <ul className="dropdown-menu">
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Action
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Another action
-                      </a>
-                    </li>
-                    <li>
-                      <hr className="dropdown-divider" />
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Something else here
-                      </a>
-                    </li>
-                  </ul>
-                </li> */}
+                <li className="nav-item text-light">All Jobs</li>
+                <li className="nav-item text-light">It Companies</li>
+                <li className="nav-item text-light">Blog</li>
+                <li className="nav-item text-light">It Story</li>
+
                 <li>
                   <select
                     className="form-select"
@@ -102,37 +52,24 @@ const Header = (props: Props) => {
                 </li>
 
                 <li>
-                <form className="d-flex mx-2" role="search">
-                <input
-                  className="form-control me-2"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-                />
-                <button className="btn btn-danger" type="submit">
-                <i className="fa-solid fa-magnifying-glass" />
-
-                </button>
-              </form>
+                  <form className="d-flex mx-2" role="search">
+                    <input
+                      className="form-control me-2"
+                      type="search"
+                      placeholder="Search"
+                      aria-label="Search"
+                    />
+                    <button className="btn btn-danger" type="submit">
+                      <i className="fa-solid fa-magnifying-glass" />
+                    </button>
+                  </form>
                 </li>
               </ul>
-                <ul className="d-flex navbar-nav me-auto mb-2 mb-lg-0">
-                <li className="nav-item">
-                  <a className="nav-link text-light" href="#">
-                    For Employers
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link text-light" href="#">
-                    Sign In
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link text-light" href="#">
-                    EN | VI
-                  </a>
-                </li>
-                </ul>
+              <ul className="d-flex navbar-nav me-auto mb-2 mb-lg-0">
+                <li className="nav-item text-light">For Employers</li>
+                <li className="nav-item text-light">Sign In</li>
+                <li className="nav-item text-light">EN | VI</li>
+              </ul>
             </div>
           </div>
         </nav>

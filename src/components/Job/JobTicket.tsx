@@ -1,6 +1,6 @@
 import React from 'react'
 import './jobticket.scss'
-import { JobModal } from '../../type/type'
+
 type Props = {
    
 }
