@@ -1,19 +1,23 @@
+import { any } from 'prop-types';
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from "react-redux";
-import { actFetchJob } from '../Search/modules/action';
+import axios from 'axios';
 export default function Jobs() {
-    const dispatch = useDispatch();
 
-    const jobs = useSelector((state: any) => state.jobReducer.data);
+    const [jobs , setJobs] = useState([]);
+    useEffect(()=>{
+        axios.get(`https://6183cb0191d76c00172d1b6b.mockapi.io/api/products`)
+        .then(res=>{
+         const data = res.data;
+         setJobs(data)
+        })
+        .catch(error => console.log(error));
+    },[])
     const [currentPage, setCurrentPage] = useState(1);
-    const [jobPerPage, setJobPerPage] = useState(10);
+    const jobPerPage = 10;
     const indexOfLastPost = currentPage * jobPerPage;
     const indexOfFisrtPost = indexOfLastPost - jobPerPage;
     const currentJob = jobs?.slice(indexOfFisrtPost, indexOfLastPost);
-    useEffect(() => {
-        dispatch(actFetchJob())
-    },[])
-  
+    
     const Pagination = (jobPerPage: any, totalJobs: any , paginate:any) => {
         const pageNumber = [];
 

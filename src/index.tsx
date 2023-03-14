@@ -7,17 +7,17 @@ import './index.scss';
 import App from './containers/App';
 import * as serviceWorker from './serviceWorker';
 
-import {createStore,applyMiddleware} from "redux";
-import {Provider} from "react-redux";
-import thunk from 'redux-thunk';
-import rootReducer from './containers/reducer';
-const store = createStore(rootReducer,applyMiddleware(thunk));
+// import {createStore,applyMiddleware} from "redux";
+// import {Provider} from "react-redux";
+// import thunk from 'redux-thunk';
+// import rootReducer from './containers/reducer';
+// const store = createStore(rootReducer,applyMiddleware(thunk));
 ReactDOM.render(
-  <Provider store={store} >
+  // <Provider store={store} >
     <BrowserRouter>
       <App />
-    </BrowserRouter>
-  </Provider>,
+    </BrowserRouter>,
+  // </Provider>,
   document.getElementById('root')
 );
 

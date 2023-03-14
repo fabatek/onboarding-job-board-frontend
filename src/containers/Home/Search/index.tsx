@@ -1,25 +1,27 @@
-import React, { useEffect } from 'react'
-import {useDispatch,useSelector} from "react-redux"
-import { actFetchJob,actFetchCity } from './modules/action';
-export default function Search() {
-    const dispatch = useDispatch();
+import React, { useEffect, useState } from 'react'
+import axios from 'axios';
+function Search() {
+    const [jobs, setJob] = useState([]);
+    const [city, setCity] = useState([]);
     useEffect(()=>{
-       dispatch(actFetchJob());
-       dispatch(actFetchCity());
+       axios.get(`https://6183cb0191d76c00172d1b6b.mockapi.io/api/products`)
+       .then(res=>{
+        const data = res.data;
+        setJob(data)
+       })
+       .catch(error => console.log(error));
+
+       axios.get(`https://6183cb0191d76c00172d1b6b.mockapi.io/api/qltt`)
+       .then(res=>{
+        const data = res.data;
+        setCity(data);
+       })
+       .catch(error => console.log(error));
     },[])
-    const jobs = useSelector((state: any)=> state.jobReducer.data);
-    const city = useSelector((state:any)=> state.cityReducer.data)
     const renderJobs = () =>{
-        let dem = 0;
-        jobs?.map((item:any)=>{
-            dem++;
-            return dem;
-        })
-        if(dem!= 0){
             return (
-                <h2>{dem} IT Jobs For "Chất" Developers</h2>
+                <h2>{jobs?.length} IT Jobs For "Chất" Developers</h2>
             )
-        }
     }
     const renderLocation = () =>{
         return city?.map((item:any)=>{
@@ -49,3 +51,4 @@ export default function Search() {
         // <>test</>
     )
 }
+export default Search;
