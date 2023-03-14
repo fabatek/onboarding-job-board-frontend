@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { DispatchType } from "../configStore";
 import { http } from "../../utils/config";
 
@@ -10,21 +10,25 @@ export interface JobModel {
   place: string;
 }
 
-const initialState = {
+const initialState: any = {
   jobList: [],
+  isLoading: true,
 };
 
 const JobReducer = createSlice({
   name: "jobReducer",
   initialState,
   reducers: {
-    getAllJobsAction: (state, action) => {
+    getAllJobsAction: (state, action: PayloadAction<JobModel[]>) => {
       state.jobList = action.payload;
+    },
+    changeIsLoading: (state, action) => {
+      state.isLoading = action.payload;
     },
   },
 });
 
-export const { getAllJobsAction } = JobReducer.actions;
+export const { getAllJobsAction, changeIsLoading } = JobReducer.actions;
 
 export default JobReducer.reducer;
 
@@ -32,5 +36,6 @@ export const getAllJobsApi = () => {
   return async (dispatch: DispatchType) => {
     const result = await http.get("/jobs");
     dispatch(getAllJobsAction(result.data));
+    dispatch(changeIsLoading(false));
   };
 };
