@@ -2,6 +2,7 @@
   "name": "job_board_v2",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
     "@testing-library/jest-dom": "^5.15.0",
@@ -21,7 +22,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test"
+    "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!axios)/\""
   },
   "eslintConfig": {
     "extends": "react-app"
