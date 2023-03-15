@@ -3,7 +3,7 @@ import Search from "./index";
 import axios from "axios";
 test('renders inital document', () => {
     render(<Search/>);
-    const divEle = screen.getByTestId("id1");
+    const divEle = screen.getByTestId("jobTest");
     expect(divEle).toBeInTheDocument;   
 });
 test('render 100 jobs', async ()=>{
@@ -14,4 +14,14 @@ test('render 100 jobs', async ()=>{
        })
        .catch(error => console.log(error));
     expect(data).toBe(100);
+})
+test('selection default is All Cities',  ()=>{
+    render(<Search/>)
+    const seclectEle = screen.getByDisplayValue("All Cities"); 
+    expect(seclectEle).toBeInTheDocument;
+})
+test('input search should be "" ',  ()=>{
+    render(<Search/>)
+    const searchInput = screen.getByPlaceholderText(/Search/i); 
+    expect(searchInput.nodeValue).toBe(null);
 })
