@@ -1,27 +1,25 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios';
 import "./style.css"
+import axios from 'axios';
 function Search() {
     const [jobs, setJob] = useState([]);
     const [city, setCity] = useState([]);
     useEffect(()=>{
        axios.get(`${process.env.REACT_APP_API_URL}/products`)
        .then(res=>{
-        const data = res.data;
-        setJob(data)
+        setJob(res.data)
        })
        .catch(error => console.log(error));
 
        axios.get(`${process.env.REACT_APP_API_URL}/qltt`)
        .then(res=>{
-        const data = res.data;
-        setCity(data);
+        setCity(res.data);
        })
        .catch(error => console.log(error));
     },[])
     const renderJobs = () =>{
             return (
-                <h2 className='totalJob'>{jobs?.length} IT Jobs For "Chất" Developers</h2>
+                <h2 data-testid='id1' className='totalJob'>{jobs?.length} IT Jobs For "Chất" Developers</h2>
             )
     }
     const renderLocation = () =>{
