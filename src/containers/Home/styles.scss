@@ -83,7 +83,7 @@
         }
       }
       .content-tag{
-        border-radius: 30px;
+        border-radius: 0 30px 0 30px;
         position: absolute;
         display: flex;
         width: 100px;
@@ -99,7 +99,7 @@
           display: flex;
           justify-content: center;
           font-weight: 500;
-
+          margin-top: 3px;
          }
      }
     }
