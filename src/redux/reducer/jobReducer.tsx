@@ -15,7 +15,7 @@ const initialState: any = {
   isLoading: true,
 };
 
-const JobReducer = createSlice({
+const jobReducer = createSlice({
   name: "jobReducer",
   initialState,
   reducers: {
@@ -28,9 +28,9 @@ const JobReducer = createSlice({
   },
 });
 
-export const { getAllJobsAction, changeIsLoading } = JobReducer.actions;
+export const { getAllJobsAction, changeIsLoading } = jobReducer.actions;
 
-export default JobReducer.reducer;
+export default jobReducer.reducer;
 
 export const getAllJobsApi = () => {
   return async (dispatch: DispatchType) => {
