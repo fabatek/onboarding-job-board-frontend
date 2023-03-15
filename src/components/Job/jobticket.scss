@@ -37,7 +37,7 @@
                 cursor: pointer;
             }
         }
-        &__list-tag{
+        &-list-tag{
             list-style: none;
             display: flex;
             padding: 0;
@@ -50,17 +50,17 @@
     }
     &__right{
         flex: 1;
-        &__status{
+        &-status{
             background-color: orange;
             text-align: center;
             color: white;
             padding: 0 10px;
         }
-        &__address{
+        &-address{
             color: gray;
             padding: 10px 0 0 0 ;
         }
-        &__time{
+        &-time{
             color: blue;
         }
     }

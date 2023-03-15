@@ -1,7 +1,3 @@
-import React from "react";
-
-
-
 const Navbar = () => {
   return (
     <div className="navbar container">
@@ -24,7 +20,7 @@ const Navbar = () => {
               <li className="nav-item mx-2">
                 <select
                   className="form-select"
-                  aria-label="Default select example"
+                  aria-label="Default select example 2"
                 >
                   <option selected>Job level</option>
                   <option value="1">One</option>

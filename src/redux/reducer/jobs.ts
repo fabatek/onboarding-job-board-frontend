@@ -3,7 +3,7 @@ import { http } from "../../util/config";
 import { DispatchType } from "../store/store";
 
 interface JobModal {
-    allJobs: JobModal[] | []
+    allJobs: JobModal[]
 }
 const initialState:JobModal = {
     allJobs: []

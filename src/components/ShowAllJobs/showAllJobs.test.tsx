@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, waitFor } from '@testing-library/react';
-import axios from 'axios';
 import ShowAllJobs from './ShowAllJobs';
+import axios from 'axios';
 
 // Mock the axios library to return sample data
 jest.mock('axios');

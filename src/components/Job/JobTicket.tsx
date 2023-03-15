@@ -1,12 +1,7 @@
 import React from 'react'
 import './jobticket.scss'
 
-type Props = {
-   
-}
-
-const JobTicket = (props: Props) => {
-   
+const JobTicket = () => {
   return (
     <div className='job-ticket'>
         <div className='job-ticket__left'>
@@ -17,15 +12,15 @@ const JobTicket = (props: Props) => {
             <div className='job-ticket__center-more'><span>$</span>
              <p>Sign in to view <span><i className="fa-sharp fa-solid fa-caret-right"></i></span></p>
              </div>
-            <ul className='job-ticket__center__list-tag'>
+            <ul className='job-ticket__center-list-tag'>
                 <li>c++</li>
                 <li>html</li>
             </ul>
         </div>
         <div className='job-ticket__right'>
-            <span className='job-ticket__right__status'>hot</span>
-            <p className='job-ticket__right__address'>Ho Chi Minh</p>
-            <p className='job-ticket__right__time'>3h</p>
+            <span className='job-ticket__right-status'>hot</span>
+            <p className='job-ticket__right-address'>Ho Chi Minh</p>
+            <p className='job-ticket__right-time'>3h</p>
         </div>
     </div>
   )

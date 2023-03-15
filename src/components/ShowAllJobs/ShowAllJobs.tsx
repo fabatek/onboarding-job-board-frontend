@@ -9,11 +9,11 @@ const ShowAllJobs = () => {
 
  
   useEffect(() => {
-    const getjobFromApi = () => {
+   
       dispatch(getAllJobs());
-    };
-    getjobFromApi();
-  },[dispatch]);
+
+  
+  },[]);
 
   return (
     <div className="show-all-jobs">
@@ -21,7 +21,6 @@ const ShowAllJobs = () => {
         <div className="row">
           <div
             className="col bg-white p-0 overflow-scroll"
-            style={{ height: "100vh" }}
           >
             <div className="">
               <h2 className="p-3">{allJobs.length} It jobs in viet nam</h2>

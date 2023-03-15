@@ -1,6 +1,5 @@
 export interface JobModal {
-    
-        address: string,
+    address: string,
     avatar: string,
     createdAt: string,
     id: string,
