@@ -39,8 +39,6 @@ export default function Jobs() {
     console.log(currentJob);
     return (
         <div className='container mt-5'>
-           <div className='row'>
-            <div className='col-6'>
             <ul className='list-group mb-2' id='listJobs'>
             <ListJob currentJob={currentJob} />
             </ul>
@@ -49,11 +47,6 @@ export default function Jobs() {
                     {Pagination(jobPerPage,jobs.length,paginate)}
                 </ul>
             </nav>
-            </div>
-            <div className='col-6'>
-                
-            </div>
-           </div>
         </div>
     )
 }
