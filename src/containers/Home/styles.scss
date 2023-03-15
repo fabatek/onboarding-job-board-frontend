@@ -110,17 +110,14 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  margin-left: 20px;
+  margin: 0 20px;
   margin-bottom: 50px;
   display: inline-block;
   transition: all 0.2s ease-in;
   &:hover{
     background-color:#0591AF ;
   }
-  &:focus{
-    background-color: black;
-    color:white;  
-  }
+  
 }
 .job__content--green{
   background-color: greenyellow;
@@ -132,4 +129,20 @@
   position: absolute;
   top:250px;
   left: 75px;
+}
+.btn__page-focus{
+  background-color: black;
+  color:white;  
+}
+
+.page__change--darkBlue{
+  width: 100px;
+  height: 50px;
+  border-radius: 30px;
+  background-color: #002147;
+  color:white;
+  transition: all 0.2s ease-in;
+  &:hover{
+    background-color: #0591AF;
+  }
 }

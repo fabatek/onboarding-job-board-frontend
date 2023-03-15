@@ -42,6 +42,11 @@ function Home() {
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
+  const changePage = (number: number) => {
+    setCurrentPage(currentPage + number);
+  };
+  const validCurrentPageNext = !!(currentPage >= 10);
+  const validCurrentPagePrevious = !!(currentPage <= 0);
   return (
     <div className="App">
       <h1 style={{ textAlign: "left" }} data-testid="title" className="title">
@@ -97,10 +102,23 @@ function Home() {
           </div>
         )}
         <div>
+          <button
+            onClick={() => {
+              changePage(-1);
+            }}
+            disabled={validCurrentPagePrevious}
+            className="page__change--darkBlue"
+          >
+            Previous
+          </button>
           {Array.from({ length: Math.ceil(jobs.length / jobsPerPage) }).map(
             (_, index) => (
               <button
-                className="btn__page"
+                className={
+                  currentPage === index + 1
+                    ? "btn__page btn__page-focus"
+                    : "btn__page "
+                }
                 key={index}
                 onClick={() => handlePageChange(index + 1)}
               >
@@ -108,6 +126,15 @@ function Home() {
               </button>
             )
           )}
+          <button
+            onClick={() => {
+              changePage(1);
+            }}
+            disabled={validCurrentPageNext}
+            className="page__change--darkBlue"
+          >
+            Next
+          </button>
         </div>
       </LoadingOverlay>
     </div>
