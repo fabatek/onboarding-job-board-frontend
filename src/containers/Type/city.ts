@@ -1,5 +1,5 @@
 interface City{
-    city: string,
+  city: string;
   id: string
 }
 
