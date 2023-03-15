@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import "./style.scss"
 import axios from 'axios';
-import City from './Type/city';
-import Job from './Type/job';
+import City from './city';
+import Job from '../../model/job';
 function Search() {
     const [jobs, setJobs] = useState<Job[]>();
     const [city, setCity] = useState<City[]>();

@@ -1,0 +1,46 @@
+.job-active{
+    border: solid 1px red;
+}
+.job{
+    margin-left: 20%;
+    margin-right: 20%;
+    padding: 40px;
+    position: relative;
+    .job__tittle{
+        margin-left: 50px;
+        .job__tech{
+            text-align: left;
+        }
+    }
+    .job__city{
+        position: absolute;
+        top: 80px;
+        right: 20px;
+        content: "";
+        .job__posted{
+            color: #06c;
+        }
+    }
+    .job__img{
+        width: 60px;
+        height: 60px;
+        border: 1px black solid;
+    }
+}
+.job::after{
+    position: absolute;
+    content: "Hot";
+    top: 30px;
+    right: 40px;
+    background-color: orange;
+    color: white;
+    padding: 2px 10px;
+}
+.pagination{
+    justify-content: center;
+    padding-bottom: 20px;
+}
+.job:hover{
+    box-shadow: 0 0 5px 0 rgba(212, 16, 16, 0.851)
+}
+
