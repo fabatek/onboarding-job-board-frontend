@@ -2,7 +2,6 @@ import "./styles.scss";
 import Header from "../../components/Header/Header";
 import Navbar from "../../components/Navbar/Navbar";
 import ShowAllJobs from "../../components/ShowAllJobs/ShowAllJobs";
-
 function Home() {
   return (
     <div className="App">
@@ -16,5 +15,4 @@ function Home() {
     </div>
   );
 }
-
 export default Home;

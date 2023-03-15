@@ -1,6 +1,5 @@
 import React from 'react'
 import './jobticket.scss'
-
 const JobTicket = () => {
   return (
     <div className='job-ticket'>

@@ -3,7 +3,6 @@ const Navbar = () => {
     <div className="navbar container">
       <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
-         
           <button
             className="navbar-toggler"
             type="button"
@@ -64,11 +63,9 @@ const Navbar = () => {
               <li>
                 <button className="btn btn-primary"><i className="fa-solid fa-magnifying-glass" /></button>
                 </li>
-
                 <li className="">
                     <p className="text-primary mx-2 my-auto">Clear all filters</p>
                 </li>
-             
             </ul>
           </div>
         </div>

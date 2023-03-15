@@ -12,15 +12,4 @@ export const http = axios.create({
     
 })
 
-
- 
- http.interceptors.request.use((config:any) => {
-    config.headers = {
-        ...config.headers,
-       }
-    return config
- },(err) => {
-    return Promise.reject(err)
- })
-
  
