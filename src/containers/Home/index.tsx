@@ -18,14 +18,17 @@ function Home() {
     return state.JobReducer;
   });
 
-  // const [jobs, setJobs] = useState<Job[]>([]);
   const [count, setCount] = useState(0);
-
+  const [currentPage, setCurrentPage] = useState(1);
+  const jobsPerPage = 10;
+  const currentJobs = jobs.slice(
+    (currentPage - 1) * jobsPerPage,
+    currentPage * jobsPerPage
+  );
   const dispatch: DispatchType = useDispatch();
 
   useEffect(() => {
     dispatch(jobAPI());
-    // setJobs(jobsAPI);
     countAvailableJob();
   });
 
@@ -35,6 +38,10 @@ function Home() {
   };
 
   const loadingContent = !!(jobs.length <= 0);
+
+  const handlePageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
   return (
     <div className="App">
       <h1 style={{ textAlign: "left" }} data-testid="title" className="title">
@@ -46,9 +53,9 @@ function Home() {
         spinner={<BounceLoader className="loading" />}
         text="Loading your content..."
       >
-        {jobs.length > 0 && (
+        {currentJobs.length > 0 && (
           <div className="job__list" data-testid="job-list">
-            {jobs.map((job: Job, index) => {
+            {currentJobs.map((job: Job, index) => {
               return (
                 <div className="job" data-testid={`job${index}`} key={job.id}>
                   <div className="job__content" data-testid="job__content">
@@ -89,6 +96,19 @@ function Home() {
             })}
           </div>
         )}
+        <div>
+          {Array.from({ length: Math.ceil(jobs.length / jobsPerPage) }).map(
+            (_, index) => (
+              <button
+                className="btn__page"
+                key={index}
+                onClick={() => handlePageChange(index + 1)}
+              >
+                {index + 1}
+              </button>
+            )
+          )}
+        </div>
       </LoadingOverlay>
     </div>
   );
