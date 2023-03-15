@@ -85,16 +85,19 @@
       .content-tag{
         border-radius: 30px;
         position: absolute;
-        display: inline-block;
+        display: flex;
         width: 100px;
         height: 100px;
         z-index: 100;
         right: 0;
         top:0;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         .content__status{
           
-          display: inline-block;
-          padding-top: 30px;
+          display: flex;
+          justify-content: center;
           font-weight: 500;
 
          }
