@@ -24,7 +24,7 @@ describe('ShowAllJobs component', () => {
     const { getByText } = render(<ShowAllJobs />);
     await waitFor(() => {
       expect(axiosGetMock).toHaveBeenCalledTimes(1);
-      expect(getByText('2 It jobs in viet nam')).toBeInTheDocument();
+      expect(getByText(`${mockResponse.data.length} It jobs in viet nam`)).toBeInTheDocument();
     });
     axiosGetMock.mockRestore();
   });

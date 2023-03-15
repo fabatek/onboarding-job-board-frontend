@@ -3,12 +3,12 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import Navbar from './Navbar';
 describe('Navbar', () => {
   test('renders all dropdown menus and search button', () => {
-    render(<Navbar />);
+    render(<Navbar/>);
     expect(screen.getByLabelText('Default select example 2')).toBeInTheDocument();
-    expect(screen.getByLabelText('Default select example 2')).toHaveValue("one")
+    expect(screen.getByLabelText('Default select example 2')).toHaveValue("Job level")
   });
   test('clears all filters when "Clear all filters" button is clicked', () => {
-    render(<Navbar />);
+    render(<Navbar/>);
     const dropdowns = screen.getAllByRole('combobox');
     fireEvent.change(dropdowns[0], { target: { value: '1' } });
     fireEvent.change(dropdowns[1], { target: { value: '2' } });

@@ -17,7 +17,7 @@ const JobTicket = () => {
             </ul>
         </div>
         <div className='job-ticket__right'>
-            <span className='job-ticket__right-status'>hot</span>
+            <span className='job-ticket__right-status'>Hot</span>
             <p className='job-ticket__right-address'>Ho Chi Minh</p>
             <p className='job-ticket__right-time'>3h</p>
         </div>

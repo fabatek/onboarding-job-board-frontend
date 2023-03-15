@@ -12,7 +12,6 @@ const Header = () => {
                 className="w-50"
               />
             </a>
-
             <button
               className="navbar-toggler"
               type="button"
@@ -33,13 +32,11 @@ const Header = () => {
                 <li className="nav-item text-light mx-2">It Companies</li>
                 <li className="nav-item text-light mx-2">Blog</li>
                 <li className="nav-item text-light mx-2">It Story</li>
-
                 <li>
                   <select
                     className="form-select"
                     aria-label="Default select example"
                   >
-                  
                     <option value={1}>All Cities</option>
                     <option selected value={2}>Hồ Chí Minh</option>
                     <option value={3}>Hà nội</option>

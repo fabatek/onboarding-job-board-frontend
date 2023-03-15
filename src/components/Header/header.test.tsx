@@ -21,7 +21,7 @@ describe("Header", () => {
     render(<Header />);
     const dropdownMenu = screen.getByLabelText("Default select example");
     expect(dropdownMenu).toBeInTheDocument();
-    expect(dropdownMenu).toHaveValue("Hồ Chí Minh");
+    expect(dropdownMenu).toHaveValue("2");
   });
 });
 
