@@ -2,8 +2,6 @@ import React, { useEffect } from "react";
 import { DispatchType, RootState } from "../../redux/store/store";
 import { getAllJobs } from "../../redux/reducer/jobs";
 import { useDispatch, useSelector } from "react-redux";
-
-
 const ShowAllJobs = () => {
   const { allJobs } = useSelector((state: RootState) => state.jobReducer);
   const dispatch: DispatchType = useDispatch();
@@ -16,7 +14,7 @@ const ShowAllJobs = () => {
         <div className="row">
           <div className="col bg-white p-0 overflow-scroll h-full   " >
             <div className="">
-              <h2 className="p-3">{allJobs.length} It jobs in viet nam</h2>
+              <h2 className="p-3" data-testid="total-job">{allJobs.length} It jobs in viet nam</h2>
             </div>
           </div>
           <div className="col">job detail</div>

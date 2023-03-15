@@ -1,20 +1,30 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import Home from "./index";
+import { Provider } from "react-redux";
+import store from "../../redux/store/store";
+const Test = () => {
+  return(<Provider store={store}>
+    <Home/>
+    </Provider>)
+}
 describe("Home", () => {
   test("renders the Header component", () => {
-    render(<Home />);
+    render(<Test/>)
     const headerElement = screen.getByTestId("header");
     expect(headerElement).toBeInTheDocument();
   });
-  test("renders the Navbar component", () => {
-    render(<Home />);
-    const navbarElement = screen.getByTestId("navbar");
-    expect(navbarElement).toBeInTheDocument();
+  test("renders the Header component", () => {
+    render(<Test/>)
+    const headerElement = screen.getByTestId("navbar");
+    expect(headerElement).toBeInTheDocument();
   });
-  test("renders the ShowAllJobs component", () => {
-    render(<Home />);
-    const showAllJobsElement = screen.getByTestId("show-all-jobs");
-    expect(showAllJobsElement).toBeInTheDocument();
+  test("renders the Header component", () => {
+    render(<Test/>)
+    const headerElement = screen.getByTestId("show-all-jobs");
+    expect(headerElement).toBeInTheDocument();
   });
 });
+
+
+

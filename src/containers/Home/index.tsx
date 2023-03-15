@@ -5,12 +5,16 @@ import ShowAllJobs from "../../components/ShowAllJobs/ShowAllJobs";
 function Home() {
   return (
     <div className="App">
-      <header>
-        <Header />
+      <header data-testid="header">
+        <Header/>
       </header>
       <main className="home__body">
-        <Navbar />
-        <ShowAllJobs />
+        <nav data-testid="navbar">
+        <Navbar/>
+        </nav>
+        <div data-testid="show-all-jobs">
+        <ShowAllJobs/>
+        </div>
       </main>
     </div>
   );

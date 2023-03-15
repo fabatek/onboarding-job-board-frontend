@@ -9,7 +9,6 @@ export const http = axios.create({
           'Content-Type': 'application/merge-patch+json'
         }
       }
-    
 })
 
  

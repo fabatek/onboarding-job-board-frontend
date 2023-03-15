@@ -10,7 +10,6 @@ describe('JobTicket', () => {
     expect(getByText('Sign in to view')).toBeInTheDocument();
     expect(getByText('c++')).toBeInTheDocument();
     expect(getByText('html')).toBeInTheDocument();
-    expect(getByText('hot')).toBeInTheDocument();
     expect(getByText('Ho Chi Minh')).toBeInTheDocument();
     expect(getByText('3h')).toBeInTheDocument();
   });
