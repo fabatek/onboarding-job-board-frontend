@@ -44,7 +44,6 @@ const Header = () => {
                     <option value={5}>Others</option>
                   </select>
                 </li>
-
                 <li>
                   <form className="d-flex mx-2" role="search">
                     <input

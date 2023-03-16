@@ -28,7 +28,7 @@ const Navbar = () => {
                 </select>
               </li>
               <li className="nav-item mx-2">
-              <select
+                <select
                   className="form-select"
                   aria-label="Default select example"
                 >
@@ -39,7 +39,7 @@ const Navbar = () => {
                 </select>
               </li>
               <li className="nav-item mx-2">
-              <select
+                <select
                   className="form-select"
                   aria-label="Default select example"
                 >
@@ -50,7 +50,7 @@ const Navbar = () => {
                 </select>
               </li>
               <li className="nav-item mx-2">
-              <select
+                <select
                   className="form-select"
                   aria-label="Default select example"
                 >
@@ -61,11 +61,13 @@ const Navbar = () => {
                 </select>
               </li>
               <li>
-                <button className="btn btn-primary"><i className="fa-solid fa-magnifying-glass" /></button>
-                </li>
-                <li className="">
-                    <p className="text-primary mx-2 my-auto">Clear all filters</p>
-                </li>
+                <button className="btn btn-primary">
+                  <i className="fa-solid fa-magnifying-glass" />
+                </button>
+              </li>
+              <li className="">
+                <p className="text-primary mx-2 my-auto">Clear all filters</p>
+              </li>
             </ul>
           </div>
         </div>
