@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { DispatchType, RootState } from "../../redux/configStore";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getAllJobsApi } from "../../redux/reducer/jobReducer";
 import "../../assets/styles/SearchBar/SearchBar.scss";
 import { placeOptions } from "../../static/data";
@@ -14,6 +14,8 @@ const SearchBar = (props: Props) => {
   );
   const dispatch: DispatchType = useDispatch();
 
+  const [searchValue, setSearchValue] = useState("");
+
   useEffect(() => {
     dispatch(getAllJobsApi());
   }, [dispatch]);
@@ -21,18 +23,32 @@ const SearchBar = (props: Props) => {
   return (
     <div className="bg-dark container-fluid search-bar-container">
       <div className="row">
-        <h1 className="text-white number-job-title">
+        <h1 className="text-white">
           {isLoading ? (
-            <div className="spinner-grow" role="status"></div>
+            <div
+              className="spinner-grow"
+              role="status"
+              data-testid="loading"
+            ></div>
           ) : (
-            jobList.length
+            <span
+              data-testid="number-of-jobs"
+              className="number-of-jobs"
+              id="number-of-jobs"
+            >
+              {jobList.length}
+            </span>
           )}{" "}
           IT Jobs For Developers
         </h1>
       </div>
       <div className="row">
         <div className="col-3">
-          <select className="form-select w-100" defaultValue={1}>
+          <select
+            className="form-select w-100"
+            defaultValue={1}
+            data-testid="place-select"
+          >
             {placeOptions.map((item) => (
               <option key={item.key} value={item.key}>
                 {item.value}
@@ -51,11 +67,16 @@ const SearchBar = (props: Props) => {
               placeholder="jobs, skills, companies, ..."
               aria-label=""
               aria-describedby="basic-addon1"
+              data-testid="job-search"
+              onChange={(e) => setSearchValue(e.target.value)}
+              value={searchValue}
             />
           </div>
         </div>
         <div className="col-2">
-          <button className="btn btn-primary w-100">Search</button>
+          <button className="btn btn-primary w-100" type="submit">
+            Search
+          </button>
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { DispatchType, RootState } from "../../../redux/configStore";
 import { getAllJobsApi, JobModel } from "../../../redux/reducer/jobReducer";
 import Loading from "../../Loading/Loading";
