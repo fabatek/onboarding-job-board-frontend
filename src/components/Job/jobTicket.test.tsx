@@ -1,7 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import JobTicket from './JobTicket';
-
 describe('JobTicket', () => {
   it('renders correctly', () => {
     const { getByText } = render(<JobTicket />);

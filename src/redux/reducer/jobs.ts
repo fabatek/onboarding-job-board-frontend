@@ -3,7 +3,7 @@ import { http } from "../../util/config";
 import { DispatchType } from "../store/store";
 import { Init, JobModal } from "../../type/type";
 const initialState:Init = {
-    allJobs: []
+    allJobs:[]
 }
 const jobReducer = createSlice({
     name: 'jobReducer',

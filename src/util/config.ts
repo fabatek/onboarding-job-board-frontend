@@ -1,6 +1,7 @@
 import axios from 'axios';
+const URL = 'https://640eb813cde47f68db3674fa.mockapi.io'
 export const http = axios.create({
-    baseURL:'https://640eb813cde47f68db3674fa.mockapi.io',
+    baseURL:URL,
     headers: {
         common: {
           Accept: 'application/json'
