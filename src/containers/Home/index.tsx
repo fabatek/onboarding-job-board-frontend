@@ -101,13 +101,13 @@ function Home() {
             })}
           </div>
         )}
-        <div>
+        <div className="page">
           <button
             onClick={() => {
               changePage(-1);
             }}
             disabled={validCurrentPagePrevious}
-            className="page__change--darkBlue"
+            className="page__change"
           >
             Previous
           </button>
@@ -116,7 +116,7 @@ function Home() {
               <button
                 className={
                   currentPage === index + 1
-                    ? "btn__page btn__page-focus"
+                    ? "btn__page btn__page--focus"
                     : "btn__page "
                 }
                 key={index}
@@ -131,7 +131,7 @@ function Home() {
               changePage(1);
             }}
             disabled={validCurrentPageNext}
-            className="page__change--darkBlue"
+            className="page__change"
           >
             Next
           </button>
