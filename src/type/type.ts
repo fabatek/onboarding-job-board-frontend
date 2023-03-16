@@ -6,3 +6,6 @@ export interface JobModal {
     tag: string,
     title: string,
 }
+export interface Init {
+    allJobs: JobModal[]
+}

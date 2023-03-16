@@ -9,8 +9,6 @@ describe("ShowAllJobs", () => {
     expect(getByTestId("total-job")).toBeInTheDocument();
   })
 });
-
-
 const Test = () => {
   return(
     <Provider store={store}>

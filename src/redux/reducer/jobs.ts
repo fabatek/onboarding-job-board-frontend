@@ -1,11 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { http } from "../../util/config";
 import { DispatchType } from "../store/store";
-import { JobModal } from "../../type/type";
-
-interface Init {
-    allJobs: JobModal[]
-}
+import { Init, JobModal } from "../../type/type";
 const initialState:Init = {
     allJobs: []
 }
