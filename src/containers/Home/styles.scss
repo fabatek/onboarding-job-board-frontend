@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  background-color: #ACA6A6;
+  background-color: #e9e9e9;
 }
 
 .App-logo {
@@ -15,7 +15,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -34,7 +34,73 @@
     transform: rotate(360deg);
   }
 }
+.header{
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  .header__logo{
+    
+    display: inline-block;
+    
+    margin-top: 50px;
+    width: 150px;
+  }
+}
+.search{
+ 
+  height: 150px;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  .search__content{
+    position: relative;
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    .job--available{
+      color:white;
+    }
+    .search--icon{
+      position: absolute;
+      left: 285px;
+      top: 95px;
+      color:gray;
+    }
+    input[type=text].search__input{
+      padding-left: 50px;
+    }
+    .search__input{
+      display: inline-block;
+      width: 500px;
+      height: 40px;
+      border-radius: 5px;
+      &::placeholder{
+       padding-left: 20px;
+      }
+      
+    }
+    .btn__search{
+      margin-top: 20px;
+      background-color: red;
+      color:white;
+      width: 150px;
+      height: 40px;
+      border-radius: 5px;
+      margin-left: 30px;
+      font-weight: 700;
+      transition: all 0.2s ease-in-out;
+      &:hover{
+        filter: brightness(137%);
+      }
+    }
+  }
+  
+}
 .job__list{
+  background-color: #e9e9e9;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -114,7 +180,7 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  margin: 0 20px;
+  margin: 40px 20px;
   margin-bottom: 50px;
   display: inline-block;
   transition: all 0.2s ease-in;
@@ -152,4 +218,7 @@
   &:hover{
     background-color: #0591AF;
   }
+}
+.title{
+  background-color: #e9e9e9;
 }
