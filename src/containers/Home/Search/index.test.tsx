@@ -3,8 +3,8 @@ import Search from "./index";
 import axios from "axios";
 test('renders inital document', () => {
     render(<Search/>);
-    const divEle = screen.getByTestId("jobTest");
-    expect(divEle).toBeInTheDocument;   
+    const jobEle = screen.getByTestId("jobTest");
+    expect(jobEle).toBeInTheDocument();   
 });
 test('render 100 jobs', async ()=>{
     let data =0;
@@ -18,7 +18,7 @@ test('render 100 jobs', async ()=>{
 test('selection default is All Cities',  ()=>{
     render(<Search/>)
     const seclectEle = screen.getByDisplayValue("All Cities"); 
-    expect(seclectEle).toBeInTheDocument;
+    expect(seclectEle).toBeInTheDocument();
 })
 test('input search should be "" ',  ()=>{
     render(<Search/>)
