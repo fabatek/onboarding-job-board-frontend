@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./styles.scss";
 import { jobAPI } from "../../redux/reducer/JobReducer";
 import { DispatchType, RootState } from "../../redux/configStore";
-import BounceLoader from "react-spinners/BounceLoader";
+
 export interface Job {
   id: number;
   name: string;
@@ -21,21 +21,32 @@ function Home() {
   const [count, setCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchInput, setSearchInput] = useState("");
-  const [currentJobs, setCurrentJobs] = useState<Job[]>(jobs);
+  const [currentJobs, setCurrentJobs] = useState<Job[]>([]);
   const jobsPerPage = 10;
 
   const dispatch: DispatchType = useDispatch();
 
   useEffect(() => {
-    dispatch(jobAPI());
+    if (jobs.length <= 0) {
+      dispatch(jobAPI());
+    }
     countAvailableJob();
-    handleSearch();
     let current = jobs.slice(
       (currentPage - 1) * jobsPerPage,
       currentPage * jobsPerPage
     );
+
     setCurrentJobs(current);
-  }, [jobs.length]);
+  }, [jobs]);
+
+  useEffect(() => {
+    let current = jobs.slice(
+      (currentPage - 1) * jobsPerPage,
+      currentPage * jobsPerPage
+    );
+
+    setCurrentJobs(current);
+  }, [currentPage]);
 
   const countAvailableJob = () => {
     let arr = jobs.filter((job) => job.status);
@@ -55,11 +66,21 @@ function Home() {
 
   const handleSearchInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchInput(event.target.value);
+    console.log(searchInput);
   };
   const handleSearch = () => {
-    setCurrentJobs(currentJobs.filter((job) => job.name === searchInput));
-  };
+    if (searchInput === "".trim()) {
+      let current = jobs.slice(
+        (currentPage - 1) * jobsPerPage,
+        currentPage * jobsPerPage
+      );
 
+      setCurrentJobs(current);
+    } else {
+      let jobFind = jobs.filter((job) => job.name === searchInput);
+      setCurrentJobs(jobFind);
+    }
+  };
   return (
     <div className="App">
       <div className="header">
