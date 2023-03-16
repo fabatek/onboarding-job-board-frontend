@@ -1,4 +1,4 @@
-export interface JobModal {
+ interface JobModal {
     address: string,
     avatar: string,
     createdAt: string,
@@ -6,6 +6,10 @@ export interface JobModal {
     tag: string,
     title: string,
 }
-export interface Init {
+ interface JobInitReducer {
     allJobs: JobModal[]
+}
+export type {
+    JobModal,
+    JobInitReducer,
 }
