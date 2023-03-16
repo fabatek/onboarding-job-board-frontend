@@ -23,7 +23,7 @@ test("Check if elements contain suitable class", () => {
   }
 });
 describe("Loading API", () => {
-  it("should show loading and change UI after 2 seconds", async () => {
+  it("should show loading and change UI", async () => {
     const { getByTestId, queryAllByTestId } = render(
       <Provider store={store}>
         <Home />

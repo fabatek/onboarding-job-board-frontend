@@ -94,6 +94,10 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        transition: 0.2s all;
+        &:hover{
+          opacity: 0.8;
+        }
         .content__status{
           
           display: flex;
@@ -126,9 +130,11 @@
   background-color: #CA5E5E;
 }
 .loading{
-  height: 100%;
+  min-height: 1500px;
+  
   .loading__overlay{
-    height: 1500px;
+    height: 1000px;
+    
   }
 }
 .btn__page--focus{
