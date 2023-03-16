@@ -30,10 +30,12 @@ function Home() {
     dispatch(jobAPI());
     countAvailableJob();
     handleSearch();
-    setCurrentJobs(
-      jobs.slice((currentPage - 1) * jobsPerPage, currentPage * jobsPerPage)
+    let current = jobs.slice(
+      (currentPage - 1) * jobsPerPage,
+      currentPage * jobsPerPage
     );
-  }, []);
+    setCurrentJobs(current);
+  }, [jobs.length]);
 
   const countAvailableJob = () => {
     let arr = jobs.filter((job) => job.status);
