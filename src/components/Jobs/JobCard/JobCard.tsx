@@ -10,7 +10,10 @@ type Props = {
 const JobCard = (props: Props) => {
   const { item } = props;
   return (
-    <div className="container p-2 my-2 overflow-hidden job-card-container">
+    <div
+      className="container p-2 my-2 overflow-hidden job-card-container"
+      data-testid="job-card"
+    >
       <div className="row align-items-center">
         <div className="col-4">
           <div className="logo-company ">

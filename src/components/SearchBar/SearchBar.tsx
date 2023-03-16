@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { DispatchType, RootState } from "../../redux/configStore";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllJobsApi } from "../../redux/reducer/jobReducer";
@@ -14,6 +14,8 @@ const SearchBar = (props: Props) => {
   );
   const dispatch: DispatchType = useDispatch();
 
+  const [searchValue, setSearchValue] = useState("");
+
   useEffect(() => {
     dispatch(getAllJobsApi());
   }, [dispatch]);
@@ -25,14 +27,24 @@ const SearchBar = (props: Props) => {
           {isLoading ? (
             <div className="spinner-grow" role="status"></div>
           ) : (
-            jobList.length
+            <span
+              data-testid="number-of-jobs"
+              className="number-of-jobs"
+              id="number-of-jobs"
+            >
+              {jobList.length}
+            </span>
           )}{" "}
           IT Jobs For Developers
         </h1>
       </div>
       <div className="row">
         <div className="col-3">
-          <select className="form-select w-100" defaultValue={1}>
+          <select
+            className="form-select w-100"
+            defaultValue={1}
+            data-testid="place-select"
+          >
             {placeOptions.map((item) => (
               <option key={item.key} value={item.key}>
                 {item.value}
@@ -51,6 +63,9 @@ const SearchBar = (props: Props) => {
               placeholder="jobs, skills, companies, ..."
               aria-label=""
               aria-describedby="basic-addon1"
+              data-testid="job-search"
+              onChange={(e) => setSearchValue(e.target.value)}
+              value={searchValue}
             />
           </div>
         </div>
