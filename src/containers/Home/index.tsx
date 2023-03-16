@@ -53,90 +53,101 @@ function Home() {
         Nhà tuyển dụng hàng đầu
       </h1>
       <h2>{count} Có Việc Làm IT Cho Developer "Chất"</h2>
-      <LoadingOverlay
-        active={loadingContent}
-        spinner={<BounceLoader className="loading" />}
-        text="Loading your content..."
-      >
-        {currentJobs.length > 0 && (
-          <div className="job__list" data-testid="job-list">
-            {currentJobs.map((job: Job, index) => {
-              return (
-                <div className="job" data-testid={`job${index}`} key={job.id}>
-                  <div className="job__content" data-testid="job__content">
-                    <div
-                      className="content__image"
-                      data-testid="content__image"
-                    >
-                      <img
-                        className="content__image-random"
-                        data-testid="content__image-random"
-                        src={job.image}
-                        alt=""
-                      />
-                    </div>
-                    <div
-                      className={`content-tag job__content--${
-                        job.status ? "green" : "red"
-                      }`}
-                      data-testid="content-tag"
-                    >
-                      <span
-                        data-testid="content__status"
-                        className="content__status"
+      <div className="loading">
+        <LoadingOverlay
+          active={loadingContent}
+          spinner={true}
+          text="Loading your content..."
+          className="loading__overlay"
+        >
+          {currentJobs.length > 0 && (
+            <div className="job__list" data-testid="job-list">
+              {currentJobs.map((job: Job, index) => {
+                return (
+                  <div
+                    className="job"
+                    data-testid={`job-${index}`}
+                    key={job.id}
+                  >
+                    <div className="job__content" data-testid="job__content">
+                      <div
+                        className="content__image"
+                        data-testid="content__image"
                       >
-                        {job.status ? "Available" : "Non-available"}
-                      </span>
+                        <img
+                          className="content__image-random"
+                          data-testid="content__image-random"
+                          src={job.image}
+                          alt=""
+                        />
+                      </div>
+                      <div
+                        className={`content-tag job__content--${
+                          job.status ? "green" : "red"
+                        }`}
+                        data-testid="content-tag"
+                      >
+                        <span
+                          data-testid="content__status"
+                          className="content__status"
+                        >
+                          {job.status ? "Available" : "Non-available"}
+                        </span>
+                      </div>
+                      <h2 className="content-name" data-testid="content-name">
+                        {job.name}
+                      </h2>
+                      <p className="content-description">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing
+                        elit. Unde adipisci deserunt amet eveniet delectus
+                        aliquid.
+                      </p>
                     </div>
-                    <h2 className="content-name" data-testid="content-name">
-                      {job.name}
-                    </h2>
-                    <p className="content-description">
-                      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                      Unde adipisci deserunt amet eveniet delectus aliquid.
-                    </p>
                   </div>
-                </div>
-              );
-            })}
-          </div>
-        )}
-        <div className="page">
-          <button
-            onClick={() => {
-              changePage(-1);
-            }}
-            disabled={validCurrentPagePrevious}
-            className="page__change"
-          >
-            Previous
-          </button>
-          {Array.from({ length: Math.ceil(jobs.length / jobsPerPage) }).map(
-            (_, index) => (
-              <button
-                className={
-                  currentPage === index + 1
-                    ? "btn__page btn__page--focus"
-                    : "btn__page "
-                }
-                key={index}
-                onClick={() => handlePageChange(index + 1)}
-              >
-                {index + 1}
-              </button>
-            )
+                );
+              })}
+            </div>
           )}
-          <button
-            onClick={() => {
-              changePage(1);
-            }}
-            disabled={validCurrentPageNext}
-            className="page__change"
-          >
-            Next
-          </button>
-        </div>
-      </LoadingOverlay>
+          {currentJobs.length > 0 && (
+            <div className="page">
+              <button
+                onClick={() => {
+                  changePage(-1);
+                }}
+                disabled={validCurrentPagePrevious}
+                className="page__change"
+              >
+                Previous
+              </button>
+              {Array.from({ length: Math.ceil(jobs.length / jobsPerPage) }).map(
+                (_, index) => (
+                  <button
+                    data-testid={`btn__page`}
+                    className={
+                      currentPage === index + 1
+                        ? "btn__page btn__page--focus"
+                        : "btn__page "
+                    }
+                    key={index}
+                    onClick={() => handlePageChange(index + 1)}
+                  >
+                    {index + 1}
+                  </button>
+                )
+              )}
+              <button
+                onClick={() => {
+                  changePage(1);
+                }}
+                disabled={validCurrentPageNext}
+                className="page__change"
+              >
+                Next
+              </button>
+            </div>
+          )}
+        </LoadingOverlay>
+      </div>
     </div>
   );
 }

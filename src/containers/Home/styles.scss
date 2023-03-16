@@ -126,9 +126,10 @@
   background-color: #CA5E5E;
 }
 .loading{
-  position: absolute;
-  top:250px;
-  left: 75px;
+  height: 100%;
+  .loading__overlay{
+    height: 1500px;
+  }
 }
 .btn__page--focus{
   background-color: black;

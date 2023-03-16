@@ -1,10 +1,10 @@
-import { render, waitFor } from "@testing-library/react";
+import { fireEvent, render, waitFor } from "@testing-library/react";
 
 import "@testing-library/jest-dom";
 import Home from "../Home";
-import React from "react";
-import { Provider } from "react-redux";
-import { store } from "../../redux/configStore";
+import React, { useState } from "react";
+import { Provider, useSelector } from "react-redux";
+import { RootState, store } from "../../redux/configStore";
 import axios from "axios";
 
 test("Check if elements contain suitable class", () => {
@@ -29,6 +29,7 @@ describe("Loading API", () => {
         <Home />
       </Provider>
     );
+
     await waitFor(() => {
       const jobList = getByTestId("job-list");
       expect(jobList).toBeInTheDocument();
@@ -39,5 +40,18 @@ describe("Loading API", () => {
         });
       }
     });
+  });
+});
+test("Check clicked button will active", () => {
+  const { queryAllByTestId, getByText } = render(
+    <Provider store={store}>
+      <Home />
+    </Provider>
+  );
+  const jobPage = queryAllByTestId("btn__page");
+  jobPage.forEach((_, index) => {
+    const item = getByText(index + 1);
+    fireEvent.click(item);
+    expect(item).toHaveClass("btn__page btn__page--focus");
   });
 });
