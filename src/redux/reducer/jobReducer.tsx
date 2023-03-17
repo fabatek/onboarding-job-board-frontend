@@ -13,7 +13,7 @@ export interface JobModel {
 
 const initialState: any = {
   jobList: [],
-  isLoading: true,
+  isLoading: false,
   jobPaginationList: [],
 };
 

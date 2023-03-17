@@ -22,6 +22,7 @@ const Pagination = (props: Props) => {
           key={item}
           onClick={() => handleChangeCurrentPage(item + 1)}
           className="pagination-item"
+          data-testid="pagination-item"
         >
           {item + 1}
         </span>
