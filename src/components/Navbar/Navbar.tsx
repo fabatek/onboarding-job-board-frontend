@@ -1,3 +1,4 @@
+import React from "react";
 const Navbar = () => {
   return (
     <div className="navbar container">
@@ -69,7 +70,7 @@ const Navbar = () => {
                 </select>
               </li>
               <li>
-                <button className="btn btn-primary">
+                <button className="btn btn-primary" data-testid="button-filter">
                   <i className="fa-solid fa-magnifying-glass" />
                 </button>
               </li>

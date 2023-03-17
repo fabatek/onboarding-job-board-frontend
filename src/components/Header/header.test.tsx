@@ -34,7 +34,13 @@ describe("Header", () => {
     expect(screen.getByText('For Employers')).toBeInTheDocument();
     expect(screen.getByText('Sign In')).toBeInTheDocument();
     expect(screen.getByText('EN | VI')).toBeInTheDocument();
-  })
+  });
+  test('should render a button with the correct class name and type', () => {
+    render(<Header />);
+    const button = screen.getByTestId('button-search');
+    expect(button).toHaveClass('btn btn-danger');
+    expect(button).toHaveAttribute('type', 'submit');
+  });
 
 });
 

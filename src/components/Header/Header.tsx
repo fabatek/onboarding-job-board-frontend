@@ -53,7 +53,7 @@ const Header = () => {
                       placeholder="Search"
                       aria-label="Search"
                     />
-                    <button className="btn btn-danger" type="submit">
+                    <button data-testid="button-search" className="btn btn-danger" type="submit">
                       <i className="fa-solid fa-magnifying-glass" />
                     </button>
                   </form>

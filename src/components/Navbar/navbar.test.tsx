@@ -19,4 +19,9 @@ describe('Navbar', () => {
     expect(dropdowns[2]).toHaveValue('3');
     expect(dropdowns[3]).toHaveValue('1');
   });
+  test('should render a button with the correct class name', () => {
+    render(<Navbar/>);
+    const button = screen.getByTestId('button-filter');
+    expect(button).toHaveClass('btn btn-primary');
+  });
 });
