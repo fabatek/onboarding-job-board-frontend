@@ -3,7 +3,7 @@ import LoadingOverlay from "react-loading-overlay-ts";
 import { useDispatch, useSelector } from "react-redux";
 
 import "./styles.scss";
-import { jobAPI } from "../../redux/reducer/JobReducer";
+import { filterAction, jobAPI } from "../../redux/reducer/JobReducer";
 import { DispatchType, RootState } from "../../redux/configStore";
 
 export interface Job {
@@ -14,7 +14,7 @@ export interface Job {
 }
 
 function Home() {
-  const { jobs } = useSelector((state: RootState) => {
+  const { jobs, jobsBase } = useSelector((state: RootState) => {
     return state.JobReducer;
   });
 
@@ -27,9 +27,10 @@ function Home() {
   const dispatch: DispatchType = useDispatch();
 
   useEffect(() => {
-    if (jobs.length <= 0) {
+    if (jobsBase.length < 100) {
       dispatch(jobAPI());
     }
+
     countAvailableJob();
     let current = jobs.slice(
       (currentPage - 1) * jobsPerPage,
@@ -62,7 +63,7 @@ function Home() {
     setCurrentPage(currentPage + number);
   };
   const validCurrentPageNext = !!(currentPage >= 10);
-  const validCurrentPagePrevious = !!(currentPage <= 0);
+  const validCurrentPagePrevious = !!(currentPage <= 1);
 
   const handleSearchInput = (e: {
     target: { value: React.SetStateAction<string> };
@@ -79,10 +80,8 @@ function Home() {
 
       setCurrentJobs(current);
     } else {
-      let jobFind = jobs.filter((job) =>
-        job.name.toLowerCase().includes(searchInput.toLowerCase())
-      );
-      setCurrentJobs(jobFind);
+      dispatch(filterAction(searchInput));
+      setCurrentJobs(jobs);
     }
   };
   const handleEnterSearch = (e: any) => {
@@ -95,13 +94,12 @@ function Home() {
 
         setCurrentJobs(current);
       } else {
-        let jobFind = jobs.filter((job) =>
-          job.name.toLowerCase().includes(searchInput.toLowerCase())
-        );
-        setCurrentJobs(jobFind);
+        dispatch(filterAction(searchInput));
+        setCurrentJobs(jobs);
       }
     }
   };
+
   return (
     <div className="App">
       <div className="header">
@@ -215,9 +213,9 @@ function Home() {
               </button>
               {Array.from({
                 length: Math.ceil(
-                  (currentJobs.length < jobs.length / 10
-                    ? currentJobs.length
-                    : jobs.length) / jobsPerPage
+                  (currentJobs.length < jobsBase.length
+                    ? jobs.length
+                    : jobsBase.length) / jobsPerPage
                 ),
               }).map((_, index) => (
                 <button
