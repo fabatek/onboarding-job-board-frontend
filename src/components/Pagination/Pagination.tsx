@@ -24,7 +24,10 @@ const Pagination = (props: Props) => {
 
   return (
     <div className="pagination justify-content-center">
-      <span onClick={() => handleChangeCurrentPage(currentPage - 1)}>
+      <span
+        onClick={() => handleChangeCurrentPage(currentPage - 1)}
+        data-testid="prev-button"
+      >
         &laquo;
       </span>
       {pageNumbers.map((item) => (
@@ -45,7 +48,10 @@ const Pagination = (props: Props) => {
           {item + 1}
         </span>
       ))}
-      <span onClick={() => handleChangeCurrentPage(currentPage + 1)}>
+      <span
+        onClick={() => handleChangeCurrentPage(currentPage + 1)}
+        data-testid="next-button"
+      >
         &raquo;
       </span>
     </div>
