@@ -5,7 +5,7 @@ describe('Navbar', () => {
   test('renders all dropdown menus and search button', () => {
     render(<Navbar/>);
     expect(screen.getByLabelText('Default select example 2')).toBeInTheDocument();
-    expect(screen.getByLabelText('Default select example 2')).toHaveValue("Job level")
+    expect(screen.getByLabelText('Default select example 2')).toHaveValue("default")
   });
   test('clears all filters when "Clear all filters" button is clicked', () => {
     render(<Navbar/>);

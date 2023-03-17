@@ -36,9 +36,10 @@ const Header = () => {
                   <select
                     className="form-select"
                     aria-label="Default select example"
+                    defaultValue={2}
                   >
                     <option value={1}>All Cities</option>
-                    <option selected value={2}>Hồ Chí Minh</option>
+                    <option value={2}>Hồ Chí Minh</option>
                     <option value={3}>Hà nội</option>
                     <option value={4}>Đà Nẵng</option>
                     <option value={5}>Others</option>

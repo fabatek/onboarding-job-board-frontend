@@ -21,8 +21,9 @@ const Navbar = () => {
                   className="form-select"
                   aria-label="Default select example 2"
                   role="combobox"
+                  defaultValue={'default'}
                 >
-                  <option selected>Job level</option>
+                  <option value="default" >Job level</option>
                   <option value="1">One</option>
                   <option value="2">Two</option>
                   <option value="3">Three</option>
@@ -33,8 +34,9 @@ const Navbar = () => {
                   className="form-select"
                   aria-label="Default select example"
                   role="combobox"
+                  defaultValue={'default'}
                 >
-                  <option selected>Salary Range</option>
+                  <option value="default">Salary Range</option>
                   <option value="1">One</option>
                   <option value="2">Two</option>
                   <option value="3">Three</option>
@@ -45,8 +47,9 @@ const Navbar = () => {
                   className="form-select"
                   aria-label="Default select example"
                   role="combobox"
+                  defaultValue={'default'}
                 >
-                  <option selected>Woking Model</option>
+                  <option value="default">Woking Model</option>
                   <option value="1">One</option>
                   <option value="2">Two</option>
                   <option value="3">Three</option>
@@ -57,8 +60,9 @@ const Navbar = () => {
                   className="form-select"
                   aria-label="Default select example"
                   role="combobox"
+                  defaultValue={'default'}
                 >
-                  <option selected>Company type</option>
+                  <option value="default">Company type</option>
                   <option value="1">One</option>
                   <option value="2">Two</option>
                   <option value="3">Three</option>
