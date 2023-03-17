@@ -23,6 +23,19 @@ describe("Header", () => {
     expect(dropdownMenu).toBeInTheDocument();
     expect(dropdownMenu).toHaveValue("2");
   });
+  test("render from input element",()=>{
+    render(<Header />);
+    const form = screen.getByRole("search")
+    expect(form).toBeInTheDocument()
+  });
+
+  test('render navbar link',()=>{
+    render(<Header />);
+    expect(screen.getByText('For Employers')).toBeInTheDocument();
+    expect(screen.getByText('Sign In')).toBeInTheDocument();
+    expect(screen.getByText('EN | VI')).toBeInTheDocument();
+  })
+
 });
 
 
