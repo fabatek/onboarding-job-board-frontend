@@ -69,33 +69,16 @@ function Home() {
     target: { value: React.SetStateAction<string> };
   }) => {
     setSearchInput(e.target.value);
-    console.log(searchInput);
+    setCurrentPage(1);
   };
   const handleSearch = () => {
-    if (searchInput === "".trim()) {
-      let current = jobs.slice(
-        (currentPage - 1) * jobsPerPage,
-        currentPage * jobsPerPage
-      );
-
-      setCurrentJobs(current);
-    } else {
-      dispatch(filterAction(searchInput));
-      setCurrentJobs(jobs);
-    }
+    dispatch(filterAction(searchInput));
+    setCurrentPage(1);
   };
   const handleEnterSearch = (e: any) => {
     if (e.key === "Enter") {
-      if (searchInput === "".trim()) {
-        let current = jobs.slice(
-          (currentPage - 1) * jobsPerPage,
-          currentPage * jobsPerPage
-        );
-
-        setCurrentJobs(current);
-      } else {
+      {
         dispatch(filterAction(searchInput));
-        setCurrentJobs(jobs);
       }
     }
   };

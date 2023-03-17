@@ -20,9 +20,13 @@ const JobReducer = createSlice({
       state.jobsBase = action.payload;
     },
     filterAction: (state: JobState, action: PayloadAction<string>) => {
-      state.jobs = state.jobsBase.filter((job) =>
-        job.name.toLowerCase().includes(action.payload.toLowerCase())
-      );
+      if (action.payload === "".trim()) {
+        state.jobs = state.jobsBase;
+      } else {
+        state.jobs = state.jobsBase.filter((job) =>
+          job.name.toLowerCase().includes(action.payload.toLowerCase())
+        );
+      }
     },
   },
 });
