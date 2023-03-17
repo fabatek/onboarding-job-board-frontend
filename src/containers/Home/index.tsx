@@ -64,8 +64,10 @@ function Home() {
   const validCurrentPageNext = !!(currentPage >= 10);
   const validCurrentPagePrevious = !!(currentPage <= 0);
 
-  const handleSearchInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchInput(event.target.value);
+  const handleSearchInput = (e: {
+    target: { value: React.SetStateAction<string> };
+  }) => {
+    setSearchInput(e.target.value);
     console.log(searchInput);
   };
   const handleSearch = () => {
@@ -77,8 +79,27 @@ function Home() {
 
       setCurrentJobs(current);
     } else {
-      let jobFind = jobs.filter((job) => job.name === searchInput);
+      let jobFind = jobs.filter((job) =>
+        job.name.toLowerCase().includes(searchInput.toLowerCase())
+      );
       setCurrentJobs(jobFind);
+    }
+  };
+  const handleEnterSearch = (e: any) => {
+    if (e.key === "Enter") {
+      if (searchInput === "".trim()) {
+        let current = jobs.slice(
+          (currentPage - 1) * jobsPerPage,
+          currentPage * jobsPerPage
+        );
+
+        setCurrentJobs(current);
+      } else {
+        let jobFind = jobs.filter((job) =>
+          job.name.toLowerCase().includes(searchInput.toLowerCase())
+        );
+        setCurrentJobs(jobFind);
+      }
     }
   };
   return (
@@ -104,6 +125,7 @@ function Home() {
               className="search__input"
               placeholder="Search job by title"
               onChange={handleSearchInput}
+              onKeyDown={handleEnterSearch}
             />
             <span>
               <button
