@@ -16,3 +16,5 @@ export const navbarItemRight = [
   { key: 2, value: "Sign In" },
   { key: 3, value: "EN | VI" },
 ];
+
+export const ITEM_PER_PAGE = 10;
