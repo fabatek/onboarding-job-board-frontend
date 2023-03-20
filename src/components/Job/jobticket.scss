@@ -48,7 +48,10 @@
   &__right {
     flex: 1;
     &-status {
+     &.bg-yellow{
       background-color: orange;
+     }
+     background-color: gray;
       text-align: center;
       color: white;
       padding: 0 10px;
@@ -60,6 +63,7 @@
     }
     &-time {
       color: blue;
+      font-size: 13px;
     }
   }
 }
