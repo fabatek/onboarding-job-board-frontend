@@ -10,7 +10,7 @@ const Navbar = (props: Props) => {
       <div className="row">
         <div className="col-8">
           <img src="../../assets/img/logo.png" alt="" />
-          {navbarItemLeft.map((item) => (
+          {navbarItemLeft?.map((item) => (
             <a
               href="/#"
               className="item-link"
@@ -22,7 +22,7 @@ const Navbar = (props: Props) => {
           ))}
         </div>
         <div className="col-4 text-end">
-          {navbarItemRight.map((item) => (
+          {navbarItemRight?.map((item) => (
             <a
               href="/#"
               className="item-link"

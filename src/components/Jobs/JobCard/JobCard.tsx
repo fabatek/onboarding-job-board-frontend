@@ -2,9 +2,10 @@ import React from "react";
 import "../../../assets/styles/JobCard/JobCard.scss";
 import { AiFillHome, AiFillInfoCircle } from "react-icons/ai";
 import { MdOutlineAttachMoney, MdPlace } from "react-icons/md";
+import { JobModel } from "../../../types/types";
 
 type Props = {
-  item: any;
+  item: JobModel;
 };
 
 const JobCard = (props: Props) => {
@@ -17,7 +18,12 @@ const JobCard = (props: Props) => {
       <div className="row align-items-center">
         <div className="col-4">
           <div className="logo-company ">
-            <img src={item.image} alt="" className="w-100 logo-company-img" />
+            <img
+              src={item.image}
+              alt=""
+              className="w-100 logo-company-img"
+              loading="lazy"
+            />
           </div>
         </div>
         <div className="col-8">

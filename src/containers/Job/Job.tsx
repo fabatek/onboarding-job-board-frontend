@@ -6,10 +6,10 @@ type Props = {};
 
 const Job = (props: Props) => {
   return (
-    <div>
+    <>
       <SearchBar />
       <JobList />
-    </div>
+    </>
   );
 };
 

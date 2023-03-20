@@ -12,29 +12,32 @@ const SearchBar = (props: Props) => {
   const { jobList, isLoading } = useSelector(
     (state: RootState) => state.jobReducer
   );
+
   const dispatch: DispatchType = useDispatch();
 
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState<string>("");
 
   useEffect(() => {
     dispatch(getAllJobsApi());
   }, [dispatch]);
 
+  if (isLoading) {
+    return <div className="spinner-grow" role="status"></div>;
+  }
+
   return (
     <div className="bg-dark container-fluid search-bar-container">
       <div className="row">
         <h1 className="text-white number-job-title">
-          {isLoading ? (
-            <div className="spinner-grow" role="status"></div>
-          ) : (
+          {
             <span
               data-testid="number-of-jobs"
               className="number-of-jobs"
               id="number-of-jobs"
             >
-              {jobList.length}
+              {jobList?.length}
             </span>
-          )}{" "}
+          }{" "}
           IT Jobs For Developers
         </h1>
       </div>
@@ -45,7 +48,7 @@ const SearchBar = (props: Props) => {
             defaultValue={1}
             data-testid="place-select"
           >
-            {placeOptions.map((item) => (
+            {placeOptions?.map((item) => (
               <option key={item.key} value={item.key}>
                 {item.value}
               </option>
