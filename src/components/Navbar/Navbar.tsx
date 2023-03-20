@@ -12,7 +12,7 @@ const Navbar = (props: Props) => {
           <img src="../../assets/img/logo.png" alt="" />
           {navbarItemLeft?.map((item) => (
             <a
-              href="/#"
+              href="/"
               className="item-link"
               key={item.key}
               data-testid="item-link"
@@ -24,7 +24,7 @@ const Navbar = (props: Props) => {
         <div className="col-4 text-end">
           {navbarItemRight?.map((item) => (
             <a
-              href="/#"
+              href="/"
               className="item-link"
               key={item.key}
               data-testid="item-link"

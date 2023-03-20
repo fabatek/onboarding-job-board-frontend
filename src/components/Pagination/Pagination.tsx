@@ -22,14 +22,40 @@ const Pagination = (props: Props) => {
     setPageNumbers(tempPageNumbers);
   }, [totalJobs, itemsPerPage]);
 
+  if (pageNumbers.length === 1) {
+    return (
+      <div className="pagination justify-content-center">
+        {pageNumbers.map((item) => (
+          <span
+            key={item}
+            onClick={() => handleChangeCurrentPage(item + 1)}
+            className={
+              currentPage === item + 1
+                ? "pagination-item active"
+                : "pagination-item"
+            }
+            data-testid={
+              currentPage === item + 1
+                ? "pagination-item active"
+                : "pagination-item"
+            }
+          >
+            {item + 1}
+          </span>
+        ))}
+      </div>
+    );
+  }
+
   return (
     <div className="pagination justify-content-center">
-      <span
-        onClick={() => handleChangeCurrentPage(currentPage - 1)}
-        data-testid="prev-button"
-      >
-        &laquo;
-      </span>
+      {currentPage === 1 ? (
+        ""
+      ) : (
+        <span onClick={() => handleChangeCurrentPage(currentPage - 1)}>
+          &laquo;
+        </span>
+      )}
       {pageNumbers.map((item) => (
         <span
           key={item}
@@ -48,12 +74,13 @@ const Pagination = (props: Props) => {
           {item + 1}
         </span>
       ))}
-      <span
-        onClick={() => handleChangeCurrentPage(currentPage + 1)}
-        data-testid="next-button"
-      >
-        &raquo;
-      </span>
+      {currentPage === 10 ? (
+        ""
+      ) : (
+        <span onClick={() => handleChangeCurrentPage(currentPage + 1)}>
+          &raquo;
+        </span>
+      )}
     </div>
   );
 };
