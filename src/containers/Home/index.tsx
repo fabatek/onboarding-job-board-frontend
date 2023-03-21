@@ -5,11 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 import "./styles.scss";
 import { filterAction, jobAPI } from "../../redux/reducer/JobReducer";
 import { DispatchType, RootState } from "../../redux/configStore";
+import JobComponent from "../JobComponent/JobComponent";
+import Search from "../search/Search";
 
 export interface Job {
   id: number;
   name: string;
-  status: string;
+  status: boolean;
   image: string;
 }
 
@@ -53,9 +55,7 @@ function Home() {
     let arr = jobs.filter((job) => job.status);
     setCount(arr.length);
   };
-
   const loadingContent = !!(jobs.length <= 0);
-
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
@@ -75,7 +75,7 @@ function Home() {
     dispatch(filterAction(searchInput));
     setCurrentPage(1);
   };
-  const handleEnterSearch = (e: any) => {
+  const handleEnterSearch = (e: KeyboardEvent) => {
     if (e.key === "Enter") {
       {
         dispatch(filterAction(searchInput));
@@ -85,42 +85,13 @@ function Home() {
 
   return (
     <div className="App">
-      <div className="header">
-        <img
-          src="https://itviec.com/assets/logo-itviec-4492a2f2577a15a0a1d55444c21c0fa55810822b3b189fc689b450fb62ce0b5b.png"
-          className="header__logo"
-          alt=""
-        />
-      </div>
-      <div className="search">
-        <div className="search__content">
-          <div className="job--available">
-            <h2>{count} Có Việc Làm IT Cho Developer "Chất"</h2>
-          </div>
-          <div className="search__bar">
-            <div className="search--icon">
-              <i className="fa fa-search"></i>
-            </div>
-            <input
-              type="text"
-              className="search__input"
-              placeholder="Search job by title"
-              onChange={handleSearchInput}
-              onKeyDown={handleEnterSearch}
-            />
-            <span>
-              <button
-                className="btn__search"
-                onClick={() => {
-                  handleSearch();
-                }}
-              >
-                Search
-              </button>
-            </span>
-          </div>
-        </div>
-      </div>
+      <Search
+        job={jobs}
+        count={count}
+        handleSearchInput={handleSearchInput}
+        handleEnterSearch={handleEnterSearch}
+        handleSearch={handleSearch}
+      />
       <h1
         style={{ textAlign: "left", marginLeft: "50px" }}
         data-testid="title"
@@ -139,45 +110,8 @@ function Home() {
             <div className="job__list" data-testid="job-list">
               {currentJobs.map((job: Job, index) => {
                 return (
-                  <div
-                    className="job"
-                    data-testid={`job-${index}`}
-                    key={job.id}
-                  >
-                    <div className="job__content" data-testid="job__content">
-                      <div
-                        className="content__image"
-                        data-testid="content__image"
-                      >
-                        <img
-                          className="content__image-random"
-                          data-testid="content__image-random"
-                          src={job.image}
-                          alt=""
-                        />
-                      </div>
-                      <div
-                        className={`content-tag job__content--${
-                          job.status ? "green" : "red"
-                        }`}
-                        data-testid="content-tag"
-                      >
-                        <span
-                          data-testid="content__status"
-                          className="content__status"
-                        >
-                          {job.status ? "Available" : "Non-available"}
-                        </span>
-                      </div>
-                      <h2 className="content-name" data-testid="content-name">
-                        {job.name}
-                      </h2>
-                      <p className="content-description">
-                        Lorem, ipsum dolor sit amet consectetur adipisicing
-                        elit. Unde adipisci deserunt amet eveniet delectus
-                        aliquid.
-                      </p>
-                    </div>
+                  <div key={index}>
+                    <JobComponent job={job} index={index} />
                   </div>
                 );
               })}

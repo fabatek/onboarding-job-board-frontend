@@ -29,7 +29,6 @@ describe("Loading API", () => {
         <Home />
       </Provider>
     );
-
     await waitFor(() => {
       const jobList = getByTestId("job-list");
       expect(jobList).toBeInTheDocument();

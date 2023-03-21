@@ -52,7 +52,7 @@
   background-color: black;
   display: flex;
   justify-content: center;
-  .search__content{
+  .search--content{
     position: relative;
     width: 80%;
     height: 100%;
@@ -63,7 +63,7 @@
     .job--available{
       color:white;
     }
-    .search--icon{
+    .search-bar__icon{
       position: absolute;
       left: 285px;
       top: 95px;
