@@ -1,9 +1,4 @@
-import {
-  fireEvent,
-  getByRole,
-  getByText,
-  render,
-} from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 
 import "@testing-library/jest-dom";
 import { Provider } from "react-redux";
@@ -12,82 +7,19 @@ import Search from "./Search";
 
 describe("Search component", () => {
   let searchInput: HTMLInputElement;
-  const jobs = [
-    {
-      name: "name 1",
-      status: false,
-      image: "https://loremflickr.com/640/480/food",
-      id: 1,
-    },
-    {
-      name: "name 2",
-      status: true,
-      image: "https://loremflickr.com/640/480/food",
-      id: 2,
-    },
-    {
-      name: "name 3",
-      status: true,
-      image: "https://loremflickr.com/640/480/food",
-      id: 3,
-    },
-    {
-      name: "name 4",
-      status: false,
-      image: "https://loremflickr.com/640/480/food",
-      id: 4,
-    },
-    {
-      name: "name 5",
-      status: false,
-      image: "https://loremflickr.com/640/480/food",
-      id: 5,
-    },
-    {
-      name: "name 6",
-      status: true,
-      image: "https://loremflickr.com/640/480/food",
-      id: 6,
-    },
-    {
-      name: "name 7",
-      status: true,
-      image: "https://loremflickr.com/640/480/food",
-      id: 7,
-    },
-    {
-      name: "name 8",
-      status: false,
-      image: "https://loremflickr.com/640/480/food",
-      id: 8,
-    },
-    {
-      name: "name 9",
-      status: false,
-      image: "https://loremflickr.com/640/480/food",
-      id: 9,
-    },
-    {
-      name: "name 10",
-      status: true,
-      image: "https://loremflickr.com/640/480/food",
-      id: 10,
-    },
-  ];
-  beforeEach(() => {
-    const { getByLabelText } = render(
-      <Provider store={store}>
-        <Search
-          count={0}
-          handleSearchInput={(event) => {}}
-          handleEnterSearch={(event) => {}}
-          handleSearch={() => {}}
-          job={[]}
-        ></Search>
-      </Provider>
-    );
-    searchInput = getByLabelText("searchInput") as HTMLInputElement;
-  });
+
+  const { getByLabelText } = render(
+    <Provider store={store}>
+      <Search
+        count={0}
+        handleSearchInput={(event) => {}}
+        handleEnterSearch={(event) => {}}
+        handleSearch={() => {}}
+      ></Search>
+    </Provider>
+  );
+  searchInput = getByLabelText("searchInput") as HTMLInputElement;
+
   it("should update search input value on change", () => {
     fireEvent.change(searchInput, { target: { value: "test" } });
     expect(searchInput.value).toBe("test");
@@ -107,7 +39,6 @@ describe("Search component", () => {
           handleSearch={() => {
             handleSearch(searchTerm);
           }}
-          job={[]}
         />
       </Provider>
     );
@@ -135,7 +66,6 @@ describe("Search component", () => {
           handleSearchInput={() => {}}
           handleEnterSearch={handleEnterSearch(searchTerm)}
           handleSearch={() => {}}
-          job={[]}
         />
       </Provider>
     );

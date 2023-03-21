@@ -86,7 +86,6 @@ function Home() {
   return (
     <div className="App">
       <Search
-        job={jobs}
         count={count}
         handleSearchInput={handleSearchInput}
         handleEnterSearch={handleEnterSearch}

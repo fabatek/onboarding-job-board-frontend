@@ -1,12 +1,9 @@
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { FC } from "react";
-import { Job } from "../Home";
 
 type Props = {
-  job: Job[];
   count: number;
-
   handleSearchInput: (e: {
     target: { value: React.SetStateAction<string> };
   }) => void;
@@ -15,8 +12,7 @@ type Props = {
 };
 
 const Search: FC<Props> = (props) => {
-  const { job, count, handleSearchInput, handleEnterSearch, handleSearch } =
-    props;
+  const { count, handleSearchInput, handleEnterSearch, handleSearch } = props;
   return (
     <>
       <div>
@@ -28,8 +24,8 @@ const Search: FC<Props> = (props) => {
           />
         </div>
         <div className="search">
-          <div className="search--content">
-            <div className="job--available">
+          <div className="search__content">
+            <div className="job__available">
               <h2>{count} Có Việc Làm IT Cho Developer "Chất"</h2>
             </div>
             <div className="search__bar">

@@ -52,7 +52,7 @@
   background-color: black;
   display: flex;
   justify-content: center;
-  .search--content{
+  .search__content{
     position: relative;
     width: 80%;
     height: 100%;
@@ -60,7 +60,7 @@
     flex-direction: column;
     justify-content: center;
     
-    .job--available{
+    .job__available{
       color:white;
     }
     .search-bar__icon{
@@ -68,9 +68,13 @@
       left: 285px;
       top: 95px;
       color:gray;
+      
+
+      
     }
     input[type=text].search__input{
       padding-left: 50px;
+      
     }
     .search__input{
       display: inline-block;

@@ -12,7 +12,7 @@ const JobComponent: FC<Props> = (props) => {
   return (
     <>
       <div>
-        <div className="job" data-testid={`job-${index}`} key={job.id}>
+        <div className="job" data-testid={`job${index}`} key={job.id}>
           <div className="job__content" data-testid="job__content">
             <div className="content__image" data-testid="content__image">
               <img
@@ -42,48 +42,6 @@ const JobComponent: FC<Props> = (props) => {
           </div>
         </div>
       </div>
-      {/* {currentJobs.length > 0 && (
-        <div className="page">
-          <button
-            onClick={() => {
-              changePage(-1);
-            }}
-            disabled={validCurrentPagePrevious}
-            className="page__change"
-          >
-            Previous
-          </button>
-          {Array.from({
-            length: Math.ceil(
-              (currentJobs.length < jobsBase.length
-                ? jobs.length
-                : jobsBase.length) / jobsPerPage
-            ),
-          }).map((_, index) => (
-            <button
-              data-testid={`btn__page`}
-              className={
-                currentPage === index + 1
-                  ? "btn__page btn__page--focus"
-                  : "btn__page "
-              }
-              key={index}
-              onClick={() => handlePageChange(index + 1)}
-            >
-              {index + 1}
-            </button>
-          ))}
-          <button
-            onClick={() => {
-              changePage(1);
-            }}
-            disabled={validCurrentPageNext}
-            className="page__change"
-          >
-            Next
-          </button>
-        </div>
-      )} */}
     </>
   );
 };
