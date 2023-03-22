@@ -1,8 +1,8 @@
 interface Job {
-    tenCV:string,
+    jobName:string,
     moTa: string,
     city: string,
-    congNghe:string[],
+    tech:string[],
     img:string,
     id: string
 }
