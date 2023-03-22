@@ -23,23 +23,36 @@ const JobCard = (props: Props) => {
               alt=""
               className="w-100 logo-company__img"
               loading="lazy"
+              data-testid="job-card__img"
             />
           </div>
         </div>
         <div className="col-8 job-card-info">
-          <h4 className="job-card-info__job-title mb-1 text-truncate">
+          <h4
+            className="job-card-info__job-title mb-1 text-truncate"
+            data-testid="job-card__title"
+          >
             <AiFillInfoCircle className="mb-1 me-1" />
             {item.jobTitle}
           </h4>
-          <span className="job-card-info__company-name text-truncate fs-5">
+          <span
+            className="job-card-info__company-name text-truncate fs-5"
+            data-testid="job-card__company-name"
+          >
             <AiFillHome className="mb-1 me-1" /> {item.companyName}
           </span>
           <div className="mt-2">
-            <span className="job-card-info__salary display-inline me-2">
+            <span
+              className="job-card-info__salary display-inline me-2"
+              data-testid="job-card__salary"
+            >
               <MdOutlineAttachMoney className="mb-1" />
               {item.salary}
             </span>
-            <span className="job-card-info__place">
+            <span
+              className="job-card-info__place"
+              data-testid="job-card__place"
+            >
               <MdPlace className="mb-1 me-1" />
               {item.place}
             </span>
