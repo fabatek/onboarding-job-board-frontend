@@ -14,7 +14,7 @@ function Search() {
         <div className='bg-dark text-light'>
             <div className='container'>
                 <div className="container-fluid py-5 row">
-                    <div className='col-2 search-selection'>
+                    <div className='col-2 search__selection'>
                         <select>
                             <option value={0}>All Cities</option>
                             {jobs?.map((item: Job, key) => {
@@ -22,8 +22,7 @@ function Search() {
                             })}
                         </select>
                     </div>
-                    <div className='col-10' data-testid='jobTest'>
-                        <h2 className='total-job'>{jobs?.length} IT Jobs For "Chất" Developers</h2>
+                    <div className='col-10' data-testid='jobTest'>            
                         <form className="d-flex">
                             <input className="form-control me-2" type="text" placeholder="Search" aria-label="Search" />
                             <button className="btn btn-danger" type="submit">Search</button>

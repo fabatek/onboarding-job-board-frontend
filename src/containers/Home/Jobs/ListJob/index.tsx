@@ -11,7 +11,8 @@ export default function ListJob() {
     }, []);
     const { data: jobs, loading } = useSelector((state: RootState) => state.jobs)
     return (
-        <div data-testid="test100Job">
+        <div>
+            <h2 data-testid="test100Job">{jobs.length} Jobs For "Chất" Developers</h2>
             {loading ? <Loading /> : jobs?.map((item: Job, key: number) => {
                 return (
                     <li key={key} className={`list-group-item d-flex job`}>
