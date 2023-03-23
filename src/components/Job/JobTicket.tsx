@@ -11,13 +11,20 @@ const JobTicket = ({ item }: Props) => {
   const newDate = new Date();
 
   const dateFormat = (date: Date) => {
-    const currentDate = (newDate.getDate() - date.getDate()) * 24;
-    const hours = Math.abs(newDate.getDate() - date.getDate()) * 24 + " hours ago";
+    const currentDate = Math.abs((newDate.getDate() - date.getDate()) * 24);
+    const hours = Math.abs(newDate.getDate() - date.getDate()) * 24 + " hour ago";
     const day = Math.abs((newDate.getDate() - date.getDate()) * 24) / 24 + " day ago";
+    const week = Math.ceil(Math.abs((newDate.getDate() - date.getDate()) * 24) / 24 / 7) +
+      " week ago";
+    if (currentDate === 0) {
+      return "Just now";
+    }
     if (currentDate <= 24) {
       return hours;
     }
-  
+    if (Math.abs((newDate.getDate() - date.getDate()) * 24) / 24 > 7) {
+      return week;
+    }
     return day;
   };
   return (

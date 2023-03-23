@@ -18,7 +18,7 @@ const ShowAllJobs = () => {
 
   return (
     <div className="show-all-jobs" data-testid="total-jobs">
-      <div className="container p-5">
+      <div className="container">
         <div className="row">
           <div className=" bg-white p-0">
             <div className="wrapper">

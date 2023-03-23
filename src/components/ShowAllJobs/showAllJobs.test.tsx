@@ -11,7 +11,7 @@ const ShowAllJobsTestComponent = () => {
   )
 }
 describe("show all jobs", () => {
-  test('total of jobs',()=>{
+  it('total of jobs',()=>{
     const {getByTestId} = render(<ShowAllJobsTestComponent/>)
     expect(getByTestId("total-jobs")).toBeInTheDocument();
   })
