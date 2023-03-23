@@ -4,6 +4,7 @@ interface Job {
     city: string,
     tech:string[],
     img:string,
+    posted:Date,
     id: string
 }
 export default Job;
