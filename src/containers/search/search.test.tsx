@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import { store } from "../../redux/configStore";
 import Search from "./Search";
 
-describe("Search component", () => {
+describe("Search component - check seach input change", () => {
   let searchInput: HTMLInputElement;
 
   const { getByLabelText } = render(
@@ -25,7 +25,7 @@ describe("Search component", () => {
     expect(searchInput.value).toBe("test");
   });
 });
-describe("Search component", () => {
+describe("Search component - check search function while clicking search button", () => {
   it("should call handleSearch with the current search term when search button is clicked", () => {
     const handleSearch = jest.fn();
     const searchTerm = "test";
@@ -54,7 +54,7 @@ describe("Search component", () => {
     expect(handleSearch).toHaveBeenCalledWith(searchTerm);
   });
 });
-describe("Search component", () => {
+describe("Search component - check search function while clicking enter button", () => {
   it("should call handleEnterSearch with the current search term when Enter is pressed in the search input", () => {
     const handleEnterSearch = jest.fn();
     const searchTerm = "test";
