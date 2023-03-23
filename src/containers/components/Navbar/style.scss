@@ -1,9 +1,12 @@
-.nav-link{
-    color: rgba(255,255,255,.55);
-}
-.nav-link:hover{
-    color: white;
-}
-.nav img{
-    height: 56px;
+.nav{
+    &-link{
+        color: rgba(255,255,255,.55);
+        line-height: 72px;
+        &:hover{
+            color: white;
+        }
+        img{
+            height: 56px;
+        }
+    }
 }

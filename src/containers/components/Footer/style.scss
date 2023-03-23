@@ -1,0 +1,14 @@
+.footer{
+    text-align: left;
+    color: #8b9097;
+    &__item{
+        &__ul{
+            li{
+                list-style: none;
+            }
+            h5{
+                color: #c1c1c1;
+            }
+        }
+    }
+}

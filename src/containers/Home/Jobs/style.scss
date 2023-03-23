@@ -1,0 +1,46 @@
+.job{
+    margin-left: 20%;
+    margin-right: 20%;
+    padding: 40px;
+    position: relative;
+    margin-bottom: 10px;
+    box-shadow: 0 0 5px 0 rgba(66, 59, 59, 0.851);
+    &::after{
+        position: absolute;
+        content: "Hot";
+        top: 30px;
+        right: 40px;
+        background-color: orange;
+        color: white;
+        padding: 2px 10px;
+    }
+    &:hover{
+        box-shadow: 0 0 5px 0 rgb(212, 16, 16)
+    }
+    &__tittle{
+        margin-left: 50px;
+        .job__tech{
+            text-align: left;
+            position: relative;
+        }
+    }
+    &__city{
+        position: absolute;
+        top: 80px;
+        right: 20px;
+        content: "";
+        .job__posted{
+            color: #06c;
+        }
+    }
+    &__img{
+        width: 80px;
+        height: 80px;
+        border: 1px black solid;
+    }
+}
+.pagination{
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
