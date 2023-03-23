@@ -119,39 +119,43 @@ const Search: FC<Props> = (props) => {
             alt=""
           />
         </div>
-        <div className="search">
-          <div className="search__content">
-            <div className="job__available">
-              <h2>{count} Có Việc Làm IT Cho Developer "Chất"</h2>
-            </div>
-            <div className="search__bar">
-              <div className="search-bar__icon">
-                <FontAwesomeIcon icon={faMagnifyingGlass} />
+        {count !== 0 ? (
+          <div className="search">
+            <div className="search__content">
+              <div className="job__available">
+                <h2>{count} Có Việc Làm IT Cho Developer "Chất" </h2>
               </div>
+              <div className="search__bar">
+                <div className="search-bar__icon">
+                  <FontAwesomeIcon icon={faMagnifyingGlass} />
+                </div>
 
-              <input
-                role="searchInput"
-                aria-label="searchInput"
-                type="text"
-                className="search__input"
-                placeholder="Search job by title"
-                onChange={handleSearchInput}
-                onKeyDown={handleEnterSearch}
-              />
-              <span>
-                <button
-                  type="submit"
-                  className="btn__search"
-                  onClick={() => {
-                    handleSearch();
-                  }}
-                >
-                  Search
-                </button>
-              </span>
+                <input
+                  role="searchInput"
+                  aria-label="searchInput"
+                  type="text"
+                  className="search__input"
+                  placeholder="Search job by title"
+                  onChange={handleSearchInput}
+                  onKeyDown={handleEnterSearch}
+                />
+                <span>
+                  <button
+                    type="submit"
+                    className="btn__search"
+                    onClick={() => {
+                      handleSearch();
+                    }}
+                  >
+                    Search
+                  </button>
+                </span>
+              </div>
             </div>
           </div>
-        </div>
+        ) : (
+          ""
+        )}
       </div>
     </>
   );

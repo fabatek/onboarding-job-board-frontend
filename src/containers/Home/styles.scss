@@ -141,6 +141,7 @@
   background-color: #221f20;
   display: flex;
   justify-content: center;
+  padding-bottom: 50px;
   .header__logo{
     
     display: inline-block;
@@ -150,12 +151,13 @@
   }
 }
 .search{
- 
+
   height: 150px;
   background-color:#221f20;
   display: flex;
   justify-content: center;
   .search__content{
+    align-items: center;
     position: relative;
     width: 80%;
     height: 100%;
@@ -284,6 +286,62 @@
           margin-top: 3px;
          }
      }
+    }
+  }
+}
+.job-detail{
+  padding: 100px 100px;
+  .job-detail__content{
+    display: flex;
+    justify-content: center;
+    background-color: #e9e9e9;
+    border-radius: 10px;
+    .job-detail__img{
+      padding: 40px 50px;
+      width: 40%;
+      img{
+        width: 100%;
+        border-radius: 5px;
+
+      }
+    }
+    .job-detail__description{
+      width: 40%;
+      padding: 40px 50px;
+      h3{
+        text-transform: uppercase;
+      }
+      
+    }
+    .job-detail__action{
+      display: flex;
+      width: 20%;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      .job-detail__btn--review{
+        width: 200px;
+        height: 50px;
+        border-radius: 5px;
+        background-color: red;
+        color:white;
+        transition: 0.5s;
+        &:hover{
+          background-color: #CA5E5E;
+        }
+      }
+      .job-detail__btn--follow{
+        width: 200px;
+        height: 50px;
+        border-radius: 5px;
+        background-color: #e9e9e9;
+        color:red;
+        border: 1px solid red;
+        transition: 0.2s;
+        &:hover{
+          transform: scale(1.1);
+        }
+      }
     }
   }
 }
