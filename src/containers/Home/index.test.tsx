@@ -13,9 +13,9 @@ test("test if UI displays text correctly", () => {
     </Provider>
   );
 
-  const textTuyenDung = getByText("Nhà tuyển dụng hàng đầu");
+  const textRecruitment = getByText("Nhà tuyển dụng hàng đầu");
 
-  expect(textTuyenDung).toBeInTheDocument;
+  expect(textRecruitment).toBeInTheDocument;
 });
 test("Check if elements contain suitable class", () => {
   const { queryAllByTestId, queryByTestId } = render(
