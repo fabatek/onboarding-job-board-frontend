@@ -19,12 +19,11 @@ export default function ListJob() {
                         <img className='job__img' alt='logo' src={item.img} />
                         <div className='job__tittle'>
                             <h4>{item.jobName}</h4>
-                            <p>
-                                <ul className='job__tech'>
-                                    <li>Html</li>
-                                    <li>Css</li>         
-                                </ul>
-                            </p>
+                            <ul className='job__tech'>
+                                <li>Html</li>
+                                <li>Css</li>
+                                <a href="/#">Sign in to view</a>
+                            </ul>
                         </div>
                         <div className='job__city'>
                             <p>{item.city}</p>

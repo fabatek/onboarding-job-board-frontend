@@ -22,15 +22,6 @@
         .job__tech{
             text-align: left;
             position: relative;
-            &::after{
-                position: absolute;
-                content: "Sign in to view";
-                left: 0;
-                top: 55px;
-                cursor: pointer;
-                text-decoration: underline dashed 1px;
-                color:#06c ;
-            }
         }
     }
     &__city{
