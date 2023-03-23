@@ -4,9 +4,11 @@ import { Job } from "../../containers/Home";
 import { DispatchType } from "../configStore";
 export interface JobState {
   jobs: Job[];
+  jobsBase: Job[];
 }
 const initialState: JobState = {
   jobs: [],
+  jobsBase: [],
 };
 
 const JobReducer = createSlice({
@@ -15,11 +17,21 @@ const JobReducer = createSlice({
   reducers: {
     getJobAction: (state: JobState, action: PayloadAction<Job[]>) => {
       state.jobs = action.payload;
+      state.jobsBase = action.payload;
+    },
+    filterAction: (state: JobState, action: PayloadAction<string>) => {
+      if (action.payload === "".trim()) {
+        state.jobs = state.jobsBase;
+      } else {
+        state.jobs = state.jobsBase.filter((job) =>
+          job.name.toLowerCase().includes(action.payload.toLowerCase())
+        );
+      }
     },
   },
 });
 
-export const { getJobAction } = JobReducer.actions;
+export const { getJobAction, filterAction } = JobReducer.actions;
 
 export const jobAPI = () => {
   return async (dispatch: DispatchType) => {

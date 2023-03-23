@@ -2,11 +2,21 @@ import { fireEvent, render, waitFor } from "@testing-library/react";
 
 import "@testing-library/jest-dom";
 import Home from "../Home";
-import React, { useState } from "react";
-import { Provider, useSelector } from "react-redux";
-import { RootState, store } from "../../redux/configStore";
-import axios from "axios";
 
+import { Provider } from "react-redux";
+import { store } from "../../redux/configStore";
+
+test("test if UI displays text correctly", () => {
+  const { getByText } = render(
+    <Provider store={store}>
+      <Home />
+    </Provider>
+  );
+
+  const textRecruitment = getByText("Nhà tuyển dụng hàng đầu");
+
+  expect(textRecruitment).toBeInTheDocument;
+});
 test("Check if elements contain suitable class", () => {
   const { queryAllByTestId, queryByTestId } = render(
     <Provider store={store}>
@@ -29,14 +39,13 @@ describe("Loading API", () => {
         <Home />
       </Provider>
     );
-
     await waitFor(() => {
       const jobList = getByTestId("job-list");
       expect(jobList).toBeInTheDocument();
       const job = queryAllByTestId("job");
       if (job.length > 0) {
         job.forEach((j, index) => {
-          expect(getByTestId(`job-${index}`)).toHaveClass("job");
+          expect(getByTestId(`job${index}`)).toHaveClass("job");
         });
       }
     });
