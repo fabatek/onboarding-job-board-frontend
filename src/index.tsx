@@ -5,12 +5,13 @@ import "bootstrap/dist/css/bootstrap.css";
 import dotenv from "dotenv";
 
 import "./index.scss";
-import App from "./containers/App";
+
 import * as serviceWorker from "./serviceWorker";
 import Home from "./containers/Home";
 import { store } from "./redux/configStore";
 import { Provider } from "react-redux";
 import Detail from "./containers/Detail/Detail";
+
 dotenv.config();
 ReactDOM.render(
   <React.StrictMode>

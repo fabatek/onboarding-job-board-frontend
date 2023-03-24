@@ -2,7 +2,8 @@ import React, { SetStateAction, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { DispatchType, RootState } from "../../redux/configStore";
-import JobReducer, { getJobDetailAPI } from "../../redux/reducer/JobReducer";
+import { getJobDetailAPI } from "../../redux/reducer/JobReducer";
+
 import Search from "../search/Search";
 
 type Props = {};
@@ -15,7 +16,6 @@ const Detail = (props: Props) => {
   const params = useParams();
   useEffect(() => {
     if (params.id !== undefined) {
-      console.log("paramsid", params.id);
       dispatch(getJobDetailAPI(parseInt(params.id)));
     }
   }, [params.id]);
@@ -37,13 +37,19 @@ const Detail = (props: Props) => {
         }}
       />
       <div>
-        <div className="job-detail">
-          <div className="job-detail__content">
-            <div className="job-detail__img">
+        <div className="job-detail" data-testid="job-detail">
+          <div
+            className="job-detail__content"
+            data-testid="job-detail__content"
+          >
+            <div className="job-detail__img" data-testid="job-detail__img">
               <img src={jobDetail.image} alt="" />
             </div>
-            <div className="job-detail__description">
-              <h3>{jobDetail.name}</h3>
+            <div
+              className="job-detail__description"
+              data-testid="job-detail__description"
+            >
+              <h3 data-testid="job-detail__name">{jobDetail.name}</h3>
               <p>
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                 Laboriosam commodi, consectetur aut dolore non, cumque
@@ -53,8 +59,18 @@ const Detail = (props: Props) => {
               </p>
             </div>
             <div className="job-detail__action">
-              <button className="job-detail__btn--review">Review</button>
-              <button className="job-detail__btn--follow">Follow</button>
+              <button
+                className="job-detail__btn--review"
+                data-testid="job-detail__btn--review"
+              >
+                Review
+              </button>
+              <button
+                className="job-detail__btn--follow"
+                data-testid="job-detail__btn--follow"
+              >
+                Follow
+              </button>
             </div>
           </div>
         </div>
