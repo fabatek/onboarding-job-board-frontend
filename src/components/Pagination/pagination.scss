@@ -1,0 +1,23 @@
+.pagination {
+    width: 100%;
+    margin: 0 auto;
+    justify-content: center;
+
+    &__list {
+        &__item {
+            cursor: pointer;
+
+            &.active {
+                background: #dc3545;
+                color: white;
+                border-radius: 5px;
+            }
+
+            &.disabled {
+                color: rgb(190, 190, 190);
+
+            }
+
+        }
+    }
+}

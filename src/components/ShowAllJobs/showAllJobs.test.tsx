@@ -10,9 +10,24 @@ const ShowAllJobsTestComponent = () => {
     </Provider>
   );
 };
+
 describe("show all jobs", () => {
-  it("total of jobs", () => {
+  test("total of jobs", async () => {
     const { getByTestId } = render(<ShowAllJobsTestComponent />);
     expect(getByTestId("total-jobs")).toBeInTheDocument();
+  });
+  test("render list items", async () => {
+    const { findByTestId } = render(<ShowAllJobsTestComponent />);
+    const jobList = await findByTestId("list-job", undefined, {
+      timeout: 10000,
+    });
+    expect(jobList).toBeInTheDocument();
+  });
+  test("render 10 jobs per page", async () => {
+    const { findAllByTestId } = render(<ShowAllJobsTestComponent />);
+    const listItem = await findAllByTestId("list-item-test", undefined, {
+      timeout: 3000,
+    });
+    expect(listItem).toHaveLength(10);
   });
 });
