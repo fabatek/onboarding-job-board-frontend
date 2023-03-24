@@ -1,28 +1,23 @@
 import React from "react";
 import "./jobticket.scss";
-import { JobModal } from "../../type/type";
+import { JobTicketProps } from "../../type/type";
 
-type Props = {
-  item: JobModal;
-};
+const JobTicket = ({ item }: JobTicketProps) => {
+  const jobCreationDate = new Date(item.createdAt);
+  const currentDate = new Date();
 
-const JobTicket = ({ item }: Props) => {
-  const date = new Date(item.createdAt);
-  const newDate = new Date();
-
-  const dateFormat = (date: Date) => {
-    const currentDate = Math.abs((newDate.getDate() - date.getDate()) * 24);
-    const hours = Math.abs(newDate.getDate() - date.getDate()) * 24 + " hour ago";
-    const day = Math.abs((newDate.getDate() - date.getDate()) * 24) / 24 + " day ago";
-    const week = Math.ceil(Math.abs((newDate.getDate() - date.getDate()) * 24) / 24 / 7) +
-      " week ago";
-    if (currentDate === 0) {
+  const dateFormat = (jobCreationDate: Date) => {
+    const distanceBetweenToDate = Math.abs((currentDate.getDate() - jobCreationDate.getDate()) * 24);
+    const hours = Math.abs(currentDate.getDate() - jobCreationDate.getDate()) * 24 + " hour ago";
+    const day = Math.abs((currentDate.getDate() - jobCreationDate.getDate()) * 24) / 24 + " day ago";
+    const week = Math.ceil(Math.abs((currentDate.getDate() - jobCreationDate.getDate()) * 24) / 24 / 7) + " week ago";
+    if (distanceBetweenToDate === 0) {
       return "Just now";
     }
-    if (currentDate <= 24) {
+    if (distanceBetweenToDate <= 24) {
       return hours;
     }
-    if (Math.abs((newDate.getDate() - date.getDate()) * 24) / 24 > 7) {
+    if (Math.abs((currentDate.getDate() - jobCreationDate.getDate()) * 24) / 24 > 7) {
       return week;
     }
     return day;
@@ -30,7 +25,7 @@ const JobTicket = ({ item }: Props) => {
   return (
     <div className="job-ticket">
       <div className="job-ticket__left">
-        <img src={item.avatar} alt="234" />
+        <img src={item.avatar} alt={item.title} />
       </div>
       <div className="job-ticket__center">
         <h2>{item.title}</h2>
@@ -57,7 +52,7 @@ const JobTicket = ({ item }: Props) => {
           Hot
         </span>
         <p className="job-ticket__right-address">{item.address}</p>
-        <p className="job-ticket__right-time">{dateFormat(date)}</p>
+        <p className="job-ticket__right-time">{dateFormat(jobCreationDate)}</p>
       </div>
     </div>
   );

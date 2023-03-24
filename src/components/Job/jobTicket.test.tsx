@@ -10,30 +10,31 @@ describe("JobTicket component", () => {
     avatar: "https://loremflickr.com/640/480/business",
     address: "Cerritos",
     tag: "Strategist",
-    id: "1"
+    id: "1",
+    status:true
   };
 
   it("render the job title", () => {
     const { getByText } = render(<JobTicket item={item} />);
-    const titleElement = getByText(/Global Factors Developer/i);
+    const titleElement = getByText(item.title);
     expect(titleElement).toBeInTheDocument();
   });
 
   it("render the job avatar", () => {
     const { getByAltText } = render(<JobTicket item={item} />);
-    const avatarElement = getByAltText(/234/i);
+    const avatarElement = getByAltText(item.title);
     expect(avatarElement).toBeInTheDocument();
   });
 
   it("render the job address", () => {
     const { getByText } = render(<JobTicket item={item} />);
-    const addressElement = getByText(/Cerritos/i);
+    const addressElement = getByText(item.address);
     expect(addressElement).toBeInTheDocument();
   });
 
   it("render the 'Hot' status", () => {
     const { getByText } = render(<JobTicket item={item} />);
     const statusElement = getByText(/Hot/i);
-    expect(statusElement).toBeInTheDocument();
+    expect(statusElement).toHaveClass('bg-yellow');
   });
 });
