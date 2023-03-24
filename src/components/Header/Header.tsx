@@ -2,7 +2,7 @@ import React from "react";
 const Header = () => {
   return (
     <div className="header bg-black">
-      <div className="container">
+      <div className="container px-0">
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
           <div className="container-fluid p-0">
             <a href="nav-link">
@@ -59,10 +59,10 @@ const Header = () => {
                   </form>
                 </li>
               </ul>
-              <ul className="d-flex navbar-nav me-auto mb-2 mb-lg-0">
-                <li className="nav-item text-light mx-2">For Employers</li>
-                <li className="nav-item text-light mx-2">Sign In</li>
-                <li className="nav-item text-light mx-2">EN | VI</li>
+              <ul className="d-flex navbar-nav me-0 mb-2 mb-lg-0">
+                <li className="nav-item text-light ms-4">For Employers</li>
+                <li className="nav-item text-light ms-4">Sign In</li>
+                <li className="nav-item text-light ms-4">EN | VI</li>
               </ul>
             </div>
           </div>

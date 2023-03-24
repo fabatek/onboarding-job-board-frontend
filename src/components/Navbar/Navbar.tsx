@@ -1,9 +1,9 @@
 import React from "react";
 const Navbar = () => {
   return (
-    <div className="navbar container">
-      <nav className="navbar navbar-expand-lg">
-        <div className="container-fluid">
+    <div className="navbar container py-4 px-0">
+      <nav className="navbar navbar-expand-lg px-0">
+        <div className="container-fluid px-0">
           <button
             className="navbar-toggler"
             type="button"
@@ -16,8 +16,8 @@ const Navbar = () => {
             <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav align-items-center">
-              <li className="nav-item mx-2">
+            <ul className="navbar-nav align-items-center m-0">
+              <li className="nav-item me-3">
                 <select
                   className="form-select"
                   aria-label="Default select example 2"
@@ -30,7 +30,7 @@ const Navbar = () => {
                   <option value="3">Three</option>
                 </select>
               </li>
-              <li className="nav-item mx-2">
+              <li className="nav-item me-3">
                 <select
                   className="form-select"
                   aria-label="Default select example"
@@ -43,7 +43,7 @@ const Navbar = () => {
                   <option value="3">Three</option>
                 </select>
               </li>
-              <li className="nav-item mx-2">
+              <li className="nav-item me-3">
                 <select
                   className="form-select"
                   aria-label="Default select example"
@@ -56,7 +56,7 @@ const Navbar = () => {
                   <option value="3">Three</option>
                 </select>
               </li>
-              <li className="nav-item mx-2">
+              <li className="nav-item me-3">
                 <select
                   className="form-select"
                   aria-label="Default select example"
