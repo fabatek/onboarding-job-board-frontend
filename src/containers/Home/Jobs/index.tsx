@@ -22,6 +22,7 @@ export default function Jobs() {
     const paginate = (indexPage: number) => {
         setCurrentPage(indexPage)
     }
+    
     return (
         <div className='mt-4'>
             <h2 data-testid="jobTittle">{jobs.length} Jobs For "Chất" Developers</h2>

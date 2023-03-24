@@ -7,7 +7,7 @@ afterEach(cleanup)
 test('should render loading', () => {
     render(
         <Provider store={store}>
-            <ListJob />
+            <ListJob currentJobs={[]} />
         </Provider>)
     const loading = screen.getByTestId("loading")
     expect(loading).toBeInTheDocument()
@@ -15,7 +15,7 @@ test('should render loading', () => {
 test('should have id job in the document', () => {
     render(
         <Provider store={store}>
-            <ListJob />
+            <ListJob currentJobs={[]} />
         </Provider>)
         const testJob = screen.getByTestId("test100Job")
         expect(testJob).toBeInTheDocument()
@@ -23,7 +23,7 @@ test('should have id job in the document', () => {
 test('should render 100 jobs', async () => {
     render(
         <Provider store={store}>
-            <ListJob />
+            <ListJob currentJobs={[]} />
         </Provider>)
     const listJob = await waitFor(()=>{document.querySelectorAll("li").length})
     expect(listJob).toHaveLength(100);
