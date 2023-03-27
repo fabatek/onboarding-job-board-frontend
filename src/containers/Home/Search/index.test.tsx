@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import Search from "./index";
 import { Provider } from "react-redux";
 import { store } from "../../Redux/store/store";
+
 test('renders inital document', () => {
     render(<Provider store={store}>
         <Search />

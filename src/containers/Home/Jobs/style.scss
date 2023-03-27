@@ -1,3 +1,4 @@
+$main-color : #f0101a;
 .job{
     margin-left: 20%;
     margin-right: 20%;
@@ -9,19 +10,53 @@
         position: absolute;
         content: "Hot";
         top: 30px;
-        right: 40px;
+        right: 20px;
         background-color: orange;
         color: white;
         padding: 2px 10px;
+        font-size: 15px;
     }
     &:hover{
-        box-shadow: 0 0 5px 0 rgb(212, 16, 16)
+        box-shadow: 0 0 5px 0 rgb(212, 16, 16);
+        .job__tittle{
+            h4{
+                color: $main-color;
+            }
+        }
     }
     &__tittle{
         margin-left: 50px;
+        h4{
+            text-align: left;
+        }
         .job__tech{
             text-align: left;
-            position: relative;
+            a{
+                text-decoration: underline dashed 1px;
+                display: block;
+                margin-bottom: 20px;
+                color: gray;
+                font-size: 15px;
+            }
+            button{
+                margin-right: 10px;
+                border: 1px solid black;
+                padding: 1px 8px;
+                font-size: 15px;
+                background-color: transparent;
+                &:hover{
+                    border: 1px solid $main-color;
+                    color: $main-color;
+                }
+            }
+            .job__icon{
+                border: 1px solid black;
+                border-radius: 50%;
+                width: 10px;
+                height: 10px;
+                padding: 2px;
+                font-size: 10px;
+            }
         }
     }
     &__city{
@@ -31,6 +66,7 @@
         content: "";
         .job__posted{
             color: #06c;
+            text-align: right;
         }
     }
     &__img{
@@ -42,5 +78,18 @@
 .pagination{
     justify-content: center;
     padding-bottom: 20px;
+    padding-top: 20px;
+    &__item{
+        &__link{
+            color: $main-color;
+            background-color: rgba(212, 16, 16, 0.167);
+            padding: 10px 20px;
+        }
+        &--active{
+            color: $main-color;
+            background-color: white;
+            padding: 10px 20px;
+        }
+    }
 }
 

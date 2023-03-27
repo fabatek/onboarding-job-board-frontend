@@ -1,14 +1,9 @@
-import { useEffect } from 'react'
 import "./style.scss"
-import { useSelector, useDispatch } from 'react-redux';
-import { getJobs } from '../../Redux/jobs/jobSlice';
+import { useSelector } from 'react-redux';
 import { RootState } from '../../Redux/store/store';
 import Job from '../../model/job';
+
 function Search() {
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(getJobs());
-    }, []);
     const { data: jobs } = useSelector((state: RootState) => state.jobs)
     return (
         <div className='bg-dark text-light'>
@@ -17,8 +12,8 @@ function Search() {
                     <div className='col-2 search__selection'>
                         <select>
                             <option value={0}>All Cities</option>
-                            {jobs?.map((item: Job, key) => {
-                                return (<option key={key} value={item.city}>{item.city}</option>)
+                            {jobs?.map((job: Job, key) => {
+                                return (<option key={key} value={job.city}>{job.city}</option>)
                             })}
                         </select>
                     </div>
