@@ -170,7 +170,7 @@
     }
     .search-bar__icon{
       position: absolute;
-      left: 285px;
+      left: 330px;
       top: 95px;
       color:gray;
       
@@ -217,7 +217,7 @@
   .job{
     margin-top: 100px;
     padding: 30px 30px 30px 40px;
-   
+   color: black;
     
     .job__content{
       position: relative;
@@ -231,18 +231,37 @@
         -webkit-box-shadow: -1px 2px 29px -1px rgba(0,0,0,0.75);
         -moz-box-shadow: -1px 2px 29px -1px rgba(0,0,0,0.75);
       }
+      .job__price{
+        width: 120px;
+        height: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        z-index: 10;
+        background-color: chartreuse;
+        left: 200px;
+        top: 30px;
+        border-radius: 5px;
+        font-weight: 600;
+        box-shadow: -1px 2px 29px -1px rgba(0,0,0,0.75);
+        -webkit-box-shadow: -1px 2px 29px -1px rgba(0,0,0,0.75);
+        -moz-box-shadow: -1px 2px 29px -1px rgba(0,0,0,0.75);
+      }
       .content-name{
         display: inline-block;
         font-weight: 800;
         position: absolute;
-        top: 200px;
-        right: 200px;
+        top: 205px;
+        right: 215px;
         font-size: 17px;
         text-transform: uppercase;
       }
       .content-description{
         position: absolute;
-        top: 220px;
+        top: 225px;
+       
       }
       .content__image{
         position: absolute;
@@ -266,12 +285,12 @@
         
         position: absolute;
         display: flex;
-        width: 120px;
+        width: 110px;
         height: 20px;
         z-index: 100;
-        right: 0px;
-        top:200px;
-
+        right: 90px;
+        top:205px;
+        border-radius: 5px;
         flex-direction: column;
         align-items: center;
         justify-content: center;
@@ -309,8 +328,9 @@
     .job-detail__description{
       width: 40%;
       padding: 40px 50px;
-      h3{
+      .job-detail__name{
         text-transform: uppercase;
+        font-weight: bold;
       }
       
     }

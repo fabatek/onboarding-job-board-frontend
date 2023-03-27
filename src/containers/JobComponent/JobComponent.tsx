@@ -13,9 +13,12 @@ const JobComponent: FC<Props> = (props) => {
   return (
     <>
       <div>
-        <NavLink to={`/detail/${job.id}`} style={{ color: "black" }}>
+        <NavLink to={`/detail/${job.id}`}>
           <div className="job" data-testid={`job${index}`} key={job.id}>
             <div className="job__content" data-testid="job__content">
+              <div className="job__price">
+                <p>Up to {job.price}$</p>
+              </div>
               <div className="content__image" data-testid="content__image">
                 <img
                   className="content__image-random"

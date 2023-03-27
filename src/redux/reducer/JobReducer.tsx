@@ -51,9 +51,9 @@ export const getJobDetailAPI = (id: number) => {
     const result = await axios.get(
       `${process.env.REACT_APP_API_BASE_URL}/job/${id}`
     );
-
-    dispatch(getJobDetailAction(result.data));
-    console.log(result.data);
+    if (result.data) {
+      dispatch(getJobDetailAction(result.data));
+    }
   };
 };
 export default JobReducer.reducer;

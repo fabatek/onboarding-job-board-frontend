@@ -1,30 +1,29 @@
 import { fireEvent, render } from "@testing-library/react";
-
 import "@testing-library/jest-dom";
 import { Provider } from "react-redux";
 import { store } from "../../redux/configStore";
 import Search from "./Search";
 
-describe("Search component - check seach input change", () => {
-  let searchInput: HTMLInputElement;
-
-  const { getByLabelText } = render(
-    <Provider store={store}>
-      <Search
-        count={0}
-        handleSearchInput={(event) => {}}
-        handleEnterSearch={(event) => {}}
-        handleSearch={() => {}}
-      ></Search>
-    </Provider>
-  );
-  searchInput = getByLabelText("searchInput") as HTMLInputElement;
-
-  it("should update search input value on change", () => {
+describe("Search component - check search input change", () => {
+  test("should update search input value on change", () => {
+    const handleSearchInput = jest.fn();
+    const handleEnterSearch = jest.fn();
+    const { getByLabelText } = render(
+      <Provider store={store}>
+        <Search
+          count={1}
+          handleSearchInput={handleSearchInput}
+          handleEnterSearch={handleEnterSearch}
+          handleSearch={() => {}}
+        />
+      </Provider>
+    );
+    const searchInput = getByLabelText("Search input") as HTMLInputElement;
     fireEvent.change(searchInput, { target: { value: "test" } });
     expect(searchInput.value).toBe("test");
   });
 });
+
 describe("Search component - check search function while clicking search button", () => {
   it("should call handleSearch with the current search term when search button is clicked", () => {
     const handleSearch = jest.fn();
@@ -33,7 +32,7 @@ describe("Search component - check search function while clicking search button"
     const { getByLabelText } = render(
       <Provider store={store}>
         <Search
-          count={0}
+          count={1}
           handleSearchInput={() => {}}
           handleEnterSearch={() => {}}
           handleSearch={() => {
@@ -43,7 +42,7 @@ describe("Search component - check search function while clicking search button"
       </Provider>
     );
 
-    let searchInput = getByLabelText("searchInput") as HTMLInputElement;
+    const searchInput = getByLabelText("Search input") as HTMLInputElement;
     fireEvent.change(searchInput, { target: { value: searchTerm } });
 
     const searchButton = document.querySelector(
@@ -59,10 +58,10 @@ describe("Search component - check search function while clicking enter button",
     const handleEnterSearch = jest.fn();
     const searchTerm = "test";
 
-    const { getByRole } = render(
+    const { getByLabelText } = render(
       <Provider store={store}>
         <Search
-          count={0}
+          count={1}
           handleSearchInput={() => {}}
           handleEnterSearch={handleEnterSearch(searchTerm)}
           handleSearch={() => {}}
@@ -70,7 +69,7 @@ describe("Search component - check search function while clicking enter button",
       </Provider>
     );
 
-    const searchInput = getByRole("searchInput");
+    const searchInput = getByLabelText("Search input") as HTMLInputElement;
     fireEvent.change(searchInput, { target: { value: searchTerm } });
     fireEvent.keyPress(searchInput, { key: "Enter", keyCode: 13 });
 

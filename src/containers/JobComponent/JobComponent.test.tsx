@@ -7,11 +7,15 @@ import { store } from "../../redux/configStore";
 import Detail from "../Detail/Detail";
 import JobComponent from "./JobComponent";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Job } from "../Home";
 
-const job = {
+const job: Job = {
   name: "name 1",
   status: false,
   image: "https://loremflickr.com/640/480/food",
+  dateStart: "2022-12-02T22:06:06.841Z",
+  dateEnd: "2024-01-09T18:40:53.125Z",
+  email: "Jodie_Bailey@hotmail.com",
   id: 1,
 };
 
@@ -48,5 +52,5 @@ test("navigates to project detail page on click", () => {
 
   fireEvent.click(jobLink);
 
-  expect(getByTestId("job-detail__name")).toBeInTheDocument;
+  expect(getByTestId("job-detail__name")).toBeInTheDocument();
 });

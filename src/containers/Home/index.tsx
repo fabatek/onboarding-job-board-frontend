@@ -7,12 +7,17 @@ import { filterAction, jobAPI } from "../../redux/reducer/JobReducer";
 import { DispatchType, RootState } from "../../redux/configStore";
 import JobComponent from "../JobComponent/JobComponent";
 import Search from "../search/Search";
+import HeaderTemplate from "../Header/HeaderTemplate";
 
 export interface Job {
   id: number;
   name: string;
   status: boolean;
   image: string;
+  dateStart: string;
+  dateEnd: string;
+  email: string;
+  price: number;
 }
 
 function Home() {
@@ -85,6 +90,7 @@ function Home() {
 
   return (
     <div className="App">
+      <HeaderTemplate />
       <Search
         count={count}
         handleSearchInput={handleSearchInput}
