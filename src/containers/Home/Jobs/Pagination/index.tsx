@@ -8,7 +8,7 @@ export default function Pagination(props: { jobsPerPage: number, totalJobs: numb
         <>
             {pageNumber.map((item,index) => {
                 return (
-                    <li className='page-item pagination__item' >
+                    <li className='page-item pagination__item' data-testid="pagination" key={index} >
                         <a onClick={() => {
                             paginate(item)                          
                         }} href="/#" className={`page-link pagination__item__link ${item==currentPage ? "pagination__item__active" : ""}`}>
