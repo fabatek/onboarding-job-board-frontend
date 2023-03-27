@@ -25,13 +25,13 @@ export default function Jobs() {
     const paginate = (indexPage: number) => {
         setCurrentPage(indexPage)
     }
-    const handleClickPreviousPage = () =>{
+    const handleClickPreviousPage = () => {
         setCurrentPage(currentPage - 1)
     }
-    const handleClickNextPage = () =>{
+    const handleClickNextPage = () => {
         setCurrentPage(currentPage + 1)
     }
-    
+
     return (
         <div className='mt-4'>
             <h2 data-testid="jobTittle">{jobs.length} Jobs For "Chất" Developers</h2>
@@ -40,9 +40,9 @@ export default function Jobs() {
                     <ListJobs currentJobs={currentJobs} />
                     <nav>
                         <ul className='pagination'>
-                            <button className="btn btn-danger" disabled={currentPage == 1 ? true : false} onClick={handleClickPreviousPage}><FontAwesomeIcon icon={faArrowLeft} /></button>
+                            <button className="btn btn-danger" disabled={currentPage === 1 ? true : false} onClick={handleClickPreviousPage}><FontAwesomeIcon icon={faArrowLeft} /></button>
                             <Pagination jobsPerPage={jobsPerPage} totalJobs={jobs.length} paginate={paginate} currentPage={currentPage} />
-                            <button className="btn btn-danger" disabled={currentPage == 10 ? true : false} onClick={handleClickNextPage}><FontAwesomeIcon icon={faArrowRight} /></button>
+                            <button className="btn btn-danger" disabled={currentPage === 10 ? true : false} onClick={handleClickNextPage}><FontAwesomeIcon icon={faArrowRight} /></button>
                         </ul>
                     </nav>
                 </>
