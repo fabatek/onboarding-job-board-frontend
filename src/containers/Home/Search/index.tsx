@@ -2,6 +2,7 @@ import "./style.scss"
 import { useSelector } from 'react-redux';
 import { RootState } from '../../Redux/store/store';
 import Job from '../../model/job';
+
 function Search() {
     const { data: jobs } = useSelector((state: RootState) => state.jobs)
     return (
@@ -11,8 +12,8 @@ function Search() {
                     <div className='col-2 search__selection'>
                         <select>
                             <option value={0}>All Cities</option>
-                            {jobs?.map((item: Job, key) => {
-                                return (<option key={key} value={item.city}>{item.city}</option>)
+                            {jobs?.map((job: Job, key) => {
+                                return (<option key={key} value={job.city}>{job.city}</option>)
                             })}
                         </select>
                     </div>

@@ -1,9 +1,18 @@
+import {useEffect, useState} from "react"
+
 export default function Pagination(props: { jobsPerPage: number, totalJobs: number, paginate: any, currentPage:number }) {
+    
     const { jobsPerPage, totalJobs, paginate,currentPage } = props
-    const pageNumber = []
-    for (let i = 1; i <= Math.ceil(totalJobs / jobsPerPage); i++) {
-        pageNumber.push(i)
-    }
+    const [pageNumber , setPageNumber] = useState<Number[]>([]);
+    const totalPage = Math.ceil(totalJobs / jobsPerPage);
+    useEffect(()=>{
+        const listPageNumber = []
+        for (let i = 1; i<= totalPage; i++) {
+            listPageNumber.push(i)
+        }
+        setPageNumber(listPageNumber);
+    },[totalPage])
+
     return (
         <>
             {pageNumber.map((item,index) => {

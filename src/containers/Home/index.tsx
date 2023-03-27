@@ -3,6 +3,7 @@ import "./styles.scss";
 import Search from './Search';
 import Jobs from "./Jobs";
 import Footer from "../components/Footer";
+
 function Home() {
   return (
     <div className="App">
