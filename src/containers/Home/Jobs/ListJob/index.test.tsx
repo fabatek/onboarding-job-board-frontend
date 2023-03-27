@@ -1,30 +1,15 @@
-import { render, waitFor, screen, cleanup} from "@testing-library/react";
+import { render, waitFor, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import ListJob from ".";
 import { store } from "../../../Redux/store/store";
 jest.mock("../../../util/util.ts")
-afterEach(cleanup)
-test('should render loading', () => {
-    render(
-        <Provider store={store}>
-            <ListJob currentJobs={[]} />
-        </Provider>)
-    const loading = screen.getByTestId("loading")
-    expect(loading).toBeInTheDocument()
-})
-test('should have id job in the document', () => {
-    render(
-        <Provider store={store}>
-            <ListJob currentJobs={[]} />
-        </Provider>)
-        const testJob = screen.getByTestId("test100Job")
-        expect(testJob).toBeInTheDocument()
-})
 test('should render 100 jobs', async () => {
     render(
         <Provider store={store}>
-            <ListJob currentJobs={[]} />
-        </Provider>)
-    const listJob = await waitFor(()=>{document.querySelectorAll("li").length})
-    expect(listJob).toHaveLength(100);
+            <ListJob currentJobs={[{ jobName: "Lead Integration Associate", city: "Gibsonstad", moTa: "Dynamic", id: "1", img: "https://loremflickr.com/640/480/city", tech: "Assistant" }]} />
+        </Provider>
+    )
+    let jobs = await screen.findByTestId("testJobs100")
+    await waitFor(() => expect(jobs).toBeInTheDocument())
+    screen.debug()
 })

@@ -6,6 +6,8 @@ import { useSelector, useDispatch } from "react-redux"
 import { RootState } from "../../Redux/store/store";
 import Loading from "../../components/Loading";
 import Pagination from "./Pagination";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 export default function Jobs() {
     const dispatch = useDispatch();
     const { data: jobs, loading } = useSelector((state: RootState) => state.jobs)
@@ -22,7 +24,6 @@ export default function Jobs() {
     const paginate = (indexPage: number) => {
         setCurrentPage(indexPage)
     }
-    
     return (
         <div className='mt-4'>
             <h2 data-testid="jobTittle">{jobs.length} Jobs For "Chất" Developers</h2>
@@ -33,7 +34,19 @@ export default function Jobs() {
                     </ul>
                     <nav>
                         <ul className='pagination'>
-                            <Pagination jobsPerPage={jobsPerPage} totalJobs={jobs.length} paginate={paginate} />
+                            <button className="btn btn-danger" onClick={() => {
+                                setCurrentPage(currentPage - 1)
+                                if(currentPage == 1){
+                                    setCurrentPage(10)
+                                }
+                            }}><FontAwesomeIcon icon={faArrowLeft} /></button>
+                            <Pagination jobsPerPage={jobsPerPage} totalJobs={jobs.length} paginate={paginate} currentPage={currentPage} />
+                            <button className="btn btn-danger" onClick={() => {
+                                setCurrentPage(currentPage + 1)
+                                if(currentPage == 10){
+                                    setCurrentPage(1)
+                                }
+                            }}><FontAwesomeIcon icon={faArrowRight} /></button>
                         </ul>
                     </nav>
                 </>
