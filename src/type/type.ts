@@ -16,8 +16,9 @@ interface JobTicketProps {
   item: JobModal;
 }
 interface PaginationProps {
-  totalPages: any;
+  pageSize: number;
   setCurentPage: React.Dispatch<React.SetStateAction<number>>;
   currentPage: number;
+  totalJobs?: number;
 }
 export type { JobModal, JobInitReducer, JobTicketProps, PaginationProps };

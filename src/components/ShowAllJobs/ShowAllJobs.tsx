@@ -10,7 +10,8 @@ import Pagination from "../Pagination/Pagination";
 
 const ShowAllJobs = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const jobsPerPage = 10;
+  const [jobsPerPage] = useState<number>(10);
+
   let lastIndex = currentPage * jobsPerPage;
   let firstIndex = lastIndex - jobsPerPage;
 
@@ -46,7 +47,8 @@ const ShowAllJobs = () => {
                       ))}
                   </ul>
                   <Pagination
-                    totalPages={allJobs.length}
+                    pageSize={jobsPerPage}
+                    totalJobs={allJobs.length}
                     setCurentPage={setCurrentPage}
                     currentPage={currentPage}
                   />
