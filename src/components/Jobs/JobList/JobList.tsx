@@ -15,7 +15,7 @@ import JobCard from "../JobCard/JobCard";
 type Props = {};
 
 const JobList = (props: Props) => {
-  const { jobList, isLoading, jobPaginationList } = useSelector(
+  const { jobList, isLoading, jobPaginationList, jobSearchList } = useSelector(
     (state: RootState) => state.jobReducer
   );
   const dispatch: DispatchType = useDispatch();
@@ -36,6 +36,30 @@ const JobList = (props: Props) => {
     return (
       <div className="my-5">
         <Loading />
+      </div>
+    );
+  }
+
+  if (jobSearchList.length > 0) {
+    return (
+      <div className="container my-5">
+        <div className="row">
+          {jobSearchList?.map((item: JobModel) => {
+            return (
+              <div className="col-lg-6" key={item.id}>
+                <JobCard item={item} />
+              </div>
+            );
+          })}
+        </div>
+        <div className="row">
+          <Pagination
+            totalJobs={jobSearchList.length}
+            itemsPerPage={ITEM_PER_PAGE}
+            handleChangeCurrentPage={handleChangeCurrentPage}
+            currentPage={currentPage}
+          />
+        </div>
       </div>
     );
   }

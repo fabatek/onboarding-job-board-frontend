@@ -17,29 +17,29 @@ const JobCard = (props: Props) => {
     >
       <div className="row align-items-center">
         <div className="col-4">
-          <div className="logo-company ">
+          <div className="logo-company">
             <img
               src={item.image}
               alt=""
-              className="w-100 logo-company-img"
+              className="w-100 logo-company__img"
               loading="lazy"
             />
           </div>
         </div>
-        <div className="col-8">
-          <h4 className="job-title mb-1 text-truncate">
+        <div className="col-8 job-card-info">
+          <h4 className="job-card-info__job-title mb-1 text-truncate">
             <AiFillInfoCircle className="mb-1 me-1" />
             {item.jobTitle}
           </h4>
-          <span className="company-name text-truncate fs-5">
+          <span className="job-card-info__company-name text-truncate fs-5">
             <AiFillHome className="mb-1 me-1" /> {item.companyName}
           </span>
           <div className="mt-2">
-            <span className="salary display-inline me-2">
+            <span className="job-card-info__salary display-inline me-2">
               <MdOutlineAttachMoney className="mb-1" />
               {item.salary}
             </span>
-            <span className="place">
+            <span className="job-card-info__place">
               <MdPlace className="mb-1 me-1" />
               {item.place}
             </span>

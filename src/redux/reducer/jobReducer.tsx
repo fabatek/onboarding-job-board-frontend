@@ -8,6 +8,7 @@ const initialState: any = {
   jobList: [],
   isLoading: false,
   jobPaginationList: [],
+  jobSearchList: [],
 };
 
 const jobReducer = createSlice({
@@ -23,11 +24,18 @@ const jobReducer = createSlice({
     paginationAction: (state, action: PayloadAction<JobModel[]>) => {
       state.jobPaginationList = action.payload;
     },
+    searchJobAction: (state, action: PayloadAction<JobModel[]>) => {
+      state.jobSearchList = action.payload;
+    },
   },
 });
 
-export const { getAllJobsAction, changeIsLoading, paginationAction } =
-  jobReducer.actions;
+export const {
+  getAllJobsAction,
+  changeIsLoading,
+  paginationAction,
+  searchJobAction,
+} = jobReducer.actions;
 
 export default jobReducer.reducer;
 
@@ -47,6 +55,19 @@ export const paginationApi = (currentPage: number) => {
       `/jobs/?page=${currentPage}&limit=${ITEM_PER_PAGE}`
     );
     dispatch(paginationAction(result.data));
+    dispatch(changeIsLoading(false));
+  };
+};
+
+export const searchJobApi = (searchValue: string) => {
+  return async (dispatch: DispatchType) => {
+    dispatch(changeIsLoading(true));
+    const result = await http.get(`/jobs/?search=${searchValue}`);
+    if (result.data.length === 0) {
+      alert("Sorry, we do not find any jobs in the database");
+      window.location.href = "http://localhost:3000";
+    }
+    dispatch(searchJobAction(result.data));
     dispatch(changeIsLoading(false));
   };
 };
