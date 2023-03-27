@@ -40,9 +40,9 @@ export default function Jobs() {
                     <ListJobs currentJobs={currentJobs} />
                     <nav>
                         <ul className='pagination'>
-                            <button className="btn btn-danger" disabled={currentPage === 1 ? true : false} onClick={handleClickPreviousPage}><FontAwesomeIcon icon={faArrowLeft} /></button>
+                            <button className="btn btn-danger" disabled={currentPage === 1} onClick={handleClickPreviousPage}><FontAwesomeIcon icon={faArrowLeft} /></button>
                             <Pagination jobsPerPage={jobsPerPage} totalJobs={jobs.length} paginate={paginate} currentPage={currentPage} />
-                            <button className="btn btn-danger" disabled={currentPage === 10 ? true : false} onClick={handleClickNextPage}><FontAwesomeIcon icon={faArrowRight} /></button>
+                            <button className="btn btn-danger" disabled={currentPage === 10} onClick={handleClickNextPage}><FontAwesomeIcon icon={faArrowRight} /></button>
                         </ul>
                     </nav>
                 </>
