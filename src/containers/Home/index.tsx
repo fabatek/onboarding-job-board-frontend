@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import LoadingOverlay from "react-loading-overlay-ts";
 import { useDispatch, useSelector } from "react-redux";
-
 import "./styles.scss";
 import { filterAction, jobAPI } from "../../redux/reducer/JobReducer";
 import { DispatchType, RootState } from "../../redux/configStore";
 import JobComponent from "../JobComponent/JobComponent";
 import Search from "../search/Search";
-import HeaderTemplate from "../Header/HeaderTemplate";
 
 export interface Job {
   id: number;
@@ -90,18 +88,13 @@ function Home() {
 
   return (
     <div className="App">
-      <HeaderTemplate />
       <Search
         count={count}
         handleSearchInput={handleSearchInput}
         handleEnterSearch={handleEnterSearch}
         handleSearch={handleSearch}
       />
-      <h1
-        style={{ textAlign: "left", marginLeft: "50px" }}
-        data-testid="title"
-        className="title"
-      >
+      <h1 data-testid="title" className="title">
         Nhà tuyển dụng hàng đầu
       </h1>
       <div className="loading">

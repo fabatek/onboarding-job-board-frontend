@@ -11,6 +11,7 @@ import Home from "./containers/Home";
 import { store } from "./redux/configStore";
 import { Provider } from "react-redux";
 import Detail from "./containers/Detail/Detail";
+import HomeTemplate from "./containers/HomeTemplate/HomeTemplate";
 
 dotenv.config();
 ReactDOM.render(
@@ -18,9 +19,11 @@ ReactDOM.render(
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          <Route index element={<Home />}></Route>
-          <Route path="detail">
-            <Route path=":id" element={<Detail />}></Route>
+          <Route path="" element={<HomeTemplate />}>
+            <Route index element={<Home />}></Route>
+            <Route path="detail">
+              <Route path=":id" element={<Detail />}></Route>
+            </Route>
           </Route>
         </Routes>
       </BrowserRouter>
