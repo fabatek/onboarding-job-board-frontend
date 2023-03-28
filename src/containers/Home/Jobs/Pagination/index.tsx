@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux";
-import Job from "../../../model/job";
 import { RootState } from "../../../Redux/store/store";
 
 export default function Pagination(props: { jobsPerPage: number, totalJobs: number, paginate: any, currentPage: number,totalSearchJob: number }) {

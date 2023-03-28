@@ -12,6 +12,8 @@ import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 export default function Jobs() {
     const dispatch = useDispatch();
     const { data: jobs, loading } = useSelector((state: RootState) => state.jobs)
+    const search = useSelector((state:RootState)=> state.search)
+    console.log(search.search)
     useEffect(() => {
         dispatch(getJobs());
     }, []);
@@ -30,10 +32,12 @@ export default function Jobs() {
     const handleClickNextPage = () => {
         setCurrentPage(currentPage + 1)
     }
-    const search = useSelector((state:RootState)=> state.search)
+    useEffect(()=>{
+        setCurrentPage(1)
+    },[search])
     const searchJob = () =>{
         return jobs.filter((searchJob)=>{
-            if(search.search == ""){
+            if(search.search === ""){
                 return searchJob
             }
             else if(searchJob.jobName.toLocaleLowerCase().includes(search.search.toLocaleLowerCase())){
@@ -46,7 +50,7 @@ export default function Jobs() {
     const lastSearchPage = Math.ceil(totalSearchJob.length / jobsPerPage)
     return (
         <div className='mt-4'>
-            <h2 data-testid="jobTittle">{jobs.length} Jobs For "Chất" Developers</h2>
+            <h2 data-testid="jobTittle">{totalSearchJob.length} Jobs For "Chất" Developers</h2>
             {loading ? <Loading /> :
                 <>
                     <ListJobs currentJobs={searchJobPage}/>
