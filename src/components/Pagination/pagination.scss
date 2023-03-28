@@ -3,8 +3,10 @@
     margin: 0 auto;
     justify-content: center;
     &__list {
-        &__item {
+        &-item {
             cursor: pointer;
+            text-decoration: none;
+            color: #333;
             &.active {
                 background: #dc3545;
                 color: white;
@@ -12,7 +14,9 @@
             }
             &.disabled {
                 color: rgb(190, 190, 190);
-
+            }
+            &.disable:hover{
+                color: #333;
             }
             &.none{
                 display: none;

@@ -17,7 +17,7 @@ interface JobTicketProps {
 }
 interface PaginationProps {
   pageSize: number;
-  setCurentPage: React.Dispatch<React.SetStateAction<number>>;
+  setCurrentPage: (value:number) => void;
   currentPage: number;
   totalJobs?: number;
 }

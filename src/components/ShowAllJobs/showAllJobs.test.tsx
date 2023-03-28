@@ -1,8 +1,9 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, waitFor } from "@testing-library/react";
 import ShowAllJobs from "./ShowAllJobs";
-import { Provider } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 import store from "../../redux/store/store";
+
 const ShowAllJobsTestComponent = () => {
   return (
     <Provider store={store}>
@@ -11,23 +12,56 @@ const ShowAllJobsTestComponent = () => {
   );
 };
 
-describe("show all jobs", () => {
-  test("total of jobs", async () => {
+const mockState = { loading: false,allJobs:[
+  {
+    createdAt: "2022-12-06T13:06:50.782Z",
+    title: "International Paradigm Agent",
+    avatar: "https://loremflickr.com/640/480/food",
+    address: "Livermore",
+    tag: "Technician",
+    status: true,
+    jobDesc: "Totam necessiis mollitia facere repudiandae. Aspernatur itaque amet id sa",
+  }
+] };
+
+const mockStateWithLoading = { loading: true,allJobs:[
+  {
+    createdAt: "2022-12-06T13:06:50.782Z",
+    title: "International Paradigm Agent",
+    avatar: "https://loremflickr.com/640/480/food",
+    address: "Livermore",
+    tag: "Technician",
+    status: true,
+    jobDesc: "Totam necessiis mollitia facere repudiandae. Aspernatur itaque amet id sa",
+  }
+] };
+jest.mock("react-redux", () => ({
+  ...jest.requireActual("react-redux"),
+  useSelector: jest.fn(),
+}));
+
+describe("show all jobs component", () => {
+  test("show all jobs", async () => {
+    (useSelector as jest.Mock).mockReturnValue(mockState);
     const { getByTestId } = render(<ShowAllJobsTestComponent />);
-    expect(getByTestId("total-jobs")).toBeInTheDocument();
+     expect(getByTestId("total-jobs")).toBeInTheDocument();
   });
-  test("render list items", async () => {
-    const { findByTestId } = render(<ShowAllJobsTestComponent />);
-    const jobList = await findByTestId("list-job", undefined, {
-      timeout: 10000,
-    });
-    expect(jobList).toBeInTheDocument();
+  test("render list job", async () => {
+    (useSelector as jest.Mock).mockReturnValue(mockState);
+    const { getByTestId } = render(<ShowAllJobsTestComponent />);
+    const listItem = await waitFor(() => getByTestId("list-job"))
+    expect(listItem).toBeInTheDocument()
   });
-  test("render 10 jobs per page", async () => {
+  test("render job per page ", async () => {
+    (useSelector as jest.Mock).mockReturnValue(mockState);
     const { findAllByTestId } = render(<ShowAllJobsTestComponent />);
-    const listItem = await findAllByTestId("list-item-test", undefined, {
-      timeout: 3000,
-    });
-    expect(listItem).toHaveLength(10);
+    const listItem = await waitFor(() => findAllByTestId("list-item-test"))
+    expect(listItem).toHaveLength(1);
+  });
+  test("render loading", async () => {
+    (useSelector as jest.Mock).mockReturnValue(mockStateWithLoading);
+    const { getByTestId } = render(<ShowAllJobsTestComponent />);
+    const listItem = await waitFor(() => getByTestId("loading-testid"))
+    expect(listItem).toBeInTheDocument();
   });
 });
