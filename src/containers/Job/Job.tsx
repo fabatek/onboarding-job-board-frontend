@@ -6,10 +6,10 @@ type Props = {};
 
 const Job = (props: Props) => {
   return (
-    <>
+    <div data-testid="job-page">
       <SearchBar />
       <JobList />
-    </>
+    </div>
   );
 };
 

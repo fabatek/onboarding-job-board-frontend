@@ -4,7 +4,7 @@ type Props = {};
 
 const Header = (props: Props) => {
   return (
-    <div className="bg-dark">
+    <div className="bg-dark" data-testid="header">
       <Navbar />
     </div>
   );

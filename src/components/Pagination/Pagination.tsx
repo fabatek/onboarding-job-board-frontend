@@ -52,7 +52,10 @@ const Pagination = (props: Props) => {
       {currentPage === 1 ? (
         ""
       ) : (
-        <span onClick={() => handleChangeCurrentPage(currentPage - 1)}>
+        <span
+          onClick={() => handleChangeCurrentPage(currentPage - 1)}
+          data-testid="prev-button"
+        >
           &laquo;
         </span>
       )}
@@ -77,7 +80,10 @@ const Pagination = (props: Props) => {
       {currentPage === 10 ? (
         ""
       ) : (
-        <span onClick={() => handleChangeCurrentPage(currentPage + 1)}>
+        <span
+          onClick={() => handleChangeCurrentPage(currentPage + 1)}
+          data-testid="next-button"
+        >
           &raquo;
         </span>
       )}
