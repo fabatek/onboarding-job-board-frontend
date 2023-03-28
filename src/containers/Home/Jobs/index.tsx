@@ -20,7 +20,6 @@ export default function Jobs() {
     const jobsPerPage = 10;
     const indexOfLastPage = currentPage * jobsPerPage;
     const indexOfFirstPage = indexOfLastPage - jobsPerPage;
-    const currentJobs = jobs.slice(indexOfFirstPage, indexOfLastPage);
 
     const paginate = (indexPage: number) => {
         setCurrentPage(indexPage)
@@ -31,18 +30,31 @@ export default function Jobs() {
     const handleClickNextPage = () => {
         setCurrentPage(currentPage + 1)
     }
-
+    const search = useSelector((state:RootState)=> state.search)
+    const searchJob = () =>{
+        return jobs.filter((searchJob)=>{
+            if(search.search == ""){
+                return searchJob
+            }
+            else if(searchJob.jobName.toLocaleLowerCase().includes(search.search.toLocaleLowerCase())){
+                return searchJob
+            }
+        })
+    }
+    const searchJobPage = searchJob().slice(indexOfFirstPage, indexOfLastPage)
+    const totalSearchJob = searchJob()
+    const lastSearchPage = Math.ceil(totalSearchJob.length / jobsPerPage)
     return (
         <div className='mt-4'>
             <h2 data-testid="jobTittle">{jobs.length} Jobs For "Chất" Developers</h2>
             {loading ? <Loading /> :
                 <>
-                    <ListJobs currentJobs={currentJobs} />
+                    <ListJobs currentJobs={searchJobPage}/>
                     <nav>
                         <ul className='pagination'>
                             <button className="btn btn-danger" disabled={currentPage === 1} onClick={handleClickPreviousPage}><FontAwesomeIcon icon={faArrowLeft} /></button>
-                            <Pagination jobsPerPage={jobsPerPage} totalJobs={jobs.length} paginate={paginate} currentPage={currentPage} />
-                            <button className="btn btn-danger" disabled={currentPage === 10} onClick={handleClickNextPage}><FontAwesomeIcon icon={faArrowRight} /></button>
+                            <Pagination jobsPerPage={jobsPerPage} totalJobs={jobs.length} paginate={paginate} currentPage={currentPage} totalSearchJob={totalSearchJob.length} />
+                            <button className="btn btn-danger" disabled={currentPage === lastSearchPage} onClick={handleClickNextPage}><FontAwesomeIcon icon={faArrowRight} /></button>
                         </ul>
                     </nav>
                 </>
