@@ -2,6 +2,7 @@ import React from "react";
 import "../../../assets/styles/JobCard/JobCard.scss";
 import { AiFillHome, AiFillInfoCircle } from "react-icons/ai";
 import { MdOutlineAttachMoney, MdPlace } from "react-icons/md";
+import { BiCategoryAlt } from "react-icons/bi";
 import { JobModel } from "../../../types/types";
 
 type Props = {
@@ -55,6 +56,13 @@ const JobCard = (props: Props) => {
             >
               <MdPlace className="mb-1 me-1" />
               {item.place}
+            </span>
+            <span
+              className="job-card-info__category ms-2"
+              data-testid="job-card__category"
+            >
+              <BiCategoryAlt className="mb-1 me-1" />
+              {item.category}
             </span>
           </div>
         </div>

@@ -5,4 +5,5 @@ export interface JobModel {
   salary: string;
   place: string;
   companyName: string;
+  category: string;
 }

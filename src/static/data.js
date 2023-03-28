@@ -1,7 +1,7 @@
-export const placeOptions = [
-  { key: 1, value: "Ho Chi Minh" },
-  { key: 2, value: "Ha Noi" },
-  { key: 3, value: "Da Nang" },
+export const searchOptions = [
+  { key: 1, value: "Title" },
+  { key: 2, value: "Category" },
+  { key: 3, value: "Location" },
 ];
 
 export const navbarItemLeft = [

@@ -66,7 +66,7 @@ describe("Select", () => {
         <SearchBar />
       </CustomProvider>
     );
-    const selectValue = await findByText("Ho Chi Minh", undefined, {
+    const selectValue = await findByText("Title", undefined, {
       timeout: 10000,
     });
     expect(selectValue).toBeInTheDocument();
@@ -88,10 +88,10 @@ describe("Select", () => {
         <SearchBar />
       </CustomProvider>
     );
-    const firstOption = await findByText("Da Nang", undefined, {
+    const firstOption = await findByText("Location", undefined, {
       timeout: 5000,
     });
-    const secondOption = await findByText("Ha Noi");
+    const secondOption = await findByText("Category");
     fireEvent.click(firstOption);
     expect(firstOption).toBeVisible();
     fireEvent.click(secondOption);

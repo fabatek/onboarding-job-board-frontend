@@ -8,7 +8,6 @@ const initialState: any = {
   jobList: [],
   isLoading: false,
   jobPaginationList: [],
-  jobSearchList: [],
 };
 
 const jobReducer = createSlice({
@@ -25,7 +24,8 @@ const jobReducer = createSlice({
       state.jobPaginationList = action.payload;
     },
     searchJobAction: (state, action: PayloadAction<JobModel[]>) => {
-      state.jobSearchList = action.payload;
+      state.jobPaginationList = action.payload;
+      state.jobList = action.payload;
     },
   },
 });
@@ -59,15 +59,36 @@ export const paginationApi = (currentPage: number) => {
   };
 };
 
-export const searchJobApi = (searchValue: string) => {
+export const searchJobApi = (option: string, searchValue: string) => {
   return async (dispatch: DispatchType) => {
     dispatch(changeIsLoading(true));
-    const result = await http.get(`/jobs/?search=${searchValue}`);
-    if (result.data.length === 0) {
-      alert("Sorry, we do not find any jobs in the database");
-      window.location.href = "http://localhost:3000";
+    switch (option) {
+      case "1": {
+        const result = await http.get(`/jobs/?jobTitle=${searchValue}`);
+        if (result.data.length === 0) {
+          dispatch(paginationAction(result.data));
+        }
+        dispatch(searchJobAction(result.data));
+        dispatch(changeIsLoading(false));
+        break;
+      }
+      case "2": {
+        const result = await http.get(`/jobs/?category=${searchValue}`);
+        if (result.data.length === 0) {
+          dispatch(paginationAction(result.data));
+        }
+        dispatch(searchJobAction(result.data));
+        dispatch(changeIsLoading(false));
+        break;
+      }
+      default: {
+        const result = await http.get(`/jobs/?place=${searchValue}`);
+        if (result.data.length === 0) {
+          dispatch(paginationAction(result.data));
+        }
+        dispatch(searchJobAction(result.data));
+        dispatch(changeIsLoading(false));
+      }
     }
-    dispatch(searchJobAction(result.data));
-    dispatch(changeIsLoading(false));
   };
 };
