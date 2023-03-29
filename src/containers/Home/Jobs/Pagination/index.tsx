@@ -2,14 +2,15 @@ import { useEffect, useState } from "react"
 import { useSelector } from "react-redux";
 import { RootState } from "../../../Redux/store/store";
 
-export default function Pagination(props: { jobsPerPage: number, totalJobs: number, paginate: any, currentPage: number,totalSearchJob: number }) {
+export default function Pagination(props: { jobsPerPage: number, totalJobs: number, paginate: any, currentPage: number, totalSearchJob: number }) {
 
     const { jobsPerPage, totalJobs, paginate, currentPage, totalSearchJob } = props
     const [pageNumber, setPageNumber] = useState<Number[]>([]);
-    const search = useSelector((state:RootState)=> state.search)
-    let totalPage = 0;
-    search.search == "" ? totalPage = Math.ceil(totalJobs / jobsPerPage) : totalPage = Math.ceil(totalSearchJob / jobsPerPage)
-
+    const [totalPage, setTotalPage] = useState<Number>(Math.ceil(totalJobs / jobsPerPage))
+    const { search } = useSelector((state: RootState) => state.search)
+    useEffect(() => {
+        setTotalPage(Math.ceil(totalSearchJob / jobsPerPage))
+    }, [search])
     useEffect(() => {
         const listPageNumber = []
         for (let i = 1; i <= totalPage; i++) {

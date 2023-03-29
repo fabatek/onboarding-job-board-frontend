@@ -12,11 +12,13 @@ import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 export default function Jobs() {
     const dispatch = useDispatch();
     const { data: jobs, loading } = useSelector((state: RootState) => state.jobs)
-    const search = useSelector((state:RootState)=> state.search)
-    console.log(search.search)
+    const { search } = useSelector((state: RootState) => state.search)
     useEffect(() => {
         dispatch(getJobs());
     }, []);
+    useEffect(() => {
+        setCurrentPage(1)
+    }, [search])
 
     const [currentPage, setCurrentPage] = useState(1);
     const jobsPerPage = 10;
@@ -32,17 +34,10 @@ export default function Jobs() {
     const handleClickNextPage = () => {
         setCurrentPage(currentPage + 1)
     }
-    useEffect(()=>{
-        setCurrentPage(1)
-    },[search])
-    const searchJob = () =>{
-        return jobs.filter((searchJob)=>{
-            if(search.search === ""){
-                return searchJob
-            }
-            else if(searchJob.jobName.toLocaleLowerCase().includes(search.search.toLocaleLowerCase())){
-                return searchJob
-            }
+
+    const searchJob = () => {
+        return jobs.filter((searchJob) => {
+            return searchJob.jobName.toLocaleLowerCase().includes(search.toLocaleLowerCase())
         })
     }
     const searchJobPage = searchJob().slice(indexOfFirstPage, indexOfLastPage)
@@ -53,7 +48,7 @@ export default function Jobs() {
             <h2 data-testid="jobTittle">{totalSearchJob.length} Jobs For "Chất" Developers</h2>
             {loading ? <Loading /> :
                 <>
-                    <ListJobs currentJobs={searchJobPage}/>
+                    <ListJobs currentJobs={searchJobPage} />
                     <nav>
                         <ul className='pagination'>
                             <button className="btn btn-danger" disabled={currentPage === 1} onClick={handleClickPreviousPage}><FontAwesomeIcon icon={faArrowLeft} /></button>

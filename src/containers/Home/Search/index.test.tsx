@@ -24,3 +24,10 @@ test('input search should be "" ', () => {
     const searchInput = screen.getByPlaceholderText(/Search/i);
     expect(searchInput.nodeValue).toBe(null);
 })
+test('should have button search',()=>{
+    render(<Provider store={store}>
+        <Search />
+    </Provider>)
+    const searchBtn = document.querySelector("button")
+    expect(searchBtn).toBeInTheDocument()
+})
