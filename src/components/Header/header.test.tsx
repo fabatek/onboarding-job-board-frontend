@@ -1,6 +1,11 @@
 import React from "react";
 import { render,screen } from "@testing-library/react";
 import Header from "./Header";
+
+jest.mock("react-redux", () => ({
+  ...jest.requireActual("react-redux"),
+  useDispatch: jest.fn()
+}));
 describe("Header", () => {
   test("render a logo image", () => {
      const {getByAltText} = render(<Header />);
@@ -39,7 +44,6 @@ describe("Header", () => {
     render(<Header />);
     const button = screen.getByTestId('button-search');
     expect(button).toHaveClass('btn btn-danger');
-    expect(button).toHaveAttribute('type', 'submit');
   });
 
 });

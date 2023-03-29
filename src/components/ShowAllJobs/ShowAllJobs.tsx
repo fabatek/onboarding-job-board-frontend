@@ -7,6 +7,7 @@ import { JobModal } from "../../type/type";
 import JobTicket from "../Job/JobTicket";
 import "./showAllJobs.scss";
 import Pagination from "../Pagination/Pagination";
+import search from "../../util/search/search";
 
 const ShowAllJobs = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -17,11 +18,13 @@ const ShowAllJobs = () => {
   const { allJobs, loading } = useSelector(
     (state: RootState) => state.jobReducer
   );
+  const {searchValue} = useSelector((state: RootState) => state.searchJob)
+
   const dispatch: DispatchType = useDispatch();
   useEffect(() => {
     dispatch(getAllJobs());
   }, []);
-
+  const results = search(allJobs,searchValue)
   return (
     <div className="show-all-jobs" data-testid="total-jobs">
       <div className="container">
@@ -33,21 +36,21 @@ const ShowAllJobs = () => {
               ) : (
                 <>
                   <h2 className="p-3">
-                    {allJobs.length} việc làm IT tại Việt Nam
+                    {results?.length} việc làm IT tại Việt Nam
                     <hr />
                   </h2>
                   <ul className="list-unstyled list-job" data-testid="list-job">
-                    {allJobs
-                      .slice(firstIndex, lastIndex)
+                    {results.slice(firstIndex, lastIndex)
                       .map((job: JobModal, index: number) => (
                         <li key={index} data-testid="list-item-test">
                           <JobTicket item={job} />
                         </li>
-                      ))}
+                      ))
+                    }
                   </ul>
                   <Pagination
                     pageSize={jobsPerPage}
-                    totalJobs={allJobs.length}
+                    totalJobs={results?.length}
                     setCurrentPage={setCurrentPage}
                     currentPage={currentPage}
                   />

@@ -21,4 +21,7 @@ interface PaginationProps {
   currentPage: number;
   totalJobs?: number;
 }
-export type { JobModal, JobInitReducer, JobTicketProps, PaginationProps };
+interface SearchJobModal {
+  searchValue: string
+}
+export type { JobModal, JobInitReducer, JobTicketProps, PaginationProps, SearchJobModal };

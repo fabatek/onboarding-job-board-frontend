@@ -1,5 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
+import { searchValueReducer } from "../../redux/reducer/searchJob";
+import { useDispatch } from "react-redux";
+import { DispatchType } from "../../redux/store/store";
+
 const Header = () => {
+  const [searchInput,setSearchInput] = useState<string>('')
+  const dispatch:DispatchType = useDispatch()
+
+  const handleSearch = (e:any) => {
+    e.preventDefault()
+    dispatch(searchValueReducer(searchInput))
+    setSearchInput("")
+  }
+
   return (
     <div className="header bg-black">
       <div className="container px-0">
@@ -52,8 +65,10 @@ const Header = () => {
                       type="search"
                       placeholder="Search"
                       aria-label="Search"
+                      value={searchInput}
+                      onChange={(e) => setSearchInput(e.target.value)}
                     />
-                    <button data-testid="button-search" className="btn btn-danger" type="submit">
+                    <button data-testid="button-search" className="btn btn-danger" type="button" onClick={(e) => handleSearch(e)} >
                       <i className="fa-solid fa-magnifying-glass" />
                     </button>
                   </form>
