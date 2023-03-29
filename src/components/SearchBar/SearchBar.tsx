@@ -3,8 +3,7 @@ import { DispatchType, RootState } from "../../redux/configStore";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllJobsApi, searchJobApi } from "../../redux/reducer/jobReducer";
 import "../../assets/styles/SearchBar/SearchBar.scss";
-import { placeOptions } from "../../static/data";
-import { AiOutlineSearch } from "react-icons/ai";
+import { searchOptions } from "../../static/data";
 
 type Props = {};
 
@@ -16,6 +15,7 @@ const SearchBar = (props: Props) => {
   const dispatch: DispatchType = useDispatch();
 
   const [searchValue, setSearchValue] = useState<string>("");
+  const [searchOption, setSearchOption] = useState<string>("1");
 
   useEffect(() => {
     dispatch(getAllJobsApi());
@@ -23,7 +23,7 @@ const SearchBar = (props: Props) => {
 
   const handleSearchJob = () => {
     const tempValue = searchValue.trim().toLowerCase();
-    dispatch(searchJobApi(tempValue));
+    dispatch(searchJobApi(searchOption, tempValue));
     setSearchValue("");
   };
 
@@ -52,28 +52,26 @@ const SearchBar = (props: Props) => {
         </h1>
       </div>
       <div className="row search-bar-container__content">
-        <div className="col-3">
+        <div className="col-2">
           <select
             className="form-select w-100"
             defaultValue={1}
             data-testid="place-select"
+            onChange={(e) => setSearchOption(e.target.value)}
           >
-            {placeOptions?.map((item) => (
+            {searchOptions?.map((item) => (
               <option key={item.key} value={item.key}>
                 {item.value}
               </option>
             ))}
           </select>
         </div>
-        <div className="col-7">
-          <div className="input-group mb-3 w-100 bg-white align-items-center overflow-hidden border-0">
-            <span className="input-group__text" id="basic-addon1">
-              <AiOutlineSearch className="w-100 fs-3" />
-            </span>
+        <div className="col-8">
+          <div className="input-group mb-3 w-100 bg-white align-items-center overflow-hidden border-0 rounded">
             <input
               type="text"
               className="input-group__form-control form-control"
-              placeholder="title of jobs..."
+              placeholder="type the value you need to search"
               aria-label=""
               aria-describedby="basic-addon1"
               data-testid="job-search"
@@ -84,7 +82,11 @@ const SearchBar = (props: Props) => {
           </div>
         </div>
         <div className="col-2">
-          <button className="btn btn-primary w-100" onClick={handleSearchJob}>
+          <button
+            className="btn btn-primary w-100"
+            onClick={handleSearchJob}
+            disabled={searchValue ? false : true}
+          >
             Search
           </button>
         </div>

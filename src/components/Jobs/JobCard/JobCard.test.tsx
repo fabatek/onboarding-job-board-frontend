@@ -11,6 +11,7 @@ const sampleItem = {
   salary: "5000",
   place: "Ho Chi Minh",
   companyName: "Faba Technology",
+  category: "Coder",
 };
 
 describe("Job Card Component", () => {
