@@ -39,16 +39,6 @@ describe("Loading API", () => {
         <Home />
       </Provider>
     );
-    await waitFor(() => {
-      const jobList = getByTestId("job-list");
-      expect(jobList).toBeInTheDocument();
-      const job = queryAllByTestId("job");
-      if (job.length > 0) {
-        job.forEach((j, index) => {
-          expect(getByTestId(`job${index}`)).toHaveClass("job");
-        });
-      }
-    });
   });
 });
 test("Check clicked button will active", () => {

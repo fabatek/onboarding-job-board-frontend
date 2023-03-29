@@ -5,10 +5,12 @@ import { DispatchType } from "../configStore";
 export interface JobState {
   jobs: Job[];
   jobsBase: Job[];
+  jobDetail: any;
 }
 const initialState: JobState = {
   jobs: [],
   jobsBase: [],
+  jobDetail: {},
 };
 
 const JobReducer = createSlice({
@@ -28,10 +30,14 @@ const JobReducer = createSlice({
         );
       }
     },
+    getJobDetailAction: (state: JobState, action: PayloadAction<{}>) => {
+      state.jobDetail = action.payload;
+    },
   },
 });
 
-export const { getJobAction, filterAction } = JobReducer.actions;
+export const { getJobAction, filterAction, getJobDetailAction } =
+  JobReducer.actions;
 
 export const jobAPI = () => {
   return async (dispatch: DispatchType) => {
@@ -40,5 +46,14 @@ export const jobAPI = () => {
     dispatch(getJobAction(result.data));
   };
 };
-
+export const getJobDetailAPI = (id: number) => {
+  return async (dispatch: DispatchType) => {
+    const result = await axios.get(
+      `${process.env.REACT_APP_API_BASE_URL}/job/${id}`
+    );
+    if (result.data) {
+      dispatch(getJobDetailAction(result.data));
+    }
+  };
+};
 export default JobReducer.reducer;

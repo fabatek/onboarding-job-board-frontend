@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import LoadingOverlay from "react-loading-overlay-ts";
 import { useDispatch, useSelector } from "react-redux";
-
 import "./styles.scss";
 import { filterAction, jobAPI } from "../../redux/reducer/JobReducer";
 import { DispatchType, RootState } from "../../redux/configStore";
@@ -13,6 +12,10 @@ export interface Job {
   name: string;
   status: boolean;
   image: string;
+  dateStart: string;
+  dateEnd: string;
+  email: string;
+  price: number;
 }
 
 function Home() {
@@ -91,11 +94,7 @@ function Home() {
         handleEnterSearch={handleEnterSearch}
         handleSearch={handleSearch}
       />
-      <h1
-        style={{ textAlign: "left", marginLeft: "50px" }}
-        data-testid="title"
-        className="title"
-      >
+      <h1 data-testid="title" className="title">
         Nhà tuyển dụng hàng đầu
       </h1>
       <div className="loading">

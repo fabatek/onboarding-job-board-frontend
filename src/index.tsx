@@ -1,21 +1,31 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import dotenv from "dotenv";
 
 import "./index.scss";
-import App from "./containers/App";
+
 import * as serviceWorker from "./serviceWorker";
 import Home from "./containers/Home";
 import { store } from "./redux/configStore";
 import { Provider } from "react-redux";
+import Detail from "./containers/Detail/Detail";
+import HomeTemplate from "./containers/HomeTemplate/HomeTemplate";
+
 dotenv.config();
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <Home />
+        <Routes>
+          <Route path="" element={<HomeTemplate />}>
+            <Route index element={<Home />}></Route>
+            <Route path="detail">
+              <Route path=":id" element={<Detail />}></Route>
+            </Route>
+          </Route>
+        </Routes>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,
