@@ -3,11 +3,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDollarSign, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 
 export default function ListJobs(props: { currentJobs: Job[] }) {
-    const { currentJobs } = props
-    
+    const { currentJobs} = props
+
     return (
         <ul className='container-fluid mb-2' id='listJobs'>
-            {currentJobs?.map((job: Job, key: number) => {
+            {currentJobs.map((job: Job, key: number) => {
                 const hours = Math.floor(Math.random() * 60) + 1
                 return (
                     <li key={key} className={`list-group-item d-flex job`} data-testid="test100Jobs">
