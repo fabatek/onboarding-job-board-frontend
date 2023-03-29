@@ -12,6 +12,7 @@ import { store } from "./redux/configStore";
 import { Provider } from "react-redux";
 import Detail from "./containers/Detail/Detail";
 import HomeTemplate from "./containers/HomeTemplate/HomeTemplate";
+import Page404 from "./containers/Page404/Page404";
 
 dotenv.config();
 ReactDOM.render(
@@ -24,6 +25,7 @@ ReactDOM.render(
             <Route path="detail">
               <Route path=":id" element={<Detail />}></Route>
             </Route>
+            <Route path="*" element={<Page404 />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>

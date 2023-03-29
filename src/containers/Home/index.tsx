@@ -58,7 +58,7 @@ function Home() {
     let arr = jobs.filter((job) => job.status);
     setCount(arr.length);
   };
-  const loadingContent = !!(jobs.length <= 0);
+  const loadingContent = !!(jobs.length < 0);
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
@@ -104,7 +104,11 @@ function Home() {
           text="Loading your content..."
           className="loading__overlay"
         >
-          {currentJobs.length > 0 && (
+          {currentJobs.length === 0 ? (
+            <div className="title__notFound">
+              <p>No such job name matches your searching</p>
+            </div>
+          ) : (
             <div className="job__list" data-testid="job-list">
               {currentJobs.map((job: Job, index) => {
                 return (

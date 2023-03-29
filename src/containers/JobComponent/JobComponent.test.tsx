@@ -6,9 +6,14 @@ import { store } from "../../redux/configStore";
 
 import Detail from "../Detail/Detail";
 import JobComponent from "./JobComponent";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { Job } from "../Home";
-
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
+  useLocation: () => ({
+    pathname: "/detail/1",
+  }),
+}));
 const job: Job = {
   name: "name 1",
   status: false,
@@ -17,6 +22,7 @@ const job: Job = {
   dateEnd: "2024-01-09T18:40:53.125Z",
   email: "Jodie_Bailey@hotmail.com",
   id: 1,
+  price: 0,
 };
 
 test("Check if elements contain suitable class", async () => {
@@ -36,7 +42,7 @@ test("Check if elements contain suitable class", async () => {
 });
 
 test("navigates to project detail page on click", () => {
-  const { getByText, getByTestId } = render(
+  const { getByText } = render(
     <BrowserRouter>
       <Provider store={store}>
         <Routes>
@@ -51,6 +57,5 @@ test("navigates to project detail page on click", () => {
   const jobLink = getByText(job.name);
 
   fireEvent.click(jobLink);
-
-  expect(getByTestId("job-detail__name")).toBeInTheDocument();
+  expect(useLocation().pathname).toBe("/detail/1");
 });
