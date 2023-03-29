@@ -1,0 +1,27 @@
+.pagination {
+    width: 100%;
+    margin: 0 auto;
+    justify-content: center;
+    &__list {
+        &-item {
+            cursor: pointer;
+            text-decoration: none;
+            color: #333;
+            &.active {
+                background: #dc3545;
+                color: white;
+                border-radius: 5px;
+            }
+            &.disabled {
+                color: rgb(190, 190, 190);
+            }
+            &.disable:hover{
+                color: #333;
+            }
+            &.none{
+                display: none;
+            }
+
+        }
+    }
+}

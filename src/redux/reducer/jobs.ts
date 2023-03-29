@@ -20,10 +20,13 @@ const jobReducer = createSlice({
         state.loading = false
       }
     );
+    builder.addCase(getAllJobs.rejected,(state:JobInitReducer)=> {
+      state.loading = false;
+    })
   },
 });
 export default jobReducer.reducer;
-export const getAllJobs = createAsyncThunk("gẹtAllJob", async () => {
+export const getAllJobs = createAsyncThunk("getAllJob", async () => {
   try {
     const res = await http.get("/jobs");
     return res.data;
