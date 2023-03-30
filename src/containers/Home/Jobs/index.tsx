@@ -8,17 +8,19 @@ import Loading from "../../components/Loading";
 import Pagination from "./Pagination";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import Job from "../../model/job";
 
 export default function Jobs() {
     const dispatch = useDispatch();
     const { data: jobs, loading } = useSelector((state: RootState) => state.jobs)
     const { search } = useSelector((state: RootState) => state.search)
+
     useEffect(() => {
         dispatch(getJobs());
     }, []);
     useEffect(() => {
         setCurrentPage(1)
-    }, [search])
+    }, [search.title])
 
     const [currentPage, setCurrentPage] = useState(1);
     const jobsPerPage = 10;
@@ -37,7 +39,10 @@ export default function Jobs() {
 
     const searchJob = () => {
         return jobs.filter((searchJob) => {
-            return searchJob.jobName.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+            return searchJob.jobName.toLocaleLowerCase().includes(search.title.toLocaleLowerCase())
+        }).filter((searchCity) => {
+            if (search.city === "All") return searchCity
+            else return searchCity.city.toLocaleLowerCase().includes(search.city.toLocaleLowerCase())
         })
     }
     const searchJobPage = searchJob().slice(indexOfFirstPage, indexOfLastPage)

@@ -3,12 +3,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDollarSign, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 
 export default function ListJobs(props: { currentJobs: Job[] }) {
-    const { currentJobs} = props
+    const { currentJobs } = props
 
     return (
         <ul className='container-fluid mb-2' id='listJobs'>
             {currentJobs.map((job: Job, key: number) => {
                 const hours = Math.floor(Math.random() * 60) + 1
+                const city = ['Ho Chi Minh', 'Ha Noi', 'Da Nang']
+                const indexCity = Math.floor(Math.random() * 3)
                 return (
                     <li key={key} className={`list-group-item d-flex job`} data-testid="test100Jobs">
                         <img className='job__img' alt='logo' src={job.img} />
