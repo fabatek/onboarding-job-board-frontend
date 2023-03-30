@@ -8,7 +8,6 @@ import Loading from "../../components/Loading";
 import Pagination from "./Pagination";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import Job from "../../model/job";
 
 export default function Jobs() {
     const dispatch = useDispatch();
