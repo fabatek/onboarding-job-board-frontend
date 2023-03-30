@@ -4,6 +4,7 @@ import { AiFillHome, AiFillInfoCircle } from "react-icons/ai";
 import { MdOutlineAttachMoney, MdPlace } from "react-icons/md";
 import { BiCategoryAlt } from "react-icons/bi";
 import { JobModel } from "../../../types/types";
+import { NavLink } from "react-router-dom";
 
 type Props = {
   item: JobModel;
@@ -64,6 +65,11 @@ const JobCard = (props: Props) => {
               <BiCategoryAlt className="mb-1 me-1" />
               {item.category}
             </span>
+          </div>
+          <div className="row px-2 mt-2 text-center">
+            <NavLink to={`/jobs/${item.id}`} className="btn btn-success">
+              View Detail
+            </NavLink>
           </div>
         </div>
       </div>

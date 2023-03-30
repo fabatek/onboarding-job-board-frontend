@@ -8,6 +8,7 @@ const initialState: any = {
   jobList: [],
   isLoading: false,
   jobPaginationList: [],
+  jobItem: null,
 };
 
 const jobReducer = createSlice({
@@ -27,6 +28,9 @@ const jobReducer = createSlice({
       state.jobPaginationList = action.payload;
       state.jobList = action.payload;
     },
+    getJobByIdAction: (state, action: PayloadAction<JobModel>) => {
+      state.jobItem = action.payload;
+    },
   },
 });
 
@@ -35,6 +39,7 @@ export const {
   changeIsLoading,
   paginationAction,
   searchJobAction,
+  getJobByIdAction,
 } = jobReducer.actions;
 
 export default jobReducer.reducer;
@@ -90,5 +95,14 @@ export const searchJobApi = (option: string, searchValue: string) => {
         dispatch(changeIsLoading(false));
       }
     }
+  };
+};
+
+export const getJobByIdApi = (jobId: number) => {
+  return async (dispatch: DispatchType) => {
+    dispatch(changeIsLoading(true));
+    const result = await http.get(`/jobs/${jobId}`);
+    dispatch(getJobByIdAction(result.data));
+    dispatch(changeIsLoading(false));
   };
 };
