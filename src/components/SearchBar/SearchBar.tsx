@@ -47,12 +47,8 @@ const SearchBar = (props: Props) => {
       <div className="row search-bar-container__heading">
         <h1 className="text-white number-job-title">
           {
-            <span
-              data-testid="number-of-jobs"
-              className="number-of-jobs"
-              id="number-of-jobs"
-            >
-              {jobList?.length}
+            <span className="number-of-jobs" id="number-of-jobs">
+              {jobList?.length || 100}
             </span>
           }{" "}
           IT Jobs For Developers
@@ -63,7 +59,6 @@ const SearchBar = (props: Props) => {
           <select
             className="form-select w-100"
             defaultValue={1}
-            data-testid="place-select"
             onChange={(e) => setSearchOption(e.target.value)}
           >
             {searchOptions?.map((item) => (
@@ -77,11 +72,10 @@ const SearchBar = (props: Props) => {
           <div className="input-group mb-3 w-100 bg-white align-items-center overflow-hidden border-0 rounded">
             <input
               type="text"
-              className="input-group__form-control form-control"
+              className="input-group__form-control form-control job-search"
               placeholder="type the value you need to search"
               aria-label=""
               aria-describedby="basic-addon1"
-              data-testid="job-search"
               onChange={(e) => setSearchValue(e.target.value)}
               value={searchValue}
               onKeyDown={handleKeyPress}

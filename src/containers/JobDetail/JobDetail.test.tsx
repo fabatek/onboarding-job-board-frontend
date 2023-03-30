@@ -1,17 +1,17 @@
 import { render, waitFor } from "@testing-library/react";
 import CustomProvider from "../../providers/CustomProvider";
-import Header from "./Header";
+import JobDetail from "./JobDetail";
 
-describe("Header", () => {
+describe("Job Detail Page", () => {
   it("should render correctly", async () => {
     render(
       <CustomProvider>
-        <Header />
+        <JobDetail />
       </CustomProvider>
     );
     await waitFor(() => {
-      const headerComponent = document.querySelector(".header");
-      expect(headerComponent).toBeVisible();
+      const jobDetailPage = document.querySelector(".job-detail-page");
+      expect(jobDetailPage).toBeVisible();
     });
   });
 });

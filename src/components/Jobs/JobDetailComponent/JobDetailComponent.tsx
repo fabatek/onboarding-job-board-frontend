@@ -12,29 +12,29 @@ const JobDetailComponent = (props: Props) => {
   return (
     <div>
       <div className="row px-2">
-        <h2>{jobItem?.jobTitle}</h2>
+        <h2 className="job-title">{jobItem?.jobTitle}</h2>
         <button className="btn btn-danger w-100">Apply Now</button>
       </div>
       <hr />
       <div className="row px-2">
         <p>
           <MdOutlineAttachMoney className="mb-1" />
-          {jobItem?.salary}
+          <span className="job-salary">{jobItem?.salary}</span>
         </p>
         <p>
           <MdPlace className="mb-1 me-1" />
-          {jobItem?.place}
+          <span className="job-place">{jobItem?.place}</span>
         </p>
         <p>
           <BiCategoryAlt className="mb-1 me-1" />
-          {jobItem?.category}
+          <span className="job-category">{jobItem?.category}</span>
         </p>
       </div>
       <div className="row px-2">
         <h5 className="mb-0">Job Description</h5>
-        <span className="mb-3">{jobItem?.jobDescription}</span>
+        <span className="job-description mb-3">{jobItem?.jobDescription}</span>
         <h5 className="mb-0">Job Requirement</h5>
-        <span>{jobItem?.jobRequirement}</span>
+        <span className="job-requirement">{jobItem?.jobRequirement}</span>
       </div>
     </div>
   );

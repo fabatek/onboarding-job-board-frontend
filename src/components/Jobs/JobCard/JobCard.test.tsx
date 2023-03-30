@@ -1,4 +1,4 @@
-import { cleanup, render } from "@testing-library/react";
+import { cleanup, render, waitFor } from "@testing-library/react";
 import CustomProvider from "../../../providers/CustomProvider";
 import JobCard from "./JobCard";
 
@@ -15,39 +15,25 @@ const sampleItem = {
 };
 
 describe("Job Card Component", () => {
-  it("should be visible", async () => {
-    const { findByTestId } = render(
+  it("should be visible and render correctly", async () => {
+    render(
       <CustomProvider>
         <JobCard item={sampleItem} />
       </CustomProvider>
     );
-    const imageElement = await findByTestId("job-card__img");
-    expect(imageElement).toBeVisible();
-    const titleElement = await findByTestId("job-card__title");
-    expect(titleElement).toBeVisible();
-    const companyNameElement = await findByTestId("job-card__company-name");
-    expect(companyNameElement).toBeVisible();
-    const salaryElement = await findByTestId("job-card__salary");
-    expect(salaryElement).toBeVisible();
-    const placeElement = await findByTestId("job-card__place");
-    expect(placeElement).toBeVisible();
-  });
-
-  it("should render correctly", async () => {
-    const { findByTestId } = render(
-      <CustomProvider>
-        <JobCard item={sampleItem} />
-      </CustomProvider>
-    );
-    const imageElement = await findByTestId("job-card__img");
-    expect(imageElement).toBeVisible();
-    const titleElement = await findByTestId("job-card__title");
-    expect(titleElement.textContent).toBe("Web Developer");
-    const companyNameElement = await findByTestId("job-card__company-name");
-    expect(companyNameElement.textContent?.trim()).toBe("Faba Technology");
-    const salaryElement = await findByTestId("job-card__salary");
-    expect(salaryElement.textContent?.trim()).toBe("5000");
-    const placeElement = await findByTestId("job-card__place");
-    expect(placeElement.textContent?.trim()).toBe("Ho Chi Minh");
+    await waitFor(() => {
+      const imageElement = document.querySelector(".logo-company__img");
+      expect(imageElement).toBeVisible();
+      const titleElement = document.querySelector(".job-card-info__job-title");
+      expect(titleElement?.textContent).toBe("Web Developer");
+      const companyNameElement = document.querySelector(
+        ".job-card-info__company-name"
+      );
+      expect(companyNameElement?.textContent?.trim()).toBe("Faba Technology");
+      const salaryElement = document.querySelector(".job-card-info__salary");
+      expect(salaryElement?.textContent?.trim()).toBe("5000");
+      const placeElement = document.querySelector(".job-card-info__place");
+      expect(placeElement?.textContent?.trim()).toBe("Ho Chi Minh");
+    });
   });
 });

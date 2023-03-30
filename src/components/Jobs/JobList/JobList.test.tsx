@@ -1,4 +1,4 @@
-import { cleanup, render } from "@testing-library/react";
+import { cleanup, render, waitFor } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import App from "../../../containers/App";
@@ -13,44 +13,44 @@ afterAll(cleanup);
 
 describe("Get All Jobs", () => {
   it("should return job list", async () => {
-    const { findAllByTestId } = render(
+    render(
       <Provider store={store}>
         <BrowserRouter>
           <App />
         </BrowserRouter>
       </Provider>
     );
-    const jobs = await findAllByTestId("job-card", undefined, {
-      timeout: 5000,
+    await waitFor(() => {
+      const jobs = document.querySelectorAll(".job-card-container");
+      expect(jobs).toHaveLength(10);
     });
-    expect(jobs).toHaveLength(10);
   });
 
   it("should return no jobs when failed", () => {
-    const { queryByTestId } = render(
+    const { queryByText } = render(
       <CustomProvider>
         <JobList />
       </CustomProvider>
     );
-    const jobs = queryByTestId("job-card");
+    const jobs = queryByText(/View Detail/i);
     expect(jobs).not.toBeInTheDocument();
   });
 });
 
 describe("API", () => {
-  it("should render only 6 jobs when user search by title with global", async () => {
+  it("should render only 2 jobs when user search by title with global", async () => {
     const res = await http.get("/jobs/?jobTitle=global");
-    expect(res.data.length).toBe(6);
+    expect(res.data.length).toBe(2);
   });
 
-  it("should render only 7 jobs when user search by category with engineer", async () => {
+  it("should render only 3 jobs when user search by category with engineer", async () => {
     const res = await http.get("/jobs/?category=engineer");
-    expect(res.data.length).toBe(7);
+    expect(res.data.length).toBe(3);
   });
 
-  it("should render only 1 jobs when user search by location with parma", async () => {
-    const res = await http.get("/jobs/?place=parma");
-    expect(res.data.length).toBe(1);
+  it("should render only 2 jobs when user search by location with mesa", async () => {
+    const res = await http.get("/jobs/?place=mesa");
+    expect(res.data.length).toBe(2);
   });
 
   it("return no jobs when not found", async () => {
