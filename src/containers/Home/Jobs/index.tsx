@@ -20,7 +20,7 @@ export default function Jobs() {
     }, []);
     useEffect(() => {
         setCurrentPage(1)
-    }, [search.title])
+    }, [search])
 
     const [currentPage, setCurrentPage] = useState(1);
     const jobsPerPage = 10;
