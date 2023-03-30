@@ -1,5 +1,13 @@
-import React from "react";
+import React,{useState} from "react";
+
 const Navbar = () => {
+  const [filter] = useState({
+    jobLevel: "default",
+    salary: "default",
+    workingModel: "default",
+    companyType: "default",
+  })
+
   return (
     <div className="navbar container py-4 px-0">
       <nav className="navbar navbar-expand-lg px-0">
@@ -22,12 +30,13 @@ const Navbar = () => {
                   className="form-select"
                   aria-label="Default select example 2"
                   role="combobox"
-                  defaultValue={'default'}
+                  defaultValue={filter.jobLevel}
                 >
                   <option value="default" >Job level</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                  <option value="1">Junior</option>
+                  <option value="2">Fresher</option>
+                  <option value="3">Senior</option>
+                  <option value="4">Manager</option>
                 </select>
               </li>
               <li className="nav-item me-3">
@@ -35,12 +44,13 @@ const Navbar = () => {
                   className="form-select"
                   aria-label="Default select example"
                   role="combobox"
-                  defaultValue={'default'}
+                  defaultValue={filter.salary}
                 >
                   <option value="default">Salary Range</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                  <option value="1">{`< 3000$`}</option>
+                  <option value="2">{`< 4000$`}</option>
+                  <option value="3">{`< 5000$`}</option>
+                  <option value="3">{`< 6000$`}</option>
                 </select>
               </li>
               <li className="nav-item me-3">
@@ -48,12 +58,11 @@ const Navbar = () => {
                   className="form-select"
                   aria-label="Default select example"
                   role="combobox"
-                  defaultValue={'default'}
+                  defaultValue={filter.workingModel}
                 >
-                  <option value="default">Woking Model</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                  <option value="default">Working Model</option>
+                  <option value="0">remote</option>
+                  <option value="1">office</option>
                 </select>
               </li>
               <li className="nav-item me-3">
@@ -61,12 +70,11 @@ const Navbar = () => {
                   className="form-select"
                   aria-label="Default select example"
                   role="combobox"
-                  defaultValue={'default'}
+                  defaultValue={filter.companyType}
                 >
                   <option value="default">Company type</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                  <option value="0">Product</option>
+                  <option value="1">Outsource</option>
                 </select>
               </li>
               <li>
@@ -75,7 +83,7 @@ const Navbar = () => {
                 </button>
               </li>
               <li className="">
-                <p className="text-primary mx-2 my-auto">Clear all filters</p>
+                <p className="text-primary mx-2 my-auto cursor-pointer">Clear all filters</p>
               </li>
             </ul>
           </div>

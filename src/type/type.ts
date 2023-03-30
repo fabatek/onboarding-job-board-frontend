@@ -7,10 +7,14 @@ interface JobModal {
   title: string;
   status?: boolean;
   jobDesc?: string;
+  salary?: number;
+  companyType?: boolean;
+  working?: boolean
 }
 interface JobInitReducer {
   allJobs: JobModal[];
   loading: boolean;
+  searchResults: JobModal[];
 }
 interface JobTicketProps {
   item: JobModal;
@@ -21,7 +25,5 @@ interface PaginationProps {
   currentPage: number;
   totalJobs?: number;
 }
-interface SearchJobModal {
-  searchValue: string
-}
-export type { JobModal, JobInitReducer, JobTicketProps, PaginationProps, SearchJobModal };
+
+export type { JobModal, JobInitReducer, JobTicketProps, PaginationProps };

@@ -7,7 +7,6 @@ import { JobModal } from "../../type/type";
 import JobTicket from "../Job/JobTicket";
 import "./showAllJobs.scss";
 import Pagination from "../Pagination/Pagination";
-import search from "../../util/search/search";
 
 const ShowAllJobs = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -15,13 +14,9 @@ const ShowAllJobs = () => {
   const lastIndex = currentPage * jobsPerPage;
   const firstIndex = lastIndex - jobsPerPage;
 
-  const { allJobs, loading } = useSelector(
+  const { searchResults, loading } = useSelector(
     (state: RootState) => state.jobReducer
   );
-  const { searchValue } = useSelector((state: RootState) => state.searchJob);
-
-  let results = search(allJobs, searchValue);
-  results = allJobs
 
   const dispatch: DispatchType = useDispatch();
   useEffect(() => {
@@ -30,9 +25,8 @@ const ShowAllJobs = () => {
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [searchValue]);
+  }, [searchResults]);
 
-  
   return (
     <div className="show-all-jobs" data-testid="total-jobs">
       <div className="container">
@@ -44,21 +38,21 @@ const ShowAllJobs = () => {
               ) : (
                 <>
                   <h2 className="p-3">
-                    {results?.length} việc làm IT tại Việt Nam
+                    {searchResults.length !== 0 ? `${searchResults?.length} việc làm IT tại Việt Nam` : "Nhà tuyển dụng hàng đầu"}
                     <hr />
                   </h2>
                   <ul className="list-unstyled list-job" data-testid="list-job">
-                    {results
-                      .slice(firstIndex, lastIndex)
+                    {searchResults?.slice(firstIndex, lastIndex)
                       .map((job: JobModal, index: number) => (
                         <li key={index} data-testid="list-item-test">
                           <JobTicket item={job} />
                         </li>
                       ))}
                   </ul>
+                  {searchResults.length === 0 && <p className="text-center text-body">No jobs search results</p>}
                   <Pagination
                     pageSize={jobsPerPage}
-                    totalJobs={results?.length}
+                    totalJobs={searchResults?.length}
                     setCurrentPage={setCurrentPage}
                     currentPage={currentPage}
                   />

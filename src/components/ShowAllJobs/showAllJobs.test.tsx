@@ -12,7 +12,7 @@ const ShowAllJobsTestComponent = () => {
   );
 };
 
-const mockState = { loading: false,allJobs:[
+const mockState = { loading: false,searchResults:[
   {
     createdAt: "2022-12-06T13:06:50.782Z",
     title: "International Paradigm Agent",

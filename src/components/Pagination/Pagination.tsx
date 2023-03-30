@@ -26,7 +26,7 @@ const Pagination = ({
 
   return (
     <div className="pagination" data-testid="pagination">
-      <ul className="d-flex list-unstyled justify-content-center align-items-center pagination__list">
+      <ul className={`d-flex list-unstyled justify-content-center align-items-center pagination__list ${arrNumberOfPagination.length === 0 && 'd-none'}`}>
         <a
           href={`${ currentPage > 1 ? '#top' : '#t'}`}
           className={`px-3 py-1' pagination__list-item ${
