@@ -1,12 +1,8 @@
 import { fireEvent, render } from "@testing-library/react";
 
 import "@testing-library/jest-dom";
-import { Provider } from "react-redux";
-import { store } from "../../redux/configStore";
 
-import Detail from "../Detail/Detail";
-import JobComponent from "./JobComponent";
-import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { Job } from "../Home";
 import ReUsedTestComponent from "../../ReUsedTestComponent";
 
@@ -28,14 +24,7 @@ const job: Job = {
 };
 
 test("Check if elements contain suitable class", async () => {
-  const { getByText } = render(
-    // <Provider store={store}>
-    //   <BrowserRouter>
-    //     <JobComponent job={job} index={0} />
-    //   </BrowserRouter>
-    // </Provider>
-    <ReUsedTestComponent />
-  );
+  const { getByText } = render(<ReUsedTestComponent />);
   const jobName = getByText(job.name);
   const testImage = document.querySelector("img") as HTMLImageElement;
 
@@ -45,19 +34,7 @@ test("Check if elements contain suitable class", async () => {
 });
 
 test("navigates to project detail page on click", () => {
-  const { getByText } = render(
-    // <Provider store={store}>
-    //   <BrowserRouter>
-    //     <Routes>
-    //       <Route index element={<JobComponent job={job} index={0} />}></Route>
-    //       <Route path="detail">
-    //         <Route path=":id" element={<Detail />}></Route>
-    //       </Route>
-    //     </Routes>
-    //   </BrowserRouter>
-    // </Provider>
-    <ReUsedTestComponent />
-  );
+  const { getByText } = render(<ReUsedTestComponent />);
   const jobLink = getByText(job.name);
 
   fireEvent.click(jobLink);
