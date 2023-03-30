@@ -6,7 +6,7 @@ import { PaginationProps } from '../../type/type';
 describe('Pagination component', () => {
   const props:PaginationProps = {
     totalJobs: 100,
-    setCurentPage: jest.fn(),
+    setCurrentPage: jest.fn(),
     currentPage: 2,
     pageSize: 10,
   };
@@ -21,11 +21,11 @@ describe('Pagination component', () => {
   test('handles click on next page button correctly',async () => {
     const { getByTestId } = render(<Pagination {...props} />);
     fireEvent.click(getByTestId('previous-page'));
-    await waitFor(() => expect(props.setCurentPage).toHaveBeenCalledWith(1))
+    await waitFor(() => expect(props.setCurrentPage).toHaveBeenCalledWith(1))
   });
   test('handles click on next page button correctly',async () => {
     const { getByTestId } = render(<Pagination {...props} />);
     fireEvent.click(getByTestId('next-page'));
-    await waitFor(() => expect(props.setCurentPage).toHaveBeenCalledWith(3))
+    await waitFor(() => expect(props.setCurrentPage).toHaveBeenCalledWith(3))
   });
 });
