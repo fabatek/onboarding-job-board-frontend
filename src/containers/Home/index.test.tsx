@@ -1,4 +1,9 @@
-import { fireEvent, render, waitFor } from "@testing-library/react";
+import {
+  findByTestId,
+  fireEvent,
+  render,
+  waitFor,
+} from "@testing-library/react";
 
 import "@testing-library/jest-dom";
 import Home from "../Home";
@@ -15,7 +20,7 @@ test("test if UI displays text correctly", () => {
 
   const textRecruitment = getByText("Nhà tuyển dụng hàng đầu");
 
-  expect(textRecruitment).toBeInTheDocument;
+  expect(textRecruitment).toBeInTheDocument();
 });
 test("Check if elements contain suitable class", () => {
   const { queryAllByTestId, queryByTestId } = render(
@@ -34,11 +39,22 @@ test("Check if elements contain suitable class", () => {
 });
 describe("Loading API", () => {
   it("should show loading and change UI", async () => {
-    const { getByTestId, queryAllByTestId } = render(
+    const { getByTestId, queryAllByTestId, findByTestId } = render(
       <Provider store={store}>
         <Home />
       </Provider>
     );
+    await waitFor(() => {
+      const jobList = findByTestId("job-list");
+
+      const job = queryAllByTestId("job");
+      if (job.length > 0) {
+        expect(jobList).toBeInTheDocument();
+        job.forEach((j, index) => {
+          expect(getByTestId(`job${index}`)).toHaveClass("job");
+        });
+      }
+    });
   });
 });
 test("Check clicked button will active", () => {
