@@ -20,7 +20,7 @@ test("test if UI displays text correctly", () => {
 
   const textRecruitment = getByText("Nhà tuyển dụng hàng đầu");
 
-  expect(textRecruitment).toBeInTheDocument;
+  expect(textRecruitment).toBeInTheDocument();
 });
 test("Check if elements contain suitable class", () => {
   const { queryAllByTestId, queryByTestId } = render(

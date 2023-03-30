@@ -1,18 +1,9 @@
-import { fireEvent, getByTestId, render } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 
-import { Provider } from "react-redux";
-import {
-  BrowserRouter,
-  MemoryRouter,
-  Route,
-  Routes,
-  useLocation,
-} from "react-router-dom";
-import { store } from "../../redux/configStore";
-import Detail from "../Detail/Detail";
+import { useLocation } from "react-router-dom";
+import ReUsedTestComponent from "../../ReUsedTestComponent";
+
 import { Job } from "../Home";
-import JobComponent from "../JobComponent/JobComponent";
-import Page404 from "./Page404";
 
 const job: Job = {
   name: "name 1",
@@ -31,19 +22,7 @@ jest.mock("react-router-dom", () => ({
   }),
 }));
 test("navigates to project detail page on click", () => {
-  const { getByTestId } = render(
-    <BrowserRouter>
-      <Provider store={store}>
-        <Routes>
-          <Route index element={<JobComponent job={job} index={0} />}></Route>
-          <Route path="detail">
-            <Route path=":id" element={<Detail />}></Route>
-          </Route>
-          <Route path="*" element={<Page404 />}></Route>
-        </Routes>
-      </Provider>
-    </BrowserRouter>
-  );
+  const { getByTestId } = render(<ReUsedTestComponent />);
 
   if (useLocation().pathname === "/1231231251dasdas") {
     const notFoundImg = document.querySelector("img") as HTMLImageElement;
