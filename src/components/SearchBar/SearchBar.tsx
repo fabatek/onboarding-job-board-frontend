@@ -5,9 +5,12 @@ import { getAllJobsApi, searchJobApi } from "../../redux/reducer/jobReducer";
 import "../../assets/styles/SearchBar/SearchBar.scss";
 import { searchOptions } from "../../static/data";
 
-type Props = {};
+type Props = {
+  searchValueProp?: string;
+};
 
 const SearchBar = (props: Props) => {
+  const { searchValueProp } = props;
   const { jobList, isLoading } = useSelector(
     (state: RootState) => state.jobReducer
   );
@@ -15,6 +18,10 @@ const SearchBar = (props: Props) => {
   const dispatch: DispatchType = useDispatch();
 
   const [searchValue, setSearchValue] = useState<string>("");
+  if (searchValueProp) {
+    dispatch(searchJobApi("1", searchValueProp));
+    setSearchValue("");
+  }
   const [searchOption, setSearchOption] = useState<string>("1");
 
   useEffect(() => {

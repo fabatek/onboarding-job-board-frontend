@@ -1,8 +1,9 @@
 import { cleanup, fireEvent, render } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import CustomProvider from "../../providers/CustomProvider";
 import SearchBar from "./SearchBar";
 
-jest.setTimeout(5000);
+jest.setTimeout(6000);
 
 afterAll(cleanup);
 
@@ -43,7 +44,7 @@ describe("Search Bar Component", () => {
     expect(inputElement.value).toBe("reactjs");
   });
 
-  it("should empty before search", async () => {
+  it("should empty before and after click search button", async () => {
     const { findByTestId, findByRole } = render(
       <CustomProvider>
         <SearchBar />
@@ -56,6 +57,35 @@ describe("Search Bar Component", () => {
     fireEvent.change(inputElement, { target: { value: "product" } });
     const searchButton = await findByRole("button", { name: "Search" });
     fireEvent.click(searchButton);
+    const inputElementAfterChange = (await findByTestId(
+      "job-search",
+      undefined,
+      {
+        timeout: 5000,
+      }
+    )) as HTMLInputElement;
+    expect(inputElementAfterChange.value).toBe("");
+  });
+
+  it("should empty before and after enter through keyboard", async () => {
+    const { findByTestId } = render(
+      <CustomProvider>
+        <SearchBar />
+      </CustomProvider>
+    );
+    const inputElement = (await findByTestId("job-search", undefined, {
+      timeout: 5000,
+    })) as HTMLInputElement;
+    expect(inputElement.value).toBe("");
+    userEvent.type(inputElement, "product{enter}");
+    const inputElementAfterChange = (await findByTestId(
+      "job-search",
+      undefined,
+      {
+        timeout: 5000,
+      }
+    )) as HTMLInputElement;
+    expect(inputElementAfterChange.value).toBe("");
   });
 });
 
@@ -96,5 +126,36 @@ describe("Select", () => {
     expect(firstOption).toBeVisible();
     fireEvent.click(secondOption);
     expect(secondOption).toBeVisible();
+  });
+});
+
+describe("Search Button", () => {
+  it("should be disabled when input is empty", async () => {
+    const { findByTestId, findByRole } = render(
+      <CustomProvider>
+        <SearchBar />
+      </CustomProvider>
+    );
+    const inputElement = (await findByTestId("job-search", undefined, {
+      timeout: 5000,
+    })) as HTMLInputElement;
+    expect(inputElement.value).toBe("");
+    const searchButton = await findByRole("button", { name: "Search" });
+    expect(searchButton).toHaveAttribute("disabled");
+  });
+
+  it("should be enabled when input has value", async () => {
+    const { findByTestId, findByRole } = render(
+      <CustomProvider>
+        <SearchBar />
+      </CustomProvider>
+    );
+    const inputElement = (await findByTestId("job-search", undefined, {
+      timeout: 5000,
+    })) as HTMLInputElement;
+    expect(inputElement.value).toBe("");
+    fireEvent.change(inputElement, { target: { value: "product" } });
+    const searchButton = await findByRole("button", { name: "Search" });
+    expect(searchButton).not.toHaveAttribute("disabled");
   });
 });

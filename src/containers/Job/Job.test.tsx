@@ -1,8 +1,11 @@
-import { cleanup, fireEvent, render, waitFor } from "@testing-library/react";
+import { cleanup, fireEvent, render } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { store } from "../../redux/configStore";
 import App from "../App";
+
+jest.setTimeout(5000);
 
 afterAll(cleanup);
 

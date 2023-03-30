@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "../../../containers/App";
 import CustomProvider from "../../../providers/CustomProvider";
 import { store } from "../../../redux/configStore";
+import { http } from "../../../utils/config";
 import JobList from "./JobList";
 
 jest.setTimeout(10000);
@@ -33,5 +34,27 @@ describe("Get All Jobs", () => {
     );
     const jobs = queryByTestId("job-card");
     expect(jobs).not.toBeInTheDocument();
+  });
+});
+
+describe("API", () => {
+  it("should render only 6 jobs when user search by title with global", async () => {
+    const res = await http.get("/jobs/?jobTitle=global");
+    expect(res.data.length).toBe(6);
+  });
+
+  it("should render only 7 jobs when user search by category with engineer", async () => {
+    const res = await http.get("/jobs/?category=engineer");
+    expect(res.data.length).toBe(7);
+  });
+
+  it("should render only 1 jobs when user search by location with parma", async () => {
+    const res = await http.get("/jobs/?place=parma");
+    expect(res.data.length).toBe(1);
+  });
+
+  it("return no jobs when not found", async () => {
+    const res = await http.get("/jobs/?jobTitle=nothing");
+    expect(res.data.length).toBe(0);
   });
 });
