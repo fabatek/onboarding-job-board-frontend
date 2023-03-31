@@ -1,5 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
+import { searchValueReducer } from "../../redux/reducer/jobs";
+import { useDispatch } from "react-redux";
+import { DispatchType } from "../../redux/store/store";
+
 const Header = () => {
+  const [searchInput,setSearchInput] = useState<string>('')
+  const dispatch:DispatchType = useDispatch()
+
+  const handleSearch = (e:React.MouseEvent<HTMLElement>) => {
+    e.preventDefault()
+    dispatch(searchValueReducer(searchInput))   
+  }
+
+  const handleInputValueSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchInput(e.target.value)
+  }
   return (
     <div className="header bg-black">
       <div className="container px-0">
@@ -42,7 +57,6 @@ const Header = () => {
                     <option value={2}>Hồ Chí Minh</option>
                     <option value={3}>Hà nội</option>
                     <option value={4}>Đà Nẵng</option>
-                    <option value={5}>Others</option>
                   </select>
                 </li>
                 <li>
@@ -52,8 +66,10 @@ const Header = () => {
                       type="search"
                       placeholder="Search"
                       aria-label="Search"
+                      value={searchInput}
+                      onChange={handleInputValueSearch}
                     />
-                    <button data-testid="button-search" className="btn btn-danger" type="submit">
+                    <button data-testid="button-search" className="btn btn-danger" type="button" onClick={handleSearch} >
                       <i className="fa-solid fa-magnifying-glass" />
                     </button>
                   </form>

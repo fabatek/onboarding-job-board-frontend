@@ -30,13 +30,7 @@ const JobTicket = ({ item }: JobTicketProps) => {
       <div className="job-ticket__center">
         <h2>{item.title}</h2>
         <div className="job-ticket__center-more">
-          <span>$</span>
-          <p>
-            Sign in to view
-            <span>
-              <i className="fa-sharp fa-solid fa-caret-right"></i>
-            </span>
-          </p>
+          <span>{item.salary} USD</span>
         </div>
         <ul className="job-ticket__center-list-tag">
           <li>c++</li>

@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import jobReducer from '../reducer/jobs'
 const store = configureStore({
   reducer: {
-    jobReducer:jobReducer 
+    jobReducer
   },
 })
 export type RootState = ReturnType<typeof store.getState>

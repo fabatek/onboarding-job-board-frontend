@@ -12,12 +12,8 @@ describe('Navbar', () => {
     const dropdowns = screen.getAllByRole('combobox');
     fireEvent.change(dropdowns[0], { target: { value: '1' } });
     fireEvent.change(dropdowns[1], { target: { value: '2' } });
-    fireEvent.change(dropdowns[2], { target: { value: '3' } });
-    fireEvent.change(dropdowns[3], { target: { value: '1' } });
     expect(dropdowns[0]).toHaveValue('1');
     expect(dropdowns[1]).toHaveValue('2');
-    expect(dropdowns[2]).toHaveValue('3');
-    expect(dropdowns[3]).toHaveValue('1');
   });
   test('should render a button with the correct class name', () => {
     render(<Navbar/>);

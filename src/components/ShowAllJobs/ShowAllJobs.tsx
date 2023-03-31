@@ -7,20 +7,26 @@ import { JobModal } from "../../type/type";
 import JobTicket from "../Job/JobTicket";
 import "./showAllJobs.scss";
 import Pagination from "../Pagination/Pagination";
+import search from "../../util/search/search";
 
 const ShowAllJobs = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const jobsPerPage = 10
+  const jobsPerPage = 10;
   const lastIndex = currentPage * jobsPerPage;
   const firstIndex = lastIndex - jobsPerPage;
+
+  const { allJobs, searchValue, loading } = useSelector( (state: RootState) => state.jobReducer);
+
+  const searchResults: JobModal[] = search(allJobs, searchValue);
   
-  const { allJobs, loading } = useSelector(
-    (state: RootState) => state.jobReducer
-  );
   const dispatch: DispatchType = useDispatch();
   useEffect(() => {
     dispatch(getAllJobs());
   }, []);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchValue]);
 
   return (
     <div className="show-all-jobs" data-testid="total-jobs">
@@ -33,21 +39,21 @@ const ShowAllJobs = () => {
               ) : (
                 <>
                   <h2 className="p-3">
-                    {allJobs.length} việc làm IT tại Việt Nam
+                    {searchResults?.length !== 0 ? `${searchResults?.length} việc làm IT tại Việt Nam` : "Nhà tuyển dụng hàng đầu"}
                     <hr />
                   </h2>
                   <ul className="list-unstyled list-job" data-testid="list-job">
-                    {allJobs
-                      .slice(firstIndex, lastIndex)
+                    {searchResults?.slice(firstIndex, lastIndex)
                       .map((job: JobModal, index: number) => (
                         <li key={index} data-testid="list-item-test">
                           <JobTicket item={job} />
                         </li>
                       ))}
                   </ul>
+                  {searchResults?.length === 0 && <p className="text-center text-body">No jobs search results</p>}
                   <Pagination
                     pageSize={jobsPerPage}
-                    totalJobs={allJobs.length}
+                    totalJobs={searchResults?.length}
                     setCurrentPage={setCurrentPage}
                     currentPage={currentPage}
                   />
