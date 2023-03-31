@@ -1,8 +1,11 @@
-import Job from "../model/job";
-interface JobState {
+import {Job} from "../model/job";
+import { Search } from "../model/job";
+
+export interface JobState {
   loading: boolean;
   data: Job[];
   error: string;
 }
-
-export default JobState;
+export interface searchState {
+  search : Search
+}

@@ -8,6 +8,7 @@ import Loading from "../../components/Loading";
 import Pagination from "./Pagination";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { Job } from "../../model/job";
 
 export default function Jobs() {
     const dispatch = useDispatch();
@@ -37,11 +38,11 @@ export default function Jobs() {
     }
 
     const searchJob = () => {
-        return jobs.filter((searchJob) => {
+        return jobs.filter((searchJob :Job) => {
             return searchJob.jobName.toLocaleLowerCase().includes(search.title.toLocaleLowerCase())
-        }).filter((searchCity) => {
+        }).filter((searchCity :Job) => {
             if (search.city === "All") return searchCity
-            else return searchCity.city.toLocaleLowerCase().includes(search.city.toLocaleLowerCase())
+                return searchCity.city.toLocaleLowerCase().includes(search.city.toLocaleLowerCase())
         })
     }
     const searchJobPage = searchJob().slice(indexOfFirstPage, indexOfLastPage)

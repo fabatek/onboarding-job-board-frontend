@@ -1,12 +1,7 @@
 import { createAction, createReducer} from "@reduxjs/toolkit";
+import { Search } from "../../model/job";
+import { searchState } from "../type";
 export const searchAction = createAction <Search> ("searchJob")
-interface Search {
-    title: string;
-    city: string;
-}
-interface searchState {
-    search : Search
-}
 const initialState = {
     search: {
         title:"",

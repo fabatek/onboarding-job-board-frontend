@@ -1,4 +1,4 @@
-import Job from '../../../model/job';
+import {Job} from '../../../model/job';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDollarSign, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 
