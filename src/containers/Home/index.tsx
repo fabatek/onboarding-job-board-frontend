@@ -46,7 +46,13 @@ function Home() {
 
     setCurrentJobs(current);
   }, [jobs]);
-
+  useEffect(() => {
+    const inputSearch: search = {
+      searchInput: searchInput,
+      typeJob: typeJob,
+    };
+    dispatch(filterAction(inputSearch));
+  }, []);
   useEffect(() => {
     let current = jobs.slice(
       (currentPage - 1) * jobsPerPage,
@@ -83,15 +89,15 @@ function Home() {
     setCurrentPage(1);
   }
 
-  const handleSearch = () => {
+  function handleSearch() {
     const inputSearch: search = {
       searchInput: searchInput,
       typeJob: typeJob,
     };
     dispatch(filterAction(inputSearch));
     setCurrentPage(1);
-  };
-  const handleEnterSearch = (e: KeyboardEvent) => {
+  }
+  function handleEnterSearch(e: KeyboardEvent) {
     const inputSearch: search = {
       searchInput: searchInput,
       typeJob: typeJob,
@@ -101,15 +107,15 @@ function Home() {
         dispatch(filterAction(inputSearch));
       }
     }
-  };
-  const searchByType = () => {
+  }
+  function searchByType() {
     const inputSearch: search = {
       searchInput: searchInput,
       typeJob: typeJob,
     };
     dispatch(filterAction(inputSearch));
     setCurrentPage(1);
-  };
+  }
 
   return (
     <div className="App">

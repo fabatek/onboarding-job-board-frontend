@@ -1,5 +1,3 @@
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { FC } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/configStore";
@@ -47,7 +45,9 @@ const Search: FC<Props> = (props) => {
                 aria-labelledby="select-label"
                 value={typeJob}
                 onChange={handleTypeChange}
-                onClick={searchByType}
+                onClick={() => {
+                  searchByType();
+                }}
                 className="type__option"
               >
                 <option value="All">All</option>
@@ -60,9 +60,9 @@ const Search: FC<Props> = (props) => {
                     );
                   })}
               </select>
-              <div className="search-bar__icon">
+              {/* <div className="search-bar__icon">
                 <FontAwesomeIcon icon={faMagnifyingGlass} />
-              </div>
+              </div> */}
               <label id="search-label">Search input</label>
               <input
                 aria-labelledby="search-label"

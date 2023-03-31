@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 import { Job } from "../../containers/Home";
-import { DispatchType, RootState } from "../configStore";
+import { DispatchType } from "../configStore";
 export interface search {
   searchInput: string;
   typeJob: string;
@@ -12,7 +12,6 @@ export interface JobState {
   jobDetail: any;
   jobType: Array<string>;
   loading: boolean;
-  filter: search;
 }
 
 const initialState: JobState = {
@@ -21,10 +20,6 @@ const initialState: JobState = {
   jobDetail: {},
   jobType: [],
   loading: false,
-  filter: {
-    searchInput: "",
-    typeJob: "",
-  },
 };
 
 const JobReducer = createSlice({
@@ -48,24 +43,11 @@ const JobReducer = createSlice({
       const searchInput = action.payload.searchInput;
       const jobType = action.payload.typeJob;
 
-      if (!searchInput) {
-        state.jobs =
-          jobType === "All"
-            ? state.jobsBase
-            : state.jobsBase.filter((job) => job.type === jobType);
-      }
-      if (searchInput) {
-        state.jobs =
-          jobType === "All"
-            ? state.jobsBase.filter((job) =>
-                job.name.toLowerCase().includes(searchInput.toLowerCase())
-              )
-            : state.jobsBase.filter(
-                (job) =>
-                  job.name.toLowerCase().includes(searchInput.toLowerCase()) &&
-                  job.type === jobType
-              );
-      }
+      state.jobs = state.jobsBase.filter(
+        (job) =>
+          (jobType === "All" || job.type === jobType) &&
+          job.name.toLowerCase().includes(searchInput.toLowerCase())
+      );
     },
 
     getJobDetailAction: (state: JobState, action: PayloadAction<{}>) => {

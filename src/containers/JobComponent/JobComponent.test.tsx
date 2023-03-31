@@ -1,10 +1,9 @@
 import { fireEvent, render } from "@testing-library/react";
 
 import "@testing-library/jest-dom";
-
+import Main from "../../Main";
 import { useLocation } from "react-router-dom";
 import { Job } from "../Home";
-import ReUsedTestComponent from "../../ReUsedTestComponent";
 
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
@@ -25,7 +24,7 @@ const job: Job = {
 };
 
 test("Check if elements contain suitable class", async () => {
-  const { getByText } = render(<ReUsedTestComponent />);
+  const { getByText } = render(<Main />);
   const jobName = getByText(job.name);
   const testImage = document.querySelector("img") as HTMLImageElement;
 
@@ -35,7 +34,7 @@ test("Check if elements contain suitable class", async () => {
 });
 
 test("navigates to project detail page on click", () => {
-  const { getByText } = render(<ReUsedTestComponent />);
+  const { getByText } = render(<Main />);
   const jobLink = getByText(job.name);
 
   fireEvent.click(jobLink);

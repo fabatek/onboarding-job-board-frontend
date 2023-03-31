@@ -178,15 +178,7 @@
       border: none;
       padding-left: 30px;
     }
-    .search-bar__icon{
-      position: absolute;
-      left: 400px;
-      top: 95px;
-      color:gray;
-      
-
-      
-    }
+   
     input[type=text].search__input{
       padding-left: 50px;
       
@@ -343,6 +335,7 @@
     .job-detail__description{
       width: 40%;
       padding: 40px 50px;
+      font-size: 20px;
       .job-detail__name{
         text-transform: uppercase;
         font-weight: bold;
