@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Delicious+Handrawn&family=Inter:wght@200;300;400;600;700;800;900&display=swap');
 *{
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   list-style: none;
   text-decoration: none !important;
+  font-family: 'Delicious Handrawn', cursive;
+
 }
 .App {
   text-align: center;
@@ -177,7 +180,7 @@
     }
     .search-bar__icon{
       position: absolute;
-      left: 450px;
+      left: 400px;
       top: 95px;
       color:gray;
       
@@ -193,6 +196,7 @@
       width: 500px;
       height: 40px;
       border-radius: 5px;
+     margin-left: -50px;
       &::placeholder{
        padding-left: 20px;
       }
@@ -409,6 +413,9 @@
   
   .loading__overlay{
     height: 1000px;
+    .job__notFound{
+      font-size: 25px;
+    }
     .title__notFound{
       font-weight: 500;
       margin-top: 100px;
@@ -437,6 +444,7 @@
   background-color: #e9e9e9;
   text-align: left;
   margin-left: 50px;
+  padding-top: 50px;
 }
 .outlet__template{
    min-height: 75vh;

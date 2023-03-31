@@ -123,17 +123,19 @@ function Home() {
         searchByType={searchByType}
       />
       <h1 data-testid="title" className="title">
-        Nhà tuyển dụng hàng đầu
+        Top Employers
       </h1>
       <div className="loading">
         <LoadingOverlay
           active={loading}
           spinner={true}
-          text="Content is laoding..."
+          text="Content is loading..."
           className="loading__overlay"
         >
           {currentJobs.length === 0 ? (
-            <div>No such job match your searching</div>
+            <div className="job__notFound">
+              No such job match your searching
+            </div>
           ) : (
             <div className="job__list" data-testid="job-list">
               {currentJobs.map((job: Job, index) => {
