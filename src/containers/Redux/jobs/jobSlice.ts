@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import Job from "../../model/job";
+import {Job} from "../../model/job";
 import api from "../../util/util";
-import JobState from "../type";
+import {JobState} from "../type";
 
 export const getJobs = createAsyncThunk<Job[]>(
   "jobs/getJobs",

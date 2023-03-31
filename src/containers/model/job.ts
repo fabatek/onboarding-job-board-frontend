@@ -1,4 +1,4 @@
-interface Job {
+export interface Job {
     jobName:string,
     moTa: string,
     city: string,
@@ -6,4 +6,7 @@ interface Job {
     img:string,
     id: string
 }
-export default Job;
+export interface Search {
+    title: string;
+    city: string;
+}

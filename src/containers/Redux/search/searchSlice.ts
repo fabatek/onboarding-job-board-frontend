@@ -1,10 +1,12 @@
 import { createAction, createReducer} from "@reduxjs/toolkit";
-export const searchAction = createAction <String> ("searchJob")
-interface searchState {
-    search : String
-}
+import { Search } from "../../model/job";
+import { searchState } from "../type";
+export const searchAction = createAction <Search> ("searchJob")
 const initialState = {
-    search: "",
+    search: {
+        title:"",
+        city:"All"
+    },
 } as searchState
 export const searchSlice = createReducer(initialState, builder=>{
     builder.addCase(searchAction,(state,action)=>{

@@ -1,9 +1,9 @@
-import Job from '../../../model/job';
+import {Job} from '../../../model/job';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDollarSign, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 
 export default function ListJobs(props: { currentJobs: Job[] }) {
-    const { currentJobs} = props
+    const { currentJobs } = props
 
     return (
         <ul className='container-fluid mb-2' id='listJobs'>
