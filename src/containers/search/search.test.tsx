@@ -3,11 +3,13 @@ import "@testing-library/jest-dom";
 import { Provider } from "react-redux";
 import { store } from "../../redux/configStore";
 import Search from "./Search";
+import { SetStateAction } from "react";
 
 describe("Search component - check search input change", () => {
   test("should update search input value on change", () => {
     const handleSearchInput = jest.fn();
     const handleEnterSearch = jest.fn();
+    const handleTypeChange = jest.fn();
     const { getByLabelText } = render(
       <Provider store={store}>
         <Search
@@ -15,12 +17,18 @@ describe("Search component - check search input change", () => {
           handleSearchInput={handleSearchInput}
           handleEnterSearch={handleEnterSearch}
           handleSearch={() => {}}
+          handleTypeChange={handleTypeChange}
+          typeJob={""}
+          searchByType={() => {}}
         />
       </Provider>
     );
     const searchInput = getByLabelText("Search input") as HTMLInputElement;
+    const searchType = getByLabelText("Select type") as HTMLInputElement;
+    fireEvent.change(searchType, { target: { value: "All" } });
     fireEvent.change(searchInput, { target: { value: "test" } });
     expect(searchInput.value).toBe("test");
+    expect(searchType.value).toBe("All");
   });
 });
 
@@ -37,6 +45,15 @@ describe("Search component - check search function while clicking search button"
           handleEnterSearch={() => {}}
           handleSearch={() => {
             handleSearch(searchTerm);
+          }}
+          handleTypeChange={function (e: {
+            target: { value: SetStateAction<string> };
+          }): void {
+            throw new Error("Function not implemented.");
+          }}
+          typeJob={""}
+          searchByType={function (): void {
+            throw new Error("Function not implemented.");
           }}
         />
       </Provider>
@@ -65,6 +82,15 @@ describe("Search component - check search function while clicking enter button",
           handleSearchInput={() => {}}
           handleEnterSearch={handleEnterSearch(searchTerm)}
           handleSearch={() => {}}
+          handleTypeChange={function (e: {
+            target: { value: SetStateAction<string> };
+          }): void {
+            throw new Error("Function not implemented.");
+          }}
+          typeJob={""}
+          searchByType={function (): void {
+            throw new Error("Function not implemented.");
+          }}
         />
       </Provider>
     );

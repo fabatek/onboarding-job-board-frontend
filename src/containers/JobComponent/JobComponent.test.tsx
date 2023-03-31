@@ -21,6 +21,7 @@ const job: Job = {
   email: "Jodie_Bailey@hotmail.com",
   id: 1,
   price: 0,
+  type: "Assistant",
 };
 
 test("Check if elements contain suitable class", async () => {

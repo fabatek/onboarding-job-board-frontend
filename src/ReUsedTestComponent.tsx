@@ -20,6 +20,7 @@ const ReUsedTestComponent = (props: Props) => {
     email: "Jodie_Bailey@hotmail.com",
     id: 1,
     price: 0,
+    type: "Assistant",
   };
   return (
     <>
