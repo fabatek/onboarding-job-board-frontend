@@ -14,7 +14,7 @@ interface JobModal {
 interface JobInitReducer {
   allJobs: JobModal[];
   loading: boolean;
-  searchResults: JobModal[];
+  searchValue: string;
 }
 interface JobTicketProps {
   item: JobModal;

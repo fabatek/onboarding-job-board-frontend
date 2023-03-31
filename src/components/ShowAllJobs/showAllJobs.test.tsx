@@ -12,7 +12,7 @@ const ShowAllJobsTestComponent = () => {
   );
 };
 
-const mockState = { loading: false,searchResults:[
+const mockState = {searchValue:'', loading: false, allJobs:[
   {
     createdAt: "2022-12-06T13:06:50.782Z",
     title: "International Paradigm Agent",
@@ -76,8 +76,8 @@ describe("show all jobs component", () => {
   });
   test("render list job", async () => {
     (useSelector as jest.Mock).mockReturnValue(mockState);
-    const { getAllByTestId } = render(<ShowAllJobsTestComponent />);
-    const listItem = await waitFor(() => getAllByTestId("list-item-test"));
+    const { findAllByTestId } = render(<ShowAllJobsTestComponent />);
+    const listItem = await waitFor(() => findAllByTestId("list-item-test"));
     expect(listItem).toHaveLength(3)
   });
   test("render loading", async () => {

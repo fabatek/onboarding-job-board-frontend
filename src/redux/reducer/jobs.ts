@@ -1,18 +1,18 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { http } from "../../util/config";
 import { JobInitReducer, JobModal } from "../../type/type";
-import search from "../../util/search/search";
+
 const initialState: JobInitReducer = {
   allJobs: [],
   loading:false,
-  searchResults:[]
+  searchValue:''
 };
 const jobReducer = createSlice({
   name: "jobReducer",
   initialState,
   reducers:{
     searchValueReducer:(state:JobInitReducer,action:PayloadAction<string>)=>{
-        state.searchResults = search(state.allJobs, action.payload);
+        state.searchValue = action.payload;
     }
 },
   extraReducers: (builder) => {
@@ -23,7 +23,6 @@ const jobReducer = createSlice({
       getAllJobs.fulfilled,
       (state: JobInitReducer, action: PayloadAction<JobModal[]>) => {
         state.allJobs = action.payload;
-        state.searchResults = action.payload
         state.loading = false
       }
     );

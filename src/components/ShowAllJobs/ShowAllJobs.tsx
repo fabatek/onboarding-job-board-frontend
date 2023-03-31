@@ -7,6 +7,7 @@ import { JobModal } from "../../type/type";
 import JobTicket from "../Job/JobTicket";
 import "./showAllJobs.scss";
 import Pagination from "../Pagination/Pagination";
+import search from "../../util/search/search";
 
 const ShowAllJobs = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -14,10 +15,10 @@ const ShowAllJobs = () => {
   const lastIndex = currentPage * jobsPerPage;
   const firstIndex = lastIndex - jobsPerPage;
 
-  const { searchResults, loading } = useSelector(
-    (state: RootState) => state.jobReducer
-  );
+  const { allJobs, searchValue, loading } = useSelector( (state: RootState) => state.jobReducer);
 
+  const searchResults: JobModal[] = search(allJobs, searchValue);
+  
   const dispatch: DispatchType = useDispatch();
   useEffect(() => {
     dispatch(getAllJobs());
@@ -25,7 +26,7 @@ const ShowAllJobs = () => {
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [searchResults]);
+  }, [searchValue]);
 
   return (
     <div className="show-all-jobs" data-testid="total-jobs">
@@ -38,7 +39,7 @@ const ShowAllJobs = () => {
               ) : (
                 <>
                   <h2 className="p-3">
-                    {searchResults.length !== 0 ? `${searchResults?.length} việc làm IT tại Việt Nam` : "Nhà tuyển dụng hàng đầu"}
+                    {searchResults?.length !== 0 ? `${searchResults?.length} việc làm IT tại Việt Nam` : "Nhà tuyển dụng hàng đầu"}
                     <hr />
                   </h2>
                   <ul className="list-unstyled list-job" data-testid="list-job">
@@ -49,7 +50,7 @@ const ShowAllJobs = () => {
                         </li>
                       ))}
                   </ul>
-                  {searchResults.length === 0 && <p className="text-center text-body">No jobs search results</p>}
+                  {searchResults?.length === 0 && <p className="text-center text-body">No jobs search results</p>}
                   <Pagination
                     pageSize={jobsPerPage}
                     totalJobs={searchResults?.length}
