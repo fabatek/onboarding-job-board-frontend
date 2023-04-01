@@ -15,9 +15,8 @@ const ShowAllJobs = () => {
   const lastIndex = currentPage * jobsPerPage;
   const firstIndex = lastIndex - jobsPerPage;
 
-  const { allJobs, searchValue, loading } = useSelector( (state: RootState) => state.jobReducer);
-
-  const searchResults: JobModal[] = search(allJobs, searchValue);
+  const { allJobs, searchValue,filterValue, loading } = useSelector( (state: RootState) => state.jobReducer);
+  const searchResults: JobModal[] = search(allJobs, searchValue,filterValue);
   
   const dispatch: DispatchType = useDispatch();
   useEffect(() => {
@@ -26,7 +25,7 @@ const ShowAllJobs = () => {
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [searchValue]);
+  }, [searchValue,filterValue]);
 
   return (
     <div className="show-all-jobs" data-testid="total-jobs">

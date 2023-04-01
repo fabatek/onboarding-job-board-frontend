@@ -12,7 +12,7 @@ const ShowAllJobsTestComponent = () => {
   );
 };
 
-const mockState = {searchValue:'', loading: false, allJobs:[
+const mockState = {loading: false, allJobs:[
   {
     createdAt: "2022-12-06T13:06:50.782Z",
     title: "International Paradigm Agent",
@@ -43,7 +43,18 @@ const mockState = {searchValue:'', loading: false, allJobs:[
     jobDesc: "Totam necessiis mollitia facere repudiandae. Aspernatur itaque amet id sa",
     id: "1"
   }
-] };
+],
+searchValue:{
+  valueCity:"default",
+  searchInput:"",
+},
+filterValue:{
+  jobLevel: "default",
+  salary: "default",
+  workingModel: "default",
+  companyType: "default",
+}
+};
 
 const mockStateWithLoading = { loading: true,allJobs:[
   {

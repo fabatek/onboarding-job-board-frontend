@@ -5,14 +5,27 @@ import { JobInitReducer, JobModal } from "../../type/type";
 const initialState: JobInitReducer = {
   allJobs: [],
   loading:false,
-  searchValue:''
+  searchValue:{
+    valueCity:"default",
+    searchInput:"",
+  },
+  filterValue:{
+    jobLevel: "default",
+    salary: "default",
+    workingModel: "default",
+    companyType: "default",
+  }
 };
 const jobReducer = createSlice({
   name: "jobReducer",
   initialState,
   reducers:{
-    searchValueReducer:(state:JobInitReducer,action:PayloadAction<string>)=>{
-        state.searchValue = action.payload;
+    searchValueReducer:(state:JobInitReducer,action:PayloadAction<any>)=>{
+        if(action.payload.valueCity){
+          state.searchValue = action.payload
+        }else{
+          state.filterValue = action.payload
+        }
     }
 },
   extraReducers: (builder) => {
@@ -37,7 +50,7 @@ export default jobReducer.reducer;
 
 export const getAllJobs = createAsyncThunk("getAllJob", async () => {
   try {
-    const res = await http.get("/jobs");
+    const res = await http.get("/jobsv2");
     return res.data;
   } catch (error) {}
 });

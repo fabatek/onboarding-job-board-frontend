@@ -1,13 +1,59 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
+import { searchValueReducer } from "../../redux/reducer/jobs";
+import { DispatchType } from "../../redux/store/store";
+import { useDispatch } from "react-redux";
 
 const Navbar = () => {
-  const [filter] = useState({
+  const [filter, setFilter] = useState({
     jobLevel: "default",
     salary: "default",
     workingModel: "default",
     companyType: "default",
-  })
+  });
+  const dispatch: DispatchType = useDispatch();
+  const handleChangeFilter = (
+    e: React.ChangeEvent<HTMLSelectElement>,
+    type: string
+  ): void => {
+    if (type === "jobLevel") {
+      setFilter({ ...filter, jobLevel: e.target.value });
+    }
+    if (type === "salary") {
+      setFilter({ ...filter, salary: e.target.value });
+    }
+    if (type === "workingModel") {
+      setFilter({ ...filter, workingModel: e.target.value });
+    }
+    if (type === "companyType") {
+      setFilter({ ...filter, companyType: e.target.value });
+    }
+  };
 
+  const handleFilter = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+    const action = {
+      jobLevel: filter.jobLevel,
+      salary: filter.salary,
+      workingModel: filter.workingModel,
+      companyType: filter.companyType,
+    };
+    dispatch(searchValueReducer(action))
+  };
+
+  const handleClearFilter = () => {
+    setFilter({
+      jobLevel: "default",
+      salary: "default",
+      workingModel: "default",
+      companyType: "default",
+    })
+    dispatch(searchValueReducer({
+      jobLevel: "default",
+      salary: "default",
+      workingModel: "default",
+      companyType: "default",
+    }))
+  }
   return (
     <div className="navbar container py-4 px-0">
       <nav className="navbar navbar-expand-lg px-0">
@@ -30,13 +76,14 @@ const Navbar = () => {
                   className="form-select"
                   aria-label="Default select example 2"
                   role="combobox"
-                  defaultValue={filter.jobLevel}
+                  value={filter.jobLevel}
+                  onChange={(e) => handleChangeFilter(e, "jobLevel")}
                 >
-                  <option value="default" >Job level</option>
-                  <option value="1">Junior</option>
-                  <option value="2">Fresher</option>
-                  <option value="3">Senior</option>
-                  <option value="4">Manager</option>
+                  <option value="default">Job level</option>
+                  <option value="Junior">Junior</option>
+                  <option value="Fresher">Fresher</option>
+                  <option value="Senior">Senior</option>
+                  <option value="Manager">Manager</option>
                 </select>
               </li>
               <li className="nav-item me-3">
@@ -44,13 +91,14 @@ const Navbar = () => {
                   className="form-select"
                   aria-label="Default select example"
                   role="combobox"
-                  defaultValue={filter.salary}
+                  value={filter.salary}
+                  onChange={(e) => handleChangeFilter(e, "salary")}
                 >
                   <option value="default">Salary Range</option>
-                  <option value="1">{`< 3000$`}</option>
-                  <option value="2">{`< 4000$`}</option>
-                  <option value="3">{`< 5000$`}</option>
-                  <option value="3">{`< 6000$`}</option>
+                  <option value="6000">{`< 6000$`}</option>
+                  <option value="7000">{`< 7000$`}</option>
+                  <option value="8000">{`< 8000$`}</option>
+                  <option value="9000">{`< 9000$`}</option>
                 </select>
               </li>
               <li className="nav-item me-3">
@@ -58,11 +106,12 @@ const Navbar = () => {
                   className="form-select"
                   aria-label="Default select example"
                   role="combobox"
-                  defaultValue={filter.workingModel}
+                  value={filter.workingModel}
+                  onChange={(e) => handleChangeFilter(e, "workingModel")}
                 >
                   <option value="default">Working Model</option>
-                  <option value="0">remote</option>
-                  <option value="1">office</option>
+                  <option value="Remote">remote</option>
+                  <option value="Office">office</option>
                 </select>
               </li>
               <li className="nav-item me-3">
@@ -70,20 +119,27 @@ const Navbar = () => {
                   className="form-select"
                   aria-label="Default select example"
                   role="combobox"
-                  defaultValue={filter.companyType}
+                  value={filter.companyType}
+                  onChange={(e) => handleChangeFilter(e, "companyType")}
                 >
                   <option value="default">Company type</option>
-                  <option value="0">Product</option>
-                  <option value="1">Outsource</option>
+                  <option value="Product">Product</option>
+                  <option value="Outsource">Outsource</option>
                 </select>
               </li>
               <li>
-                <button className="btn btn-primary" data-testid="button-filter">
+                <button
+                  className="btn btn-primary"
+                  data-testid="button-filter"
+                  onClick={handleFilter} 
+                >
                   <i className="fa-solid fa-magnifying-glass" />
                 </button>
               </li>
-              <li className="">
-                <p className="text-primary mx-2 my-auto cursor-pointer">Clear all filters</p>
+              <li className="" onClick={handleClearFilter}>
+                <button className="btn btn-outline text-primary mx-2 my-auto">
+                  Clear all filters
+                </button>
               </li>
             </ul>
           </div>
