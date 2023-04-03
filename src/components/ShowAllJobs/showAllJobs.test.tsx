@@ -12,89 +12,97 @@ const ShowAllJobsTestComponent = () => {
   );
 };
 
-const mockState = {loading: false, allJobs:[
-  {
-    createdAt: "2022-12-06T13:06:50.782Z",
-    title: "International Paradigm Agent",
-    avatar: "https://loremflickr.com/640/480/food",
-    address: "Livermore",
-    tag: "Technician",
-    status: true,
-    jobDesc: "Totam necessiis mollitia facere repudiandae. Aspernatur itaque amet id sa",
-    id: "1"
+const mockState = {
+  loading: false,
+  allJobs: [
+    {
+      createdAt: "2022-12-06T13:06:50.782Z",
+      title: "International Paradigm Agent",
+      avatar: "https://loremflickr.com/640/480/food",
+      address: "Livermore",
+      tag: "Technician",
+      status: true,
+      jobDesc:
+        "Totam necessiis mollitia facere repudiandae. Aspernatur itaque amet id sa",
+      id: "1",
+    },
+    {
+      createdAt: "2022-12-06T13:06:50.782Z",
+      title: "International Paradigm Agent",
+      avatar: "https://loremflickr.com/640/480/food",
+      address: "Livermore",
+      tag: "Technician",
+      status: true,
+      jobDesc:
+        "Totam necessiis mollitia facere repudiandae. Aspernatur itaque amet id sa",
+      id: "1",
+    },
+    {
+      createdAt: "2022-12-06T13:06:50.782Z",
+      title: "International Paradigm Agent",
+      avatar: "https://loremflickr.com/640/480/food",
+      address: "Livermore",
+      tag: "Technician",
+      status: true,
+      jobDesc:
+        "Totam necessiis mollitia facere repudiandae. Aspernatur itaque amet id sa",
+      id: "1",
+    },
+  ],
+  searchValue: {
+    valueCity: "default",
+    searchInput: "",
   },
-  {
-    createdAt: "2022-12-06T13:06:50.782Z",
-    title: "International Paradigm Agent",
-    avatar: "https://loremflickr.com/640/480/food",
-    address: "Livermore",
-    tag: "Technician",
-    status: true,
-    jobDesc: "Totam necessiis mollitia facere repudiandae. Aspernatur itaque amet id sa",
-    id: "1"
+  filterValue: {
+    jobLevel: "default",
+    salary: "default",
+    workingModel: "default",
+    companyType: "default",
   },
-  {
-    createdAt: "2022-12-06T13:06:50.782Z",
-    title: "International Paradigm Agent",
-    avatar: "https://loremflickr.com/640/480/food",
-    address: "Livermore",
-    tag: "Technician",
-    status: true,
-    jobDesc: "Totam necessiis mollitia facere repudiandae. Aspernatur itaque amet id sa",
-    id: "1"
-  }
-],
-searchValue:{
-  valueCity:"default",
-  searchInput:"",
-},
-filterValue:{
-  jobLevel: "default",
-  salary: "default",
-  workingModel: "default",
-  companyType: "default",
-}
 };
 
-const mockStateWithLoading = { loading: true,allJobs:[
-  {
-    createdAt: "2022-12-06T13:06:50.782Z",
-    title: "International Paradigm Agent",
-    avatar: "https://loremflickr.com/640/480/food",
-    address: "Livermore",
-    tag: "Technician",
-    status: true,
-    jobDesc: "Totam necessiis mollitia facere repudiandae. Aspernatur itaque amet id sa",
-    id:'2'
-  }
-] };
+const mockStateWithLoading = {
+  loading: true,
+  allJobs: [
+    {
+      createdAt: "2022-12-06T13:06:50.782Z",
+      title: "International Paradigm Agent",
+      avatar: "https://loremflickr.com/640/480/food",
+      address: "Livermore",
+      tag: "Technician",
+      status: true,
+      jobDesc:
+        "Totam necessiis mollitia facere repudiandae. Aspernatur itaque amet id sa",
+      id: "2",
+    },
+  ],
+};
 jest.mock("react-redux", () => ({
   ...jest.requireActual("react-redux"),
   useSelector: jest.fn(),
 }));
 describe("show all jobs component", () => {
-
   test("show all jobs", async () => {
     (useSelector as jest.Mock).mockReturnValue(mockState);
     const { getByTestId } = render(<ShowAllJobsTestComponent />);
-     expect(getByTestId("total-jobs")).toBeInTheDocument();
+    expect(getByTestId("total-jobs")).toBeInTheDocument();
   });
   test("render list job", async () => {
     (useSelector as jest.Mock).mockReturnValue(mockState);
     const { getByTestId } = render(<ShowAllJobsTestComponent />);
-    const listItem = await waitFor(() => getByTestId("list-job"))
-    expect(listItem).toBeInTheDocument()
+    const listItem = await waitFor(() => getByTestId("list-job"));
+    expect(listItem).toBeInTheDocument();
   });
   test("render list job", async () => {
     (useSelector as jest.Mock).mockReturnValue(mockState);
     const { findAllByTestId } = render(<ShowAllJobsTestComponent />);
     const listItem = await waitFor(() => findAllByTestId("list-item-test"));
-    expect(listItem).toHaveLength(3)
+    expect(listItem).toHaveLength(3);
   });
   test("render loading", async () => {
     (useSelector as jest.Mock).mockReturnValue(mockStateWithLoading);
     const { getByTestId } = render(<ShowAllJobsTestComponent />);
-    const listItem = await waitFor(() => getByTestId("loading-testid"))
+    const listItem = await waitFor(() => getByTestId("loading-testid"));
     expect(listItem).toBeInTheDocument();
   });
 });

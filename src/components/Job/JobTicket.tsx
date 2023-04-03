@@ -7,17 +7,31 @@ const JobTicket = ({ item }: JobTicketProps) => {
   const currentDate = new Date();
 
   const dateFormat = (jobCreationDate: Date) => {
-    const distanceBetweenToDate = Math.abs((currentDate.getDate() - jobCreationDate.getDate()) * 24);
-    const hours = Math.abs(currentDate.getDate() - jobCreationDate.getDate()) * 24 + " hour ago";
-    const day = Math.abs((currentDate.getDate() - jobCreationDate.getDate()) * 24) / 24 + " day ago";
-    const week = Math.ceil(Math.abs((currentDate.getDate() - jobCreationDate.getDate()) * 24) / 24 / 7) + " week ago";
+    const distanceBetweenToDate = Math.abs(
+      (currentDate.getDate() - jobCreationDate.getDate()) * 24
+    );
+    const hours =
+      Math.abs(currentDate.getDate() - jobCreationDate.getDate()) * 24 +
+      " hour ago";
+    const day =
+      Math.abs((currentDate.getDate() - jobCreationDate.getDate()) * 24) / 24 +
+      " day ago";
+    const week =
+      Math.ceil(
+        Math.abs((currentDate.getDate() - jobCreationDate.getDate()) * 24) /
+          24 /
+          7
+      ) + " week ago";
     if (distanceBetweenToDate === 0) {
       return "Just now";
     }
     if (distanceBetweenToDate <= 24) {
       return hours;
     }
-    if (Math.abs((currentDate.getDate() - jobCreationDate.getDate()) * 24) / 24 > 7) {
+    if (
+      Math.abs((currentDate.getDate() - jobCreationDate.getDate()) * 24) / 24 >
+      7
+    ) {
       return week;
     }
     return day;
@@ -29,18 +43,23 @@ const JobTicket = ({ item }: JobTicketProps) => {
       </div>
       <div className="job-ticket__center">
         <h2>{item.title}</h2>
-        <div className="job-ticket__center-more">
-          <ul>
-          <li>{item.salary} USD</li>
-          <li>{item.jobLevel}</li>
-          <li>{item.companyType}</li>
-          <li>{item.working}</li>
+        <div className="job-ticket__center__salary">
+          <p className="job-ticket__center__salary-icon m-0 me-1">
+            <i className="fa-solid fa-dollar-sign"></i>{" "}
+          </p>
+          <p className="m-0">
+          {String(item.salary).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")} USD
+          </p>
+        </div>
+        <div className="job-ticket__center">
+          <ul className="job-ticket__center__list">
+            <li className="job-ticket__center__list-item">{item.jobLevel}</li>
+            <li className="job-ticket__center__list-item">
+              {item.companyType}
+            </li>
+            <li className="job-ticket__center__list-item">{item.working}</li>
           </ul>
         </div>
-        <ul className="job-ticket__center-list-tag">
-          <li>c++</li>
-          <li>html</li>
-        </ul>
       </div>
       <div className="job-ticket__right">
         <span

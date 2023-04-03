@@ -10,6 +10,7 @@ import Pagination from "../Pagination/Pagination";
 import search from "../../util/search/search";
 
 const ShowAllJobs = () => {
+  const dispatch: DispatchType = useDispatch();
   const [currentPage, setCurrentPage] = useState<number>(1);
   const jobsPerPage = 10;
   const lastIndex = currentPage * jobsPerPage;
@@ -18,7 +19,6 @@ const ShowAllJobs = () => {
   const { allJobs, searchValue,filterValue, loading } = useSelector( (state: RootState) => state.jobReducer);
   const searchResults: JobModal[] = search(allJobs, searchValue,filterValue);
   
-  const dispatch: DispatchType = useDispatch();
   useEffect(() => {
     dispatch(getAllJobs());
   }, []);

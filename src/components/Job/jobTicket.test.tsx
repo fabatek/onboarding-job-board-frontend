@@ -9,7 +9,6 @@ describe("JobTicket component", () => {
     title: "Global Factors Developer",
     avatar: "https://loremflickr.com/640/480/business",
     address: "Cerritos",
-    tag: "Strategist",
     id: "1",
     status:true
   };

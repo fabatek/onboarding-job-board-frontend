@@ -74,7 +74,7 @@ const Navbar = () => {
               <li className="nav-item me-3">
                 <select
                   className="form-select"
-                  aria-label="Default select example 2"
+                  aria-label="Default select job level"
                   role="combobox"
                   value={filter.jobLevel}
                   onChange={(e) => handleChangeFilter(e, "jobLevel")}
@@ -89,7 +89,7 @@ const Navbar = () => {
               <li className="nav-item me-3">
                 <select
                   className="form-select"
-                  aria-label="Default select example"
+                  aria-label="Default select salary"
                   role="combobox"
                   value={filter.salary}
                   onChange={(e) => handleChangeFilter(e, "salary")}
@@ -104,7 +104,7 @@ const Navbar = () => {
               <li className="nav-item me-3">
                 <select
                   className="form-select"
-                  aria-label="Default select example"
+                  aria-label="Default select working model"
                   role="combobox"
                   value={filter.workingModel}
                   onChange={(e) => handleChangeFilter(e, "workingModel")}
@@ -117,7 +117,7 @@ const Navbar = () => {
               <li className="nav-item me-3">
                 <select
                   className="form-select"
-                  aria-label="Default select example"
+                  aria-label="Default select company type"
                   role="combobox"
                   value={filter.companyType}
                   onChange={(e) => handleChangeFilter(e, "companyType")}
@@ -136,7 +136,7 @@ const Navbar = () => {
                   <i className="fa-solid fa-magnifying-glass" />
                 </button>
               </li>
-              <li className="" onClick={handleClearFilter}>
+              <li className="" data-testid='btn-clear-test' onClick={handleClearFilter}>
                 <button className="btn btn-outline text-primary mx-2 my-auto">
                   Clear all filters
                 </button>
