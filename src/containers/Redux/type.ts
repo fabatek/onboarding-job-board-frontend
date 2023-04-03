@@ -6,6 +6,11 @@ export interface JobState {
   data: Job[];
   error: string;
 }
+export interface JobDetailState {
+  loading: boolean;
+  data: Job;
+  error: string;
+}
 export interface searchState {
   search : Search
 }
