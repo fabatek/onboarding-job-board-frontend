@@ -7,11 +7,14 @@ import { Provider } from 'react-redux';
 import './index.scss';
 import App from './containers/App';
 import * as serviceWorker from './serviceWorker';
-
+import Navbar from './containers/components/Navbar';
+import Footer from './containers/components/Footer';
 ReactDOM.render(
     <Provider store={store}>
       <BrowserRouter>
+      <Navbar/>
       <App />
+      <Footer/>
     </BrowserRouter>
     </Provider>,
   document.getElementById('root')

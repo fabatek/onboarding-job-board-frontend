@@ -7,7 +7,7 @@ jest.mock("../../../util/util.ts")
 test('should render job', async () => {
     render(
         <Provider store={store}>
-            <ListJob currentJobs={[{ jobName: "Lead Integration Associate", city: "Gibsonstad", moTa: "Dynamic", id: "1", img: "https://loremflickr.com/640/480/city", tech: "Assistant" }]} />
+            <ListJob currentJobs={[]} />
         </Provider>
     )
     const jobs = await screen.findByTestId("test100Jobs")

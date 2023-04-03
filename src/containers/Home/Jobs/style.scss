@@ -6,6 +6,9 @@ $main-color : #f0101a;
     position: relative;
     margin-bottom: 10px;
     box-shadow: 0 0 5px 0 rgba(66, 59, 59, 0.851);
+    a{
+        text-decoration: none;
+    }
     &::after{
         position: absolute;
         content: "Hot";

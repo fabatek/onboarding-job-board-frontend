@@ -7,13 +7,14 @@ export const getJobs = createAsyncThunk<Job[]>(
   "jobs/getJobs",
   async (data, thunkApi) => {
     try {
-      const data = await api.get("/products");
+      const data = await api.get("/products/");
       return data.data;
     } catch (err:any) {
       return thunkApi.rejectWithValue(err.message);
     }
   }
 );
+
 const initialState = {
   loading: false,
   data: [],
