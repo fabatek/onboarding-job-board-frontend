@@ -4,7 +4,7 @@ import { AiFillHome, AiFillInfoCircle } from "react-icons/ai";
 import { MdOutlineAttachMoney, MdPlace } from "react-icons/md";
 import { BiCategoryAlt } from "react-icons/bi";
 import { JobModel } from "../../../types/types";
-import { NavLink } from "react-router-dom";
+import { Button } from "../../../assets/styles/style";
 
 type Props = {
   item: JobModel;
@@ -13,7 +13,7 @@ type Props = {
 const JobCard = (props: Props) => {
   const { item } = props;
   return (
-    <div className="container p-2 my-2 overflow-hidden job-card-container">
+    <div className="container p-2 my-2 overflow-hidden job-card">
       <div className="row align-items-center">
         <div className="col-4">
           <div className="logo-company">
@@ -48,14 +48,9 @@ const JobCard = (props: Props) => {
             </span>
           </div>
           <div className="row px-2 mt-2 text-center">
-            <button className="btn btn-success view-detail-btn">
-              <NavLink
-                to={`/jobs/${item.id}`}
-                className="text-decoration-none text-white"
-              >
-                View Detail
-              </NavLink>
-            </button>
+            <Button href={`/jobs/${item.id}`} type="success">
+              View Detail
+            </Button>
           </div>
         </div>
       </div>

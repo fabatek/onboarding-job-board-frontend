@@ -21,10 +21,10 @@ const JobDetail = (props: Props) => {
   return (
     <div className="container my-3 job-detail-page">
       <div className="row">
-        <div className="col-9 shadow p-3 mb-5 bg-white rounded job-detail-component">
+        <div className="col-9 shadow p-3 mb-5 bg-white rounded job-detail-page__left-content">
           <JobDetailComponent jobItem={jobItem} />
         </div>
-        <div className="col-3 company-card">
+        <div className="col-3 job-detail-page__right-content">
           <CompanyCard jobItem={jobItem} />
         </div>
       </div>

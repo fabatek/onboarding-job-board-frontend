@@ -15,7 +15,7 @@ const Pagination = (props: Props) => {
   const [pageNumbers, setPageNumbers] = useState<any[]>([]);
 
   useEffect(() => {
-    const tempPageNumbers = [];
+    const tempPageNumbers: number[] = [];
     for (let i = 0; i < Math.ceil(totalJobs / itemsPerPage); i++) {
       tempPageNumbers.push(i);
     }
@@ -31,8 +31,8 @@ const Pagination = (props: Props) => {
             onClick={() => handleChangeCurrentPage(item + 1)}
             className={
               currentPage === item + 1
-                ? "pagination-item active"
-                : "pagination-item"
+                ? "pagination__item active"
+                : "pagination__item"
             }
           >
             {item + 1}
@@ -49,7 +49,7 @@ const Pagination = (props: Props) => {
       ) : (
         <span
           onClick={() => handleChangeCurrentPage(currentPage - 1)}
-          className="prev-button"
+          className="pagination__prev-button"
         >
           &laquo;
         </span>
@@ -60,8 +60,8 @@ const Pagination = (props: Props) => {
           onClick={() => handleChangeCurrentPage(item + 1)}
           className={
             currentPage === item + 1
-              ? "pagination-item active"
-              : "pagination-item"
+              ? "pagination__item active"
+              : "pagination__item"
           }
         >
           {item + 1}
@@ -72,7 +72,7 @@ const Pagination = (props: Props) => {
       ) : (
         <span
           onClick={() => handleChangeCurrentPage(currentPage + 1)}
-          className="next-button"
+          className="pagination__next-button"
         >
           &raquo;
         </span>

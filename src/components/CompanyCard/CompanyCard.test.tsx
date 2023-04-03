@@ -22,7 +22,7 @@ describe("Company Card", () => {
         <CompanyCard jobItem={sampleJobItem} />
       </CustomProvider>
     );
-    const companyImg = document.querySelector(".card-img-top");
+    const companyImg = document.querySelector(".card__img-top");
     const companyName = await findByText("Faba Technology");
     const companyDescription = await findByText(
       "Công ty phần mềm ở Hồ Chí Minh"

@@ -32,9 +32,11 @@ describe("Routes", () => {
     );
     await waitFor(() => {
       const jobDetailComponent = document.querySelector(
-        ".job-detail-component"
+        ".job-detail-page__left-content"
       );
-      const companyCard = document.querySelector(".company-card");
+      const companyCard = document.querySelector(
+        ".job-detail-page__right-content"
+      );
       expect(jobDetailComponent).toBeVisible();
       expect(companyCard).toBeVisible();
     });

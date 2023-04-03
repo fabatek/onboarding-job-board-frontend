@@ -24,11 +24,17 @@ describe("Company Card", () => {
     );
     await waitFor(() => {
       const jobTitle = document.querySelector(".job-title");
-      const jobSalary = document.querySelector(".job-salary");
-      const jobPlace = document.querySelector(".job-place");
-      const jobCategory = document.querySelector(".job-category");
-      const jobDescription = document.querySelector(".job-description");
-      const jobRequirement = document.querySelector(".job-requirement");
+      const jobSalary = document.querySelector(".job-detail-wrapper__salary");
+      const jobPlace = document.querySelector(".job-detail-wrapper__place");
+      const jobCategory = document.querySelector(
+        ".job-detail-wrapper__category"
+      );
+      const jobDescription = document.querySelector(
+        ".job-detail-wrapper__descriptionn"
+      );
+      const jobRequirement = document.querySelector(
+        ".job-detail-wrapper__requirement"
+      );
       expect(jobTitle?.textContent).toEqual("Web Developer");
       expect(jobSalary?.textContent).toEqual("5000");
       expect(jobPlace?.textContent).toEqual("Ho Chi Minh");

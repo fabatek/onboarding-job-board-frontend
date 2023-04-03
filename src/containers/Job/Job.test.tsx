@@ -46,7 +46,7 @@ describe("Job Page", () => {
       </Provider>
     );
     await waitFor(() => {
-      const jobCardElements = document.querySelectorAll(".job-card-container");
+      const jobCardElements = document.querySelectorAll(".job-card");
       expect(jobCardElements?.length).toBe(10);
     });
   });
