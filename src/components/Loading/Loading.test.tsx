@@ -1,13 +1,15 @@
-import { render } from "@testing-library/react";
+import { render, waitFor } from "@testing-library/react";
 import CustomProvider from "../../providers/CustomProvider";
 import Loading from "./Loading";
 
 it("should render loading status successfully", async () => {
-  const { findByTestId } = render(
+  render(
     <CustomProvider>
       <Loading />
     </CustomProvider>
   );
-  const loadingStatus = await findByTestId("loading");
-  expect(loadingStatus).toBeInTheDocument();
+  await waitFor(() => {
+    const loadingStatus = document.querySelector(".loading");
+    expect(loadingStatus).toBeInTheDocument();
+  });
 });

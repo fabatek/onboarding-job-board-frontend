@@ -34,11 +34,6 @@ const Pagination = (props: Props) => {
                 ? "pagination-item active"
                 : "pagination-item"
             }
-            data-testid={
-              currentPage === item + 1
-                ? "pagination-item active"
-                : "pagination-item"
-            }
           >
             {item + 1}
           </span>
@@ -54,7 +49,7 @@ const Pagination = (props: Props) => {
       ) : (
         <span
           onClick={() => handleChangeCurrentPage(currentPage - 1)}
-          data-testid="prev-button"
+          className="prev-button"
         >
           &laquo;
         </span>
@@ -68,11 +63,6 @@ const Pagination = (props: Props) => {
               ? "pagination-item active"
               : "pagination-item"
           }
-          data-testid={
-            currentPage === item + 1
-              ? "pagination-item active"
-              : "pagination-item"
-          }
         >
           {item + 1}
         </span>
@@ -82,7 +72,7 @@ const Pagination = (props: Props) => {
       ) : (
         <span
           onClick={() => handleChangeCurrentPage(currentPage + 1)}
-          data-testid="next-button"
+          className="next-button"
         >
           &raquo;
         </span>

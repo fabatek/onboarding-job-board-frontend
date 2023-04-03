@@ -19,12 +19,12 @@ const JobDetail = (props: Props) => {
   }, [dispatch, idJob]);
 
   return (
-    <div className="container my-3">
+    <div className="container my-3 job-detail-page">
       <div className="row">
-        <div className="col-9 shadow p-3 mb-5 bg-white rounded">
+        <div className="col-9 shadow p-3 mb-5 bg-white rounded job-detail-component">
           <JobDetailComponent jobItem={jobItem} />
         </div>
-        <div className="col-3">
+        <div className="col-3 company-card">
           <CompanyCard jobItem={jobItem} />
         </div>
       </div>

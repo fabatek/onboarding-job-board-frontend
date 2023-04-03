@@ -5,7 +5,7 @@ import Pagination from "./Pagination";
 describe("Pagination", () => {
   it("should be visible", async () => {
     const changeCurrentPage = jest.fn();
-    const { findAllByTestId } = render(
+    render(
       <CustomProvider>
         <Pagination
           totalJobs={100}
@@ -15,13 +15,15 @@ describe("Pagination", () => {
         />
       </CustomProvider>
     );
-    const paginationListItem = await findAllByTestId("pagination-item");
-    expect(paginationListItem).not.toBeNull();
+    await waitFor(() => {
+      const paginationListItem = document.querySelectorAll(".pagination-item");
+      expect(paginationListItem).not.toBeNull();
+    });
   });
 
   it("should render correct number of page", async () => {
     const changeCurrentPage = jest.fn();
-    const { findAllByTestId, findByTestId } = render(
+    render(
       <CustomProvider>
         <Pagination
           totalJobs={100}
@@ -31,15 +33,15 @@ describe("Pagination", () => {
         />
       </CustomProvider>
     );
-    const paginationListItem = await findAllByTestId("pagination-item");
-    const paginationItemActice = await findByTestId("pagination-item active");
-    expect(paginationListItem).toHaveLength(9);
-    expect(paginationItemActice).not.toBeNull();
+    await waitFor(() => {
+      const paginationListItem = document.querySelectorAll(".pagination-item");
+      expect(paginationListItem).toHaveLength(10);
+    });
   });
 
   it("should render the prev and next button", async () => {
     const changeCurrentPage = jest.fn();
-    const { findByTestId } = render(
+    render(
       <CustomProvider>
         <Pagination
           totalJobs={100}
@@ -49,15 +51,17 @@ describe("Pagination", () => {
         />
       </CustomProvider>
     );
-    const prevButton = await findByTestId("prev-button");
-    const nextButton = await findByTestId("next-button");
-    expect(prevButton).toBeVisible();
-    expect(nextButton).toBeVisible();
+    await waitFor(() => {
+      const prevButton = document.querySelector(".prev-button");
+      const nextButton = document.querySelector(".next-button");
+      expect(prevButton).toBeVisible();
+      expect(nextButton).toBeVisible();
+    });
   });
 
   it("should render default page", async () => {
     const changeCurrentPage = jest.fn();
-    const { findByTestId } = render(
+    render(
       <CustomProvider>
         <Pagination
           totalJobs={100}
@@ -67,13 +71,17 @@ describe("Pagination", () => {
         />
       </CustomProvider>
     );
-    const paginationItemActice = await findByTestId("pagination-item active");
-    expect(paginationItemActice.textContent).toEqual("1");
+    await waitFor(() => {
+      const paginationItemActice = document.querySelector(
+        ".pagination-item.active"
+      );
+      expect(paginationItemActice?.textContent).toEqual("1");
+    });
   });
 
   it("should render only 1 page when the items per page is less than 10", async () => {
     const changeCurrentPage = jest.fn();
-    const { findByTestId, queryByTestId } = render(
+    const { queryByText } = render(
       <CustomProvider>
         <Pagination
           totalJobs={9}
@@ -83,10 +91,14 @@ describe("Pagination", () => {
         />
       </CustomProvider>
     );
-    const paginationItemActice = await findByTestId("pagination-item active");
-    expect(paginationItemActice.textContent).toEqual("1");
-    const prevButton = queryByTestId("prev-button");
-    const nextButton = queryByTestId("next-button");
+    await waitFor(() => {
+      const paginationItemActice = document.querySelector(
+        ".pagination-item.active"
+      );
+      expect(paginationItemActice?.textContent).toEqual("1");
+    });
+    const prevButton = queryByText(/&laquo;/i);
+    const nextButton = queryByText(/&raquo;/i);
     expect(prevButton).not.toBeInTheDocument();
     expect(nextButton).not.toBeInTheDocument();
   });

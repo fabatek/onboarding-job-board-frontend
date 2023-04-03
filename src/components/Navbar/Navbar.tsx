@@ -11,24 +11,14 @@ const Navbar = (props: Props) => {
         <div className="col-8">
           <img src="../../assets/img/logo.png" alt="" />
           {navbarItemLeft?.map((item) => (
-            <a
-              href="/"
-              className="item-link"
-              key={item.key}
-              data-testid="item-link"
-            >
+            <a href="/" className="item-link" key={item.key}>
               {item.value}
             </a>
           ))}
         </div>
         <div className="col-4 text-end">
           {navbarItemRight?.map((item) => (
-            <a
-              href="/"
-              className="item-link"
-              key={item.key}
-              data-testid="item-link"
-            >
+            <a href="/" className="item-link" key={item.key}>
               {item.value}
             </a>
           ))}

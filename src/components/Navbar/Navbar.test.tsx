@@ -7,12 +7,12 @@ afterAll(cleanup);
 
 describe("Navbar Component", () => {
   it("should render the navbar successfully", async () => {
-    const { findAllByTestId } = render(
+    const { findAllByRole } = render(
       <CustomProvider>
         <Navbar />
       </CustomProvider>
     );
-    const itemLink = await findAllByTestId("item-link");
+    const itemLink = await findAllByRole("link");
     expect(itemLink).not.toBeNull();
   });
 
