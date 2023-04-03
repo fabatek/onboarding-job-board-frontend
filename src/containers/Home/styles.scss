@@ -3,7 +3,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  list-style: none;
+ 
   text-decoration: none !important;
   font-family: 'Delicious Handrawn', cursive;
 
@@ -374,6 +374,93 @@
     }
   }
 }
+.job__information{
+ 
+  padding : 0 100px;
+  .job-information__description{
+    background-color: #e9e9e9;
+    padding: 40px 50px;
+    border-radius: 5px;
+  .job-information__requirement{
+    padding-bottom: 50px;
+    .job-requirement__title{
+      font-weight: 600;
+    }
+    .job-requirement__list{
+      .job-requirement__item{
+        margin-top: 10px;
+        font-size: 17px;
+      }
+    }
+  }
+  .job-information__other{
+    .job-other__title{
+      font-weight: 600;
+    }
+    .job-other__list{
+      .job-other__item{
+        margin-top: 10px;
+        font-size: 17px;
+      }
+    }
+  }
+}
+}
+.footer{
+  margin-top: 150px;
+  background-color: #221f20;
+  padding: 50px 200px;
+  .footer__up{
+    
+    display: flex;
+    justify-content: space-between;
+    .footer-up__about{
+      .footer-about__title{
+        color: #c0b9a4;
+      }
+      .footer-about__list{
+        list-style: none;
+        text-decoration: none;
+        .footer-about__item{
+          margin-left: -30px;
+          color: gray;
+        }
+      }
+    }
+    .footer-up__general{
+      .footer-general__title{
+        color: #c0b9a4;
+      }
+      }
+      .footer-general__list{
+        list-style: none;
+        text-decoration: none;
+        .footer-general__item{
+          margin-left: -30px;
+          color: gray;
+        }
+      }
+    }
+    .footer-up__media{
+      .footer-media__link{
+        color: gray;
+      }
+    }
+  }
+  .footer__bottom{
+    padding-top: 50px;
+    .footer-bottom__contact{
+      .footer-contact__title{
+        color: #c0b9a4;
+        
+      
+      }
+      .footer-contact__link{
+        color: gray;
+      }
+    }
+  }
+
 .not-found{
   display: flex;
   flex-direction: column;
