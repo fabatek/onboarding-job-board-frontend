@@ -1,9 +1,33 @@
-import { JobModal } from "../../type/type";
+import { FilterValue, JobModal, SearchValue } from "../../type/type";
 
-const search = (jobs:JobModal[],searchValue: string):JobModal[] => {
+const search = (
+  jobs: JobModal[],
+  searchString: SearchValue,
+  filters: FilterValue
+): JobModal[] => {
+  const result = jobs?.filter((job: JobModal) => {
+    return (
+      job.title
+        .toLowerCase()
+        .includes(String(searchString?.searchInput)?.toLowerCase()) &&
+      (searchString.valueCity === "default"
+        ? true
+        : job.address === searchString.valueCity) &&
+      (filters.workingModel === "default"
+        ? true
+        : job.working === filters.workingModel) &&
+      (filters.companyType === "default"
+        ? true
+        : job.companyType === filters.companyType) &&
+      (filters.jobLevel === "default"
+        ? true
+        : job.jobLevel === filters.jobLevel) &&
+      (filters.salary === "default"
+        ? true
+        : Number(job.salary) < Number(filters.salary))
+    );
+  });
+  return result;
+};
 
-const result = jobs?.filter((job:JobModal) => job.title.toLowerCase().includes(searchValue?.toLowerCase()));
-return result
-}
-
-export default search
+export default search;

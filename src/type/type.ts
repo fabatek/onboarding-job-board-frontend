@@ -3,18 +3,19 @@ interface JobModal {
   avatar: string;
   createdAt: string;
   id: string;
-  tag: string;
   title: string;
   status?: boolean;
   jobDesc?: string;
   salary?: number;
-  companyType?: boolean;
-  working?: boolean
+  companyType?: string;
+  working?: string;
+  jobLevel?:string;
 }
 interface JobInitReducer {
   allJobs: JobModal[];
   loading: boolean;
-  searchValue: string;
+  searchValue: SearchValue;
+  filterValue: FilterValue;
 }
 interface JobTicketProps {
   item: JobModal;
@@ -25,5 +26,14 @@ interface PaginationProps {
   currentPage: number;
   totalJobs?: number;
 }
-
-export type { JobModal, JobInitReducer, JobTicketProps, PaginationProps };
+interface SearchValue {
+  valueCity?:string,
+  searchInput?:string,
+}
+interface FilterValue {
+  jobLevel?: string,
+  salary?: string,
+  workingModel?: string,
+  companyType?: string,
+}
+export type { JobModal, JobInitReducer, JobTicketProps, PaginationProps, SearchValue, FilterValue };

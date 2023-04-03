@@ -5,15 +5,23 @@ import { DispatchType } from "../../redux/store/store";
 
 const Header = () => {
   const [searchInput,setSearchInput] = useState<string>('')
+  const [valueCity,setValueCity] = useState<string>('default')
   const dispatch:DispatchType = useDispatch()
-
   const handleSearch = (e:React.MouseEvent<HTMLElement>) => {
     e.preventDefault()
-    dispatch(searchValueReducer(searchInput))   
+    const action = {
+      searchInput,
+      valueCity
+    }
+    dispatch(searchValueReducer(action))   
   }
 
   const handleInputValueSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchInput(e.target.value)
+  }
+
+  const handleCityValue = (e: React.ChangeEvent<HTMLSelectElement>): void => {
+    setValueCity(e.target.value)
   }
   return (
     <div className="header bg-black">
@@ -51,12 +59,13 @@ const Header = () => {
                   <select
                     className="form-select"
                     aria-label="Default select example"
-                    defaultValue={2}
+                    value={valueCity}
+                    onChange={handleCityValue}
                   >
-                    <option value={1}>All Cities</option>
-                    <option value={2}>Hồ Chí Minh</option>
-                    <option value={3}>Hà nội</option>
-                    <option value={4}>Đà Nẵng</option>
+                    <option value='default'>All Cities</option>
+                    <option value='Ho Chi Minh'>Hồ Chí Minh</option>
+                    <option value='Ha Noi'>Hà nội</option>
+                    <option value='Hue'>Huế</option>
                   </select>
                 </li>
                 <li>

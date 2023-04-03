@@ -32,7 +32,7 @@ describe("Header", () => {
     render(<NavbarTestComponent />);
     const dropdownMenu = screen.getByLabelText("Default select example");
     expect(dropdownMenu).toBeInTheDocument();
-    expect(dropdownMenu).toHaveValue("2");
+    expect(dropdownMenu).toHaveValue("default");
   });
   test("render from input element",()=>{
     render(<NavbarTestComponent />);
