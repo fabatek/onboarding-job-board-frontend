@@ -10,3 +10,8 @@ export interface JobModel {
   jobDescription?: string;
   jobRequirement?: string;
 }
+
+export interface IButton {
+  type?: string;
+  disabled?: boolean;
+}

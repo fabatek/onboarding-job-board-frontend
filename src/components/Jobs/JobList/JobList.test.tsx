@@ -21,7 +21,7 @@ describe("Get All Jobs", () => {
       </Provider>
     );
     await waitFor(() => {
-      const jobs = document.querySelectorAll(".job-card-container");
+      const jobs = document.querySelectorAll(".job-card");
       expect(jobs).toHaveLength(10);
     });
   });

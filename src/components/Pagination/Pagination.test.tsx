@@ -16,7 +16,7 @@ describe("Pagination", () => {
       </CustomProvider>
     );
     await waitFor(() => {
-      const paginationListItem = document.querySelectorAll(".pagination-item");
+      const paginationListItem = document.querySelectorAll(".pagination__item");
       expect(paginationListItem).not.toBeNull();
     });
   });
@@ -34,7 +34,7 @@ describe("Pagination", () => {
       </CustomProvider>
     );
     await waitFor(() => {
-      const paginationListItem = document.querySelectorAll(".pagination-item");
+      const paginationListItem = document.querySelectorAll(".pagination__item");
       expect(paginationListItem).toHaveLength(10);
     });
   });
@@ -52,8 +52,8 @@ describe("Pagination", () => {
       </CustomProvider>
     );
     await waitFor(() => {
-      const prevButton = document.querySelector(".prev-button");
-      const nextButton = document.querySelector(".next-button");
+      const prevButton = document.querySelector(".pagination__prev-button");
+      const nextButton = document.querySelector(".pagination__next-button");
       expect(prevButton).toBeVisible();
       expect(nextButton).toBeVisible();
     });
@@ -73,7 +73,7 @@ describe("Pagination", () => {
     );
     await waitFor(() => {
       const paginationItemActice = document.querySelector(
-        ".pagination-item.active"
+        ".pagination__item.active"
       );
       expect(paginationItemActice?.textContent).toEqual("1");
     });
@@ -93,7 +93,7 @@ describe("Pagination", () => {
     );
     await waitFor(() => {
       const paginationItemActice = document.querySelector(
-        ".pagination-item.active"
+        ".pagination__item.active"
       );
       expect(paginationItemActice?.textContent).toEqual("1");
     });

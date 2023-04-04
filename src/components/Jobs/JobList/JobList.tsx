@@ -32,18 +32,17 @@ const JobList = (props: Props) => {
     dispatch(changeIsLoading(true));
   };
 
-  if (isLoading) {
+  if (isLoading)
     return (
       <div className="my-5">
         <Loading />
       </div>
     );
-  }
 
   return (
-    <div className="container my-5">
+    <div className="container my-5 job-list">
       {jobPaginationList.length ? (
-        <div>
+        <div className="job-list__content">
           <div className="row">
             {jobPaginationList?.map((item: JobModel) => {
               return (
@@ -63,7 +62,7 @@ const JobList = (props: Props) => {
           </div>
         </div>
       ) : (
-        <div className="row text-center">
+        <div className="row text-center job-list__content">
           <p>Ops..! The job was not found !!</p>
           <p>
             Back to home: <a href="/">Home</a>

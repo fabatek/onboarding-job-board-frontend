@@ -1,3 +1,5 @@
+import { jobs } from "./jobs";
+
 export const searchOptions = [
   { key: 1, value: "Title" },
   { key: 2, value: "Category" },
@@ -18,3 +20,5 @@ export const navbarItemRight = [
 ];
 
 export const ITEM_PER_PAGE = 10;
+
+export const TOTAL_NUMBER_OF_JOBS = jobs.length;

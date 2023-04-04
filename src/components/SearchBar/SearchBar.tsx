@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getAllJobsApi, searchJobApi } from "../../redux/reducer/jobReducer";
 import "../../assets/styles/SearchBar/SearchBar.scss";
 import { searchOptions } from "../../static/data";
+import { Button } from "../../assets/styles/style";
 
 type Props = {
   searchValueProp?: string;
@@ -83,13 +84,13 @@ const SearchBar = (props: Props) => {
           </div>
         </div>
         <div className="col-2">
-          <button
-            className="btn btn-primary w-100"
+          <Button
             onClick={handleSearchJob}
             disabled={searchValue ? false : true}
+            className="w-100"
           >
             Search
-          </button>
+          </Button>
         </div>
       </div>
     </div>
