@@ -67,7 +67,60 @@ const Detail = (props: Props) => {
         </div>
       </div>
       <div className="job__information">
-        <div className="job-information__description">
+        <div className="job-information__detail">
+          <div className="job-information__location">
+            <div className="job-location__map">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15678.010734408546!2d106.72167542607491!3d10.772758484077452!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317525d7fbd28121%3A0xb50fe826f6edd302!2sFABA%20Technology!5e0!3m2!1svi!2s!4v1680581300160!5m2!1svi!2s"
+                width={600}
+                height={450}
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          </div>
+          <div className="job-information__description">
+            <h3 className="job-description__title">JOB DESCRIPTION</h3>
+            <h4>What this role entails</h4>
+            <ul className="job-description__list">
+              <li className="job-description__item">
+                Ensure day-to-day basic activities in the office will be
+                operated smoothly, including office maintenance, office
+                facilities, safety, cleanliness and security
+              </li>
+              <li className="job-description__item">
+                Fulfill office supply needs, purchasing
+              </li>
+              <li className="job-description__item">
+                Manage and work closely with service providers/Suppliers to
+                achieve the highest level of support services most
+                cost-effectively.
+              </li>
+              <li className="job-description__item">
+                Support onboarding new employees to become fully integrated.
+              </li>
+              <li className="job-description__item">
+                Involve in organizing employee engagement events including
+                scheduled activities following annual planning which is
+                supervised by Manager including but not limited to year-end
+                party, company trip, occasion party, and ad-hoc events
+              </li>
+              <li className="job-description__item">
+                Support in the internal communication of cascading news from
+                company to employees through different platforms including
+                workplace, bulletin board, …
+              </li>
+              <li className="job-description__item">
+                Ensure related templates and forms are well documented
+              </li>
+              <li className="job-description__item">
+                Other tasks or projects as assigned
+              </li>
+              <li className="job-description__item">Report and others</li>
+            </ul>
+          </div>
           <div className="job-information__requirement">
             <h3 className="job-requirement__title">JOB REQUIREMENTS</h3>
             <h4>What are we looking for</h4>

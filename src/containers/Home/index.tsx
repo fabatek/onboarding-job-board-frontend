@@ -63,7 +63,7 @@ function Home() {
   }, [currentPage]);
 
   const countAvailableJob = () => {
-    let arr = jobs.filter((job: Job) => job.status);
+    let arr = jobsBase.filter((job: Job) => job.status);
     setCount(arr.length);
   };
 

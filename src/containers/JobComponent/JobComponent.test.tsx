@@ -23,7 +23,7 @@ const job: Job = {
   type: "Assistant",
 };
 
-test("Check if elements contain suitable class", async () => {
+test("Check if elements contain suitable class", () => {
   const { getByText } = render(<Main />);
   const jobName = getByText(job.name);
   const testImage = document.querySelector("img") as HTMLImageElement;
