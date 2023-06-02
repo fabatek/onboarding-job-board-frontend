@@ -19,7 +19,7 @@ const initialState: JobState = {
   jobsBase: [],
   jobDetail: {},
   jobType: [],
-  loading: false,
+  loading: true,
 };
 
 const JobReducer = createSlice({
@@ -29,7 +29,7 @@ const JobReducer = createSlice({
     getJobAction: (state: JobState, action: PayloadAction<Job[]>) => {
       state.jobs = action.payload;
       state.jobsBase = action.payload;
-
+      
       const arr: Array<String> = [];
       state.jobsBase.forEach((job) => {
         arr.push(job.type);

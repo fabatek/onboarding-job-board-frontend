@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import LoadingOverlay from "react-loading-overlay-ts";
 import { useDispatch, useSelector } from "react-redux";
 import "./styles.scss";
-import { filterAction, jobAPI, search } from "../../redux/reducer/JobReducer";
+import { filterAction, jobAPI, search, updateLoading } from "../../redux/reducer/JobReducer";
 import { DispatchType, RootState } from "../../redux/configStore";
 import JobComponent from "../JobComponent/JobComponent";
 import Search from "../search/Search";
@@ -34,8 +34,10 @@ function Home() {
   const dispatch: DispatchType = useDispatch();
 
   useEffect(() => {
+
     if (jobsBase.length < 100) {
       dispatch(jobAPI());
+      dispatch(updateLoading(false))
     }
 
     countAvailableJob();

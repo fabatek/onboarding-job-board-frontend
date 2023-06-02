@@ -23,14 +23,14 @@ const job: Job = {
   type: "Assistant",
 };
 
-test("Check if elements contain suitable class", () => {
+test("Check if elements contain suitable class", async () => {
   const { getByText } = render(<Main />);
   const jobName = getByText(job.name);
   const testImage = document.querySelector("img") as HTMLImageElement;
 
   expect(testImage.alt).toContain(job.image);
 
-  expect(jobName).toBeInTheDocument;
+  expect(jobName).toBeInTheDocument();
 });
 
 test("navigates to project detail page on click", () => {

@@ -1,6 +1,5 @@
-import { getByTestId, render } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { Provider } from "react-redux";
-import { forEachChild } from "typescript";
 import { store } from "../../redux/configStore";
 import Detail from "./Detail";
 
