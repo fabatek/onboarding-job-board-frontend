@@ -18,7 +18,7 @@ test("test if UI displays text correctly", () => {
     </Provider>
   );
 
-  const textRecruitment = getByText("Nhà tuyển dụng hàng đầu");
+  const textRecruitment = getByText("Top Employers");
 
   expect(textRecruitment).toBeInTheDocument();
 });

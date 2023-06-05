@@ -1,7 +1,7 @@
 import { fireEvent, render } from "@testing-library/react";
 
 import { useLocation } from "react-router-dom";
-import ReUsedTestComponent from "../../ReUsedTestComponent";
+import Main from "../../Main";
 
 import { Job } from "../Home";
 
@@ -14,6 +14,7 @@ const job: Job = {
   email: "Jodie_Bailey@hotmail.com",
   id: 1,
   price: 0,
+  type: "Assistant",
 };
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
@@ -22,7 +23,7 @@ jest.mock("react-router-dom", () => ({
   }),
 }));
 test("navigates to project detail page on click", () => {
-  const { getByTestId } = render(<ReUsedTestComponent />);
+  const { getByTestId } = render(<Main />);
 
   if (useLocation().pathname === "/1231231251dasdas") {
     const notFoundImg = document.querySelector("img") as HTMLImageElement;

@@ -1,6 +1,6 @@
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { FC } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/configStore";
 
 type Props = {
   count: number;
@@ -9,10 +9,28 @@ type Props = {
   }) => void;
   handleEnterSearch: (e: any) => void;
   handleSearch: () => void;
+  handleTypeChange: (e: {
+    target: { value: React.SetStateAction<string> };
+  }) => void;
+  typeJob: string;
+  searchByType: () => void;
 };
 
 const Search: FC<Props> = (props) => {
-  const { count, handleSearchInput, handleEnterSearch, handleSearch } = props;
+  const {
+    count,
+    handleSearchInput,
+    handleEnterSearch,
+    handleSearch,
+    handleTypeChange,
+    searchByType,
+    typeJob,
+  } = props;
+
+  const { jobType } = useSelector((state: RootState) => {
+    return state.JobReducer;
+  });
+
   return (
     <>
       <div>
@@ -22,9 +40,29 @@ const Search: FC<Props> = (props) => {
               <h2>{count} Có Việc Làm IT Cho Developer "Chất" </h2>
             </div>
             <div className="search__bar">
-              <div className="search-bar__icon">
+              <label id="select-label">Select type</label>
+              <select
+                aria-labelledby="select-label"
+                value={typeJob}
+                onChange={handleTypeChange}
+                onClick={() => {
+                  searchByType();
+                }}
+                className="type__option"
+              >
+                <option value="All">All</option>
+                {jobType.length > 0 &&
+                  jobType.map((type: string, index: number) => {
+                    return (
+                      <option value={type} key={index}>
+                        {type}
+                      </option>
+                    );
+                  })}
+              </select>
+              {/* <div className="search-bar__icon">
                 <FontAwesomeIcon icon={faMagnifyingGlass} />
-              </div>
+              </div> */}
               <label id="search-label">Search input</label>
               <input
                 aria-labelledby="search-label"

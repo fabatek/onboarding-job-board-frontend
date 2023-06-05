@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import LoadingOverlay from "react-loading-overlay-ts";
 import { useDispatch, useSelector } from "react-redux";
 import "./styles.scss";
-import { filterAction, jobAPI } from "../../redux/reducer/JobReducer";
+import { filterAction, jobAPI, search, updateLoading } from "../../redux/reducer/JobReducer";
 import { DispatchType, RootState } from "../../redux/configStore";
 import JobComponent from "../JobComponent/JobComponent";
 import Search from "../search/Search";
@@ -16,10 +16,11 @@ export interface Job {
   dateEnd: string;
   email: string;
   price: number;
+  type: string;
 }
 
 function Home() {
-  const { jobs, jobsBase } = useSelector((state: RootState) => {
+  const { jobs, jobsBase, loading } = useSelector((state: RootState) => {
     return state.JobReducer;
   });
 
@@ -27,13 +28,16 @@ function Home() {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchInput, setSearchInput] = useState("");
   const [currentJobs, setCurrentJobs] = useState<Job[]>([]);
+  const [typeJob, setTypeJob] = useState("All");
   const jobsPerPage = 10;
 
   const dispatch: DispatchType = useDispatch();
 
   useEffect(() => {
+
     if (jobsBase.length < 100) {
       dispatch(jobAPI());
+      dispatch(updateLoading(false))
     }
 
     countAvailableJob();
@@ -44,7 +48,13 @@ function Home() {
 
     setCurrentJobs(current);
   }, [jobs]);
-
+  useEffect(() => {
+    const inputSearch: search = {
+      searchInput: searchInput,
+      typeJob: typeJob,
+    };
+    dispatch(filterAction(inputSearch));
+  }, []);
   useEffect(() => {
     let current = jobs.slice(
       (currentPage - 1) * jobsPerPage,
@@ -55,10 +65,10 @@ function Home() {
   }, [currentPage]);
 
   const countAvailableJob = () => {
-    let arr = jobs.filter((job) => job.status);
+    let arr = jobsBase.filter((job: Job) => job.status);
     setCount(arr.length);
   };
-  const loadingContent = !!(jobs.length <= 0);
+
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
@@ -74,17 +84,40 @@ function Home() {
     setSearchInput(e.target.value);
     setCurrentPage(1);
   };
-  const handleSearch = () => {
-    dispatch(filterAction(searchInput));
+  function handleTypeChange(e: {
+    target: { value: React.SetStateAction<string> };
+  }) {
+    setTypeJob(e.target.value);
     setCurrentPage(1);
-  };
-  const handleEnterSearch = (e: KeyboardEvent) => {
+  }
+
+  function handleSearch() {
+    const inputSearch: search = {
+      searchInput: searchInput,
+      typeJob: typeJob,
+    };
+    dispatch(filterAction(inputSearch));
+    setCurrentPage(1);
+  }
+  function handleEnterSearch(e: KeyboardEvent) {
+    const inputSearch: search = {
+      searchInput: searchInput,
+      typeJob: typeJob,
+    };
     if (e.key === "Enter") {
       {
-        dispatch(filterAction(searchInput));
+        dispatch(filterAction(inputSearch));
       }
     }
-  };
+  }
+  function searchByType() {
+    const inputSearch: search = {
+      searchInput: searchInput,
+      typeJob: typeJob,
+    };
+    dispatch(filterAction(inputSearch));
+    setCurrentPage(1);
+  }
 
   return (
     <div className="App">
@@ -93,18 +126,25 @@ function Home() {
         handleSearchInput={handleSearchInput}
         handleEnterSearch={handleEnterSearch}
         handleSearch={handleSearch}
+        handleTypeChange={handleTypeChange}
+        typeJob={typeJob}
+        searchByType={searchByType}
       />
       <h1 data-testid="title" className="title">
-        Nhà tuyển dụng hàng đầu
+        Top Employers
       </h1>
       <div className="loading">
         <LoadingOverlay
-          active={loadingContent}
+          active={loading}
           spinner={true}
-          text="Loading your content..."
+          text="Content is loading..."
           className="loading__overlay"
         >
-          {currentJobs.length > 0 && (
+          {currentJobs.length === 0 ? (
+            <div className="job__notFound">
+              No such job match your searching
+            </div>
+          ) : (
             <div className="job__list" data-testid="job-list">
               {currentJobs.map((job: Job, index) => {
                 return (

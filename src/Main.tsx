@@ -10,7 +10,7 @@ import { store } from "./redux/configStore";
 
 type Props = {};
 
-const ReUsedTestComponent = (props: Props) => {
+const Main = (props: Props) => {
   const job: Job = {
     name: "NAME 1",
     status: false,
@@ -20,6 +20,7 @@ const ReUsedTestComponent = (props: Props) => {
     email: "Jodie_Bailey@hotmail.com",
     id: 1,
     price: 0,
+    type: "Assistant",
   };
   return (
     <>
@@ -42,4 +43,4 @@ const ReUsedTestComponent = (props: Props) => {
   );
 };
 
-export default ReUsedTestComponent;
+export default Main;

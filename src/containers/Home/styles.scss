@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Delicious+Handrawn&family=Inter:wght@200;300;400;600;700;800;900&display=swap');
 *{
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  list-style: none;
+ 
   text-decoration: none !important;
+  font-family: 'Delicious Handrawn', cursive;
+
 }
 .App {
   text-align: center;
@@ -42,6 +45,9 @@
   }
 }
 .header__nav{
+  z-index: 1000;
+  width: 100%;
+  position: fixed;
   padding: 20px 125px;
   background-color: #221f20;
   display: flex;
@@ -168,15 +174,14 @@
     .job__available{
       color:white;
     }
-    .search-bar__icon{
-      position: absolute;
-      left: 330px;
-      top: 95px;
-      color:gray;
-      
-
-      
+    .type__option{
+      height: 40px;
+      border-radius: 5px;
+      box-shadow: none;
+      border: none;
+      padding-left: 30px;
     }
+   
     input[type=text].search__input{
       padding-left: 50px;
       
@@ -186,6 +191,7 @@
       width: 500px;
       height: 40px;
       border-radius: 5px;
+     margin-left: -50px;
       &::placeholder{
        padding-left: 20px;
       }
@@ -218,12 +224,14 @@
     margin-top: 100px;
     padding: 30px 30px 30px 40px;
    color: black;
+ 
     
     .job__content{
       position: relative;
       transition: all 0.5s ease-in-out;
       width: 300px; 
-      height: 300px;
+      height: 350px;
+     
       background-color: #fff;
       border-radius: 30px;
       &:hover{
@@ -254,17 +262,19 @@
         font-weight: 800;
         position: absolute;
         top: 205px;
-        right: 215px;
-        font-size: 17px;
+        right: 190px;
+        font-size: 15px;
         text-transform: uppercase;
+        width: 100px;
       }
       .content-description{
         position: absolute;
-        top: 225px;
+        top: 260px;
        
       }
       .content__image{
         position: absolute;
+        top: 0;
         width: 100%;
         height: 200px;
         bottom: 100px;
@@ -288,8 +298,8 @@
         width: 110px;
         height: 20px;
         z-index: 100;
-        right: 90px;
-        top:205px;
+        right: 35px;
+        top:220px;
         border-radius: 5px;
         flex-direction: column;
         align-items: center;
@@ -328,6 +338,7 @@
     .job-detail__description{
       width: 40%;
       padding: 40px 50px;
+      font-size: 20px;
       .job-detail__name{
         text-transform: uppercase;
         font-weight: bold;
@@ -366,6 +377,109 @@
     }
   }
 }
+.job__information{
+ 
+  padding : 0 100px;
+  .job-information__detail{
+    background-color: #e9e9e9;
+    padding: 40px 50px;
+    border-radius: 5px;
+    .job-information__location{
+      .job-location__map{
+        padding-bottom: 50px;
+      }
+    }
+    .job-information__description{
+      .job-description__title{
+        font-weight: 600;
+      }
+      .job-description__list{
+        .job-description__item{
+          margin-top: 10px;
+          font-size: 17px;
+        }
+      }
+    }
+  .job-information__requirement{
+    padding: 50px 0;
+    .job-requirement__title{
+      font-weight: 600;
+    }
+    .job-requirement__list{
+      .job-requirement__item{
+        margin-top: 10px;
+        font-size: 17px;
+      }
+    }
+  }
+  .job-information__other{
+    .job-other__title{
+      font-weight: 600;
+    }
+    .job-other__list{
+      .job-other__item{
+        margin-top: 10px;
+        font-size: 17px;
+      }
+    }
+  }
+}
+}
+.footer{
+  margin-top: 150px;
+  background-color: #221f20;
+  padding: 50px 200px;
+  .footer__up{
+    
+    display: flex;
+    justify-content: space-between;
+    .footer-up__about{
+      .footer-about__title{
+        color: #c0b9a4;
+      }
+      .footer-about__list{
+        list-style: none;
+        text-decoration: none;
+        .footer-about__item{
+          margin-left: -30px;
+          color: gray;
+        }
+      }
+    }
+    .footer-up__general{
+      .footer-general__title{
+        color: #c0b9a4;
+      }
+      }
+      .footer-general__list{
+        list-style: none;
+        text-decoration: none;
+        .footer-general__item{
+          margin-left: -30px;
+          color: gray;
+        }
+      }
+    }
+    .footer-up__media{
+      .footer-media__link{
+        color: gray;
+      }
+    }
+  }
+  .footer__bottom{
+    padding-top: 50px;
+    .footer-bottom__contact{
+      .footer-contact__title{
+        color: #c0b9a4;
+        
+      
+      }
+      .footer-contact__link{
+        color: gray;
+      }
+    }
+  }
+
 .not-found{
   display: flex;
   flex-direction: column;
@@ -398,6 +512,9 @@
   
   .loading__overlay{
     height: 1000px;
+    .job__notFound{
+      font-size: 25px;
+    }
     .title__notFound{
       font-weight: 500;
       margin-top: 100px;
@@ -426,6 +543,7 @@
   background-color: #e9e9e9;
   text-align: left;
   margin-left: 50px;
+  padding-top: 50px;
 }
 .outlet__template{
    min-height: 75vh;

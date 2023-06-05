@@ -24,6 +24,10 @@ const JobComponent: FC<Props> = (props) => {
                   className="content__image-random"
                   data-testid="content__image-random"
                   src={job.image}
+                  onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = "https://picsum.photos/id/1000/1000";
+                  }}
                   alt="https://loremflickr.com/640/480/food"
                 />
               </div>

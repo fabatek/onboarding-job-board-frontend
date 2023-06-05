@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 
 type Props = {};
@@ -23,6 +24,7 @@ const HeaderTemplate = (props: Props) => {
                     Jobs By Title
                   </a>
                 </li>
+
                 <li>
                   <a href="#" className="dropdown__item">
                     Jobs By Company
@@ -105,7 +107,7 @@ const HeaderTemplate = (props: Props) => {
         <img
           src="https://itviec.com/assets/logo-itviec-4492a2f2577a15a0a1d55444c21c0fa55810822b3b189fc689b450fb62ce0b5b.png"
           className="header__logo"
-          alt=""
+          alt="đá"
         />
       </div>
     </div>
